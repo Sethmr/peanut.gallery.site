@@ -727,12 +727,10 @@
       display: flex;
       position: sticky; top: 0; z-index: 20;
       margin: 0 -14px 16px; padding: 8px 14px;
-      background: var(--paper);
-      border-bottom: 1.5px solid var(--ink);
+      background: rgba(241, 234, 216, 0.6); /* --paper @ 0.6 — see-through so scrolling content doesn't feel cut off */
       gap: 0; overflow-x: auto; scrollbar-width: none;
       font-family: var(--slab-2); font-size: 10px; font-weight:700;
       letter-spacing: .18em; text-transform:uppercase;
-      box-shadow: 0 1px 0 var(--ink-3);
     }
     .m-jump::-webkit-scrollbar{ display:none }
     .m-jump a{
@@ -878,7 +876,8 @@
     .m-sticky-cta{
       display: flex; align-items: stretch;
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
-      background: var(--ink); color: var(--paper);
+      background: rgba(17, 17, 17, 0.6); /* --ink @ 0.6 — see-through so scrolling content doesn't feel cut off */
+      color: var(--paper);
       border-top: 2px solid var(--stamp);
       font-family: var(--slab-2); font-weight: 700;
       height: 60px;
@@ -899,7 +898,8 @@
     .m-sticky-cta a.r{
       flex: 0 0 auto; display:flex; align-items:center; justify-content:center; gap: 6px;
       padding: 0 18px;
-      background: var(--stamp); color: var(--paper); text-decoration:none;
+      background: rgba(200, 38, 29, 0.6); /* --stamp @ 0.6 — match the see-through bottom banner */
+      color: var(--paper); text-decoration:none;
       font-family: var(--slab-2); font-size: 12px; letter-spacing: .18em; text-transform:uppercase;
     }
     .m-sticky-cta a.r .ico{ font-family: var(--serif); font-size: 14px }
