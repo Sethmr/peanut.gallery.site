@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Peanut Gallery — Side Panel Proof Sheet</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:    #f1ead8;
+    --paper-2:  #e9e0c5;
+    --paper-3:  #dfd4b3;
+    --ink:      #111111;
+    --ink-2:    #2a2824;
+    --ink-3:    #5a564c;
+    --rule:     #111;
+    --stamp:    #c8261d;
+    --stamp-d:  #8f1811;
+    --gold:     #a8821e;
+    --yellow:   #f6d74b;
+
+    --slab: 'Anton', 'Oswald', sans-serif;
+    --slab-2: 'Oswald', sans-serif;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --type: 'Special Elite', 'JetBrains Mono', monospace;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); -webkit-font-smoothing:antialiased}
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+    background-image:
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode: multiply; opacity:.6;
+  }
+  a{color:var(--ink)}
+  .page{max-width:1180px; margin:0 auto; padding:24px 32px 80px; position:relative}
+
+  /* ============ MASTHEAD ============ */
+  .rail{
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+    font-family:var(--slab-2); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--ink-3);
+    padding:8px 0; border-bottom:1px solid var(--rule);
+  }
+  .rail a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink)}
+  .rail a:hover{background:var(--yellow)}
+
+  .mast{
+    border-top:6px solid var(--ink); padding-top:14px; margin-top:2px;
+    display:grid; grid-template-columns: 1fr auto 1fr; gap:18px; align-items:end;
+    border-bottom:2px solid var(--ink); padding-bottom:10px;
+  }
+  .mast .eyebrow{font-family:var(--slab-2); font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--stamp)}
+  .mast .date{font-family:var(--type); font-size:11px; color:var(--ink-2); letter-spacing:.1em; text-align:right}
+  .mast h1{
+    margin:0; font-family:var(--slab); font-weight:400; font-size:clamp(42px, 7vw, 86px); line-height:.9;
+    text-transform:uppercase; letter-spacing:-.01em; text-align:center; white-space:nowrap;
+  }
+  .subhead{
+    display:flex; justify-content:space-between; align-items:baseline; gap:18px;
+    border-bottom:1px solid var(--ink); padding:10px 0 12px; margin-bottom:26px;
+  }
+  .subhead .lede{
+    font-family:var(--serif); font-style:italic; font-size:16px; color:var(--ink-2); max-width:720px; line-height:1.45;
+  }
+  .subhead .folio{font-family:var(--slab-2); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap}
+
+  /* ============ PROOF SHEET GRID ============ */
+  .proof-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 36px 24px;
+    padding: 8px 0 40px;
+    border-bottom:2px solid var(--ink);
+  }
+  .proof{
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .proof .caption{
+    display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+    border-bottom:1px solid var(--ink); padding-bottom:6px;
+  }
+  .proof .caption .n{
+    font-family:var(--slab); font-size:32px; line-height:.9; color:var(--stamp); letter-spacing:-.01em;
+  }
+  .proof .caption .t{
+    font-family:var(--slab); font-size:22px; line-height:1; text-transform:uppercase; letter-spacing:-.005em; margin:0;
+  }
+  .proof .caption .p{font-family:var(--type); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3)}
+  .proof .dek{font-family:var(--serif); font-style:italic; font-size:13px; color:var(--ink-2); line-height:1.45; margin:0}
+  .proof .chip{
+    display:inline-block; font-family:var(--slab-2); font-size:9.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    padding:3px 8px; border:1.5px solid var(--ink); color:var(--ink); margin-right:6px; margin-top:4px;
+  }
+  .proof .chip.on{background:var(--stamp); color:var(--paper); border-color:var(--stamp)}
+  .proof .chip.warm{background:var(--yellow)}
+
+  /* ============ PANEL CHROME ============ */
+  .pwrap{
+    background: var(--ink);
+    padding: 24px 18px 18px;
+    position:relative;
+    border:2px solid var(--ink);
+  }
+  /* fake chrome toolbar above the side panel */
+  .pwrap::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:14px;
+    background: repeating-linear-gradient(90deg, #2a2a2a 0 2px, #1d1d1d 2px 4px);
+  }
+  .pwrap::after{
+    content:"◀  ▶  ↻    chrome://side-panel"; position:absolute; top:16px; left:10px; right:10px;
+    font-family:var(--mono); font-size:8.5px; color:#7a7970; letter-spacing:.15em;
+    padding: 2px 6px; border:1px solid #3a3a3a; background:#141414;
+  }
+  .panel{
+    width:100%; background:var(--paper); border:2px solid var(--ink);
+    display:flex; flex-direction:column; overflow:hidden;
+    min-height: 560px;
+  }
+
+  /* Masthead inside panel */
+  .sp-mast{
+    background:var(--ink); color:var(--paper); padding:10px 12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sp-mast .wm{font-family:var(--slab); font-size:16px; text-transform:uppercase; letter-spacing:.02em; line-height:1}
+  .sp-mast .edn{font-family:var(--type); font-size:10px; color:#d4c9a8; letter-spacing:.2em; margin-left:auto}
+  .sp-mast .dot{width:7px; height:7px; border-radius:50%; background:var(--stamp); box-shadow:0 0 0 2px rgba(200,38,29,.25); animation: sp-dot 1.2s ease-in-out infinite}
+  @keyframes sp-dot{0%,100%{opacity:1}50%{opacity:.35}}
+  .sp-mast.idle .dot{background:#666; animation:none}
+  .sp-mast.replay .dot{background:var(--yellow); animation:none}
+
+  /* Meta */
+  .sp-meta{
+    padding:10px 12px; border-bottom:1px solid var(--ink-3);
+    font-family:var(--type); font-size:11px; color:var(--ink-2);
+    background:var(--paper-2);
+  }
+  .sp-meta .t{font-family:var(--slab-2); font-size:12px; color:var(--ink); font-weight:600; text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px}
+  .sp-meta .scrub{
+    margin-top:8px; height:3px; background:var(--paper-3); border:1px solid var(--ink); position:relative;
+  }
+  .sp-meta .scrub .el{position:absolute; top:-1px; bottom:-1px; left:0; background:var(--stamp)}
+  .sp-meta .scrub .tk{position:absolute; top:-4px; width:2px; height:9px; background:var(--ink)}
+
+  /* Mugs strip */
+  .sp-mugs{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--ink); border-bottom:2px solid var(--ink)}
+  .sp-mug{background:var(--paper); padding:10px 6px 8px; display:flex; flex-direction:column; align-items:center; gap:4px; position:relative}
+  .sp-mug .pl{width:34px; height:34px; border:1.5px solid var(--ink); border-radius:50%; display:grid; place-items:center; font-family:var(--mono); font-size:11px; font-weight:700; background:var(--paper-2)}
+  .sp-mug .pl.fact{border-color:var(--stamp); color:var(--stamp)}
+  .sp-mug .pl.bit{background:var(--ink); color:var(--paper)}
+  .sp-mug .pl.dunk{background:var(--yellow)}
+  .sp-mug .nm{font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--ink)}
+  .sp-mug .ro{font-family:var(--type); font-size:8.5px; color:var(--ink-3); letter-spacing:.08em; text-transform:uppercase}
+  /* per-persona waveform */
+  .sp-mug .mw{display:flex; align-items:flex-end; gap:1.5px; height:10px; margin-top:3px}
+  .sp-mug .mw i{display:block; width:2px; background:var(--ink-3); transform-origin:bottom; height:18%}
+  .sp-mug.live .mw i{background:var(--ink); animation: sp-mug-bar 800ms ease-in-out infinite}
+  .sp-mug.live .mw i:nth-child(1){height:70%; animation-delay:-.05s}
+  .sp-mug.live .mw i:nth-child(2){height:100%; animation-delay:-.22s}
+  .sp-mug.live .mw i:nth-child(3){height:50%; animation-delay:-.38s}
+  .sp-mug.live .mw i:nth-child(4){height:85%; animation-delay:-.16s}
+  .sp-mug.live .mw i:nth-child(5){height:60%; animation-delay:-.30s}
+  .sp-mug.live.fact .mw i{background:var(--stamp)}
+  .sp-mug.muted{opacity:.4}
+  .sp-mug.muted .mw i{background:var(--ink-3); animation:none}
+  .sp-mug.muted::before{
+    content:""; position:absolute; left:10px; right:10px; top:28px; height:1.5px; background:var(--ink); transform:rotate(-8deg);
+  }
+  @keyframes sp-mug-bar{0%,100%{transform:scaleY(.3)} 50%{transform:scaleY(1)}}
+  @media (prefers-reduced-motion: reduce){ .sp-mug.live .mw i{animation:none} }
+
+  /* Ticker with printed waveform */
+  .sp-ticker{
+    background:var(--ink); color:var(--paper);
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.02em;
+    padding:9px 10px; display:grid; grid-template-columns:auto auto 1fr; gap:8px; align-items:center;
+    border-bottom:1px solid var(--ink);
+  }
+  .sp-ticker .lbl{font-family:var(--slab-2); font-size:8.5px; font-weight:700; letter-spacing:.25em; color:var(--stamp); text-transform:uppercase}
+  .sp-ticker .lbl.paused{color:#aaa}
+  .sp-ticker .txt{color:var(--paper); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-style:italic; opacity:.85}
+  .sp-ticker .txt.dim{opacity:.35}
+
+  /* Waveform bars */
+  .sp-wave{display:flex; align-items:center; gap:2px; height:18px}
+  .sp-wave i{
+    display:block; width:2.5px; background:var(--paper); transform-origin:center;
+    animation: sp-bar 1.1s ease-in-out infinite;
+  }
+  .sp-wave i:nth-child(1) {height:30%; animation-delay:-.05s}
+  .sp-wave i:nth-child(2) {height:55%; animation-delay:-.22s}
+  .sp-wave i:nth-child(3) {height:85%; animation-delay:-.40s; background:var(--stamp)}
+  .sp-wave i:nth-child(4) {height:65%; animation-delay:-.12s}
+  .sp-wave i:nth-child(5) {height:95%; animation-delay:-.30s; background:var(--yellow)}
+  .sp-wave i:nth-child(6) {height:40%; animation-delay:-.55s}
+  .sp-wave i:nth-child(7) {height:72%; animation-delay:-.18s}
+  .sp-wave i:nth-child(8) {height:50%; animation-delay:-.60s}
+  .sp-wave i:nth-child(9) {height:80%; animation-delay:-.08s; background:var(--stamp)}
+  .sp-wave i:nth-child(10){height:35%; animation-delay:-.44s}
+  .sp-wave i:nth-child(11){height:60%; animation-delay:-.25s}
+  .sp-wave i:nth-child(12){height:45%; animation-delay:-.50s}
+  .sp-wave i:nth-child(13){height:28%; animation-delay:-.32s}
+  .sp-wave i:nth-child(14){height:68%; animation-delay:-.14s}
+  .sp-wave i:nth-child(15){height:52%; animation-delay:-.38s}
+  @keyframes sp-bar{0%,100%{transform:scaleY(.35)} 50%{transform:scaleY(1.05)}}
+  .sp-wave.flat i{animation:none; transform:scaleY(.18); background:#555}
+  .sp-wave.replay i{animation-duration: 2s; animation-timing-function: steps(6, end)}
+  @media (prefers-reduced-motion: reduce){ .sp-wave i{animation:none} }
+
+  /* Feed */
+  .sp-feed{flex:1; overflow:hidden; padding:4px 0; font-family:var(--type); font-size:12px; background:var(--paper)}
+  .sp-item{padding:8px 12px; border-bottom:1px solid var(--ink-3); display:flex; gap:8px}
+  .sp-item:last-child{border-bottom:0}
+  .sp-item .ts{color:var(--ink-3); min-width:40px}
+  .sp-item .tag{font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.2em; padding:2px 5px; border:1px solid var(--ink); height:fit-content; margin-top:1px}
+  .sp-item.fact .tag{color:var(--stamp); border-color:var(--stamp)}
+  .sp-item.dunk .tag{background:var(--yellow)}
+  .sp-item.cue .tag{}
+  .sp-item.bit .tag{background:var(--ink); color:var(--paper)}
+  .sp-item.new{background:linear-gradient(90deg, rgba(246,215,75,.35), transparent)}
+  .sp-item .msg{flex:1; color:var(--ink); line-height:1.5}
+  .sp-item .msg q{font-style:italic; quotes:'“' '”'}
+
+  .sp-empty{
+    flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px;
+    padding:24px; text-align:center; background:repeating-linear-gradient(45deg, var(--paper) 0 8px, var(--paper-2) 8px 16px);
+  }
+  .sp-empty .lg{font-family:var(--slab); font-size:38px; line-height:.9; color:var(--ink)}
+  .sp-empty .dk{font-family:var(--serif); font-style:italic; font-size:13px; color:var(--ink-2); max-width:220px; line-height:1.4}
+  .sp-empty .btn{
+    font-family:var(--slab-2); font-size:11px; letter-spacing:.2em; padding:8px 14px; border:2px solid var(--ink);
+    background:var(--stamp); color:var(--paper); text-transform:uppercase; margin-top:8px;
+  }
+
+  /* Footer */
+  .sp-foot{border-top:2px solid var(--ink); padding:10px 10px; display:flex; gap:5px; background:var(--paper-2); align-items:center; flex-wrap:wrap}
+  .sp-foot .pill{font-family:var(--slab-2); font-size:10px; letter-spacing:.12em; padding:4px 7px; border:1px solid var(--ink); text-transform:uppercase}
+  .sp-foot .pill.on{background:var(--stamp); color:var(--paper); border-color:var(--stamp)}
+  .sp-foot .pill.mute{opacity:.35; text-decoration:line-through}
+  .sp-foot .sep{flex:1}
+  .sp-foot .gear{width:22px; height:22px; display:grid; place-items:center; border:1px solid var(--ink); font-family:var(--mono); font-size:12px; font-weight:700}
+
+  /* ============ DETAIL STRIP BELOW ============ */
+  .detail{
+    margin-top: 48px;
+    display:grid; grid-template-columns: 2fr 1fr; gap: 40px;
+    padding-bottom: 28px; border-bottom: 2px solid var(--ink);
+  }
+  .detail h3{
+    font-family:var(--slab); font-weight:400; font-size:46px; line-height:.9; margin:0 0 12px; text-transform:uppercase; letter-spacing:-.01em;
+  }
+  .detail .kicker{font-family:var(--slab-2); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--stamp); margin-bottom:4px}
+  .detail p{font-family:var(--serif); font-size:15px; line-height:1.55; color:var(--ink-2); margin:0 0 10px}
+  .legend{border:2px solid var(--ink); background:var(--paper); padding:14px 14px}
+  .legend h4{margin:0 0 10px; font-family:var(--slab); font-size:22px; text-transform:uppercase; letter-spacing:-.005em}
+  .legend .row{
+    display:grid; grid-template-columns: 58px 1fr; gap:10px; padding:7px 0; border-bottom:1px dotted var(--ink-3);
+    font-family:var(--serif); font-size:13px; line-height:1.4; color:var(--ink-2);
+  }
+  .legend .row:last-child{border-bottom:0}
+  .legend .row .tg{font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.2em; padding:2px 6px; border:1px solid var(--ink); text-align:center; text-transform:uppercase; height:fit-content}
+  .legend .row .tg.fact{color:var(--stamp); border-color:var(--stamp)}
+  .legend .row .tg.dunk{background:var(--yellow)}
+  .legend .row .tg.bit{background:var(--ink); color:var(--paper)}
+
+  /* ============ SPECS ============ */
+  .specs{
+    margin-top: 40px;
+    display:grid; grid-template-columns: repeat(4,1fr); gap:0;
+    border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);
+  }
+  .specs > div{padding: 14px 18px 14px 0; border-right:1px solid var(--ink-3)}
+  .specs > div:last-child{border-right:0; padding-right:0}
+  .specs b{display:block; font-family:var(--slab-2); font-size:10px; font-weight:600; color:var(--stamp); letter-spacing:.2em; text-transform:uppercase; margin-bottom:6px}
+  .specs .v{font-family:var(--slab); font-size:34px; line-height:.95; letter-spacing:-.01em; margin-bottom:4px}
+  .specs .d{font-family:var(--type); font-size:11px; color:var(--ink-3); line-height:1.5}
+
+  /* ============ COLOPHON ============ */
+  .colo{
+    margin-top:50px; padding-top:18px; border-top:6px solid var(--ink);
+    display:flex; justify-content:space-between; align-items:center; gap:18px;
+    font-family:var(--type); font-size:11px; letter-spacing:.08em; color:var(--ink-3); text-transform:uppercase;
+  }
+  .colo a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink); margin:0 6px}
+  .colo a:hover{background:var(--yellow)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 960px){
+    .page{padding:20px 22px 56px}
+    .mast{grid-template-columns:1fr; gap:6px}
+    .mast .date{text-align:left}
+    .mast h1{text-align:left; font-size:clamp(40px,10vw,64px); white-space:normal}
+    .subhead{flex-direction:column; align-items:flex-start; gap:6px}
+    .proof-grid{grid-template-columns:repeat(2,1fr); gap:28px 20px}
+    .detail{grid-template-columns:1fr; gap:20px}
+    .detail h3{font-size:36px}
+    .specs{grid-template-columns:repeat(2,1fr); gap:0}
+    .specs > div{border-right:1px solid var(--ink-3); border-bottom:1px solid var(--ink-3); padding:14px 14px}
+    .specs > div:nth-child(2){border-right:0}
+    .specs > div:nth-child(n+3){border-bottom:0}
+    .colo{flex-direction:column; align-items:flex-start; gap:6px}
+  }
+  @media (max-width: 640px){
+    .page{padding:14px 14px 40px}
+    .rail{font-size:9px; letter-spacing:.18em; gap:8px}
+    .mast h1{font-size:44px}
+    .subhead .lede{font-size:14px}
+    .proof-grid{grid-template-columns:1fr; gap:26px}
+    .pwrap{padding:22px 12px 12px}
+    .panel{min-height:auto}
+    .sp-feed .sp-item{font-size:11.5px}
+    .sp-mug .nm{font-size:8.5px}
+    .sp-mug .ro{display:none}
+    .detail h3{font-size:28px}
+    .specs{grid-template-columns:1fr}
+    .specs > div{border-right:0; border-bottom:1px solid var(--ink-3); padding:12px 0}
+    .specs > div:last-child{border-bottom:0}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP RAIL -->
+  <div class="rail">
+    <div><a href="Landing Page.html">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; Pressroom</div>
+    <div>Proof sheet · Desk 4 · Pg. B1</div>
+  </div>
+
+  <!-- MASTHEAD -->
+  <header class="mast">
+    <div class="eyebrow">— For typesetter review —</div>
+    <h1>The Wire Room</h1>
+    <div class="date">Vol. 001 · No. 4 · 2026</div>
+  </header>
+
+  <div class="subhead">
+    <div class="lede">
+      Three proofs of the <b style="font-style:normal">chrome://side-panel</b> fixture, pulled from press at 2:14 AM. Live broadcast, idle standby, and replay with the Cue channel muted. Same chrome, same pressmarks, same copy discipline.
+    </div>
+    <div class="folio">Proofs 01 – 03 / Approved for run</div>
+  </div>
+
+  <!-- PROOF SHEET -->
+  <div class="proof-grid">
+
+    <!-- ================================================== -->
+    <!-- PROOF 01 — LIVE -->
+    <!-- ================================================== -->
+    <article class="proof">
+      <div class="caption">
+        <div class="n">01</div>
+        <h3 class="t">Live broadcast</h3>
+        <div class="p">State A · On air</div>
+      </div>
+      <p class="dek">Audio feeding into Deepgram. Four critics warm. Waveform hot, stamp red. Counts ticking up in real time.</p>
+      <div>
+        <span class="chip on">● LIVE</span>
+        <span class="chip">4 critics up</span>
+        <span class="chip warm">6 in queue</span>
+      </div>
+
+      <div class="pwrap">
+        <div class="panel">
+          <div class="sp-mast">
+            <span class="dot"></span>
+            <div class="wm">Peanut Gallery</div>
+            <div class="edn">ON AIR · No. 001</div>
+          </div>
+          <div class="sp-meta">
+            <div class="t">E1926 · Founder Friday w/ Lex Fridman</div>
+            This Week in Startups · 00:04:12 / 01:42:09
+            <div class="scrub"><div class="el" style="width:4.1%"></div><div class="tk" style="left:4.1%"></div></div>
+          </div>
+          <div class="sp-mugs">
+            <div class="sp-mug live fact"><span class="pl fact">BB</span><span class="nm">Bill</span><span class="ro">Fact</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug"><span class="pl dunk">CT</span><span class="nm">Crow</span><span class="ro">Dunk</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug live"><span class="pl">FN</span><span class="nm">Foley</span><span class="ro">Cue</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug"><span class="pl bit">JM</span><span class="nm">Joel</span><span class="ro">Bit</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+          </div>
+          <div class="sp-ticker">
+            <span class="lbl">On air</span>
+            <span class="sp-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="txt">"…the round was oversubscribed at a point-two…"</span>
+          </div>
+          <div class="sp-feed">
+            <div class="sp-item fact new"><span class="ts">04:02</span><span class="tag">FACT</span><span class="msg">Jason said Uber was 2007. Founded in <b>March 2009</b>.</span></div>
+            <div class="sp-item dunk"><span class="ts">04:05</span><span class="tag">DUNK</span><span class="msg"><q>Oh cool, another AI wrapper. Very 2024.</q></span></div>
+            <div class="sp-item cue"><span class="ts">04:07</span><span class="tag">CUE</span><span class="msg">[record scratch] [sad trombone]</span></div>
+            <div class="sp-item bit"><span class="ts">04:10</span><span class="tag">BIT</span><span class="msg"><q>If it has AI in the name and a pulse, it's a yes.</q></span></div>
+            <div class="sp-item fact"><span class="ts">04:12</span><span class="tag">FACT</span><span class="msg">Per the 10-K — closer to <b>2.4B</b>.</span></div>
+          </div>
+          <div class="sp-foot">
+            <div class="pill on">● LIVE</div>
+            <div class="pill">Fact</div>
+            <div class="pill">Dunk</div>
+            <div class="pill">Cue</div>
+            <div class="pill">Bit</div>
+            <div class="sep"></div>
+            <div class="gear" title="Settings">⚙</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================================================== -->
+    <!-- PROOF 02 — IDLE -->
+    <!-- ================================================== -->
+    <article class="proof">
+      <div class="caption">
+        <div class="n">02</div>
+        <h3 class="t">Standby</h3>
+        <div class="p">State B · Idle</div>
+      </div>
+      <p class="dek">No tab captured. Four critics dressed, nothing to react to. One click on <b style="font-style:normal">Go Live</b> and the room opens.</p>
+      <div>
+        <span class="chip">Staff: TWiST</span>
+        <span class="chip">0 items</span>
+      </div>
+
+      <div class="pwrap">
+        <div class="panel">
+          <div class="sp-mast idle">
+            <span class="dot"></span>
+            <div class="wm">Peanut Gallery</div>
+            <div class="edn">STANDBY</div>
+          </div>
+          <div class="sp-meta">
+            <div class="t">No broadcast captured</div>
+            Pick a tab · any tab
+          </div>
+          <div class="sp-mugs">
+            <div class="sp-mug"><span class="pl fact">BB</span><span class="nm">Bill</span><span class="ro">Fact</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug"><span class="pl dunk">CT</span><span class="nm">Crow</span><span class="ro">Dunk</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug"><span class="pl">FN</span><span class="nm">Foley</span><span class="ro">Cue</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug"><span class="pl bit">JM</span><span class="nm">Joel</span><span class="ro">Bit</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+          </div>
+          <div class="sp-ticker">
+            <span class="lbl paused">— silent —</span>
+            <span class="sp-wave flat" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="txt dim">awaiting capture…</span>
+          </div>
+          <div class="sp-empty">
+            <div class="lg">Dark stage.</div>
+            <div class="dk">Open any tab with audio — a podcast, a livestream, an interview, a Zoom window. Tap <b style="font-style:normal">Go Live</b> and the room warms up.</div>
+            <button class="btn">▶ Go Live</button>
+          </div>
+          <div class="sp-foot">
+            <div class="pill">● IDLE</div>
+            <div class="pill">Fact</div>
+            <div class="pill">Dunk</div>
+            <div class="pill">Cue</div>
+            <div class="pill">Bit</div>
+            <div class="sep"></div>
+            <div class="gear" title="Settings">⚙</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================================================== -->
+    <!-- PROOF 03 — REPLAY / MUTED CUE -->
+    <!-- ================================================== -->
+    <article class="proof">
+      <div class="caption">
+        <div class="n">03</div>
+        <h3 class="t">Replay, cue muted</h3>
+        <div class="p">State C · Rewind</div>
+      </div>
+      <p class="dek">Scrubbed back to the 02:30 mark. Cue channel muted because the sound FX got noisy. Everything else still in rotation.</p>
+      <div>
+        <span class="chip warm">REPLAY</span>
+        <span class="chip">CUE muted</span>
+      </div>
+
+      <div class="pwrap">
+        <div class="panel">
+          <div class="sp-mast replay">
+            <span class="dot"></span>
+            <div class="wm">Peanut Gallery</div>
+            <div class="edn">REPLAY · -01:42</div>
+          </div>
+          <div class="sp-meta">
+            <div class="t">E1926 · Founder Friday w/ Lex Fridman</div>
+            This Week in Startups · 00:02:30 / 01:42:09
+            <div class="scrub"><div class="el" style="width:2.4%"></div><div class="tk" style="left:2.4%"></div></div>
+          </div>
+          <div class="sp-mugs">
+            <div class="sp-mug live fact"><span class="pl fact">BB</span><span class="nm">Bill</span><span class="ro">Fact</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug live"><span class="pl dunk">CT</span><span class="nm">Crow</span><span class="ro">Dunk</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug muted"><span class="pl">FN</span><span class="nm">Foley</span><span class="ro">Cue</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+            <div class="sp-mug"><span class="pl bit">JM</span><span class="nm">Joel</span><span class="ro">Bit</span><span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+          </div>
+          <div class="sp-ticker">
+            <span class="lbl">Replay</span>
+            <span class="sp-wave replay" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="txt">"…so what I keep telling founders is…"</span>
+          </div>
+          <div class="sp-feed">
+            <div class="sp-item fact"><span class="ts">02:31</span><span class="tag">FACT</span><span class="msg">YC batch size cited as "about 80." <b>W25 was 254.</b></span></div>
+            <div class="sp-item bit"><span class="ts">02:33</span><span class="tag">BIT</span><span class="msg"><q>The pitch deck is just a fear-of-missing-out generator in Helvetica.</q></span></div>
+            <div class="sp-item dunk"><span class="ts">02:35</span><span class="tag">DUNK</span><span class="msg"><q>That's a mood board, not a moat.</q></span></div>
+            <div class="sp-item fact"><span class="ts">02:38</span><span class="tag">FACT</span><span class="msg">He said "10x." Growth rate from the deck is <b>2.1x</b>.</span></div>
+            <div class="sp-item bit"><span class="ts">02:41</span><span class="tag">BIT</span><span class="msg"><q>That runway isn't a runway, it's a driveway.</q></span></div>
+          </div>
+          <div class="sp-foot">
+            <div class="pill">◀◀ REPLAY</div>
+            <div class="pill">Fact</div>
+            <div class="pill">Dunk</div>
+            <div class="pill mute" title="Muted">Cue</div>
+            <div class="pill">Bit</div>
+            <div class="sep"></div>
+            <div class="gear" title="Settings">⚙</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- PRESSROOM DETAIL -->
+  <section class="detail">
+    <div>
+      <div class="kicker">— Pressroom notes —</div>
+      <h3>The wire runs<br>at four critics,<br>thirteen bars.</h3>
+      <p>The side panel is the fixture. Everything else — the Tweaks, the pack picker, the self-host console — decorates around it. The waveform is a printed receipt: when it jumps, the feed is hot; when it flattens, the stage is dark; when it steps, you're in replay.</p>
+      <p>Three rules for the wire: <b>one channel per role</b>, <b>one tag per line</b>, <b>one reaction per beat</b>. No threaded replies. No emoji. If a critic needs more than a sentence, send them to the back.</p>
+      <p>Jason would have to say it qualifies — because it's not AI sludge. It's four voices, a timecode, and a waveform that moves when somebody is actually talking.</p>
+    </div>
+    <aside class="legend">
+      <h4>Tag legend</h4>
+      <div class="row"><span class="tg fact">Fact</span><span>Citation + correction. Receipts attached.</span></div>
+      <div class="row"><span class="tg dunk">Dunk</span><span>The one-liner. Short, mean, quotable.</span></div>
+      <div class="row"><span class="tg">Cue</span><span>SFX + stage direction. No words needed.</span></div>
+      <div class="row"><span class="tg bit">Bit</span><span>The premise that becomes a running joke.</span></div>
+
+      <h4 style="margin-top:18px">Mug states</h4>
+      <div class="row">
+        <span class="tg" style="background:var(--paper); display:inline-flex; align-items:flex-end; gap:1.5px; padding:3px 6px; height:22px">
+          <i style="width:2px; height:10px; background:var(--ink)"></i>
+          <i style="width:2px; height:14px; background:var(--ink)"></i>
+          <i style="width:2px; height:7px; background:var(--ink)"></i>
+          <i style="width:2px; height:12px; background:var(--ink)"></i>
+          <i style="width:2px; height:9px; background:var(--ink)"></i>
+        </span>
+        <span><b>Speaking</b> — this critic is composing a reaction right now.</span>
+      </div>
+      <div class="row">
+        <span class="tg" style="background:var(--paper); display:inline-flex; align-items:flex-end; gap:1.5px; padding:3px 6px; height:22px">
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+        </span>
+        <span><b>Idle</b> — listening, no reaction queued.</span>
+      </div>
+      <div class="row">
+        <span class="tg" style="background:var(--paper); position:relative; display:inline-flex; align-items:flex-end; gap:1.5px; padding:3px 6px; height:22px; opacity:.5">
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="width:2px; height:3px; background:var(--ink-3)"></i>
+          <i style="position:absolute; left:3px; right:3px; top:10px; height:1.5px; background:var(--ink); transform:rotate(-8deg)"></i>
+        </span>
+        <span><b>Muted</b> — tap the mug to bring them back.</span>
+      </div>
+    </aside>
+  </section>
+
+  <!-- SPECS -->
+  <section class="specs">
+    <div>
+      <b>Chrome footprint</b>
+      <div class="v">340&nbsp;px</div>
+      <div class="d">Docks to the native side panel. No floating windows, no layout shift.</div>
+    </div>
+    <div>
+      <b>Word → wire</b>
+      <div class="v">&lt;&nbsp;300&nbsp;ms</div>
+      <div class="d">Transcript chunk to reaction, measured on the hosted backend.</div>
+    </div>
+    <div>
+      <b>Waveform</b>
+      <div class="v">15&nbsp;bars</div>
+      <div class="d">Three accent colors: ink, stamp, highlighter. Flat = idle. Step = replay.</div>
+    </div>
+    <div>
+      <b>Channels</b>
+      <div class="v">4 · 1</div>
+      <div class="d">Four critics, one masthead, one drawer, one gear. Mute per critic.</div>
+    </div>
+  </section>
+
+  <!-- COLOPHON -->
+  <footer class="colo">
+    <div>© MMXXVI · Peanut Gallery · Proof sheet No. 001 · MIT license</div>
+    <div>
+      <a href="Landing Page.html">← Back to the cover</a>
+      <a href="Operators Manual.html">Operator's manual</a>
+      <a href="#">Github</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

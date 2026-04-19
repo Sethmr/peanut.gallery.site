@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Peanut Gallery — Side Panel States (internal spec)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* paper (light) — matches Side Panel.html + Landing Page.html */
+    --p-paper:   #f1ead8;
+    --p-paper-2: #e9e0c5;
+    --p-paper-3: #dfd4b3;
+    --p-ink:     #111111;
+    --p-ink-2:   #2a2824;
+    --p-ink-3:   #5a564c;
+    --p-rule:    #111111;
+    --p-stamp:   #c8261d;
+    --p-yellow:  #f6d74b;
+    --p-green:   #3f6b2a;
+    --p-green-bg:#d7e5c4;
+
+    /* night (dark) — same hues, reversed */
+    --n-paper:   #141210;
+    --n-paper-2: #1c1815;
+    --n-paper-3: #26221e;
+    --n-ink:     #efe7d0;
+    --n-ink-2:   #c9bfa6;
+    --n-ink-3:   #847d6b;
+    --n-rule:    #efe7d0;
+    --n-stamp:   #ff5545;
+    --n-yellow:  #f6d74b;
+    --n-green:   #b4dc82;
+    --n-green-bg:#23311a;
+
+    --slab:   'Anton', 'Oswald', sans-serif;
+    --slab-2: 'Oswald', sans-serif;
+    --serif:  'Source Serif 4', Georgia, serif;
+    --type:   'Special Elite', 'JetBrains Mono', monospace;
+    --mono:   'JetBrains Mono', monospace;
+
+    /* host tokens (use paper) */
+    --paper:   var(--p-paper);
+    --paper-2: var(--p-paper-2);
+    --paper-3: var(--p-paper-3);
+    --ink:     var(--p-ink);
+    --ink-2:   var(--p-ink-2);
+    --ink-3:   var(--p-ink-3);
+    --rule:    var(--p-rule);
+    --stamp:   var(--p-stamp);
+    --yellow:  var(--p-yellow);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); -webkit-font-smoothing:antialiased}
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+    background-image:
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode:multiply; opacity:.55;
+  }
+
+  .page{max-width:1280px; margin:0 auto; padding:28px 36px 120px; position:relative}
+
+  /* ============ INTERNAL-NOTICE BANNER ============ */
+  .notice{
+    display:flex; align-items:stretch; gap:0; margin:0 0 18px;
+    border:2px solid var(--ink); background:var(--paper-2);
+  }
+  .notice .stamp{
+    flex:0 0 auto; padding:14px 18px; display:flex; align-items:center; justify-content:center;
+    background:var(--stamp); color:var(--paper);
+    font-family:var(--slab); font-size:28px; line-height:.9; text-transform:uppercase; letter-spacing:.01em;
+    writing-mode:vertical-rl; transform:rotate(180deg); letter-spacing:.15em; font-size:14px;
+    border-right:2px solid var(--ink);
+  }
+  .notice .body{padding:12px 16px; flex:1}
+  .notice .lg{font-family:var(--slab); font-size:28px; line-height:1; text-transform:uppercase; letter-spacing:-.005em; margin:0 0 4px}
+  .notice .dk{font-family:var(--serif); font-size:13px; font-style:italic; color:var(--ink-2); line-height:1.5; max-width:820px}
+  .notice code{font-family:var(--mono); font-size:11.5px; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+
+  /* ============ MASTHEAD ============ */
+  .mast{
+    border-top:6px solid var(--ink); padding-top:14px;
+    display:grid; grid-template-columns:1fr auto 1fr; gap:18px; align-items:end;
+    border-bottom:2px solid var(--ink); padding-bottom:10px;
+  }
+  .mast .eyebrow{font-family:var(--slab-2); font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--stamp)}
+  .mast .folio{font-family:var(--type); font-size:11px; color:var(--ink-2); letter-spacing:.12em; text-align:right}
+  .mast h1{
+    margin:0; font-family:var(--slab); font-weight:400; font-size:clamp(42px, 7vw, 86px); line-height:.88;
+    text-transform:uppercase; letter-spacing:-.01em; text-align:center; white-space:nowrap;
+  }
+  .subhead{
+    display:flex; justify-content:space-between; align-items:baseline; gap:18px;
+    border-bottom:1px solid var(--ink); padding:10px 0 12px; margin-bottom:28px;
+  }
+  .subhead .lede{font-family:var(--serif); font-style:italic; font-size:15.5px; color:var(--ink-2); max-width:800px; line-height:1.5}
+  .subhead .folio{font-family:var(--slab-2); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap}
+
+  /* ============ CONTRACT LEGEND — quick reference ============ */
+  .contract{
+    display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:0;
+    border:2px solid var(--ink); background:var(--paper);
+    margin-bottom:32px;
+  }
+  .contract .col{padding:14px 16px; border-right:1px solid var(--ink)}
+  .contract .col:last-child{border-right:0}
+  .contract .col h4{margin:0 0 4px; font-family:var(--slab); font-size:22px; line-height:.95; text-transform:uppercase; letter-spacing:-.005em}
+  .contract .col .sub{font-family:var(--slab-2); font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--stamp); margin-bottom:8px}
+  .contract .col p{margin:0; font-family:var(--serif); font-size:12.5px; color:var(--ink-2); line-height:1.5}
+  .contract .col .tags{display:flex; flex-wrap:wrap; gap:4px; margin-top:8px}
+  .contract .col .tg{
+    font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    padding:2px 6px; border:1.5px solid var(--ink); background:var(--paper);
+  }
+  .contract .col .tg.fact{color:var(--stamp); border-color:var(--stamp)}
+  .contract .col .tg.dunk{background:var(--yellow)}
+  .contract .col .tg.bit{background:var(--ink); color:var(--paper)}
+  @media (max-width:900px){ .contract{grid-template-columns:1fr 1fr} }
+  @media (max-width:560px){ .contract{grid-template-columns:1fr} .contract .col{border-right:0; border-bottom:1px solid var(--ink)} .contract .col:last-child{border-bottom:0} }
+
+  /* ============ SECTION HEADERS ============ */
+  .sec-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:18px;
+    border-bottom:1.5px solid var(--ink); padding:0 0 8px; margin:36px 0 18px;
+  }
+  .sec-head h2{margin:0; font-family:var(--slab); font-weight:400; font-size:clamp(28px, 4.2vw, 48px); line-height:.95; text-transform:uppercase; letter-spacing:-.005em}
+  .sec-head .n{font-family:var(--slab-2); font-size:11px; letter-spacing:.28em; text-transform:uppercase; color:var(--stamp)}
+  .sec-head .counter{font-family:var(--type); font-size:11px; letter-spacing:.12em; color:var(--ink-3); text-transform:uppercase}
+
+  /* ============ STATE GRID ============ */
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr));
+    gap:44px 28px;
+  }
+  .stage{display:flex; flex-direction:column; gap:12px}
+  .stage .cap{
+    display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:baseline;
+    border-bottom:1px solid var(--ink); padding-bottom:8px;
+  }
+  .stage .cap .no{font-family:var(--slab); font-size:34px; line-height:.9; color:var(--stamp); letter-spacing:-.01em}
+  .stage .cap .nm{font-family:var(--slab); font-size:22px; line-height:1; text-transform:uppercase; letter-spacing:-.005em; margin:0}
+  .stage .cap .tg{
+    font-family:var(--slab-2); font-size:9.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    padding:3px 7px; border:1.5px solid var(--ink); background:var(--paper); color:var(--ink);
+  }
+  .stage .cap .tg.live{background:var(--stamp); color:var(--paper); border-color:var(--stamp)}
+  .stage .cap .tg.warn{background:var(--yellow)}
+  .stage .cap .tg.err{background:var(--ink); color:var(--yellow)}
+  .stage .cap .tg.idle{color:var(--ink-3); border-color:var(--ink-3)}
+  .stage .desc{font-family:var(--serif); font-style:italic; font-size:13px; line-height:1.5; color:var(--ink-2)}
+  .stage .theme-lbl{font-family:var(--type); font-size:10px; letter-spacing:.18em; color:var(--ink-3); text-transform:uppercase}
+
+  /* ============ CHROME WRAP (pressroom around panel) ============ */
+  .pwrap{
+    background:var(--ink);
+    padding:26px 16px 16px;
+    position:relative;
+    border:2px solid var(--ink);
+  }
+  .pwrap::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:14px;
+    background:repeating-linear-gradient(90deg, #2a2a2a 0 2px, #1d1d1d 2px 4px);
+  }
+  .pwrap::after{
+    content:"◀  ▶  ↻    chrome://side-panel"; position:absolute; top:16px; left:10px; right:10px;
+    font-family:var(--mono); font-size:8.5px; color:#7a7970; letter-spacing:.14em;
+    padding:2px 6px; border:1px solid #3a3a3a; background:#141414;
+  }
+
+  /* ============ THE PANEL ============ */
+  .panel{
+    width:100%; max-width:360px; margin:0 auto;
+    display:flex; flex-direction:column; overflow:hidden;
+    border:2px solid var(--p-rule);
+    min-height:620px;
+  }
+  .panel.paper{
+    --panel-paper: var(--p-paper); --panel-paper-2: var(--p-paper-2); --panel-paper-3: var(--p-paper-3);
+    --panel-ink: var(--p-ink); --panel-ink-2: var(--p-ink-2); --panel-ink-3: var(--p-ink-3);
+    --panel-rule: var(--p-rule); --panel-stamp: var(--p-stamp); --panel-yellow: var(--p-yellow);
+    --panel-green: var(--p-green); --panel-green-bg: var(--p-green-bg);
+    background:var(--panel-paper); color:var(--panel-ink);
+  }
+  .panel.night{
+    --panel-paper: var(--n-paper); --panel-paper-2: var(--n-paper-2); --panel-paper-3: var(--n-paper-3);
+    --panel-ink: var(--n-ink); --panel-ink-2: var(--n-ink-2); --panel-ink-3: var(--n-ink-3);
+    --panel-rule: var(--n-rule); --panel-stamp: var(--n-stamp); --panel-yellow: var(--n-yellow);
+    --panel-green: var(--n-green); --panel-green-bg: var(--n-green-bg);
+    background:var(--panel-paper); color:var(--panel-ink);
+    border-color:var(--n-rule);
+  }
+
+  /* Masthead */
+  .sp-mast{
+    background:var(--panel-ink); color:var(--panel-paper); padding:10px 12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .sp-mast .wm{font-family:var(--slab); font-size:16px; text-transform:uppercase; letter-spacing:.02em; line-height:1}
+  .sp-mast .edn{font-family:var(--type); font-size:10px; color:var(--panel-ink-3); letter-spacing:.2em; margin-left:auto}
+  .sp-mast .dot{width:7px; height:7px; border-radius:50%; background:var(--panel-stamp); box-shadow:0 0 0 2px color-mix(in srgb, var(--panel-stamp) 25%, transparent); animation:sp-dot 1.2s ease-in-out infinite}
+  @keyframes sp-dot{0%,100%{opacity:1}50%{opacity:.35}}
+  .sp-mast.idle .dot{background:var(--panel-ink-3); box-shadow:none; animation:none}
+  .sp-mast.warn .dot{background:var(--panel-yellow); animation:none}
+  .sp-mast.err .dot{background:var(--panel-stamp); animation:none}
+
+  /* Meta bar */
+  .sp-meta{
+    padding:10px 12px; border-bottom:1px solid var(--panel-ink-3);
+    font-family:var(--type); font-size:11px; color:var(--panel-ink-2);
+    background:var(--panel-paper-2);
+  }
+  .sp-meta .t{font-family:var(--slab-2); font-size:12px; color:var(--panel-ink); font-weight:600; text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px}
+  .sp-meta .scrub{
+    margin-top:8px; height:3px; background:var(--panel-paper-3); border:1px solid var(--panel-ink); position:relative;
+  }
+  .sp-meta .scrub .el{position:absolute; top:-1px; bottom:-1px; left:0; background:var(--panel-stamp)}
+  .sp-meta .scrub .tk{position:absolute; top:-4px; width:2px; height:9px; background:var(--panel-ink)}
+
+  /* Mugs strip */
+  .sp-mugs{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--panel-ink); border-bottom:2px solid var(--panel-ink)}
+  .sp-mug{background:var(--panel-paper); padding:10px 6px 8px; display:flex; flex-direction:column; align-items:center; gap:4px; position:relative}
+  .sp-mug .pl{
+    width:34px; height:34px; border:1.5px solid var(--panel-ink); border-radius:50%;
+    display:grid; place-items:center; font-family:var(--mono); font-size:11px; font-weight:700; background:var(--panel-paper-2);
+    color:var(--panel-ink);
+  }
+  .sp-mug .pl.fact{border-color:var(--panel-stamp); color:var(--panel-stamp)}
+  .sp-mug .pl.bit{background:var(--panel-ink); color:var(--panel-paper)}
+  .sp-mug .pl.dunk{background:var(--panel-yellow); color:#111}
+  .sp-mug .nm{font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--panel-ink)}
+  .sp-mug .ro{font-family:var(--type); font-size:8.5px; color:var(--panel-ink-3); letter-spacing:.08em; text-transform:uppercase}
+  /* per-persona waveform */
+  .sp-mug .mw{display:flex; align-items:flex-end; gap:1.5px; height:10px; margin-top:3px}
+  .sp-mug .mw i{display:block; width:2px; background:var(--panel-ink-3); transform-origin:bottom; height:18%}
+  .sp-mug.live .mw i{background:var(--panel-ink); animation:sp-mug-bar 800ms ease-in-out infinite}
+  .sp-mug.live .mw i:nth-child(1){height:70%; animation-delay:-.05s}
+  .sp-mug.live .mw i:nth-child(2){height:100%; animation-delay:-.22s}
+  .sp-mug.live .mw i:nth-child(3){height:50%; animation-delay:-.38s}
+  .sp-mug.live .mw i:nth-child(4){height:85%; animation-delay:-.16s}
+  .sp-mug.live .mw i:nth-child(5){height:60%; animation-delay:-.30s}
+  .sp-mug.live.fact .mw i{background:var(--panel-stamp)}
+  .sp-mug.muted{opacity:.4}
+  .sp-mug.muted .mw i{background:var(--panel-ink-3); animation:none}
+  .sp-mug.muted::before{
+    content:""; position:absolute; left:10px; right:10px; top:28px; height:1.5px; background:var(--panel-ink); transform:rotate(-8deg);
+  }
+  @keyframes sp-mug-bar{0%,100%{transform:scaleY(.3)} 50%{transform:scaleY(1)}}
+  @media (prefers-reduced-motion: reduce){ .sp-mug.live .mw i{animation:none} }
+
+  /* Ticker w/ printed waveform */
+  .sp-ticker{
+    background:var(--panel-ink); color:var(--panel-paper);
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.02em;
+    padding:9px 10px; display:grid; grid-template-columns:auto auto 1fr; gap:8px; align-items:center;
+    border-bottom:1px solid var(--panel-ink);
+  }
+  .sp-ticker .lbl{font-family:var(--slab-2); font-size:8.5px; font-weight:700; letter-spacing:.25em; color:var(--panel-stamp); text-transform:uppercase}
+  .sp-ticker .lbl.paused{color:var(--panel-ink-3)}
+  .sp-ticker .txt{color:var(--panel-paper); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-style:italic; opacity:.88}
+  .sp-ticker .txt.dim{opacity:.38}
+  .sp-ticker .txt .cur{background:var(--panel-yellow); color:#111; padding:0 2px; font-style:normal; font-family:var(--mono)}
+  .sp-wave{display:flex; align-items:center; gap:2px; height:16px}
+  .sp-wave i{display:block; width:2.5px; background:var(--panel-paper); transform-origin:center; animation:sp-bar 1.1s ease-in-out infinite}
+  .sp-wave i:nth-child(1){height:30%; animation-delay:-.05s}
+  .sp-wave i:nth-child(2){height:55%; animation-delay:-.22s}
+  .sp-wave i:nth-child(3){height:85%; animation-delay:-.40s; background:var(--panel-stamp)}
+  .sp-wave i:nth-child(4){height:65%; animation-delay:-.12s}
+  .sp-wave i:nth-child(5){height:95%; animation-delay:-.30s; background:var(--panel-yellow)}
+  .sp-wave i:nth-child(6){height:40%; animation-delay:-.55s}
+  .sp-wave i:nth-child(7){height:72%; animation-delay:-.18s}
+  .sp-wave i:nth-child(8){height:50%; animation-delay:-.60s}
+  .sp-wave i:nth-child(9){height:80%; animation-delay:-.08s; background:var(--panel-stamp)}
+  .sp-wave i:nth-child(10){height:35%; animation-delay:-.44s}
+  .sp-wave i:nth-child(11){height:60%; animation-delay:-.25s}
+  .sp-wave i:nth-child(12){height:45%; animation-delay:-.50s}
+  .sp-wave i:nth-child(13){height:28%; animation-delay:-.32s}
+  @keyframes sp-bar{0%,100%{transform:scaleY(.35)} 50%{transform:scaleY(1.05)}}
+  .sp-wave.flat i{animation:none; transform:scaleY(.18); background:var(--panel-ink-3)}
+  @media (prefers-reduced-motion: reduce){ .sp-wave i{animation:none} }
+
+  /* Feed — two density modes */
+  .sp-feed{flex:1 1 auto; overflow:hidden; padding:4px 0; font-family:var(--type); font-size:12px; background:var(--panel-paper); min-height:0}
+  .sp-feed.tight .sp-item{padding:8px 12px; border-bottom:1px solid var(--panel-ink-3); display:flex; gap:8px}
+  .sp-feed.tight .sp-item:last-child{border-bottom:0}
+  .sp-feed.tight .sp-item .ts{color:var(--panel-ink-3); min-width:40px; font-family:var(--mono); font-size:10px; letter-spacing:.04em}
+  .sp-feed.tight .sp-item .tag{font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.2em; padding:2px 5px; border:1px solid var(--panel-ink); height:fit-content; margin-top:1px}
+  .sp-feed.tight .sp-item.fact .tag{color:var(--panel-stamp); border-color:var(--panel-stamp)}
+  .sp-feed.tight .sp-item.dunk .tag{background:var(--panel-yellow); color:#111}
+  .sp-feed.tight .sp-item.bit .tag{background:var(--panel-ink); color:var(--panel-paper)}
+  .sp-feed.tight .sp-item .msg{flex:1; color:var(--panel-ink); font-family:var(--serif); font-size:13px; line-height:1.45}
+  .sp-feed.tight .sp-item .msg q{font-style:italic; quotes:'“' '”'}
+  .sp-feed.tight .sp-item.new{background:linear-gradient(90deg, color-mix(in srgb, var(--panel-yellow) 35%, transparent), transparent)}
+  .sp-feed.tight .sp-item .receipts{margin-top:6px; display:flex; flex-wrap:wrap; gap:4px; border-top:1px dashed var(--panel-ink-3); padding-top:5px}
+  .sp-feed.tight .sp-item .receipts .src{font-family:var(--mono); font-size:9.5px; padding:1px 5px; border:1px solid var(--panel-stamp); color:var(--panel-stamp); letter-spacing:.04em; text-transform:uppercase}
+
+  .sp-feed.cozy .sp-item{padding:10px 12px; border-bottom:1px solid var(--panel-ink-3)}
+  .sp-feed.cozy .sp-item:last-child{border-bottom:0}
+  .sp-feed.cozy .sp-item .line1{display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:6px}
+  .sp-feed.cozy .sp-item .who{display:flex; align-items:center; gap:6px}
+  .sp-feed.cozy .sp-item .av{
+    width:18px; height:18px; border:1px solid var(--panel-ink); display:grid; place-items:center;
+    font-family:var(--mono); font-size:9px; color:var(--panel-ink); background:var(--panel-paper-2);
+  }
+  .sp-feed.cozy .sp-item.fact .av{border-color:var(--panel-stamp); color:var(--panel-stamp)}
+  .sp-feed.cozy .sp-item.dunk .av{background:var(--panel-yellow); color:#111}
+  .sp-feed.cozy .sp-item.bit .av{background:var(--panel-ink); color:var(--panel-paper)}
+  .sp-feed.cozy .sp-item .nm{font-family:var(--slab-2); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--panel-ink)}
+  .sp-feed.cozy .sp-item .tag{font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.2em; padding:1px 5px; border:1px solid var(--panel-ink)}
+  .sp-feed.cozy .sp-item.fact .tag{color:var(--panel-stamp); border-color:var(--panel-stamp)}
+  .sp-feed.cozy .sp-item.dunk .tag{background:var(--panel-yellow); color:#111}
+  .sp-feed.cozy .sp-item.bit .tag{background:var(--panel-ink); color:var(--panel-paper)}
+  .sp-feed.cozy .sp-item .ts{font-family:var(--mono); font-size:10px; color:var(--panel-ink-3)}
+  .sp-feed.cozy .sp-item .msg{font-family:var(--serif); font-size:13.5px; line-height:1.5; color:var(--panel-ink)}
+  .sp-feed.cozy .sp-item .msg q{font-style:italic; quotes:'“' '”'}
+  .sp-feed.cozy .sp-item .receipts{margin-top:6px; display:flex; flex-wrap:wrap; gap:4px; border-top:1px dashed var(--panel-ink-3); padding-top:5px}
+  .sp-feed.cozy .sp-item .receipts .src{font-family:var(--mono); font-size:9.5px; padding:1px 5px; border:1px solid var(--panel-stamp); color:var(--panel-stamp); letter-spacing:.04em; text-transform:uppercase}
+
+  /* Empty / setup / alert slots */
+  .sp-empty{
+    flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:10px;
+    padding:24px; text-align:center;
+    background:repeating-linear-gradient(45deg, var(--panel-paper) 0 8px, var(--panel-paper-2) 8px 16px);
+  }
+  .sp-empty .lg{font-family:var(--slab); font-size:42px; line-height:.9; text-transform:uppercase; letter-spacing:-.01em; color:var(--panel-ink)}
+  .sp-empty .dk{font-family:var(--serif); font-style:italic; font-size:13px; line-height:1.5; color:var(--panel-ink-2); max-width:240px}
+
+  .sp-setup{
+    flex:1 1 auto; overflow-y:auto; min-height:0;
+    padding:12px 12px 16px; display:flex; flex-direction:column; gap:14px;
+    background:var(--panel-paper);
+  }
+  .sp-setup .group{display:flex; flex-direction:column; gap:6px}
+  .sp-setup .lbl{display:flex; justify-content:space-between; align-items:center; font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--panel-ink)}
+  .sp-setup .lbl .chip{font-family:var(--mono); font-size:9px; font-weight:400; letter-spacing:.08em; color:var(--panel-ink-3); background:var(--panel-paper-3); padding:1px 5px; border:1px solid var(--panel-ink-3)}
+  .sp-setup .help{font-family:var(--serif); font-style:italic; font-size:11.5px; line-height:1.45; color:var(--panel-ink-2)}
+  .sp-setup .help a{color:var(--panel-stamp); text-decoration:underline; text-underline-offset:2px}
+  .sp-setup .input{font-family:var(--mono); font-size:12px; color:var(--panel-ink); background:var(--panel-paper); border:1.5px solid var(--panel-ink); padding:8px 10px; display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .sp-setup .input .val{flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .sp-setup .input.select .val{font-family:var(--slab-2); font-weight:600; font-size:12px; letter-spacing:.04em; text-transform:uppercase}
+  .sp-setup .input .caret{font-family:var(--serif); font-size:11px; color:var(--panel-ink-3)}
+  .sp-setup .collapsed{font-family:var(--slab-2); font-size:10px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--panel-ink-2); padding:7px 0; border-top:1px solid var(--panel-ink-3); border-bottom:1px solid var(--panel-ink-3); display:flex; justify-content:space-between; align-items:center}
+  .sp-setup .collapsed .caret{color:var(--panel-ink-3)}
+  .sp-setup .banner{padding:12px; border:2px solid var(--panel-green); background:var(--panel-green-bg); color:var(--panel-ink); display:flex; gap:10px; align-items:flex-start}
+  .sp-setup .banner .lede{font-family:var(--slab); font-size:26px; line-height:.95; color:var(--panel-green); text-transform:uppercase; letter-spacing:-.005em; min-width:70px; text-align:center}
+  .sp-setup .banner .lede small{display:block; font-family:var(--slab-2); font-size:8px; font-weight:600; letter-spacing:.25em; margin-top:3px; color:var(--panel-ink-3)}
+  .sp-setup .banner p{margin:0; font-family:var(--serif); font-size:12px; line-height:1.45; color:var(--panel-ink)}
+  .sp-setup .banner p b{font-family:var(--slab-2); letter-spacing:.08em; text-transform:uppercase; font-size:11px; font-weight:700}
+  .sp-setup .banner p a{color:var(--panel-stamp); text-decoration:underline; text-underline-offset:2px}
+  .sp-setup .slider{display:grid; grid-template-columns:1fr; gap:4px}
+  .sp-setup .slider .track{height:10px; background:var(--panel-paper-3); border:1px solid var(--panel-ink); position:relative; background-image:repeating-linear-gradient(90deg, var(--panel-ink) 0 1px, transparent 1px 10%)}
+  .sp-setup .slider .knob{position:absolute; top:-3px; bottom:-3px; width:14px; background:var(--panel-stamp); border:1px solid var(--panel-ink)}
+  .sp-setup .slider .ticks{display:flex; justify-content:space-between; font-family:var(--mono); font-size:9px; color:var(--panel-ink-3); letter-spacing:.06em; padding:0 1px}
+
+  /* Alert / error / rate-limit */
+  .sp-alert{flex:1; padding:14px; display:flex; flex-direction:column; gap:12px; background:var(--panel-paper); overflow-y:auto}
+  .sp-alert .plate{
+    border:3px double var(--panel-ink); padding:18px 14px; text-align:center; position:relative;
+    background:var(--panel-paper-2);
+  }
+  .sp-alert .plate .stamp{
+    position:absolute; top:-12px; left:50%; transform:translateX(-50%) rotate(-3deg);
+    background:var(--panel-stamp); color:var(--panel-paper);
+    font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    padding:3px 10px; border:1px solid var(--panel-ink);
+  }
+  .sp-alert .plate h4{font-family:var(--slab); font-weight:400; font-size:32px; line-height:.9; margin:4px 0 8px; text-transform:uppercase; letter-spacing:-.01em; color:var(--panel-ink)}
+  .sp-alert .plate .deck{font-family:var(--serif); font-style:italic; font-size:12.5px; line-height:1.45; color:var(--panel-ink-2); max-width:260px; margin:0 auto 8px}
+  .sp-alert .plate .meta{font-family:var(--mono); font-size:9.5px; color:var(--panel-ink-3); letter-spacing:.04em; padding-top:8px; margin-top:8px; border-top:1px solid var(--panel-ink-3); display:flex; justify-content:space-between}
+  .sp-alert .plate .meta b{color:var(--panel-ink); font-family:var(--slab-2); font-weight:600; text-transform:uppercase; letter-spacing:.1em}
+  .sp-alert ol.fix{margin:0; padding:0; list-style:none; counter-reset:f}
+  .sp-alert ol.fix li{counter-increment:f; display:grid; grid-template-columns:28px 1fr; gap:8px; padding:8px 0; border-bottom:1px dotted var(--panel-ink-3); font-family:var(--serif); font-size:12.5px; line-height:1.45; color:var(--panel-ink)}
+  .sp-alert ol.fix li::before{content:counter(f, decimal-leading-zero); font-family:var(--slab); font-size:20px; color:var(--panel-stamp); line-height:1}
+  .sp-alert ol.fix li b{font-family:var(--slab-2); font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom:2px; color:var(--panel-ink)}
+  .sp-alert ol.fix li code{font-family:var(--mono); font-size:11px; background:var(--panel-paper-3); padding:1px 4px; border:1px solid var(--panel-ink-3)}
+  .sp-alert ol.fix li a{color:var(--panel-stamp); text-decoration:underline; text-underline-offset:2px}
+
+  /* Drawer (settings) */
+  .sp-drawer{flex:1 1 auto; overflow-y:auto; min-height:0; padding:12px 12px 16px; display:flex; flex-direction:column; gap:14px; background:var(--panel-paper)}
+  .sp-drawer .group{display:flex; flex-direction:column; gap:6px}
+  .sp-drawer .lbl{display:flex; justify-content:space-between; align-items:center; font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--panel-ink)}
+  .sp-drawer .lbl .chip{font-family:var(--mono); font-size:9px; font-weight:400; letter-spacing:.08em; color:var(--panel-ink-3); background:var(--panel-paper-3); padding:1px 5px; border:1px solid var(--panel-ink-3)}
+  .sp-drawer .help{font-family:var(--serif); font-style:italic; font-size:11.5px; line-height:1.45; color:var(--panel-ink-2)}
+  .sp-drawer .mutes{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+  .sp-drawer .mute{display:flex; gap:8px; align-items:center; padding:6px; border:1.5px solid var(--panel-ink); background:var(--panel-paper)}
+  .sp-drawer .mute.off{opacity:.45}
+  .sp-drawer .mute .av{width:26px; height:26px; border:1px solid var(--panel-ink); background:var(--panel-paper-3); display:grid; place-items:center; font-family:var(--mono); font-size:10px; color:var(--panel-ink); font-weight:700}
+  .sp-drawer .mute.fact .av{border-color:var(--panel-stamp); color:var(--panel-stamp)}
+  .sp-drawer .mute.dunk .av{background:var(--panel-yellow); color:#111}
+  .sp-drawer .mute.bit .av{background:var(--panel-ink); color:var(--panel-paper)}
+  .sp-drawer .mute .meta{flex:1; min-width:0}
+  .sp-drawer .mute .nm{font-family:var(--slab-2); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--panel-ink)}
+  .sp-drawer .mute .rl{font-family:var(--type); font-size:9px; color:var(--panel-ink-3); letter-spacing:.1em; text-transform:uppercase}
+  .sp-drawer .mute .tog{font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.15em; border:1px solid var(--panel-ink); padding:2px 5px}
+  .sp-drawer .mute.off .tog{background:var(--panel-ink); color:var(--panel-paper)}
+
+  /* Footer (controls bar) — matches current Side Panel */
+  .sp-foot{
+    flex:0 0 auto; display:flex; align-items:center; gap:6px; padding:8px 10px;
+    background:var(--panel-paper-2); border-top:2px solid var(--panel-ink);
+  }
+  .sp-foot .pill{
+    font-family:var(--slab-2); font-size:9px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    padding:4px 8px; border:1px solid var(--panel-ink); color:var(--panel-ink); background:var(--panel-paper); cursor:pointer;
+  }
+  .sp-foot .pill.on{background:var(--panel-stamp); color:var(--panel-paper); border-color:var(--panel-stamp)}
+  .sp-foot .sep{flex:1}
+  .sp-foot .gear{font-size:14px; color:var(--panel-ink); cursor:pointer; padding:2px 6px}
+  .sp-foot .btn{
+    font-family:var(--slab-2); font-weight:700; font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+    padding:6px 10px; border:1.5px solid var(--panel-ink); background:var(--panel-ink); color:var(--panel-paper); cursor:pointer;
+  }
+  .sp-foot .btn.ghost{background:transparent; color:var(--panel-ink)}
+  .sp-foot .btn.stop{background:var(--panel-stamp); border-color:var(--panel-stamp); color:var(--panel-paper)}
+
+  /* Big Go-Live button inside sp-empty */
+  .btn-go{
+    margin-top:4px;
+    font-family:var(--slab-2); font-weight:700; font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+    padding:10px 18px; background:var(--panel-ink); color:var(--panel-paper); border:2px solid var(--panel-ink); cursor:pointer;
+  }
+
+  /* ============ TWEAKS DRAWER ============ */
+  .tweaks{
+    position:fixed; right:16px; bottom:16px; z-index:60; width:260px;
+    background:var(--ink); color:var(--paper);
+    border:2px solid var(--paper);
+    box-shadow:8px 8px 0 rgba(0,0,0,.35);
+    font-family:var(--serif); font-size:13px;
+    transform:translateY(calc(100% - 40px)); transition:transform .2s ease;
+  }
+  .tweaks.open{transform:translateY(0)}
+  .tweaks .handle{
+    cursor:pointer; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--slab); font-size:18px; letter-spacing:-.005em; text-transform:uppercase;
+    background:var(--stamp); color:var(--paper); border-bottom:1px solid var(--paper);
+  }
+  .tweaks .handle small{font-family:var(--type); font-size:10px; letter-spacing:.2em; font-weight:400; text-transform:uppercase; opacity:.85}
+  .tweaks .body{padding:12px 14px; display:flex; flex-direction:column; gap:14px}
+  .tweaks .group .lbl{font-family:var(--slab-2); font-weight:700; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--yellow); margin-bottom:6px}
+  .tweaks .opts{display:flex; flex-wrap:wrap; gap:4px}
+  .tweaks .opt{
+    font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    padding:5px 8px; background:transparent; color:var(--paper); border:1px solid rgba(255,255,255,.4); cursor:pointer;
+  }
+  .tweaks .opt.on{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+  .tweaks .opt:hover{border-color:var(--paper)}
+
+  /* Responsive */
+  @media (max-width:760px){
+    .page{padding:20px 16px 100px}
+    .mast h1{font-size:44px}
+    .notice .stamp{writing-mode:horizontal-tb; transform:none; padding:8px 10px}
+    .grid{grid-template-columns:1fr; gap:32px}
+    .sec-head{flex-direction:column; align-items:flex-start; gap:4px}
+  }
+
+  /* Footnote */
+  .foot-note{
+    margin-top:48px; padding-top:18px; border-top:2px solid var(--ink);
+    font-family:var(--type); font-size:11px; letter-spacing:.1em; color:var(--ink-3); text-transform:uppercase;
+    display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- INTERNAL NOTICE -->
+  <aside class="notice">
+    <div class="stamp">INTERNAL · DO NOT SHIP</div>
+    <div class="body">
+      <div class="lg">Side-panel state spec</div>
+      <div class="dk">Reference sheet for every Chrome side-panel state Peanut Gallery can be in — copy, layout, and controls in one place. Not linked from the public site; not a marketing page. Use this when iterating on the extension UI so the tabloid language, mug waveforms, and tag vocabulary stay consistent across <code>Landing Page.html</code>, <code>Side Panel.html</code>, and <code>Operators Manual.html</code>.</div>
+    </div>
+  </aside>
+
+  <!-- MASTHEAD -->
+  <header class="mast">
+    <div class="eyebrow">Eng · Design · <span style="color:var(--ink)">Internal</span></div>
+    <h1>The State Sheet</h1>
+    <div class="folio">Spec No. 001<br>Revised MMXXVI · 340×720</div>
+  </header>
+
+  <div class="subhead">
+    <div class="lede">Six panel states across two themes and two densities. Every copy string, control label, and error path a critic might see, in one place — so Claude never has to invent them fresh.</div>
+    <div class="folio">6 states · 2 themes · 2 densities · 2 packs</div>
+  </div>
+
+  <!-- CONTRACT LEGEND -->
+  <section class="contract" aria-label="Vocabulary contract">
+    <div class="col">
+      <div class="sub">Roles &amp; Tags</div>
+      <h4>Four seats,<br>four tags.</h4>
+      <p>Every reaction is exactly one of these. Never two. Never none. Tag colors are reserved.</p>
+      <div class="tags">
+        <span class="tg fact">Fact</span>
+        <span class="tg dunk">Dunk</span>
+        <span class="tg">Cue</span>
+        <span class="tg bit">Bit</span>
+      </div>
+    </div>
+    <div class="col">
+      <div class="sub">Critic state</div>
+      <h4>Speaking,<br>idle, muted.</h4>
+      <p>Each mug's five-bar waveform reads the critic's own channel — not the transcript. Animated = composing. Flat grey = listening. Struck-through = muted.</p>
+    </div>
+    <div class="col">
+      <div class="sub">Wire state</div>
+      <h4>Live, standby,<br>replay, down.</h4>
+      <p>Masthead dot + ticker label tell the operator what the wire is doing. Red = live. Grey = standby. Yellow = replay or cap. Red+still = error.</p>
+    </div>
+    <div class="col">
+      <div class="sub">Source</div>
+      <h4>Any tab<br>with audio.</h4>
+      <p>Livestreams, podcasts, webinars, Zoom, YouTube. The operator taps <b>Go Live</b> in the active tab — no URL drop, no browser permission modal beyond the first session.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 1 — PRIMARY STATES ============ -->
+  <div class="sec-head">
+    <h2>Primary states</h2>
+    <span class="n">01 · on-air flow</span>
+    <span class="counter">Setup → Standby → Live</span>
+  </div>
+  <main id="grid-primary" class="grid"></main>
+
+  <!-- ============ SECTION 2 — EDGE STATES ============ -->
+  <div class="sec-head">
+    <h2>Edge states</h2>
+    <span class="n">02 · what goes wrong</span>
+    <span class="counter">Rate-limit · Backend down · Drawer</span>
+  </div>
+  <main id="grid-edge" class="grid"></main>
+
+  <!-- FOOTNOTE -->
+  <div class="foot-note">
+    <span>Peanut Gallery · State sheet v1.0 · internal reference</span>
+    <span>Paired files: Landing Page.html · Side Panel.html · Operators Manual.html</span>
+  </div>
+</div>
+
+<!-- TWEAKS PANEL — for toggling views while reviewing -->
+<aside class="tweaks" id="tweaks">
+  <div class="handle" id="tweaks-handle">
+    <span>Tweaks</span>
+    <small>↑ click</small>
+  </div>
+  <div class="body">
+    <div class="group">
+      <div class="lbl">Theme</div>
+      <div class="opts" data-group="theme">
+        <button class="opt" data-val="paper">Paper</button>
+        <button class="opt" data-val="night">Night</button>
+        <button class="opt" data-val="both">Both</button>
+      </div>
+    </div>
+    <div class="group">
+      <div class="lbl">Feed density</div>
+      <div class="opts" data-group="density">
+        <button class="opt" data-val="tight">Tight · wire</button>
+        <button class="opt" data-val="cozy">Cozy · cards</button>
+      </div>
+    </div>
+    <div class="group">
+      <div class="lbl">Staff pack</div>
+      <div class="opts" data-group="pack">
+        <button class="opt" data-val="mst3k">MST3K</button>
+        <button class="opt" data-val="stern">Stern</button>
+        <button class="opt" data-val="twist">TWiST</button>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<script type="application/json" id="spec-data">
+{
+  "packs": {
+    "mst3k": {
+      "shortname": "MST3K",
+      "fullname": "Mystery Science Theater",
+      "staff": [
+        {"role":"fact","persona":"Bill","initials":"BB","rname":"Fact"},
+        {"role":"dunk","persona":"Crow","initials":"CT","rname":"Dunk"},
+        {"role":"cue", "persona":"Foley","initials":"FN","rname":"Cue"},
+        {"role":"bit", "persona":"Joel","initials":"JM","rname":"Bit"}
+      ]
+    },
+    "stern": {
+      "shortname": "Stern",
+      "fullname": "The Stern Show",
+      "staff": [
+        {"role":"fact","persona":"Baba Booey","initials":"BB","rname":"Fact"},
+        {"role":"dunk","persona":"The Troll","initials":"CT","rname":"Dunk"},
+        {"role":"cue", "persona":"F. Norris","initials":"FN","rname":"Cue"},
+        {"role":"bit", "persona":"Martling","initials":"JM","rname":"Bit"}
+      ]
+    },
+    "twist": {
+      "shortname": "TWiST",
+      "fullname": "This Week in Startups",
+      "staff": [
+        {"role":"fact","persona":"Molly","initials":"MW","rname":"Fact"},
+        {"role":"dunk","persona":"Jason","initials":"JC","rname":"Dunk"},
+        {"role":"cue", "persona":"Lon","initials":"LH","rname":"Cue"},
+        {"role":"bit", "persona":"Alex","initials":"AW","rname":"Bit"}
+      ]
+    }
+  },
+  "feeds": {
+    "mst3k": [
+      {"role":"fact","t":"04:02","msg":"Jason said Uber was 2007. Founded in <b>March 2009</b>.","receipts":["CRUNCHBASE","SEC 10-K"]},
+      {"role":"dunk","t":"04:05","msg":"<q>Oh cool, another AI wrapper. Very 2024.</q>"},
+      {"role":"cue", "t":"04:07","msg":"[record scratch] [sad trombone]"},
+      {"role":"bit", "t":"04:10","msg":"<q>If it has AI in the name and a pulse, it's a yes.</q>"},
+      {"role":"fact","t":"04:12","msg":"Per the 10-K — closer to <b>$2.4B</b>, not $4B.","receipts":["SEC 10-K Q4"]},
+      {"role":"bit", "t":"04:14","msg":"<q>Twenty months of runway at that burn is a pregnancy and a toddler.</q>"}
+    ],
+    "stern": [
+      {"role":"fact","t":"04:02","msg":"Guest said the song dropped in '87 — it was <b>December 1988</b>.","receipts":["BILLBOARD ARC.","RIAA"]},
+      {"role":"dunk","t":"04:05","msg":"<q>Baba Booey Baba Booey Baba Booey.</q>"},
+      {"role":"cue", "t":"04:07","msg":"[record scratch] [flush]"},
+      {"role":"bit", "t":"04:10","msg":"<q>That's not a memoir, that's a voicemail to your lawyer.</q>"},
+      {"role":"fact","t":"04:12","msg":"Not platinum — certified <b>gold</b>, 500K units.","receipts":["RIAA DB"]},
+      {"role":"bit", "t":"04:14","msg":"<q>He said he wrote that on the back of a napkin. I've seen the napkin. He did not.</q>"}
+    ],
+    "twist": [
+      {"role":"fact","t":"04:02","msg":"Jason said Uber was 2007. Founded in <b>March 2009</b>.","receipts":["CRUNCHBASE","SEC 10-K"]},
+      {"role":"dunk","t":"04:05","msg":"<q>Oh cool, another AI wrapper. Very 2024.</q>"},
+      {"role":"cue", "t":"04:07","msg":"[record scratch] That company went bankrupt in 2023. [sad trombone]"},
+      {"role":"bit", "t":"04:10","msg":"<q>Jason's thesis: if it has AI in the name and the founder has a pulse, it's a yes.</q>"},
+      {"role":"fact","t":"04:12","msg":"Per the 10-K — closer to <b>$2.4B</b>, not $4B.","receipts":["SEC 10-K Q4"]},
+      {"role":"dunk","t":"04:16","msg":"<q>He just said 'the new normal' unironically in 2026.</q>"}
+    ]
+  },
+  "transcriptLive": "…the round was oversubscribed at a point-two, and honestly <span class=\"cur\">we're calling it a seed now</span> because the word series-A doesn't mean what…",
+  "transcriptEmpty": "awaiting capture…"
+}
+</script>
+
+<script>
+/* =========================================================
+   State renderer — mirrors current Side Panel.html chrome,
+   adds Setup / Rate-limit / Error / Drawer from the legacy
+   spec. Everything driven by three tweaks: theme, density, pack.
+   ========================================================= */
+const DATA  = JSON.parse(document.getElementById('spec-data').textContent);
+const PACKS = DATA.packs;
+const FEEDS = DATA.feeds;
+
+const TWEAKS = /*EDITMODE-BEGIN*/{
+  "theme":   "paper",
+  "density": "tight",
+  "pack":    "mst3k"
+}/*EDITMODE-END*/;
+
+const state = { ...TWEAKS };
+
+/* ---------- building blocks ---------- */
+
+function renderMasthead(pack, modeClass, label){
+  return `
+    <div class="sp-mast ${modeClass}">
+      <span class="dot"></span>
+      <div class="wm">Peanut Gallery</div>
+      <div class="edn">${label}</div>
+    </div>`;
+}
+
+function renderMeta({ title, sub, elapsed=null, scrub=null }){
+  return `
+    <div class="sp-meta">
+      <div class="t">${title}</div>
+      ${sub}
+      ${scrub !== null ? `
+        <div class="scrub"><div class="el" style="width:${scrub}%"></div><div class="tk" style="left:${scrub}%"></div></div>
+      ` : ''}
+    </div>`;
+}
+
+function renderMugs(pack, opts = {}){
+  const { live = [], muted = [] } = opts;
+  return `
+    <div class="sp-mugs">
+      ${pack.staff.map((s) => {
+        const isLive  = live.includes(s.role);
+        const isMuted = muted.includes(s.role);
+        const roleCls = s.role === 'fact' ? 'fact' : s.role === 'dunk' ? 'dunk' : s.role === 'bit' ? 'bit' : '';
+        const stateCls = [isLive ? 'live' : '', isMuted ? 'muted' : ''].filter(Boolean).join(' ');
+        return `
+          <div class="sp-mug ${stateCls} ${isLive && s.role === 'fact' ? 'fact' : ''}">
+            <span class="pl ${roleCls}">${s.initials}</span>
+            <span class="nm">${s.persona.split(' ')[0]}</span>
+            <span class="ro">${s.rname}</span>
+            <span class="mw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+          </div>`;
+      }).join('')}
+    </div>`;
+}
+
+function renderTicker({ mode, text }){
+  // mode: 'live' | 'silent' | 'replay'
+  const labelMap  = { live:'On air', silent:'— silent —', replay:'Replay' };
+  const labelCls  = mode === 'silent' ? 'paused' : '';
+  const waveCls   = mode === 'silent' ? 'flat'   : '';
+  const txtCls    = mode === 'silent' ? 'dim'    : '';
+  const bars = Array.from({length:13}, () => '<i></i>').join('');
+  return `
+    <div class="sp-ticker">
+      <span class="lbl ${labelCls}">${labelMap[mode]}</span>
+      <span class="sp-wave ${waveCls}" aria-hidden="true">${bars}</span>
+      <span class="txt ${txtCls}">${text}</span>
+    </div>`;
+}
+
+function renderFeed(pack, items, density){
+  const byRole = Object.fromEntries(pack.staff.map(s => [s.role, s]));
+  if(density === 'cozy'){
+    return `
+      <div class="sp-feed cozy">
+        ${items.map((it, idx) => {
+          const p = byRole[it.role];
+          return `
+            <div class="sp-item ${it.role}${idx === 0 ? ' new' : ''}">
+              <div class="line1">
+                <div class="who">
+                  <span class="av">${p ? p.initials : '?'}</span>
+                  <span class="nm">${p ? p.persona : ''}</span>
+                  <span class="tag">${it.role.toUpperCase()}</span>
+                </div>
+                <span class="ts">${it.t}</span>
+              </div>
+              <div class="msg">${it.msg}${
+                it.receipts ? `<div class="receipts">${it.receipts.map(r=>`<span class="src">${r}</span>`).join('')}</div>` : ''
+              }</div>
+            </div>`;
+        }).join('')}
+      </div>`;
+  }
+  // tight (default — matches current Side Panel.html)
+  return `
+    <div class="sp-feed tight">
+      ${items.map((it, idx) => `
+        <div class="sp-item ${it.role}${idx === 0 ? ' new' : ''}">
+          <span class="ts">${it.t}</span>
+          <span class="tag">${it.role.toUpperCase()}</span>
+          <span class="msg">${it.msg}${
+            it.receipts ? `<div class="receipts">${it.receipts.map(r=>`<span class="src">${r}</span>`).join('')}</div>` : ''
+          }</span>
+        </div>`).join('')}
+    </div>`;
+}
+
+/* ---------- state renderers ---------- */
+
+function stateSetup({ pack, theme }){
+  const P = PACKS[pack];
+  return `
+    <div class="panel ${theme}">
+      ${renderMasthead(pack, 'idle', 'FIRST RUN')}
+      <div class="sp-setup">
+        <div class="banner">
+          <div class="lede">15<br>MIN<small>FREE</small></div>
+          <p><b>Fifteen minutes per day, on us.</b> No signup. Tap <i>Go Live</i> on any video or audio tab. When the meter runs out, <a href="#">paste your own keys</a> or <a href="#">run your own backend</a>.</p>
+        </div>
+        <div class="group">
+          <div class="lbl"><span>Persona pack</span><span class="chip">Lineup</span></div>
+          <div class="input select"><span class="val">${P.fullname} — ${P.staff.map(s=>s.persona.split(' ')[0]).join(', ')}</span><span class="caret">▾</span></div>
+          <div class="help">Which four critics show up in the feed. Swap anytime; new pack applies on the next Go Live.</div>
+        </div>
+        <div class="group">
+          <div class="lbl"><span>Backend</span><span class="chip">Hosted</span></div>
+          <div class="input"><span class="val">https://peanut.hosted/wire</span><span class="caret">▾</span></div>
+          <div class="help">Where audio is transcribed and reactions are generated. Point at your own server — see the <a href="Operators Manual.html">install guide</a>.</div>
+        </div>
+        <div class="collapsed"><span>▸ API keys — temporarily optional</span><span class="caret">—</span></div>
+        <div class="group">
+          <div class="lbl"><span>Response rate</span><span class="chip">Cadence</span></div>
+          <div class="slider">
+            <div class="track"><div class="knob" style="left:45%"></div></div>
+            <div class="ticks"><span>1</span><span>slow</span><span>5</span><span>fast</span><span>10</span></div>
+          </div>
+          <div class="help">How often the critics chime in. 1 = occasional quips, 10 = nonstop. Defaults to 5.</div>
+        </div>
+        <div class="collapsed"><span>▸ Audio routing — podcaster options</span><span class="caret">—</span></div>
+      </div>
+      <div class="sp-foot">
+        <button class="btn" style="flex:1">▶ Go Live</button>
+      </div>
+    </div>`;
+}
+
+function stateStandby({ pack, theme }){
+  const P = PACKS[pack];
+  return `
+    <div class="panel ${theme}">
+      ${renderMasthead(pack, 'idle', 'STANDBY')}
+      ${renderMeta({ title:'No broadcast captured', sub:'Pick a tab · any tab' })}
+      ${renderMugs(P)}
+      ${renderTicker({ mode:'silent', text:DATA.transcriptEmpty })}
+      <div class="sp-empty">
+        <div class="lg">Dark stage.</div>
+        <div class="dk">Open any tab with audio — a podcast, a livestream, an interview, a Zoom window. Tap <b style="font-style:normal">Go Live</b> and the room warms up.</div>
+        <button class="btn-go">▶ Go Live</button>
+      </div>
+      <div class="sp-foot">
+        <span class="pill">● IDLE</span>
+        <span class="pill">Fact</span>
+        <span class="pill">Dunk</span>
+        <span class="pill">Cue</span>
+        <span class="pill">Bit</span>
+        <span class="sep"></span>
+        <span class="gear" title="Settings">⚙</span>
+      </div>
+    </div>`;
+}
+
+function stateLive({ pack, theme, density }){
+  const P = PACKS[pack];
+  const items = FEEDS[pack];
+  return `
+    <div class="panel ${theme}">
+      ${renderMasthead(pack, '', 'ON AIR · No. 001')}
+      ${renderMeta({
+        title: pack === 'twist' ? 'E1926 · Founder Friday w/ Lex Fridman'
+             : pack === 'stern' ? 'Show · The Wrap-Up Special'
+             : 'MST3K Live · The Experiment',
+        sub: `${P.fullname} · 00:04:12 / 01:42:09`,
+        scrub: 4.1
+      })}
+      ${renderMugs(P, { live: ['fact', 'cue'] })}
+      ${renderTicker({ mode:'live', text:DATA.transcriptLive })}
+      ${renderFeed(P, items, density)}
+      <div class="sp-foot">
+        <span class="pill on">● LIVE</span>
+        <span class="pill">Fact</span>
+        <span class="pill">Dunk</span>
+        <span class="pill">Cue</span>
+        <span class="pill">Bit</span>
+        <span class="sep"></span>
+        <span class="gear" title="Settings">⚙</span>
+      </div>
+    </div>`;
+}
+
+function stateRateLimit({ pack, theme }){
+  return `
+    <div class="panel ${theme}">
+      ${renderMasthead(pack, 'warn', 'CAP REACHED')}
+      ${renderMeta({
+        title:'Daily free minutes exhausted',
+        sub:'Paused · resets at midnight local time'
+      })}
+      <div class="sp-alert">
+        <div class="plate">
+          <div class="stamp">OUT OF FREE MINUTES</div>
+          <h4>The presses<br>stopped.</h4>
+          <div class="deck">You used your 15 free minutes on the hosted wire today. Three ways to keep going — no card, no signup.</div>
+          <div class="meta"><span>Resets <b>00:00 PT</b></span><span>Used <b>15:00 / 15:00</b></span></div>
+        </div>
+        <ol class="fix">
+          <li>
+            <div><b>Paste your own keys</b>Four free-tier keys (Deepgram, Anthropic, xAI, optional Brave) unlock unlimited runs on the hosted wire. <a href="#">Paste keys</a>.</div>
+          </li>
+          <li>
+            <div><b>Run your own backend</b>Point Backend at <code>http://localhost:8787</code> and own the whole broadcast. <a href="Operators Manual.html">Install guide →</a></div>
+          </li>
+          <li>
+            <div><b>Or just wait</b>Quota refills at midnight local time. We'll leave the panel pinned.</div>
+          </li>
+        </ol>
+      </div>
+      <div class="sp-foot">
+        <button class="btn" style="flex:1">⚿ Paste keys</button>
+        <button class="btn ghost" style="flex:1">⏻ Self-host</button>
+      </div>
+    </div>`;
+}
+
+function stateError({ pack, theme }){
+  return `
+    <div class="panel ${theme}">
+      ${renderMasthead(pack, 'err', 'WIRE DOWN')}
+      ${renderMeta({
+        title:'Backend unreachable',
+        sub:'Self-host · http://localhost:8787 · unreachable'
+      })}
+      <div class="sp-alert">
+        <div class="plate">
+          <div class="stamp">WIRE UNREACHABLE</div>
+          <h4>The wire<br>went dark.</h4>
+          <div class="deck">The extension can't reach your backend. Nine times in ten it's one of these three.</div>
+          <div class="meta"><span>Tried <b>localhost:8787</b></span><span>Last try <b>12s ago</b></span></div>
+        </div>
+        <ol class="fix">
+          <li>
+            <div><b>Server isn't running</b>Open a terminal, run <code>npm run dev</code> in the server folder. It should print “wire room is open.”</div>
+          </li>
+          <li>
+            <div><b>Wrong origin</b>Set <code>ALLOWED_ORIGIN</code> in <code>.env</code> to <code>chrome-extension://&lt;id&gt;</code> — your extension's ID is in the drawer.</div>
+          </li>
+          <li>
+            <div><b>VPN rewriting localhost</b>Corporate VPNs sometimes hijack <code>localhost</code>. Drop the VPN or point Backend at your LAN IP.</div>
+          </li>
+        </ol>
+      </div>
+      <div class="sp-foot">
+        <button class="btn stop" style="flex:1">↻ Retry</button>
+        <button class="btn ghost" style="flex:1">↪ Hosted</button>
+      </div>
+    </div>`;
+}
+
+function stateDrawer({ pack, theme }){
+  const P = PACKS[pack];
+  return `
+    <div class="panel ${theme}">
+      ${renderMasthead(pack, 'idle', 'SETTINGS · DRAWER OPEN')}
+      ${renderMeta({
+        title:'Settings open',
+        sub:'Paused · resume when you close this drawer'
+      })}
+      <div class="sp-drawer">
+        <div class="group">
+          <div class="lbl"><span>Mute a critic</span><span class="chip">Instant</span></div>
+          <div class="mutes">
+            ${P.staff.map((s, i) => {
+              const roleCls = s.role;
+              const off = i === 1;
+              return `
+                <div class="mute ${roleCls} ${off ? 'off' : ''}">
+                  <span class="av">${s.initials}</span>
+                  <div class="meta">
+                    <div class="nm">${s.persona.split(' ')[0]}</div>
+                    <div class="rl">${off ? 'Muted' : s.rname}</div>
+                  </div>
+                  <div class="tog">${off ? 'OFF' : 'ON'}</div>
+                </div>`;
+            }).join('')}
+          </div>
+          <div class="help">Taps take effect next reaction. Session keeps running in the background.</div>
+        </div>
+
+        <div class="group">
+          <div class="lbl"><span>Export session</span><span class="chip">Markdown</span></div>
+          <div style="display:flex; gap:6px">
+            <button class="btn" style="flex:1; font-size:10px; padding:6px 8px">⎘ Copy</button>
+            <button class="btn ghost" style="flex:1; font-size:10px; padding:6px 8px">↓ Download .md</button>
+          </div>
+          <div class="help">Full session transcript + reactions with timestamps, personas, and source URL.</div>
+        </div>
+
+        <div class="group">
+          <div class="lbl"><span>Appearance</span><span class="chip">Theme</span></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px">
+            <button class="btn ${theme==='paper'?'':'ghost'}" style="font-size:10px; padding:6px 8px">Paper</button>
+            <button class="btn ${theme==='night'?'':'ghost'}" style="font-size:10px; padding:6px 8px">Night</button>
+          </div>
+        </div>
+
+        <div class="collapsed" style="font-family:var(--slab-2); font-size:10px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--panel-ink-2); padding:7px 0; border-top:1px solid var(--panel-ink-3); border-bottom:1px solid var(--panel-ink-3); display:flex; justify-content:space-between">
+          <span>▸ Off-air · uninstall · about</span><span style="color:var(--panel-ink-3)">—</span>
+        </div>
+      </div>
+      <div class="sp-foot">
+        <button class="btn" style="flex:1">◀ Back to wire</button>
+      </div>
+    </div>`;
+}
+
+/* ---------- board layout ---------- */
+const PRIMARY = [
+  { id:'setup',   num:'01', title:'Setup · first run',      tag:'IDLE', desc:'Hosted by default, self-host two clicks away. The 15-minute gift frames the upgrade path — not the threat.', render: stateSetup,   themeAware:false, densityAware:false },
+  { id:'standby', num:'02', title:'Standby · dark stage',   tag:'IDLE', desc:'Staff dressed, tab not captured, ticker silent. One Go Live button. The empty state does not apologize.', render: stateStandby, themeAware:true,  densityAware:false },
+  { id:'live',    num:'03', title:'Live · wire hot',        tag:'LIVE', desc:'Four critics, one tag each. Fact-checker posts receipts. Transcript runs above the feed as context. Yellow highlight = most recent arrival.', render: stateLive, themeAware:true, densityAware:true },
+];
+const EDGE = [
+  { id:'ratelimit', num:'04', title:'Out of free minutes',  tag:'WARN', desc:'Hard stop on the hosted free tier. Three paths forward — keys, self-host, or wait. No dark patterns, no "upgrade now."', render: stateRateLimit, themeAware:true, densityAware:false },
+  { id:'error',     num:'05', title:'Backend unreachable',  tag:'ERR',  desc:'Five-nines of real problems are three problems. Lead with those three, in order of likelihood.', render: stateError,     themeAware:true, densityAware:false },
+  { id:'drawer',    num:'06', title:'Settings · drawer',    tag:'IDLE', desc:'Mute-a-critic toggles are first; export and theme are second; uninstall lives in the basement. Wire pauses while drawer is open.', render: stateDrawer, themeAware:true, densityAware:false },
+];
+
+function themesFor(s){
+  if(!s.themeAware) return [state.theme === 'night' ? 'night' : 'paper'];
+  return state.theme === 'both' ? ['paper','night'] : [state.theme];
+}
+
+function renderStage(s){
+  const themes = themesFor(s);
+  return themes.map(t => `
+    <div class="stage">
+      <div class="cap">
+        <span class="no">${s.num}</span>
+        <h3 class="nm">${s.title}</h3>
+        <span class="tg ${s.tag.toLowerCase()}">${s.tag}</span>
+      </div>
+      ${themes.length > 1 ? `<div class="theme-lbl">Theme · ${t}</div>` : ''}
+      <div class="desc">${s.desc}</div>
+      <div class="pwrap">
+        ${s.render({ pack: state.pack, theme: t, density: state.density })}
+      </div>
+    </div>`).join('');
+}
+
+function render(){
+  document.getElementById('grid-primary').innerHTML = PRIMARY.map(renderStage).join('');
+  document.getElementById('grid-edge').innerHTML    = EDGE.map(renderStage).join('');
+  // highlight tweak options
+  for(const g of document.querySelectorAll('.tweaks .opts')){
+    const key = g.dataset.group;
+    for(const btn of g.querySelectorAll('.opt')){
+      btn.classList.toggle('on', btn.dataset.val === state[key]);
+    }
+  }
+}
+
+/* ---------- tweaks wiring ---------- */
+document.getElementById('tweaks-handle').addEventListener('click', () => {
+  document.getElementById('tweaks').classList.toggle('open');
+});
+for(const g of document.querySelectorAll('.tweaks .opts')){
+  const key = g.dataset.group;
+  g.addEventListener('click', (e) => {
+    const btn = e.target.closest('.opt'); if(!btn) return;
+    state[key] = btn.dataset.val;
+    render();
+    try{ window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[key]: btn.dataset.val}}, '*'); }catch(_){}
+  });
+}
+
+/* edit-mode protocol */
+window.addEventListener('message', (e) => {
+  if(!e.data) return;
+  if(e.data.type === '__activate_edit_mode')   document.getElementById('tweaks').classList.add('open');
+  if(e.data.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('open');
+});
+try{ window.parent.postMessage({type:'__edit_mode_available'}, '*'); }catch(_){}
+
+render();
+</script>
+</body>
+</html>
