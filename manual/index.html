@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Peanut Gallery — The Operator's Manual</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:    #f1ead8;
+    --paper-2:  #e9e0c5;
+    --paper-3:  #dfd4b3;
+    --ink:      #111111;
+    --ink-2:    #2a2824;
+    --ink-3:    #5a564c;
+    --rule:     #111;
+    --stamp:    #c8261d;
+    --stamp-d:  #8f1811;
+    --gold:     #a8821e;
+    --yellow:   #f6d74b;
+
+    --slab: 'Anton', 'Oswald', sans-serif;
+    --slab-2: 'Oswald', sans-serif;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --type: 'Special Elite', 'JetBrains Mono', monospace;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); -webkit-font-smoothing:antialiased}
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+    background-image:
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode: multiply;
+    opacity:.6;
+  }
+
+  .page{max-width:1080px; margin:0 auto; padding: 32px 56px 80px; position:relative}
+
+  /* ============== COVER ============== */
+  .cover{
+    border:4px double var(--rule);
+    padding: 28px 36px 32px;
+    background: var(--paper);
+    position:relative; overflow:hidden;
+  }
+  .cover .rails{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+    font-family:var(--slab-2); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--ink-3);
+    padding-bottom:12px; border-bottom: 1px solid var(--rule); margin-bottom: 18px;
+  }
+  .cover .rails a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink)}
+  .cover .rails a:hover{background:var(--yellow)}
+  .cover .crumb{font-family:var(--type)}
+
+  .cover .kicker{
+    font-family:var(--slab-2); font-size:13px; letter-spacing:.3em; color:var(--stamp);
+    text-transform:uppercase; margin-bottom:6px;
+  }
+  .cover h1{
+    font-family:var(--slab); font-weight:400; font-size: clamp(56px, 9vw, 132px); line-height:.86;
+    margin: 0 0 12px; text-transform:uppercase; letter-spacing:-.01em;
+  }
+  .cover .lede{
+    font-family:var(--serif); font-size:20px; line-height:1.45; color:var(--ink-2);
+    max-width: 720px; font-style:italic;
+    border-left: 3px solid var(--ink); padding-left: 14px;
+  }
+  .cover .spec{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 2px solid var(--rule); margin-top: 24px;
+  }
+  .cover .spec > div{
+    padding: 14px 18px 14px 0; border-right:1px solid var(--ink-3);
+    font-family:var(--type); font-size:12px; line-height:1.5; color:var(--ink-2);
+  }
+  .cover .spec > div:last-child{border-right:0; padding-right:0}
+  .cover .spec b{display:block; font-family:var(--slab-2); font-size:10px; font-weight:600; color:var(--stamp); letter-spacing:.2em; text-transform:uppercase; margin-bottom:4px}
+  .cover .spec .v{font-family:var(--slab); font-size:22px; color:var(--ink); text-transform:uppercase; line-height:1; letter-spacing:-.01em; margin-top:6px}
+
+  .cover .stamp{
+    position:absolute; top:22px; right:22px;
+    width:96px; height:96px; border:3px solid var(--stamp); border-radius:50%;
+    display:grid; place-items:center; transform:rotate(-8deg);
+    color:var(--stamp); font-family:var(--slab); text-transform:uppercase;
+    text-align:center; line-height:.95;
+    opacity:.95; background:var(--paper);
+    pointer-events:none;
+  }
+  .cover .stamp::before{
+    content:""; position:absolute; inset:5px; border:1.5px solid var(--stamp); border-radius:50%;
+  }
+  .cover .stamp .big{font-size:18px; line-height:.9}
+  .cover .stamp .sm{font-family:var(--type); font-size:8px; margin-top:3px; letter-spacing:.15em}
+
+  /* ============== TOC ============== */
+  .toc{
+    margin-top: 32px;
+    display:grid; grid-template-columns: 200px 1fr; gap: 36px;
+    padding: 22px 0;
+    border-bottom: 2px solid var(--rule);
+  }
+  .toc .lbl{
+    font-family:var(--slab); font-size: 44px; line-height:.88; text-transform:uppercase; letter-spacing:-.01em;
+  }
+  .toc .lbl small{display:block; font-family:var(--type); font-size:10px; color:var(--ink-3); letter-spacing:.2em; margin-top:6px; font-weight:400; text-transform:uppercase}
+  .toc ol{
+    margin:0; padding:0; list-style:none;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 0 32px;
+    counter-reset: ch;
+  }
+  .toc li{
+    counter-increment: ch;
+    display:grid; grid-template-columns: 36px 1fr auto; gap:10px; align-items:baseline;
+    padding: 10px 0; border-bottom: 1px dotted var(--ink-3);
+  }
+  .toc li::before{
+    content: "§ " counter(ch, decimal-leading-zero);
+    font-family:var(--slab-2); font-weight:600; font-size:11px; color:var(--stamp); letter-spacing:.15em;
+  }
+  .toc li a{
+    font-family:var(--slab-2); font-weight:600; font-size:14px; color:var(--ink); text-decoration:none; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .toc li a:hover{background:var(--yellow)}
+  .toc li .pg{font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.1em}
+  .toc li .dk{grid-column: 2; font-family:var(--serif); font-style:italic; font-size:12px; color:var(--ink-3); line-height:1.3; margin-top: 2px}
+
+  /* ============== CHAPTER HEADS ============== */
+  .chapter{margin-top: 64px; scroll-margin-top: 12px}
+  .ch-head{
+    display:grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items:end;
+    border-bottom: 2px solid var(--rule); padding-bottom: 8px; margin-bottom: 24px;
+  }
+  .ch-head .ch-no{
+    font-family:var(--slab); font-size: 88px; line-height:.85; color:var(--stamp); letter-spacing:-.02em;
+  }
+  .ch-head .ch-title{
+    font-family:var(--slab); font-weight:400; font-size: 56px; line-height:.9; margin: 0;
+    text-transform:uppercase; letter-spacing:-.005em;
+  }
+  .ch-head .pg{font-family:var(--type); color:var(--ink-3); font-size:12px; letter-spacing:.2em; text-transform:uppercase; padding-bottom:8px}
+  .ch-head .sub{
+    grid-column: 2 / 4;
+    font-family:var(--serif); font-style:italic; font-size:16px; line-height:1.4; color:var(--ink-2);
+    margin-top: -6px; padding-bottom: 4px;
+  }
+
+  /* ============== BODY TYPOGRAPHY ============== */
+  .prose{font-family:var(--serif); font-size:16px; line-height:1.55; color:var(--ink-2); max-width: 720px}
+  .prose p{margin: 0 0 14px}
+  .prose b{color:var(--ink); font-weight:700}
+  .prose a{color:var(--ink); text-underline-offset:3px}
+  .prose code, .inline-code{
+    font-family:var(--mono); font-size:.88em; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3);
+    color:var(--ink); border-radius:0;
+  }
+
+  .prose .hilite{background:var(--yellow); padding:0 3px; color:var(--ink)}
+
+  /* drop cap on first para of a chapter */
+  .chapter > .prose:first-of-type p:first-child::first-letter{
+    font-family:var(--slab); font-size: 76px; float:left; line-height:.88; padding: 4px 10px 0 0; color:var(--ink);
+  }
+
+  /* ============== STEPS ============== */
+  .steps{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 2px solid var(--rule); margin: 18px 0 26px;
+  }
+  .step{
+    padding: 18px 20px; border-right:1px solid var(--ink); position:relative;
+  }
+  .step:last-child{border-right:0}
+  .step .no{
+    font-family:var(--slab); font-size: 72px; line-height:.85; color:var(--stamp); margin-bottom: 6px; letter-spacing:-.02em;
+  }
+  .step h4{
+    font-family:var(--slab); font-weight:400; font-size:22px; line-height:1; margin: 0 0 10px;
+    text-transform:uppercase; letter-spacing:-.005em;
+  }
+  .step p{font-family:var(--serif); font-size:14px; line-height:1.5; margin:0; color:var(--ink-2)}
+  .step .kbd{
+    display:inline-block; font-family:var(--mono); font-size:12px; background:var(--paper-2); border:1px solid var(--ink);
+    padding:1px 6px; margin: 0 2px;
+  }
+
+  .steps.long{grid-template-columns: 1fr}
+  .steps.long .step{border-right:0; border-bottom:1px solid var(--ink); display:grid; grid-template-columns: 88px 1fr; gap: 20px; align-items:baseline}
+  .steps.long .step:last-child{border-bottom:0}
+  .steps.long .step .no{font-size: 56px; margin: 0}
+
+  /* ============== CODE BLOCKS ============== */
+  .code-block{
+    background: var(--ink); color: var(--paper);
+    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
+    padding: 16px 18px;
+    border: 2px solid var(--ink);
+    overflow-x:auto; white-space: pre;
+    position:relative;
+    margin: 10px 0 18px;
+  }
+  .code-block .c-head{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--slab-2); font-weight:600; font-size:10px; letter-spacing:.25em; text-transform:uppercase;
+    padding-bottom:10px; margin-bottom:12px; border-bottom: 1px dashed var(--paper-3); color: var(--paper-3);
+  }
+  .code-block .c-head .tag{background:var(--stamp); color:var(--paper); padding:2px 6px; letter-spacing:.15em}
+  .code-block .k{color:#f6d74b}      /* keyword / key */
+  .code-block .s{color:#a8d27a}      /* string */
+  .code-block .n{color:#e0b0ff}      /* number */
+  .code-block .cm{color:#8a8477; font-style:italic}   /* comment */
+  .code-block .pn{color:#f4b99a}     /* punctuation */
+
+  .shell{
+    font-family:var(--mono); font-size:13px; line-height:1.7;
+    background: var(--paper-3); border: 2px solid var(--ink);
+    padding: 14px 16px; margin: 10px 0 18px;
+    position:relative; overflow-x:auto; white-space:pre;
+  }
+  .shell .p{color:var(--stamp); user-select:none; margin-right:8px}   /* prompt */
+  .shell .cm{color:var(--ink-3); font-style:italic}
+  .shell .h{background:var(--yellow); padding:0 2px}
+
+  /* ============== CALLOUTS / BOXES ============== */
+  .callout{
+    border: 2px solid var(--ink);
+    padding: 16px 18px; margin: 18px 0;
+    background: var(--paper-2);
+    display:grid; grid-template-columns: 96px 1fr; gap: 18px; align-items:start;
+  }
+  .callout .tag{
+    font-family:var(--slab); font-size:22px; line-height:.95; text-transform:uppercase; letter-spacing:-.01em;
+    color:var(--stamp);
+  }
+  .callout .tag small{display:block; font-family:var(--slab-2); font-size:10px; font-weight:600; color:var(--ink-3); letter-spacing:.2em; margin-top:4px}
+  .callout .bd{font-family:var(--serif); font-size:14px; line-height:1.55; color:var(--ink); margin:0}
+  .callout.warn{background: #f6e7a8}
+  .callout.warn .tag{color:#7a5a10}
+  .callout.tip{background: #d7e9c8}
+  .callout.tip .tag{color:#345a1f}
+
+  /* ============== TABLE ============== */
+  .spec-table{
+    width:100%; border-collapse:collapse; margin: 10px 0 22px;
+    border: 2px solid var(--ink); font-family:var(--serif); font-size:14px;
+  }
+  .spec-table th{
+    text-align:left; font-family:var(--slab-2); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em;
+    padding:10px 14px; border-bottom: 2px solid var(--ink); background:var(--ink); color:var(--paper);
+  }
+  .spec-table td{padding:10px 14px; border-bottom:1px solid var(--ink-3); vertical-align:top}
+  .spec-table tr:last-child td{border-bottom:0}
+  .spec-table td code{font-family:var(--mono); font-size:12.5px; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+  .spec-table td b{font-family:var(--slab-2); font-weight:700; letter-spacing:.04em; color:var(--ink); text-transform:uppercase}
+  .spec-table .req{color:var(--stamp); font-family:var(--slab-2); font-weight:700; letter-spacing:.1em; font-size:10px; text-transform:uppercase}
+  .spec-table .opt{color:var(--ink-3); font-family:var(--slab-2); font-weight:600; letter-spacing:.1em; font-size:10px; text-transform:uppercase}
+
+  /* ============== DIAGRAM ============== */
+  .flow{
+    border: 2px solid var(--ink); background: var(--paper);
+    padding: 22px 20px; margin: 10px 0 22px;
+    display:grid; grid-template-columns: repeat(5, 1fr); gap: 0; align-items:center;
+    font-family:var(--slab-2);
+  }
+  .flow .node{
+    border:1.5px solid var(--ink); padding: 10px 10px; text-align:center; background:var(--paper-2);
+    display:flex; flex-direction:column; gap:4px; min-height: 92px; justify-content:center;
+  }
+  .flow .node.deep{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+  .flow .node.crit{background:var(--stamp); color:var(--paper); border-color:var(--stamp)}
+  .flow .node .lbl{font-family:var(--slab); font-size:18px; line-height:1; letter-spacing:-.005em; text-transform:uppercase}
+  .flow .node .sub{font-family:var(--type); font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.8}
+  .flow .arr{
+    height: 2px; background: var(--ink); position:relative;
+    margin: 0 4px;
+  }
+  .flow .arr::after{
+    content:""; position:absolute; right:-1px; top:-5px; width:0; height:0;
+    border-left: 10px solid var(--ink); border-top:6px solid transparent; border-bottom:6px solid transparent;
+  }
+
+  .fan{
+    border: 2px solid var(--ink); background: var(--paper);
+    padding: 20px; margin: 10px 0 22px;
+    display:grid; grid-template-columns: 220px 1fr; gap: 24px; align-items:center;
+  }
+  .fan .src{
+    border:2px solid var(--ink); background: var(--paper-2); padding: 14px; text-align:center;
+    font-family:var(--slab); text-transform:uppercase;
+  }
+  .fan .src .t{font-size:22px; line-height:1}
+  .fan .src .s{font-family:var(--type); font-size:11px; letter-spacing:.15em; margin-top:6px; text-transform:uppercase; color:var(--ink-3)}
+  .fan .outs{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:10px;
+    position:relative;
+  }
+  .fan .out{
+    border:1.5px solid var(--ink); padding: 10px 12px; background:var(--paper-2);
+    display:grid; grid-template-columns: 1fr auto; gap:8px; align-items:center;
+  }
+  .fan .out .nm{font-family:var(--slab); font-size:16px; line-height:1; text-transform:uppercase; letter-spacing:-.005em}
+  .fan .out .mdl{font-family:var(--mono); font-size:11px; color:var(--ink-3); letter-spacing:.04em}
+  .fan .out .lat{font-family:var(--slab-2); font-weight:700; font-size:11px; letter-spacing:.1em; background:var(--yellow); padding: 2px 6px; text-transform:uppercase}
+
+  /* ============== KEY CARDS ============== */
+  .keys{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    margin: 14px 0 22px;
+  }
+  .key-card{
+    border:2px solid var(--ink); padding: 14px 16px; background: var(--paper);
+    display:grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items:center;
+  }
+  .key-card .no{
+    font-family:var(--slab); font-size: 38px; line-height:.9; color:var(--stamp); letter-spacing:-.02em;
+  }
+  .key-card .nm{font-family:var(--slab); font-size:20px; line-height:1; text-transform:uppercase; letter-spacing:-.005em}
+  .key-card .rl{font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.04em; margin-top:4px}
+  .key-card .cost{
+    font-family:var(--slab-2); font-weight:600; font-size:11px; letter-spacing:.15em; padding: 4px 8px; text-transform:uppercase;
+    border:1px solid var(--ink); background:var(--paper-2); text-align:center; min-width:72px;
+  }
+  .key-card.req .cost{background:var(--stamp); color:var(--paper); border-color:var(--stamp)}
+
+  /* ============== TROUBLE TABLE ============== */
+  .trouble{
+    border: 2px solid var(--ink);
+    font-family:var(--serif);
+  }
+  .trouble .row{
+    display:grid; grid-template-columns: 44px 1fr 1.4fr; gap: 0;
+    border-bottom: 1px solid var(--ink-3);
+  }
+  .trouble .row:last-child{border-bottom:0}
+  .trouble .row.head{
+    font-family:var(--slab-2); font-weight:700; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    background: var(--ink); color:var(--paper);
+  }
+  .trouble .row.head div{padding:8px 14px; border-right:1px solid var(--paper-3)}
+  .trouble .row.head div:last-child{border-right:0}
+  .trouble .row > div{padding: 12px 14px; border-right:1px solid var(--ink-3); font-size:14px; line-height:1.5}
+  .trouble .row > div:last-child{border-right:0}
+  .trouble .row .sym{font-family:var(--slab); font-size:22px; color:var(--stamp); text-align:center; line-height:1}
+  .trouble .row .q{color:var(--ink); font-weight:600}
+  .trouble .row .a{color:var(--ink-2)}
+  .trouble .row .a code{font-family:var(--mono); font-size:12.5px; background:var(--paper-3); padding:1px 4px; border:1px solid var(--ink-3)}
+
+  /* ============== FOOTER ============== */
+  .colophon{
+    margin-top: 80px; padding-top: 22px; border-top: 6px solid var(--rule);
+  }
+  .colophon .top{
+    display:flex; justify-content:space-between; align-items:baseline; gap:24px;
+    border-bottom: 2px solid var(--rule); padding-bottom: 16px; margin-bottom: 18px;
+  }
+  .colophon .top .lg{font-family:var(--slab); font-size:48px; line-height:.9; text-transform:uppercase; letter-spacing:-.01em}
+  .colophon .top .tag{font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-2); max-width:340px; text-align:right}
+  .colophon .bot{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.08em; text-transform:uppercase;
+  }
+  .colophon .bot a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink); margin:0 8px}
+  .colophon .bot a:hover{background:var(--yellow)}
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 960px){
+    .page{padding: 28px 28px 60px}
+    .toc{grid-template-columns: 1fr; gap:16px}
+    .toc .lbl{font-size: 34px}
+    .toc ol{grid-template-columns: 1fr}
+    .steps{grid-template-columns: 1fr}
+    .step{border-right:0; border-bottom:1px solid var(--ink)}
+    .step:last-child{border-bottom:0}
+    .flow{grid-template-columns: 1fr; gap:12px}
+    .flow .arr{height: 20px; width:2px; margin: 0 auto; background: var(--ink)}
+    .flow .arr::after{left:-5px; right:auto; top:auto; bottom:-1px; border-left:6px solid transparent; border-right:6px solid transparent; border-top:10px solid var(--ink); border-bottom:0}
+    .fan{grid-template-columns: 1fr}
+    .fan .outs{grid-template-columns:1fr}
+    .keys{grid-template-columns:1fr}
+    .ch-head{grid-template-columns: auto 1fr; gap:12px}
+    .ch-head .ch-no{font-size:64px}
+    .ch-head .ch-title{font-size:36px}
+    .ch-head .pg{display:none}
+    .cover .spec{grid-template-columns: 1fr 1fr}
+    .cover .spec > div:nth-child(2){border-right:0}
+    .cover .spec > div{border-right:1px solid var(--ink-3); border-bottom:1px solid var(--ink-3); padding:14px 14px}
+    .cover .spec > div:nth-child(n+3){border-bottom:0}
+    .trouble .row{grid-template-columns: 36px 1fr}
+    .trouble .row > div:last-child{grid-column: 1 / 3; border-top:1px solid var(--ink-3); border-right:0}
+    .trouble .row.head div:last-child{display:none}
+  }
+
+  /* PHONE ≤ 640px */
+  @media (max-width: 640px){
+    .page{padding: 16px 18px 48px}
+    .cover{padding: 20px 18px 22px; border-width:3px}
+    .cover .rails{flex-direction:column; align-items:flex-start; gap:6px; font-size:10px; letter-spacing:.2em; padding-bottom:8px; margin-bottom:12px}
+    .cover .rails .crumb{font-size:10px}
+    .cover .stamp{
+      position:static; width:auto; height:auto; border-radius:0; border:2px solid var(--stamp);
+      transform:none; padding:6px 10px; margin: 0 0 12px; display:inline-flex; align-items:center; gap:10px;
+    }
+    .cover .stamp::before{display:none}
+    .cover .stamp .big{font-size:14px; letter-spacing:.08em}
+    .cover .stamp .sm{margin-top:0}
+    .cover h1{font-size: 52px; line-height:.9; letter-spacing:-.01em; word-break:normal; overflow-wrap:break-word; hyphens:none}
+    .cover .lede{font-size:15px; line-height:1.5; padding-left:10px; border-left-width:2px}
+    .cover .spec{grid-template-columns: 1fr; margin-top:18px}
+    .cover .spec > div{border-right:0; border-bottom:1px solid var(--ink-3); padding:12px 0}
+    .cover .spec > div:last-child{border-bottom:0}
+    .cover .spec .v{font-size:20px}
+
+    .toc .lbl{font-size:30px}
+    .toc li{grid-template-columns: 30px 1fr auto; gap:8px; padding:9px 0}
+    .toc li a{font-size:12.5px; letter-spacing:.03em}
+    .toc li::before{font-size:10px}
+    .toc li .pg{font-size:9px; letter-spacing:.06em; white-space:nowrap}
+    .toc li .dk{font-size:11px; margin-top:3px; grid-column: 2 / 4}
+
+    .chapter{margin-top:44px}
+    .ch-head .ch-no{font-size:52px}
+    .ch-head .ch-title{font-size:30px; line-height:.92}
+    .ch-head .sub{font-size:14px; grid-column: 1 / 3; margin-top:4px}
+
+    .prose{font-size:15px; line-height:1.58}
+    .chapter > .prose:first-of-type p:first-child::first-letter{font-size:54px; padding:2px 8px 0 0}
+
+    .steps.long .step{grid-template-columns: 60px 1fr; gap:14px; padding:14px 14px}
+    .steps.long .step .no{font-size:42px}
+    .steps .step h4{font-size:18px}
+    .steps .step p{font-size:13.5px}
+
+    .code-block{font-size:11px; padding:12px 12px; line-height:1.55}
+    .code-block .c-head{font-size:9px; letter-spacing:.18em}
+    .shell{font-size:11.5px; padding:12px 12px; line-height:1.6}
+
+    .callout{grid-template-columns:1fr; gap:10px; padding:14px 14px}
+    .callout .tag{font-size:18px; display:flex; align-items:baseline; gap:10px}
+    .callout .tag small{display:inline; margin-top:0; font-size:9px}
+
+    /* Schema table → stacked cards on phone */
+    .spec-table, .spec-table thead, .spec-table tbody, .spec-table tr, .spec-table th, .spec-table td{
+      display:block;
+    }
+    .spec-table{border-width:2px}
+    .spec-table thead{display:none}
+    .spec-table tr{
+      border-bottom:1px solid var(--ink-3); padding:10px 12px;
+    }
+    .spec-table tr:last-child{border-bottom:0}
+    .spec-table td{
+      padding:2px 0; border:0; font-size:13px; line-height:1.5;
+    }
+    .spec-table td:first-child{
+      font-family:var(--mono); font-size:13px; margin-bottom:4px;
+    }
+    .spec-table td:first-child code{font-size:13px; background:transparent; border:0; padding:0; color:var(--ink); font-weight:700}
+    .spec-table td:nth-child(2){
+      font-family:var(--slab-2); font-size:10px; letter-spacing:.15em; text-transform:uppercase;
+      display:inline-block; color:var(--ink-3); margin-right:10px;
+    }
+    .spec-table td:nth-child(3){
+      display:inline-block; margin-bottom:4px;
+    }
+    .spec-table td:last-child{
+      font-family:var(--serif); color:var(--ink-2);
+    }
+
+    .fan{padding:14px 14px}
+    .fan .src .t{font-size:18px}
+    .fan .out{grid-template-columns:1fr; gap:2px; padding:8px 10px}
+    .fan .out .nm{font-size:14px}
+
+    .key-card{grid-template-columns: 40px 1fr; gap:10px; padding:12px 12px; align-items:start}
+    .key-card .no{font-size:30px}
+    .key-card .nm{font-size:17px}
+    .key-card .cost{grid-column:1 / 3; min-width:0; text-align:left; padding:3px 8px; justify-self:start; margin-top:4px}
+
+    .trouble .row{grid-template-columns: 30px 1fr}
+    .trouble .row > div{padding:10px 10px; font-size:13px}
+    .trouble .row .sym{font-size:18px}
+
+    .colophon{padding:16px 16px}
+    .colophon .top{flex-direction:column; align-items:flex-start; gap:8px}
+    .colophon .top .lg{font-size:34px}
+    .colophon .top .tag{text-align:left; font-size:13px; max-width:none}
+    .colophon .bot{flex-direction:column; align-items:flex-start; gap:8px; font-size:11px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============== COVER ============== -->
+  <section class="cover">
+    <div class="rails">
+      <div class="crumb">
+        <a href="../">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The companion pamphlet
+      </div>
+      <div>Pamphlet No. 001 · MMXXVI · MIT license</div>
+    </div>
+
+    <div class="stamp"><div><div class="big">RTFM</div><div class="sm">● ISSUED</div></div></div>
+
+    <div class="kicker">— Issued with every subscription —</div>
+    <h1>The Operator&#8217;s<br>Manual</h1>
+    <div class="lede">
+      How to install the extension, run the wire room on your own hardware, and conscript four critics of your choosing. No support desk. Just this pamphlet.
+    </div>
+
+    <div class="spec">
+      <div>
+        <b>Install time</b>
+        <div class="v">~90 sec</div>
+        <div>From download to first reaction, hosted backend.</div>
+      </div>
+      <div>
+        <b>Self-host time</b>
+        <div class="v">~15 min</div>
+        <div>Node 20, four API keys, one <code>.env</code>.</div>
+      </div>
+      <div>
+        <b>Pack schema</b>
+        <div class="v">4 keys</div>
+        <div><code>id</code>, <code>persona</code>, <code>prompt</code>, <code>model</code>. That's it.</div>
+      </div>
+      <div>
+        <b>License</b>
+        <div class="v">MIT</div>
+        <div>Fork it. Ship it. Rename it. Don't sue us.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TOC ============== -->
+  <nav class="toc">
+    <div class="lbl">Contents<small>— Six sections —</small></div>
+    <ol>
+      <li>
+        <a href="#install">Hosted install</a>
+        <span class="pg">§ 01 · Pg. 2</span>
+        <span class="dk">Chrome Web Store, 90 seconds, done.</span>
+      </li>
+      <li>
+        <a href="#selfhost">Self-host the backend</a>
+        <span class="pg">§ 02 · Pg. 3</span>
+        <span class="dk">Your machine, your keys, your broadcast.</span>
+      </li>
+      <li>
+        <a href="#keys">Sourcing API keys</a>
+        <span class="pg">§ 03 · Pg. 5</span>
+        <span class="dk">Four vendors; three required.</span>
+      </li>
+      <li>
+        <a href="#packs">Writing a persona pack</a>
+        <span class="pg">§ 04 · Pg. 6</span>
+        <span class="dk">Schema, worked example, sideload.</span>
+      </li>
+      <li>
+        <a href="#run">Daily operation</a>
+        <span class="pg">§ 05 · Pg. 8</span>
+        <span class="dk">Pin, dock, mute, clip, swap.</span>
+      </li>
+      <li>
+        <a href="#trouble">Trouble &amp; service</a>
+        <span class="pg">§ 06 · Pg. 9</span>
+        <span class="dk">When the wire goes dark.</span>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- ============== § 01 INSTALL ============== -->
+  <section class="chapter" id="install">
+    <div class="ch-head">
+      <div class="ch-no">01</div>
+      <div>
+        <h2 class="ch-title">Hosted install</h2>
+        <div class="sub">The short version. Ninety seconds, hosted backend, pre-wired keys. Start here if you just want to watch something with four hecklers.</div>
+      </div>
+      <div class="pg">Pg. 2 · Circulation</div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="no">01</div>
+        <h4>Add to Chrome</h4>
+        <p>Open the <a href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Chrome Web Store listing</a>, hit <b>Add to Chrome</b>, confirm the manifest permissions. Works in Chromium and Edge too — same file.</p>
+      </div>
+      <div class="step">
+        <div class="no">02</div>
+        <h4>Pin the side panel</h4>
+        <p>Click the puzzle icon, pin <b>Peanut Gallery</b>, then <span class="kbd">Ctrl</span>+<span class="kbd">Shift</span>+<span class="kbd">P</span> to dock the panel. It stays on while you browse.</p>
+      </div>
+      <div class="step">
+        <div class="no">03</div>
+        <h4>Open a video or a stream</h4>
+        <p>Load any tab with audio — a livestream, a podcast, a webinar, a Zoom call, a YouTube video. The staff clocks in automatically as soon as the first caption lands. No button, no signup, no modal.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>That is the entire install path for the default experience. The hosted backend uses our keys, routes through our server, and costs you nothing. It's rate-limited per installation — if you're a heavy user or you don't trust our pipeline, skip to <a href="#selfhost">§ 02</a> and run the whole thing yourself.</p>
+    </div>
+
+    <div class="callout">
+      <div class="tag">Note<small>— Hosted limits —</small></div>
+      <p class="bd"><b>~4 hours of streaming per day</b> on the shared backend, split across all four critics. Hit the wall, the feed pauses politely and tells you so. Self-host removes the cap — the cap then becomes <i>your</i> API spend.</p>
+    </div>
+  </section>
+
+  <!-- ============== § 02 SELF-HOST ============== -->
+  <section class="chapter" id="selfhost">
+    <div class="ch-head">
+      <div class="ch-no">02</div>
+      <div>
+        <h2 class="ch-title">Self-host<br>the backend</h2>
+        <div class="sub">Fifteen minutes, one Node process, four keys, a <code>.env</code> file. Your machine is now the wire room.</div>
+      </div>
+      <div class="pg">Pg. 3 · Pressroom</div>
+    </div>
+
+    <div class="prose">
+      <p>The backend is a small Node service that brokers between the extension and the four upstream APIs. It exists so your API keys never ship to the browser — and so you can swap models or add caching without touching extension code.</p>
+    </div>
+
+    <h3 style="font-family:var(--slab); font-weight:400; font-size:26px; margin:22px 0 8px; text-transform:uppercase; letter-spacing:-.005em">How it's wired</h3>
+
+    <div class="flow">
+      <div class="node"><span class="lbl">Tab audio</span><span class="sub">any video or stream</span></div>
+      <div class="arr"></div>
+      <div class="node deep"><span class="lbl">Deepgram</span><span class="sub">Nova-3 stream</span></div>
+      <div class="arr"></div>
+      <div class="node crit"><span class="lbl">Your<br>Server</span><span class="sub">fans out</span></div>
+    </div>
+
+    <div class="fan">
+      <div class="src"><div class="t">Transcript<br>partial</div><div class="s">~60 chars · every ~600ms</div></div>
+      <div class="outs">
+        <div class="out"><div><div class="nm">Baba Booey</div><div class="mdl">Haiku + Brave</div></div><div class="lat">~280ms</div></div>
+        <div class="out"><div><div class="nm">The Troll</div><div class="mdl">Grok 4.1 Fast</div></div><div class="lat">~150ms</div></div>
+        <div class="out"><div><div class="nm">F. Norris</div><div class="mdl">Grok 4.1 Fast</div></div><div class="lat">~140ms</div></div>
+        <div class="out"><div><div class="nm">J. Martling</div><div class="mdl">Claude Haiku</div></div><div class="lat">~220ms</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--slab); font-weight:400; font-size:26px; margin:22px 0 8px; text-transform:uppercase; letter-spacing:-.005em">Installation</h3>
+
+    <div class="steps long">
+      <div class="step">
+        <div class="no">01</div>
+        <div>
+          <h4>Clone &amp; install</h4>
+          <p>You need Node 20+ and git. The server has no database and no state — just a process and four outbound connections.</p>
+        </div>
+      </div>
+    </div>
+
+<pre class="shell"><span class="p">$</span> git clone https://github.com/peanut-gallery/server.git
+<span class="p">$</span> cd server
+<span class="p">$</span> npm install
+<span class="cm"># ~200 deps, 20 seconds on a decent pipe</span></pre>
+
+    <div class="steps long">
+      <div class="step">
+        <div class="no">02</div>
+        <div>
+          <h4>Provide your keys</h4>
+          <p>Copy <code>.env.example</code> to <code>.env</code> and drop in the four keys you collected in <a href="#keys">§ 03</a>. Brave is optional; if you omit it, the fact-checker falls back to model-only claims and flags itself as unverified.</p>
+        </div>
+      </div>
+    </div>
+
+<pre class="shell"><span class="p">$</span> cp .env.example .env
+<span class="p">$</span> nano .env
+<span class="cm"># paste four keys, save, exit</span></pre>
+
+<div class="code-block">
+<div class="c-head"><span>.env</span><span class="tag">DO NOT COMMIT</span></div><span class="cm"># Required — transcription</span>
+<span class="k">DEEPGRAM_API_KEY</span>=<span class="s">"dg_live_xxxxxxxxxxxxxxxxxxxxxxxx"</span>
+
+<span class="cm"># Required — fact-check + comedy (Haiku)</span>
+<span class="k">ANTHROPIC_API_KEY</span>=<span class="s">"sk-ant-xxxxxxxxxxxxxxxxxxxxxxxx"</span>
+
+<span class="cm"># Required — troll + sound FX (Grok 4.1 Fast)</span>
+<span class="k">XAI_API_KEY</span>=<span class="s">"xai-xxxxxxxxxxxxxxxxxxxxxxxx"</span>
+
+<span class="cm"># Optional — receipts for the fact-checker</span>
+<span class="k">BRAVE_SEARCH_API_KEY</span>=<span class="s">"BSA-xxxxxxxxxxxxxxxxxxxxxxxx"</span>
+
+<span class="cm"># Server</span>
+<span class="k">PORT</span>=<span class="n">8787</span>
+<span class="k">ALLOWED_ORIGIN</span>=<span class="s">"chrome-extension://&lt;your-extension-id&gt;"</span>
+</div>
+
+    <div class="steps long">
+      <div class="step">
+        <div class="no">03</div>
+        <div>
+          <h4>Start the press</h4>
+          <p>Dev mode reloads on change; production mode is what you pin to a tmux window or a systemd unit. Either way it binds to one port and listens on localhost by default.</p>
+        </div>
+      </div>
+    </div>
+
+<pre class="shell"><span class="p">$</span> npm run dev
+<span class="cm">› peanut-gallery/server  listening on :8787</span>
+<span class="cm">› deepgram   ready  (nova-3)</span>
+<span class="cm">› anthropic  ready  (claude-haiku-4-5)</span>
+<span class="cm">› xai        ready  (grok-4-fast)</span>
+<span class="cm">› brave      ready  (search-v1)</span>
+<span class="cm">› wire room is open. go heckle something.</span></pre>
+
+    <div class="steps long">
+      <div class="step">
+        <div class="no">04</div>
+        <div>
+          <h4>Point the extension at your server</h4>
+          <p>In the extension's <b>Tweaks</b> panel, switch <b>Backend</b> from <code>Hosted</code> to <code>Custom</code> and paste <span class="inline-code">http://localhost:8787</span>. The panel badge flips to <b>SELF-HOSTED</b> when the health-check clears.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="tag">Tip<small>— Going public —</small></div>
+      <p class="bd">If you want to run the server somewhere other than localhost, put it behind a reverse proxy with TLS (Caddy does this in three lines) and restrict <code>ALLOWED_ORIGIN</code> to your extension ID. The extension refuses non-HTTPS custom backends except for <code>localhost</code>.</p>
+    </div>
+
+    <div class="callout warn">
+      <div class="tag">Watch<small>— Rate limits —</small></div>
+      <p class="bd">Deepgram bills by streaming minute, Anthropic &amp; xAI by token. A 90-minute podcast at full staff runs roughly <b>$0.18–$0.35 of API</b>. Set usage caps on each provider's dashboard before you walk away from it.</p>
+    </div>
+  </section>
+
+  <!-- ============== § 03 KEYS ============== -->
+  <section class="chapter" id="keys">
+    <div class="ch-head">
+      <div class="ch-no">03</div>
+      <div>
+        <h2 class="ch-title">Sourcing the keys</h2>
+        <div class="sub">Four vendors. Three required; one optional. All four have free tiers enough to test with.</div>
+      </div>
+      <div class="pg">Pg. 5 · Supply</div>
+    </div>
+
+    <div class="keys">
+      <div class="key-card req">
+        <div class="no">01</div>
+        <div>
+          <div class="nm">Deepgram</div>
+          <div class="rl">console.deepgram.com · <b>Nova-3 streaming</b> · transcription</div>
+        </div>
+        <div class="cost">Required</div>
+      </div>
+      <div class="key-card req">
+        <div class="no">02</div>
+        <div>
+          <div class="nm">Anthropic</div>
+          <div class="rl">console.anthropic.com · <b>Claude Haiku 4.5</b> · fact + comedy</div>
+        </div>
+        <div class="cost">Required</div>
+      </div>
+      <div class="key-card req">
+        <div class="no">03</div>
+        <div>
+          <div class="nm">xAI</div>
+          <div class="rl">console.x.ai · <b>Grok 4.1 Fast</b> · troll + sound FX</div>
+        </div>
+        <div class="cost">Required</div>
+      </div>
+      <div class="key-card">
+        <div class="no">04</div>
+        <div>
+          <div class="nm">Brave Search</div>
+          <div class="rl">api.search.brave.com · <b>Search API</b> · fact-check receipts</div>
+        </div>
+        <div class="cost">Optional</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Each vendor's signup is roughly the same ritual: create an account, verify email, create an API key, copy it into your <code>.env</code>. Free tiers on all four are enough to get through <b>a few hours of testing</b> — which is enough to decide whether you want to wire in a real card.</p>
+      <p>If you swap models — say, you prefer Claude Sonnet for the comedy writer or Grok Mini for the troll — the model string lives in each pack file, not the server. See <a href="#packs">§ 04</a>. The server doesn't care which model you pick as long as the vendor is configured.</p>
+    </div>
+  </section>
+
+  <!-- ============== § 04 PACKS ============== -->
+  <section class="chapter" id="packs">
+    <div class="ch-head">
+      <div class="ch-no">04</div>
+      <div>
+        <h2 class="ch-title">Writing a<br>persona pack</h2>
+        <div class="sub">A pack is a JSON file. Four personas, four prompts, four model picks. That's the whole spec.</div>
+      </div>
+      <div class="pg">Pg. 6 · Casting</div>
+    </div>
+
+    <div class="prose">
+      <p>Two packs ship by default: the <b>Stern staff</b> (Baba Booey, The Troll, Fred Norris, Jackie Martling) and the <b>TWiST staff</b> (Jason, Molly, Dwight, Ampersand). Everything else you'd ever want is a pack you write yourself.</p>
+      <p>The roles are fixed — <b>fact</b>, <b>dunk</b>, <b>cue</b>, <b>bit</b> — because they pair with specific UI treatments (the tag colors, the sound-cue playback, the receipts badge). The <i>personas</i> filling those roles are entirely up to you.</p>
+    </div>
+
+    <h3 style="font-family:var(--slab); font-weight:400; font-size:26px; margin:22px 0 8px; text-transform:uppercase; letter-spacing:-.005em">Schema</h3>
+
+    <table class="spec-table">
+      <thead>
+        <tr><th style="width:18%">Field</th><th style="width:14%">Type</th><th style="width:10%"></th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>id</code></td>
+          <td>string</td>
+          <td><span class="req">Required</span></td>
+          <td>Lowercase, no spaces. Appears in the pack picker and the URL params. e.g. <code>stern</code>, <code>twist</code>, <code>mst3k</code>.</td>
+        </tr>
+        <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td><span class="req">Required</span></td>
+          <td>Human-readable label shown in the Tweaks menu. <b>Keep it under 28 chars.</b></td>
+        </tr>
+        <tr>
+          <td><code>tagline</code></td>
+          <td>string</td>
+          <td><span class="opt">Optional</span></td>
+          <td>A one-line pitch for the pack picker. Italicized in the UI.</td>
+        </tr>
+        <tr>
+          <td><code>staff</code></td>
+          <td>array[4]</td>
+          <td><span class="req">Required</span></td>
+          <td>Exactly four persona entries, one per role. Extras are ignored; missing roles throw.</td>
+        </tr>
+        <tr>
+          <td><code>staff[].role</code></td>
+          <td>enum</td>
+          <td><span class="req">Required</span></td>
+          <td>One of <code>fact</code> · <code>dunk</code> · <code>cue</code> · <code>bit</code>. Exactly once each.</td>
+        </tr>
+        <tr>
+          <td><code>staff[].persona</code></td>
+          <td>string</td>
+          <td><span class="req">Required</span></td>
+          <td>Display name. Shown on the mug card, the wire tag, and the clipboard export.</td>
+        </tr>
+        <tr>
+          <td><code>staff[].model</code></td>
+          <td>string</td>
+          <td><span class="req">Required</span></td>
+          <td>Vendor-prefixed model ID. <code>anthropic/claude-haiku-4-5</code>, <code>xai/grok-4-fast</code>, etc. The server routes by prefix.</td>
+        </tr>
+        <tr>
+          <td><code>staff[].prompt</code></td>
+          <td>string</td>
+          <td><span class="req">Required</span></td>
+          <td>The full system prompt. ~400 tokens is the sweet spot. Longer = slower. Include voice, cadence, and two or three example reactions in-line.</td>
+        </tr>
+        <tr>
+          <td><code>staff[].temperature</code></td>
+          <td>number</td>
+          <td><span class="opt">Optional</span></td>
+          <td>Default <code>0.7</code>. Trolls &amp; comedy writers like <code>0.9</code>. Fact-checker wants <code>0.2</code>.</td>
+        </tr>
+        <tr>
+          <td><code>staff[].cooldown_ms</code></td>
+          <td>number</td>
+          <td><span class="opt">Optional</span></td>
+          <td>Minimum gap between this persona's posts. Keeps the troll from monologuing. Default <code>4000</code>.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family:var(--slab); font-weight:400; font-size:26px; margin:22px 0 8px; text-transform:uppercase; letter-spacing:-.005em">Worked example — the <code style="font-family:var(--mono)">mst3k.json</code> pack</h3>
+
+<div class="code-block">
+<div class="c-head"><span>packs/mst3k.json</span><span class="tag">Example</span></div>{
+  <span class="k">"id"</span><span class="pn">:</span> <span class="s">"mst3k"</span><span class="pn">,</span>
+  <span class="k">"name"</span><span class="pn">:</span> <span class="s">"Mystery Science Theater"</span><span class="pn">,</span>
+  <span class="k">"tagline"</span><span class="pn">:</span> <span class="s">"Joel, Crow, Tom Servo, and Gypsy. In that order."</span><span class="pn">,</span>
+  <span class="k">"staff"</span><span class="pn">:</span> [
+    {
+      <span class="k">"role"</span><span class="pn">:</span> <span class="s">"fact"</span><span class="pn">,</span>
+      <span class="k">"persona"</span><span class="pn">:</span> <span class="s">"Joel Robinson"</span><span class="pn">,</span>
+      <span class="k">"model"</span><span class="pn">:</span> <span class="s">"anthropic/claude-haiku-4-5"</span><span class="pn">,</span>
+      <span class="k">"temperature"</span><span class="pn">:</span> <span class="n">0.2</span><span class="pn">,</span>
+      <span class="k">"prompt"</span><span class="pn">:</span> <span class="s">"You are Joel Robinson. Gentle, curious, prone to..."</span>
+    }<span class="pn">,</span>
+    {
+      <span class="k">"role"</span><span class="pn">:</span> <span class="s">"dunk"</span><span class="pn">,</span>
+      <span class="k">"persona"</span><span class="pn">:</span> <span class="s">"Crow T. Robot"</span><span class="pn">,</span>
+      <span class="k">"model"</span><span class="pn">:</span> <span class="s">"xai/grok-4-fast"</span><span class="pn">,</span>
+      <span class="k">"temperature"</span><span class="pn">:</span> <span class="n">0.95</span><span class="pn">,</span>
+      <span class="k">"cooldown_ms"</span><span class="pn">:</span> <span class="n">3000</span><span class="pn">,</span>
+      <span class="k">"prompt"</span><span class="pn">:</span> <span class="s">"You are Crow. Acid wit. Short zingers. Never more..."</span>
+    }<span class="pn">,</span>
+    {
+      <span class="k">"role"</span><span class="pn">:</span> <span class="s">"cue"</span><span class="pn">,</span>
+      <span class="k">"persona"</span><span class="pn">:</span> <span class="s">"Tom Servo"</span><span class="pn">,</span>
+      <span class="k">"model"</span><span class="pn">:</span> <span class="s">"xai/grok-4-fast"</span><span class="pn">,</span>
+      <span class="k">"prompt"</span><span class="pn">:</span> <span class="s">"You are Tom Servo. Operatic. Drops sound cues..."</span>
+    }<span class="pn">,</span>
+    {
+      <span class="k">"role"</span><span class="pn">:</span> <span class="s">"bit"</span><span class="pn">,</span>
+      <span class="k">"persona"</span><span class="pn">:</span> <span class="s">"Gypsy"</span><span class="pn">,</span>
+      <span class="k">"model"</span><span class="pn">:</span> <span class="s">"anthropic/claude-haiku-4-5"</span><span class="pn">,</span>
+      <span class="k">"temperature"</span><span class="pn">:</span> <span class="n">0.85</span><span class="pn">,</span>
+      <span class="k">"prompt"</span><span class="pn">:</span> <span class="s">"You are Gypsy. Sweetly oblivious. Turns any premise..."</span>
+    }
+  ]
+}
+</div>
+
+    <h3 style="font-family:var(--slab); font-weight:400; font-size:26px; margin:22px 0 8px; text-transform:uppercase; letter-spacing:-.005em">Sideload the pack</h3>
+
+    <div class="steps long">
+      <div class="step">
+        <div class="no">01</div>
+        <div>
+          <h4>Drop the file in the packs folder</h4>
+          <p>Hosted backend: upload via the <b>Packs</b> tab in the extension Tweaks panel. Self-hosted: drop it in <code>./packs/</code> on the server and it's picked up on next request — no restart.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="no">02</div>
+        <div>
+          <h4>Validate</h4>
+          <p>Run <code>npm run pack:lint packs/mst3k.json</code>. It checks the schema, pings each model once to confirm the vendor is reachable, and prints token counts for each prompt.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="no">03</div>
+        <div>
+          <h4>Switch the staff</h4>
+          <p>In the extension, open Tweaks → <b>Pack</b> and pick your new entry. The feed clears, the mugs re-render, and the next transcript partial runs through the new cast.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="tag">Pro<small>— Prompt craft —</small></div>
+      <p class="bd">Give each persona <b>three short in-line examples</b> of the shape of reaction you want. "Short zinger under 12 words" &gt; "Be funny." Include a negative example or two: <i>"Don't explain the joke. Don't caveat. Don't apologize."</i> These cost you nothing and save the model from hedging.</p>
+    </div>
+  </section>
+
+  <!-- ============== § 05 RUN ============== -->
+  <section class="chapter" id="run">
+    <div class="ch-head">
+      <div class="ch-no">05</div>
+      <div>
+        <h2 class="ch-title">Daily<br>operation</h2>
+        <div class="sub">Once it's installed, there is almost nothing to do. Here's the nothing.</div>
+      </div>
+      <div class="pg">Pg. 8 · Desk</div>
+    </div>
+
+    <table class="spec-table">
+      <thead>
+        <tr><th style="width:30%">Action</th><th style="width:22%">How</th><th>What it does</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Open the panel</b></td><td><span class="inline-code">Ctrl+Shift+P</span></td><td>Docks the wire room in Chrome's native side panel. Stays open across tabs.</td></tr>
+        <tr><td><b>Swap the pack</b></td><td>Tweaks → Pack</td><td>Instantly retires the current staff and brings in the new one. Feed clears; history kept per-session.</td></tr>
+        <tr><td><b>Mute a critic</b></td><td>Click the bottom-row pill</td><td>That persona stops posting. Other three keep going. Un-mute re-enables mid-stream.</td></tr>
+        <tr><td><b>Clip a line</b></td><td>Hover a line → clip icon</td><td>Copies a formatted quote block to clipboard. Includes timestamp, persona, source URL.</td></tr>
+        <tr><td><b>Export the feed</b></td><td>Tweaks → Export</td><td>Dumps the full session as Markdown. Useful for sharing a particularly brutal broadcast.</td></tr>
+        <tr><td><b>Kill the panel</b></td><td>Tweaks → Off-air</td><td>Extension stays installed; mic stays off; wire goes dark. Pick it back up later.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="prose">
+      <p>The extension does not run on tabs you haven't opened the panel against. There is no background heckling. If the panel is closed, the mic is not listening, the server is not called, and nothing is happening.</p>
+    </div>
+  </section>
+
+  <!-- ============== § 06 TROUBLE ============== -->
+  <section class="chapter" id="trouble">
+    <div class="ch-head">
+      <div class="ch-no">06</div>
+      <div>
+        <h2 class="ch-title">Trouble &amp;<br>service</h2>
+        <div class="sub">When the wire goes dark, it's almost always one of five things. Check in order.</div>
+      </div>
+      <div class="pg">Pg. 9 · Pressroom</div>
+    </div>
+
+    <div class="trouble">
+      <div class="row head">
+        <div>No.</div>
+        <div>Symptom</div>
+        <div>Likely cause · fix</div>
+      </div>
+      <div class="row">
+        <div class="sym">01</div>
+        <div class="q">Panel opens but no reactions ever arrive.</div>
+        <div class="a">Transcript isn't reaching the server. Check the tab has captions available (CC on the video, or captions enabled in the player). Some livestreams withhold captions for the first ~30 seconds. If captions exist and still nothing, reload the tab with the panel open.</div>
+      </div>
+      <div class="row">
+        <div class="sym">02</div>
+        <div class="q">Feed starts, stalls after one or two lines.</div>
+        <div class="a">One of your upstream keys is rejecting. Open the server terminal — the failing vendor prints a single red line. Usually a quota or a billing-card lapse. Top up or swap models.</div>
+      </div>
+      <div class="row">
+        <div class="sym">03</div>
+        <div class="q">Badge reads <code>SELF-HOSTED · UNREACHABLE</code>.</div>
+        <div class="a">Extension can't hit <code>/health</code> on your backend. Confirm the server is up (<code>curl http://localhost:8787/health</code>), your <code>ALLOWED_ORIGIN</code> matches the extension ID, and you're not on a different network than you think (corporate VPNs love to rewrite localhost).</div>
+      </div>
+      <div class="row">
+        <div class="sym">04</div>
+        <div class="q">Reactions are in the wrong voice — generic, hedged, apologetic.</div>
+        <div class="a">Prompt is being truncated or the model changed. Run <code>npm run pack:lint &lt;pack&gt;.json</code>, check token counts, confirm the model ID still exists at the vendor. Vendors rename models; packs need updating when they do.</div>
+      </div>
+      <div class="row">
+        <div class="sym">05</div>
+        <div class="q">Fact-checker posts claims without citations.</div>
+        <div class="a"><code>BRAVE_SEARCH_API_KEY</code> is missing or invalid. Fact-checker falls back to model-only claims when search fails; it flags itself with a small <code>NO RX</code> badge when it does. Add the key or accept the fallback.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="tag">Last<small>— Resort —</small></div>
+      <p class="bd">If none of the above applies, file an issue on the <a href="https://github.com/Sethmr/peanut.gallery/issues" target="_blank" rel="noopener">github</a> with your <code>server.log</code>, the pack you're using, and the video URL. We read them. We do not promise to fix them. It's a newspaper run by four AIs.</p>
+    </div>
+  </section>
+
+  <!-- ============== COLOPHON ============== -->
+  <footer class="colophon">
+    <div class="top">
+      <div class="lg">— end of manual —</div>
+      <div class="tag">Return to the paper for the rest of the issue.</div>
+    </div>
+    <div class="bot">
+      <div>© MMXXVI · Peanut Gallery · Pamphlet No. 001 · MIT license</div>
+      <div>
+        <a href="../">← Back to the cover</a>
+        <a href="../panel/">Side panel proof</a>
+        <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">Github</a>
+        <a href="https://github.com/Sethmr/peanut.gallery/tree/main/lib/packs" target="_blank" rel="noopener">Packs library</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
