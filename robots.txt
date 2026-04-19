@@ -1,12 +1,4 @@
 User-agent: *
 Allow: /
 
-# Canonical pages live at clean URLs — the space-in-name legacy files
-# are pre-rename artifacts and should not be indexed.
-Disallow: /Landing%20Page.html
-Disallow: /Operators%20Manual.html
-Disallow: /Side%20Panel.html
-Disallow: /scraps/
-Disallow: /specs/
-
-Sitemap: https://peanutgallery.live/sitemap.xml
+Sitemap: https://www.peanutgallery.live/sitemap.xml

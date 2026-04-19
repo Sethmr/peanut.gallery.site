@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Privacy Policy · Peanut Gallery</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- SEO -->
+<meta name="description" content="How Peanut Gallery handles your audio, API keys, and session data. Short answer: your keys stay on your machine, audio is transcribed in real-time and discarded, nothing is logged." />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<link rel="canonical" href="https://www.peanutgallery.live/privacy/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Peanut Gallery" />
+<meta property="og:url" content="https://www.peanutgallery.live/privacy/" />
+<meta property="og:title" content="Privacy Policy · Peanut Gallery" />
+<meta property="og:description" content="Your keys stay on your machine. Audio is transcribed in real-time and discarded. Nothing is logged." />
+<meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R9CK4LRGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3R9CK4LRGF');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#f1ead8; --ink:#111; --ink-2:#2a2824; --ink-3:#5a564c;
+    --rule:#111; --stamp:#c8261d;
+    --slab:'Anton','Oswald',sans-serif;
+    --slab-2:'Oswald',sans-serif;
+    --serif:'Source Serif 4',Georgia,serif;
+    --type:'Special Elite','JetBrains Mono',monospace;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);background-size:3px 3px,7px 7px;background-position:0 0,1px 2px;mix-blend-mode:multiply;opacity:.6}
+  .wrap{max-width:720px;margin:0 auto;padding:48px 28px 96px;position:relative}
+  .crumb{font-family:var(--type);font-size:12px;color:var(--ink-3);margin-bottom:28px;letter-spacing:.02em}
+  .crumb a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink-3)}
+  h1{font-family:var(--slab);font-weight:400;font-size:clamp(56px,9vw,96px);line-height:.9;margin:0 0 6px;letter-spacing:.01em}
+  .updated{font-family:var(--slab-2);text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--ink-3);border-top:2px solid var(--rule);border-bottom:1px solid var(--ink-3);padding:8px 0;margin:18px 0 36px;display:flex;justify-content:space-between}
+  h2{font-family:var(--slab-2);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:15px;margin:36px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--ink-3);color:var(--ink)}
+  p,li{font-size:16px;line-height:1.62;color:var(--ink-2)}
+  ul{padding-left:22px;margin:6px 0 14px}
+  li{margin-bottom:8px}
+  a{color:var(--ink);border-bottom:1px solid var(--stamp);text-decoration:none;padding-bottom:1px}
+  a:hover{background:var(--stamp);color:var(--paper);border-bottom-color:transparent}
+  code{font-family:var(--mono);font-size:.88em;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:2px}
+  strong{color:var(--ink);font-weight:700}
+  .callout{border:2px solid var(--rule);padding:16px 18px;margin:18px 0 28px;background:rgba(200,38,29,.06)}
+  .callout p{margin:0}
+  .colo{margin-top:56px;padding-top:22px;border-top:2px solid var(--rule);font-family:var(--type);font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; Privacy policy</div>
+
+  <h1>Privacy Policy</h1>
+  <div class="updated"><span>— The short version below —</span><span>Last updated · April 17, 2026</span></div>
+
+  <div class="callout">
+    <p><strong>Short answer:</strong> your keys stay on your machine, your audio is transcribed in real-time and discarded, nothing is logged. No accounts. No analytics in the extension itself.</p>
+  </div>
+
+  <p>Peanut Gallery is a Chrome extension that listens to the audio of the tab you&rsquo;re currently on, transcribes it in real-time, and streams AI persona reactions back to a native Chrome side panel. This policy describes what happens to the data involved.</p>
+
+  <h2>What the extension collects</h2>
+  <p>The extension only captures audio when you explicitly click <strong>Start Listening</strong> from the side panel. Specifically:</p>
+  <ul>
+    <li><strong>Tab audio</strong>, via the standard <code>chrome.tabCapture</code> API &mdash; the same API used by Otter.ai, Fireflies, and other transcription tools. Capture stops the moment you click <strong>Stop</strong> or close the tab. No audio is recorded to disk.</li>
+    <li><strong>API keys you type into the side panel</strong> (Deepgram, Anthropic, xAI, optionally Brave Search). These are stored locally via <code>chrome.storage.local</code> so you don&rsquo;t have to retype them every session. They are sent to the server you configure via request headers so it can call those providers on your behalf. They are never uploaded to anyone else.</li>
+    <li><strong>The URL and title of the tab you&rsquo;re capturing from</strong>, passed to the server for display purposes only.</li>
+  </ul>
+
+  <h2>What the server does with it</h2>
+  <p>You can point the extension at two kinds of servers: the default hosted backend at <code>peanutgallery.live</code>, or a server you run yourself (the self-host path in the <a href="/manual/">Operator&rsquo;s Manual</a>). In both cases, the server:</p>
+  <ul>
+    <li>Forwards audio to <strong>Deepgram</strong> for real-time transcription.</li>
+    <li>Sends short transcript windows to <strong>Anthropic (Claude)</strong> and <strong>xAI Grok</strong> to generate persona reactions, and to your chosen search engine (<strong>Brave Search</strong> or <strong>xAI Live Search</strong>) for live fact-checks.</li>
+    <li>Streams results back to your browser via Server-Sent Events (SSE).</li>
+    <li><strong>Discards the session entirely</strong> when you click Stop or the tab closes. Transcripts and responses are held in memory during the session and are not written to disk, not logged, and not persisted.</li>
+  </ul>
+
+  <h2>The hosted backend at peanutgallery.live</h2>
+  <p>When you use the default server, your API keys travel to the hosted backend inside the request headers for that single SSE stream, are forwarded to the relevant providers (Deepgram / Anthropic / xAI / Brave) for that session, and <strong>are discarded at session end</strong>. They are never logged, never persisted. You can audit the exact handling in the transcribe route on GitHub: <a href="https://github.com/Sethmr/peanut.gallery/blob/main/app/api/transcribe/route.ts" target="_blank" rel="noopener">app/api/transcribe/route.ts</a>.</p>
+
+  <h2>Third-party services</h2>
+  <p>When Peanut Gallery calls a third-party AI provider on your behalf, data handling is governed by that provider&rsquo;s terms:</p>
+  <ul>
+    <li><a href="https://deepgram.com/privacy" target="_blank" rel="noopener">Deepgram</a> &mdash; speech-to-text.</li>
+    <li><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic (Claude)</a> &mdash; persona responses.</li>
+    <li><a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener">xAI</a> &mdash; Grok persona responses and optional Live Search fact-checks.</li>
+    <li><a href="https://brave.com/privacy/" target="_blank" rel="noopener">Brave Search</a> &mdash; live fact-checking queries.</li>
+  </ul>
+
+  <h2>Analytics</h2>
+  <p>The landing page at peanutgallery.live uses Google Analytics to measure aggregate page visits. No personally identifying information is collected beyond the standard request metadata (IP, user agent, referrer) that Google Analytics receives. <strong>The Chrome extension itself does not include any analytics.</strong></p>
+
+  <h2>What Peanut Gallery doesn&rsquo;t do</h2>
+  <ul>
+    <li>We don&rsquo;t have user accounts. There&rsquo;s nothing to sign up for.</li>
+    <li>We don&rsquo;t log or store your audio, transcripts, or API keys.</li>
+    <li>We don&rsquo;t sell data. There&rsquo;s nothing to sell.</li>
+    <li>We don&rsquo;t run background capture. The extension only listens while you&rsquo;re actively in a session you started.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p>Questions? Open an issue on <a href="https://github.com/Sethmr/peanut.gallery/issues" target="_blank" rel="noopener">GitHub</a> or email <a href="mailto:seth@manugames.com">seth@manugames.com</a>.</p>
+
+  <div class="colo">
+    <span>Peanut Gallery &middot; MIT licensed &middot; <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">github.com/Sethmr/peanut.gallery</a></span>
+    <span>Pg. C1</span>
+  </div>
+</main>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.peanutgallery.live/"},{"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://www.peanutgallery.live/privacy/"}]}
+</script>
+
+</body>
+</html>
