@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# editor
+.idea/
+.vscode/
+*.swp
+
+# local
+node_modules/
+*.log
