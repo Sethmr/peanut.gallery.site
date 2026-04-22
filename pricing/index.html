@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pricing · Peanut Gallery</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- SEO -->
+<meta name="description" content="Peanut Gallery is open source and free if you bring your own keys. Prefer no setup? Peanut Gallery Plus is $8/month for 16 hours/week of hosted transcription and AI reactions — an accessibility tier, not a profit center." />
+<meta name="author" content="Seth Rininger" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<link rel="canonical" href="https://www.peanutgallery.live/pricing/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Peanut Gallery" />
+<meta property="og:url" content="https://www.peanutgallery.live/pricing/" />
+<meta property="og:title" content="Pricing · Peanut Gallery" />
+<meta property="og:description" content="Free with your own keys. $8/month for 16 hours/week if you'd rather we handled it." />
+<meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@SethRininger" />
+<meta name="twitter:title" content="Pricing · Peanut Gallery" />
+<meta name="twitter:description" content="Free with your own keys. $8/month for 16 h/wk if you'd rather we handled it." />
+<meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R9CK4LRGF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3R9CK4LRGF');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:    #f1ead8;
+    --paper-2:  #e9e0c5;
+    --paper-3:  #dfd4b3;
+    --ink:      #111111;
+    --ink-2:    #2a2824;
+    --ink-3:    #5a564c;
+    --rule:     #111;
+    --stamp:    #c8261d;
+    --stamp-d:  #8f1811;
+    --gold:     #a8821e;
+    --yellow:   #f6d74b;
+
+    --slab: 'Anton', 'Oswald', sans-serif;
+    --slab-2: 'Oswald', sans-serif;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --type: 'Special Elite', 'JetBrains Mono', monospace;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); -webkit-font-smoothing:antialiased}
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+    background-image:
+      radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+      radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+    mix-blend-mode: multiply;
+    opacity:.6;
+  }
+
+  .page{max-width:1080px; margin:0 auto; padding: 32px 56px 80px; position:relative}
+
+  /* ============== COVER ============== */
+  .cover{
+    border:4px double var(--rule);
+    padding: 28px 36px 32px;
+    background: var(--paper);
+    position:relative; overflow:hidden;
+  }
+  .cover .rails{
+    display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+    font-family:var(--slab-2); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--ink-3);
+    padding-bottom:12px; border-bottom: 1px solid var(--rule); margin-bottom: 18px;
+  }
+  .cover .rails a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink)}
+  .cover .rails a:hover{background:var(--yellow)}
+  .cover .crumb{font-family:var(--type)}
+
+  .cover .kicker{
+    font-family:var(--slab-2); font-size:13px; letter-spacing:.3em; color:var(--stamp);
+    text-transform:uppercase; margin-bottom:6px;
+  }
+  .cover h1{
+    font-family:var(--slab); font-weight:400; font-size: clamp(56px, 9vw, 128px); line-height:.86;
+    margin: 0 0 12px; text-transform:uppercase; letter-spacing:-.01em;
+  }
+  .cover .lede{
+    font-family:var(--serif); font-size:20px; line-height:1.45; color:var(--ink-2);
+    max-width: 720px; font-style:italic;
+    border-left: 3px solid var(--ink); padding-left: 14px;
+  }
+  .cover .spec{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border-top: 2px solid var(--rule); margin-top: 24px;
+  }
+  .cover .spec > div{
+    padding: 14px 18px 14px 0; border-right:1px solid var(--ink-3);
+    font-family:var(--type); font-size:12px; line-height:1.5; color:var(--ink-2);
+  }
+  .cover .spec > div:last-child{border-right:0; padding-right:0}
+  .cover .spec b{display:block; font-family:var(--slab-2); font-size:10px; font-weight:600; color:var(--stamp); letter-spacing:.2em; text-transform:uppercase; margin-bottom:4px}
+  .cover .spec .v{font-family:var(--slab); font-size:22px; color:var(--ink); text-transform:uppercase; line-height:1; letter-spacing:-.01em; margin-top:6px}
+
+  .cover .stamp{
+    position:absolute; top:22px; right:22px;
+    width:110px; height:110px; border:3px solid var(--stamp); border-radius:50%;
+    display:grid; place-items:center; transform:rotate(-8deg);
+    color:var(--stamp); font-family:var(--slab); text-transform:uppercase;
+    text-align:center; line-height:.95;
+    opacity:.95; background:var(--paper);
+    pointer-events:none;
+  }
+  .cover .stamp::before{
+    content:""; position:absolute; inset:5px; border:1.5px solid var(--stamp); border-radius:50%;
+  }
+  .cover .stamp .big{font-size:18px; line-height:.9; letter-spacing:-.01em}
+  .cover .stamp .sm{font-family:var(--type); font-size:8px; margin-top:3px; letter-spacing:.15em}
+
+  /* ============== SECTION HEADS ============== */
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin: 64px 0 16px;
+    border-bottom:2px solid var(--rule); padding-bottom:6px;
+  }
+  .section-head h2{
+    font-family:var(--slab); font-weight:400; font-size: 64px; line-height:.9; margin:0;
+    text-transform:uppercase; letter-spacing:-.005em;
+  }
+  .section-head .page-no{font-family:var(--type); color:var(--ink-3); font-size:12px; letter-spacing:.2em; text-transform:uppercase}
+
+  .sub-kicker{
+    font-family:var(--slab-2); font-size:12px; letter-spacing:.25em; color:var(--stamp);
+    text-transform:uppercase; margin-top: 10px; display:flex; align-items:center; gap:10px;
+  }
+  .sub-kicker::before{content:""; width:20px; height:2px; background:var(--stamp)}
+
+  /* ============== LEDE PROSE ============== */
+  .prose{font-family:var(--serif); font-size:16px; line-height:1.6; color:var(--ink-2); max-width: 720px}
+  .prose p{margin: 0 0 14px}
+  .prose b{color:var(--ink); font-weight:700}
+  .prose a{color:var(--ink); text-underline-offset:3px}
+  .prose .hilite{background:var(--yellow); padding:0 3px; color:var(--ink)}
+  .prose code{font-family:var(--mono); font-size:.88em; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+
+  /* ============== PRICE BANNER (two columns) ============== */
+  .plans{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 2px solid var(--rule);
+    margin-top: 10px;
+    background: var(--paper);
+  }
+  .plan{
+    padding: 28px 30px; position:relative;
+  }
+  .plan + .plan{ border-left: 2px solid var(--rule); background: var(--paper-2); }
+  .plan .tkt-head{
+    font-family:var(--slab-2); font-size:11px; text-transform:uppercase; letter-spacing:.25em; color:var(--stamp);
+    padding-bottom:10px; border-bottom:1px solid var(--ink); margin-bottom:14px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .plan h3{
+    font-family:var(--slab); font-weight:400; font-size:44px; line-height:.92; margin:0 0 8px;
+    text-transform:uppercase; letter-spacing:-.005em;
+  }
+  .plan .price{
+    font-family:var(--slab); font-size:56px; line-height:.92; margin: 6px 0 14px;
+    color:var(--stamp); letter-spacing:-.01em;
+  }
+  .plan .price small{font-family:var(--type); font-size:12px; color:var(--ink-3); letter-spacing:.12em; text-transform:uppercase; display:block; margin-top:4px}
+  .plan p.l{font-family:var(--serif); font-size:14.5px; line-height:1.55; margin:0 0 14px; color:var(--ink-2)}
+  .plan ul{margin: 6px 0 18px; padding-left: 0; list-style:none; font-family:var(--serif); font-size:14px; color:var(--ink-2)}
+  .plan ul li{
+    padding: 7px 0; border-bottom: 1px dotted var(--ink-3);
+    display:grid; grid-template-columns: 22px 1fr; gap: 8px; align-items:baseline;
+  }
+  .plan ul li:last-child{border-bottom:0}
+  .plan ul li::before{
+    content:"✓"; font-family:var(--slab); color:var(--stamp); font-size:16px; line-height:1; padding-top:2px;
+  }
+  .plan ul li.no::before{ content:"·"; color:var(--ink-3) }
+  .plan .btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 4px}
+  .btn{
+    font-family:var(--slab-2); font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+    padding:12px 20px; border:2px solid var(--ink); background:var(--ink); color:var(--paper);
+    cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{background:var(--stamp); border-color:var(--stamp); color:var(--paper)}
+  .btn.alt{background:transparent; color:var(--ink)}
+  .btn.alt:hover{background:var(--yellow); color:var(--ink); border-color:var(--ink)}
+
+  .plan .chip{
+    position:absolute; top:-12px; right:22px;
+    font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.25em;
+    padding: 4px 10px; background:var(--stamp); color:var(--paper); text-transform:uppercase;
+  }
+
+  /* ============== STEPS ============== */
+  .steps{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 2px solid var(--rule); margin: 18px 0 26px; background:var(--paper);
+  }
+  .step{
+    padding: 20px 22px; border-right:1px solid var(--ink); position:relative;
+  }
+  .step:last-child{border-right:0}
+  .step .no{
+    font-family:var(--slab); font-size: 72px; line-height:.85; color:var(--stamp); margin-bottom: 6px; letter-spacing:-.02em;
+  }
+  .step h4{
+    font-family:var(--slab); font-weight:400; font-size:22px; line-height:1; margin: 0 0 10px;
+    text-transform:uppercase; letter-spacing:-.005em;
+  }
+  .step p{font-family:var(--serif); font-size:14px; line-height:1.5; margin:0; color:var(--ink-2)}
+  .step p + p{margin-top: 8px}
+  .step .kbd, .step code{
+    display:inline-block; font-family:var(--mono); font-size:12px; background:var(--paper-2); border:1px solid var(--ink);
+    padding:1px 6px; margin: 0 2px;
+  }
+  .step a{color:var(--ink); text-underline-offset:2px}
+
+  /* ============== KEY CARDS ============== */
+  .keys{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+    margin: 14px 0 22px;
+  }
+  .key-card{
+    border:2px solid var(--ink); padding: 14px 16px; background: var(--paper);
+    display:grid; grid-template-columns: 56px 1fr auto; gap: 14px; align-items:center;
+  }
+  .key-card .no{
+    font-family:var(--slab); font-size: 38px; line-height:.9; color:var(--stamp); letter-spacing:-.02em;
+  }
+  .key-card .nm{font-family:var(--slab); font-size:20px; line-height:1; text-transform:uppercase; letter-spacing:-.005em}
+  .key-card .rl{font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.04em; margin-top:4px}
+  .key-card .cost{
+    font-family:var(--slab-2); font-weight:600; font-size:11px; letter-spacing:.15em; padding: 4px 8px; text-transform:uppercase;
+    border:1px solid var(--ink); background:var(--paper-2); text-align:center; min-width:84px;
+  }
+  .key-card.req .cost{background:var(--stamp); color:var(--paper); border-color:var(--stamp)}
+  .key-card.opt .cost{color:var(--ink-3)}
+
+  /* ============== CALLOUT ============== */
+  .callout{
+    border: 2px solid var(--ink);
+    padding: 18px 20px; margin: 22px 0;
+    background: var(--paper-2);
+    display:grid; grid-template-columns: 108px 1fr; gap: 20px; align-items:start;
+  }
+  .callout .tag{
+    font-family:var(--slab); font-size:26px; line-height:.95; text-transform:uppercase; letter-spacing:-.01em;
+    color:var(--stamp);
+  }
+  .callout .tag small{display:block; font-family:var(--slab-2); font-size:10px; font-weight:600; color:var(--ink-3); letter-spacing:.2em; margin-top:4px}
+  .callout .bd{font-family:var(--serif); font-size:15px; line-height:1.55; color:var(--ink); margin:0}
+  .callout.warn{background: #f6e7a8}
+  .callout.warn .tag{color:#7a5a10}
+  .callout.tip{background: #d7e9c8}
+  .callout.tip .tag{color:#345a1f}
+
+  /* ============== SPEC TABLE ============== */
+  .spec-table{
+    width:100%; border-collapse:collapse; margin: 10px 0 22px;
+    border: 2px solid var(--ink); font-family:var(--serif); font-size:14.5px;
+    background: var(--paper);
+  }
+  .spec-table th{
+    text-align:left; font-family:var(--slab-2); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em;
+    padding:10px 14px; border-bottom: 2px solid var(--ink); background:var(--ink); color:var(--paper);
+  }
+  .spec-table td{padding:10px 14px; border-bottom:1px solid var(--ink-3); vertical-align:top}
+  .spec-table tr:last-child td{border-bottom:0}
+  .spec-table td.label{font-family:var(--slab-2); font-weight:700; letter-spacing:.05em; color:var(--ink); text-transform:uppercase; font-size:13px; width:28%}
+  .spec-table td code{font-family:var(--mono); font-size:12.5px; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+
+  /* ============== Q&A ============== */
+  .qa{
+    border: 2px solid var(--ink);
+    font-family:var(--serif); margin-top: 10px;
+  }
+  .qa .row{
+    padding: 14px 18px; border-bottom: 1px solid var(--ink-3);
+  }
+  .qa .row:last-child{border-bottom:0}
+  .qa .q{
+    font-family:var(--slab); font-size:22px; line-height:1.05; margin: 0 0 8px;
+    text-transform:uppercase; letter-spacing:-.005em; color:var(--ink);
+  }
+  .qa .a{font-family:var(--serif); font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0}
+  .qa .a a{color:var(--ink); text-underline-offset:2px}
+  .qa .a code{font-family:var(--mono); font-size:12.5px; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+
+  /* ============== COMPARE ============== */
+  .compare{
+    width:100%; border-collapse:collapse; margin: 10px 0 30px;
+    border: 2px solid var(--ink); font-family:var(--serif); font-size:14px; background:var(--paper);
+  }
+  .compare th{
+    text-align:left; font-family:var(--slab-2); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.15em;
+    padding:12px 14px; background:var(--ink); color:var(--paper);
+    border-right:1px solid var(--paper-3);
+  }
+  .compare th:last-child{border-right:0}
+  .compare th.hl{background:var(--stamp); color:var(--paper)}
+  .compare td{padding:10px 14px; border-bottom:1px solid var(--ink-3); border-right:1px solid var(--ink-3); vertical-align:top}
+  .compare td:last-child{border-right:0}
+  .compare tr:last-child td{border-bottom:0}
+  .compare td.label{font-family:var(--slab-2); font-weight:700; letter-spacing:.05em; color:var(--ink); text-transform:uppercase; font-size:12.5px; background:var(--paper-2)}
+  .compare td.y{color:var(--ink); font-family:var(--slab); text-transform:uppercase; letter-spacing:-.005em; font-size:18px}
+  .compare td.n{color:var(--ink-3); font-family:var(--type); font-size:13px}
+  .compare td .hint{display:block; font-family:var(--serif); font-size:12.5px; color:var(--ink-3); font-style:italic; text-transform:none; letter-spacing:0; margin-top:2px; font-weight:400}
+
+  /* ============== CTA BAND ============== */
+  .cta-bar{
+    margin-top: 48px;
+    display:flex; gap:14px; align-items:center; justify-content:space-between;
+    background:var(--ink); color:var(--paper);
+    padding: 24px 28px; border: 2px solid var(--ink);
+  }
+  .cta-bar .lhs{
+    font-family:var(--slab); text-transform:uppercase; font-size:32px; line-height:1.05; letter-spacing:-.005em;
+  }
+  .cta-bar .lhs small{display:block; font-family:var(--type); font-size:11px; color:var(--paper-3); letter-spacing:.2em; margin-top:8px; text-transform:uppercase}
+  .cta-bar .btns{display:flex; gap:10px; flex-wrap:wrap}
+  .cta-bar .btn{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+  .cta-bar .btn:hover{background:var(--yellow); border-color:var(--yellow); color:var(--ink)}
+  .cta-bar .btn.alt{background:transparent; color:var(--paper); border-color:var(--paper)}
+  .cta-bar .btn.alt:hover{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+
+  /* ============== FOOTER ============== */
+  .colophon{
+    margin-top: 80px; padding-top: 22px; border-top: 6px solid var(--rule);
+  }
+  .colophon .top{
+    display:flex; justify-content:space-between; align-items:baseline; gap:24px;
+    border-bottom: 2px solid var(--rule); padding-bottom: 16px; margin-bottom: 18px;
+  }
+  .colophon .top .lg{font-family:var(--slab); font-size:48px; line-height:.9; text-transform:uppercase; letter-spacing:-.01em}
+  .colophon .top .tag{font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-2); max-width:380px; text-align:right}
+  .colophon .bot{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.08em; text-transform:uppercase;
+  }
+  .colophon .bot a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink); margin:0 8px}
+  .colophon .bot a:hover{background:var(--yellow)}
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 960px){
+    .page{padding: 28px 28px 60px}
+    .plans{grid-template-columns:1fr}
+    .plan + .plan{border-left:0; border-top:2px solid var(--rule)}
+    .plan .chip{right: 18px}
+    .steps{grid-template-columns: 1fr}
+    .step{border-right:0; border-bottom:1px solid var(--ink)}
+    .step:last-child{border-bottom:0}
+    .keys{grid-template-columns:1fr}
+    .section-head h2{font-size:44px}
+    .cover h1{font-size: 64px; line-height:.9}
+    .cover .spec{grid-template-columns: 1fr 1fr}
+    .cover .spec > div:nth-child(2){border-right:0}
+    .cover .spec > div{border-right:1px solid var(--ink-3); border-bottom:1px solid var(--ink-3); padding:14px 14px}
+    .cover .spec > div:nth-child(n+3){border-bottom:0}
+    .callout{grid-template-columns:1fr; gap:10px}
+    .cta-bar{flex-direction:column; align-items:flex-start}
+    .cta-bar .lhs{font-size:24px}
+  }
+
+  @media (max-width: 640px){
+    .page{padding: 16px 18px 48px}
+    .cover{padding: 20px 18px 22px; border-width:3px}
+    .cover .rails{flex-direction:column; align-items:flex-start; gap:6px; font-size:10px; letter-spacing:.2em; padding-bottom:8px; margin-bottom:12px}
+    .cover .stamp{
+      position:static; width:auto; height:auto; border-radius:0; border:2px solid var(--stamp);
+      transform:none; padding:6px 10px; margin: 0 0 12px; display:inline-flex; align-items:center; gap:10px;
+    }
+    .cover .stamp::before{display:none}
+    .cover .stamp .big{font-size:14px; letter-spacing:.08em}
+    .cover .stamp .sm{margin-top:0}
+    .cover h1{font-size: 48px; line-height:.9; letter-spacing:-.01em}
+    .cover .lede{font-size:15px; line-height:1.5; padding-left:10px; border-left-width:2px}
+    .cover .spec{grid-template-columns: 1fr; margin-top:18px}
+    .cover .spec > div{border-right:0; border-bottom:1px solid var(--ink-3); padding:12px 0}
+    .cover .spec > div:last-child{border-bottom:0}
+    .cover .spec .v{font-size:20px}
+
+    .section-head h2{font-size: 36px}
+    .section-head{margin-top: 40px}
+
+    .plan h3{font-size: 30px}
+    .plan .price{font-size: 40px}
+    .plan{padding: 20px 18px}
+
+    .steps .step{padding: 14px 16px}
+    .steps .step h4{font-size: 18px}
+    .steps .step .no{font-size: 52px}
+
+    .key-card{grid-template-columns: 40px 1fr; gap:10px; padding:12px 12px; align-items:start}
+    .key-card .no{font-size:30px}
+    .key-card .nm{font-size:17px}
+    .key-card .cost{grid-column:1 / 3; min-width:0; text-align:left; padding:3px 8px; justify-self:start; margin-top:4px}
+
+    .compare{font-size:13px}
+    .compare th, .compare td{padding:8px 10px}
+    .compare td.y{font-size:15px}
+
+    .cta-bar{flex-direction:column; align-items:flex-start; padding: 20px 18px}
+
+    .colophon{padding:16px 0 0}
+    .colophon .top{flex-direction:column; align-items:flex-start; gap:8px}
+    .colophon .top .lg{font-size:34px}
+    .colophon .top .tag{text-align:left; font-size:13px; max-width:none}
+    .colophon .bot{flex-direction:column; align-items:flex-start; gap:8px}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============== COVER ============== -->
+  <section class="cover">
+    <div class="rails">
+      <div class="crumb">
+        <a href="../">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The subscription desk
+      </div>
+      <div>Pg. A5 · MMXXVI · MIT license</div>
+    </div>
+
+    <div class="stamp"><div><div class="big">Open<br>Source</div><div class="sm">● MIT LICENSE</div></div></div>
+
+    <div class="kicker">— Subscription desk · Pg. A5 · Circulation —</div>
+    <h1>Pricing.</h1>
+    <div class="lede">
+      Peanut Gallery is <b>free and open source</b>. Bring your own keys and run it forever at API cost. Or pay $8/month so we handle the keys for you — an accessibility tier, not a profit center.
+    </div>
+
+    <div class="spec">
+      <div>
+        <b>Bring your keys</b>
+        <div class="v">Free</div>
+        <div>You pay providers at their rates. ~$1.15 per 2-hour podcast.</div>
+      </div>
+      <div>
+        <b>Peanut Gallery Plus</b>
+        <div class="v">$8 / mo</div>
+        <div>16 hours of hosted reactions, every week. Cancel anytime.</div>
+      </div>
+      <div>
+        <b>Free trial</b>
+        <div class="v">15 min</div>
+        <div>One-off, lifetime per install. No card, no signup.</div>
+      </div>
+      <div>
+        <b>Self-host</b>
+        <div class="v">$0</div>
+        <div>Node 20, four keys, one <code>.env</code>. MIT all the way down.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SECTION 1 · BYOK ============== -->
+  <section id="byok">
+    <div class="section-head">
+      <h2>Bring your own keys.</h2>
+      <div class="page-no">§ 01 · The free path</div>
+    </div>
+
+    <div class="sub-kicker">The simplest guide possible</div>
+
+    <div class="prose">
+      <p>This is the path we built first, and the path that stays free forever. The extension is MIT-licensed — you run it, you own it, we don't gate a single feature behind a paywall. <b>Four providers, three steps, done.</b></p>
+    </div>
+
+    <!-- 3 steps, dead simple -->
+    <div class="steps">
+      <div class="step">
+        <div class="no">1</div>
+        <h4>Install from the Chrome Web Store</h4>
+        <p>One click: <a href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener"><b>Add to Chrome</b></a>. Pin the peanut in your toolbar.</p>
+        <p>Open any video tab, click the peanut, side panel opens. That's the whole install.</p>
+      </div>
+      <div class="step">
+        <div class="no">2</div>
+        <h4>Get three keys</h4>
+        <p>Sign up at these three sites. Every one has a free tier that covers casual use:</p>
+        <p><b>Deepgram</b> · transcription · <a href="https://console.deepgram.com/signup" target="_blank" rel="noopener">sign up</a></p>
+        <p><b>Anthropic</b> · fact &amp; comedy · <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">sign up</a></p>
+        <p><b>xAI</b> · troll &amp; FX · <a href="https://console.x.ai/" target="_blank" rel="noopener">sign up</a></p>
+      </div>
+      <div class="step">
+        <div class="no">3</div>
+        <h4>Paste them into the side panel</h4>
+        <p>Click the gear icon at the bottom of the side panel → pick <span class="kbd">My keys</span> → paste the three strings.</p>
+        <p>Close the drawer. Click the red <span class="kbd">Start</span> button on a video. You're live.</p>
+      </div>
+    </div>
+
+    <!-- What keys you actually need -->
+    <div class="keys">
+      <div class="key-card req">
+        <div class="no">01</div>
+        <div>
+          <div class="nm">Deepgram</div>
+          <div class="rl">Real-time speech-to-text · Nova-3</div>
+        </div>
+        <div class="cost">Required</div>
+      </div>
+      <div class="key-card req">
+        <div class="no">02</div>
+        <div>
+          <div class="nm">Anthropic</div>
+          <div class="rl">Fact-checker &amp; comedy writer · Claude Haiku</div>
+        </div>
+        <div class="cost">Required</div>
+      </div>
+      <div class="key-card req">
+        <div class="no">03</div>
+        <div>
+          <div class="nm">xAI</div>
+          <div class="rl">Troll &amp; sound-effects guy · Grok 4.1 Fast</div>
+        </div>
+        <div class="cost">Required</div>
+      </div>
+      <div class="key-card opt">
+        <div class="no">04</div>
+        <div>
+          <div class="nm">Brave Search</div>
+          <div class="rl">Receipts for the fact-checker · <i>optional</i></div>
+        </div>
+        <div class="cost">Optional</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="tag">COST<small>REAL NUMBERS</small></div>
+      <div class="bd">
+        Running your own keys against a <b>two-hour podcast</b> typically comes in at <b>~$1.15 in API spend</b>. That's about <b>$0.60/hour</b> of reactions. All four providers offer free tiers (Deepgram bundles $200 of credit at signup; Anthropic + xAI extend generous free usage). For most casual viewers, BYOK is genuinely $0/month.
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Want the deep version — self-hosting the backend, writing your own persona pack, switching from Brave to xAI Live Search? The <a href="/manual/">Operator's Manual</a> has it. For paste-your-keys-and-go, the three steps above are the whole flow.</p>
+    </div>
+  </section>
+
+  <!-- ============== SECTION 2 · PLUS ============== -->
+  <section id="plus">
+    <div class="section-head">
+      <h2>Peanut Gallery Plus.</h2>
+      <div class="page-no">§ 02 · The accessibility tier</div>
+    </div>
+
+    <div class="sub-kicker">Why this exists</div>
+
+    <div class="prose">
+      <p><b>Plus is not a profit center.</b> The entire reason it exists: a lot of people who'd enjoy Peanut Gallery can't paste four API keys into a settings drawer. Some don't know what an API key is. Some have the skill but can't justify the time. The extension is useless to them if the only way in is a technical onboarding.</p>
+      <p>So Plus is a <span class="hilite">flat-rate lane</span> for people who just want the product. You pay $8/month, we handle everything upstream — the keys, the quotas, the rate limits. You get a plain-text code to paste into the drawer once, and it runs.</p>
+      <p>The goal, in priority order: (1) non-techs can try it for free; (2) non-techs who like it can keep using it for a flat price; (3) techs keep BYOK unchanged forever; (4) we don't lose money on Plus at scale. <b>We've committed to driving the price down over time</b>, not up. If our backend gets cheaper to run, you pay less — we don't raise the cap, we lower the price.</p>
+    </div>
+
+    <!-- Plan tiles -->
+    <div class="plans">
+      <div class="plan">
+        <div class="tkt-head"><span>Free · One-off trial</span><span>No card</span></div>
+        <h3>Try it for free.</h3>
+        <div class="price">15 min<small>Lifetime, per install</small></div>
+        <p class="l">A single 15-minute trial of the hosted backend, lifetime, per install. No email. No card. Just click <b>Start</b> and go.</p>
+        <ul>
+          <li>Full fact-checker + comedy writer + troll + FX</li>
+          <li>Swap Stern / TWiST persona packs</li>
+          <li>Native Chrome side panel experience</li>
+          <li class="no">Does not renew — when the 15 min are up, pick BYOK or Plus</li>
+        </ul>
+        <div class="btnrow">
+          <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">▶ Install &amp; try</a>
+        </div>
+      </div>
+
+      <div class="plan">
+        <div class="chip">RECOMMENDED</div>
+        <div class="tkt-head"><span>Peanut Gallery Plus</span><span>Flat monthly rate</span></div>
+        <h3>Plus.</h3>
+        <div class="price">$8 / month<small>16 hours of reactions, every week · cancel anytime</small></div>
+        <p class="l">One price. A weekly bucket of 16 hours. You pay us, we pay the providers. Pure access — no feature gates, no upsells, no ads, no data mining.</p>
+        <ul>
+          <li>16 hours/week of hosted transcription + persona fires</li>
+          <li>Bucket resets every 7 days — unused hours don't bank, they refresh</li>
+          <li>Everything in the extension, unlocked — all four critics, both packs</li>
+          <li>License key over email — no account, no password, no OAuth dance</li>
+          <li>Cancel anytime in two clicks — service ends at the billing-period end</li>
+        </ul>
+        <div class="btnrow">
+          <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">▶ Get Plus in the extension</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-kicker">How it works, end to end</div>
+
+    <div class="prose">
+      <p>No account system. No password. No OAuth. Plus uses a <b>license key</b> over email — the same pattern as a coupon code — because that's the lightest-weight way to identify a subscription without introducing a whole login surface.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="no">1</div>
+        <h4>Subscribe from the side panel</h4>
+        <p>Open the settings gear → pick <span class="kbd">Plus</span> on the backend toggle → click <b>Subscribe</b>. You'll be asked for one thing: your email.</p>
+      </div>
+      <div class="step">
+        <div class="no">2</div>
+        <h4>Pay on Stripe</h4>
+        <p>A Stripe Checkout page opens. $8/month. No trial add-on, no upsell. We never see your card; <a href="https://stripe.com/payments" target="_blank" rel="noopener">Stripe handles it</a>.</p>
+      </div>
+      <div class="step">
+        <div class="no">3</div>
+        <h4>Key arrives, paste, go</h4>
+        <p>An email with your license key (<code>pg-xxxx-xxxx-xxxx</code>) lands in under a minute. Paste it into the drawer once. The extension remembers it on that device forever.</p>
+      </div>
+    </div>
+
+    <!-- The details table -->
+    <div class="sub-kicker">Every detail, in a single table</div>
+
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="label">Price</td><td><b>$8.00 USD / month</b>, auto-renewing monthly until you cancel.</td></tr>
+        <tr><td class="label">Included</td><td>16 hours of hosted transcription + AI reactions per 7-day rolling week. Both persona packs. All four critics. Every existing feature of the extension. No feature gates versus BYOK — gates would be user-hostile.</td></tr>
+        <tr><td class="label">Weekly cap</td><td>Hard limit. When you hit 16 h in a 7-day window, Plus calls return a friendly 402 — the panel surfaces "you've hit this week's cap" and suggests pasting your own keys to keep going. The window rolls forward; you don't lose anything.</td></tr>
+        <tr><td class="label">Rollover</td><td>Hours do <b>not</b> bank. Unused hours at week-end refresh to 16. The cap is designed to cover "watches roughly an hour a day plus some podcasts" — not to reward hoarding.</td></tr>
+        <tr><td class="label">Identity</td><td>A license key like <code>pg-xxxx-xxxx-xxxx</code> emailed to the address you gave at checkout. No username, no password. Paste once per device.</td></tr>
+        <tr><td class="label">Multi-device</td><td>Paste the same key on as many of your own devices as you want — laptop, desktop, partner's browser. One person, any number of machines. Abuse (sharing with strangers) is handled by the usage cap, not by device enforcement.</td></tr>
+        <tr><td class="label">Losing your key</td><td>Click <b>Manage → Email me my key</b> in the drawer. Enter your signup email. Active subscription → key gets re-emailed. No subscription on that email → we tell you. Zero support-ticket friction.</td></tr>
+        <tr><td class="label">Cancellation</td><td>Click <b>Manage → Cancel</b> → confirm in the Stripe Customer Portal (we email a one-time signed link). Service continues to the end of the current billing period, then stops. <b>No pro-rata refunds for partial months</b>, but see below.</td></tr>
+        <tr><td class="label">Refunds</td><td>Something went wrong, you forgot to cancel, you hated it? Email <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a>. We default to yes on refund requests made in good faith within 30 days. This is not a business we're trying to lock people into.</td></tr>
+        <tr><td class="label">Data</td><td>We store <b>your license key, the email you gave Stripe, and a weekly-hours counter</b>. No transcripts. No audio. No persona outputs. No analytics inside the extension. The hours counter is the only engagement signal and it exists to enforce the cap.</td></tr>
+        <tr><td class="label">Payment data</td><td>Stripe holds it, we never touch it. We can't see your card. We can see an email and a subscription status.</td></tr>
+        <tr><td class="label">Taxes</td><td>Where applicable, collected automatically via Stripe Tax. Shown at checkout before you pay.</td></tr>
+        <tr><td class="label">Price changes</td><td>The goal is down, not up. If our costs change enough to require a price change, existing subscribers get <b>60 days notice by email</b> before the new rate applies to their subscription.</td></tr>
+        <tr><td class="label">Switching to BYOK</td><td>Plus and BYOK live side-by-side in the drawer. When Plus is active, you'll see a second toggle: <b>Use with: [Subscription · My keys]</b>. Flipping to <b>My keys</b> runs the current session on your own keys and costs zero hours on your Plus cap. Useful when you want to experiment without burning the weekly bucket.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Comparison -->
+    <div class="sub-kicker">Free trial · BYOK · Plus · Self-host</div>
+
+    <table class="compare">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Free trial</th>
+          <th class="hl">Plus — $8/mo</th>
+          <th>BYOK</th>
+          <th>Self-host</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label">Cost</td>
+          <td class="y">$0<span class="hint">Lifetime one-off</span></td>
+          <td class="y">$8<span class="hint">per month</span></td>
+          <td class="y">$0<span class="hint">+ provider usage</span></td>
+          <td class="y">$0<span class="hint">+ hosting + providers</span></td>
+        </tr>
+        <tr>
+          <td class="label">Hours</td>
+          <td class="n">15 minutes total</td>
+          <td class="y">16 h / week</td>
+          <td class="n">Provider rate-limits</td>
+          <td class="n">Your machine's limits</td>
+        </tr>
+        <tr>
+          <td class="label">Technical setup</td>
+          <td class="n">None</td>
+          <td class="n">Paste one code</td>
+          <td class="n">4 signups, paste keys</td>
+          <td class="n">Node, <code>.env</code>, deploy</td>
+        </tr>
+        <tr>
+          <td class="label">Personas &amp; packs</td>
+          <td class="y">All<span class="hint">Howard Stern + TWiST</span></td>
+          <td class="y">All</td>
+          <td class="y">All</td>
+          <td class="y">All</td>
+        </tr>
+        <tr>
+          <td class="label">Side panel UX</td>
+          <td class="y">Full</td>
+          <td class="y">Full</td>
+          <td class="y">Full</td>
+          <td class="y">Full</td>
+        </tr>
+        <tr>
+          <td class="label">Your audio</td>
+          <td class="n">In-session only</td>
+          <td class="n">In-session only</td>
+          <td class="n">In-session only</td>
+          <td class="n">Your server, your rules</td>
+        </tr>
+        <tr>
+          <td class="label">Provider bills</td>
+          <td class="n">We pay</td>
+          <td class="n">We pay</td>
+          <td class="n">You pay directly</td>
+          <td class="n">You pay directly</td>
+        </tr>
+        <tr>
+          <td class="label">Best for</td>
+          <td class="n">Curious first-timer</td>
+          <td class="n">Non-techs who use it daily</td>
+          <td class="n">Techs + heavy users</td>
+          <td class="n">Privacy purists</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Economics callout — transparency -->
+    <div class="callout">
+      <div class="tag">ECONOMICS<small>TRANSPARENT</small></div>
+      <div class="bd">
+        At today's API rates, 16 hours of reactions per week costs us <b>~$5.40/month</b> at the backend to run. $8 − Stripe fees − infra overhead leaves a thin operating margin — enough to keep the lights on, not enough to optimize for. If upstream rates drop (cheaper models, cached fact-checks, batched Director calls), the delta goes to lowering your price, not our margin. That's the commitment, in writing, at Pg. A5.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section id="faq">
+    <div class="section-head">
+      <h2>Letters to the editor.</h2>
+      <div class="page-no">§ 03 · FAQ</div>
+    </div>
+
+    <div class="qa">
+      <div class="row">
+        <div class="q">Is any feature Plus-only?</div>
+        <div class="a">No. Plus does not unlock anything. It's a way to pay for compute without juggling keys. Everything in the extension is free and MIT-licensed — <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">fork the repo</a>, it's all there.</div>
+      </div>
+      <div class="row">
+        <div class="q">What happens if I cancel mid-month?</div>
+        <div class="a">Your subscription runs to the end of the current billing period, then stops. You keep using Plus for the days you paid for. The license key stops validating at period end; you can swap the drawer back to <span class="kbd">My keys</span> or <span class="kbd">Demo</span> with zero data loss.</div>
+      </div>
+      <div class="row">
+        <div class="q">Can I upgrade from BYOK to Plus later? Or the other way around?</div>
+        <div class="a">Yes, seamlessly. The settings drawer has three modes — <b>Demo</b>, <b>My keys</b>, and <b>Plus</b> — and you switch between them with a single click. Your saved keys and your Plus subscription coexist. You can even run a session on Plus and swap mid-session to your own keys if you want to preserve the weekly cap for later.</div>
+      </div>
+      <div class="row">
+        <div class="q">What if I share my key with a friend?</div>
+        <div class="a">The cap is per-subscription, not per-device — so if two of you share a key, you share the 16 hours. No device enforcement, no DRM, no "authorized devices" list. This is the honor system, priced so splitting it with a roommate isn't worth the friction.</div>
+      </div>
+      <div class="row">
+        <div class="q">Is my audio stored anywhere?</div>
+        <div class="a">No. Audio is streamed to Deepgram live, transcripts fan out to Anthropic + xAI live, everything is held in memory for the duration of the session and discarded when you click Stop. No logs, no recordings, no analytics inside the extension. The <a href="/privacy/">privacy policy</a> covers the full picture.</div>
+      </div>
+      <div class="row">
+        <div class="q">Why 16 hours and not unlimited?</div>
+        <div class="a">Because uncapped means we eventually lose money on a single power user and have to raise the price on everyone. 16 h/week ≈ 2 h/day every day of the week — well above the median YouTube habit — with headroom for a couple long podcasts on a weekend. When upstream API costs drop, the cap goes up or the price goes down.</div>
+      </div>
+      <div class="row">
+        <div class="q">What models power Plus?</div>
+        <div class="a">Same as BYOK: <b>Deepgram Nova-3</b> for real-time transcription, <b>Claude Haiku</b> for the fact-checker + comedy writer, <b>xAI Grok 4.1 Fast</b> for the troll + sound-effects guy. No model downgrades for subscribers.</div>
+      </div>
+      <div class="row">
+        <div class="q">What about business use / teams?</div>
+        <div class="a">There's no team plan today. One person, one subscription, any number of their own devices. If a team license makes sense later, it'll be announced — and it'll honor the "never raise the individual price" commitment regardless.</div>
+      </div>
+      <div class="row">
+        <div class="q">Is this AI-generated content safe to show at work?</div>
+        <div class="a">Sometimes. The Troll is designed to dunk and The Bit comic is designed to joke — edit the personas (the extension supports sideloading your own pack) if you want a more SFW room. Self-host the backend, write a pack of four Jason Calacanis clones, swap in at runtime. The <a href="/manual/#packs">Operator's Manual</a> covers this.</div>
+      </div>
+      <div class="row">
+        <div class="q">What if Plus shuts down?</div>
+        <div class="a">BYOK is unaffected — the extension works forever because you own the provider accounts. If we ever retired the hosted backend, we'd email every Plus subscriber, refund unused time, and leave the extension fully functional on BYOK and self-host. Open source is the insurance policy.</div>
+      </div>
+      <div class="row">
+        <div class="q">How do I contact a human?</div>
+        <div class="a"><a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a> for billing, refunds, lost keys, bug reports. For code-level issues, <a href="https://github.com/Sethmr/peanut.gallery/issues" target="_blank" rel="noopener">open a GitHub issue</a>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-bar">
+    <div class="lhs">
+      Still free if you bring the keys.
+      <small>Install takes ~90 seconds · Chrome 116+</small>
+    </div>
+    <div class="btns">
+      <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">▶ Add to Chrome</a>
+      <a class="btn alt" href="/manual/">Operator's manual →</a>
+    </div>
+  </div>
+
+  <!-- ============== COLOPHON ============== -->
+  <footer class="colophon">
+    <div class="top">
+      <div class="lg">— 30 —</div>
+      <div class="tag">If the price ever changes, you'll hear about it here first. Pg. A5 is the canonical ledger.</div>
+    </div>
+    <div class="bot">
+      <div>© MMXXVI · Peanut Gallery Weekly · Printed in Chromium · MIT License</div>
+      <div>
+        <a href="/">Front page</a>
+        <a href="/manual/">Manual</a>
+        <a href="/panel/">Side panel</a>
+        <a href="/privacy/">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- JSON-LD: BreadcrumbList -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.peanutgallery.live/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://www.peanutgallery.live/pricing/"}]}
+</script>
+
+<!-- JSON-LD: Product (the Plus subscription) -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Peanut Gallery Plus","description":"A monthly subscription to Peanut Gallery's hosted backend. 16 hours of hosted transcription and AI persona reactions per week, no API keys required. Accessibility tier — not a profit center.","brand":{"@type":"Brand","name":"Peanut Gallery"},"image":"https://www.peanutgallery.live/assets/og-image.png","offers":{"@type":"Offer","price":"8.00","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"8.00","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitCode":"MON"}},"availability":"https://schema.org/InStock","url":"https://www.peanutgallery.live/pricing/"}}
+</script>
+
+<!-- JSON-LD: FAQPage -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"Is any feature Plus-only?","acceptedAnswer":{"@type":"Answer","text":"No. Plus does not unlock anything. It is a way to pay for compute without juggling keys. Every feature of the extension is free and MIT-licensed."}},
+  {"@type":"Question","name":"What happens if I cancel mid-month?","acceptedAnswer":{"@type":"Answer","text":"Your subscription runs to the end of the current billing period, then stops. You keep using Plus for the days you paid for."}},
+  {"@type":"Question","name":"Can I switch between BYOK and Plus later?","acceptedAnswer":{"@type":"Answer","text":"Yes. The settings drawer has three modes — Demo, My keys, and Plus — and you switch between them with a single click. Your keys and subscription coexist."}},
+  {"@type":"Question","name":"Is my audio stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Audio is streamed live to Deepgram, transcripts fan out to Anthropic and xAI live, and everything is held in memory for the duration of the session and discarded when you stop. No logs, no recordings."}},
+  {"@type":"Question","name":"Why 16 hours per week and not unlimited?","acceptedAnswer":{"@type":"Answer","text":"Uncapped means we eventually lose money on a single power user and have to raise the price on everyone. 16 hours per week is well above the median viewing habit with headroom for long podcasts on weekends."}},
+  {"@type":"Question","name":"What models power Peanut Gallery Plus?","acceptedAnswer":{"@type":"Answer","text":"Deepgram Nova-3 for real-time transcription, Claude Haiku for the fact-checker and comedy writer, and xAI Grok 4.1 Fast for the troll and sound-effects guy. Same models as BYOK — no downgrades for subscribers."}}
+]}
+</script>
+
+</body>
+</html>
