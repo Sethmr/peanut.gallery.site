@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <!-- SEO -->
-<meta name="description" content="How Peanut Gallery handles your audio, API keys, subscription data, and payment info. Short answer: your keys stay on your machine, audio is transcribed live and discarded, Plus stores only a license key and weekly-hours counter, payments live at Stripe." />
+<meta name="description" content="How Peanut Gallery handles your audio, API keys, transcript, and subscription data. Audio streamed and discarded, keys never written to disk, minimal subscription state, no ads, no data sale, no analytics in the extension." />
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
 <link rel="canonical" href="https://www.peanutgallery.live/privacy/" />
 
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Peanut Gallery" />
 <meta property="og:url" content="https://www.peanutgallery.live/privacy/" />
 <meta property="og:title" content="Privacy Policy · Peanut Gallery" />
-<meta property="og:description" content="Your keys stay on your machine. Audio is transcribed in real-time and discarded. Nothing is logged." />
+<meta property="og:description" content="Audio streamed and discarded. Keys never written to disk. Minimal subscription state. No ads, no data sale, no analytics in the extension." />
 <meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 
 <!-- Favicons -->
@@ -50,103 +50,143 @@
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;background-image:radial-gradient(rgba(0,0,0,.05) 1px,transparent 1px),radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);background-size:3px 3px,7px 7px;background-position:0 0,1px 2px;mix-blend-mode:multiply;opacity:.6}
-  .wrap{max-width:720px;margin:0 auto;padding:48px 28px 96px;position:relative}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 28px 96px;position:relative}
   .crumb{font-family:var(--type);font-size:12px;color:var(--ink-3);margin-bottom:28px;letter-spacing:.02em}
   .crumb a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink-3)}
   h1{font-family:var(--slab);font-weight:400;font-size:clamp(56px,9vw,96px);line-height:.9;margin:0 0 6px;letter-spacing:.01em}
-  .updated{font-family:var(--slab-2);text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--ink-3);border-top:2px solid var(--rule);border-bottom:1px solid var(--ink-3);padding:8px 0;margin:18px 0 36px;display:flex;justify-content:space-between}
+  .updated{font-family:var(--slab-2);text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--ink-3);border-top:2px solid var(--rule);border-bottom:1px solid var(--ink-3);padding:8px 0;margin:18px 0 36px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   h2{font-family:var(--slab-2);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:15px;margin:36px 0 10px;padding-bottom:4px;border-bottom:1px solid var(--ink-3);color:var(--ink)}
-  p,li{font-size:16px;line-height:1.62;color:var(--ink-2)}
+  p,li,td,th{font-size:16px;line-height:1.62;color:var(--ink-2)}
   ul{padding-left:22px;margin:6px 0 14px}
   li{margin-bottom:8px}
   a{color:var(--ink);border-bottom:1px solid var(--stamp);text-decoration:none;padding-bottom:1px}
   a:hover{background:var(--stamp);color:var(--paper);border-bottom-color:transparent}
   code{font-family:var(--mono);font-size:.88em;background:rgba(0,0,0,.06);padding:1px 5px;border-radius:2px}
   strong{color:var(--ink);font-weight:700}
+  em{font-style:italic}
   .callout{border:2px solid var(--rule);padding:16px 18px;margin:18px 0 28px;background:rgba(200,38,29,.06)}
   .callout p{margin:0}
+  .callout p + p{margin-top:10px}
+  table{width:100%;border-collapse:collapse;margin:14px 0 18px;font-family:var(--mono);font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.12);vertical-align:top}
+  th{font-family:var(--slab-2);text-transform:uppercase;letter-spacing:.08em;font-size:11px;background:rgba(0,0,0,.04);color:var(--ink)}
   .colo{margin-top:56px;padding-top:22px;border-top:2px solid var(--rule);font-family:var(--type);font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 </style>
 </head>
 <body>
 <main class="wrap">
-  <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; <a href="/pricing/">Pricing</a> &nbsp;·&nbsp; Privacy policy</div>
+  <div class="crumb"><a href="/">← Peanut Gallery</a> &nbsp;·&nbsp; Privacy policy</div>
 
   <h1>Privacy Policy</h1>
-  <div class="updated"><span>— The short version below —</span><span>Last updated · April 21, 2026</span></div>
+  <div class="updated"><span>— Draft pending legal review —</span><span>Last updated · April 21, 2026</span></div>
 
   <div class="callout">
-    <p><strong>Short answer:</strong> your keys stay on your machine, your audio is transcribed in real-time and discarded, nothing is logged. No accounts for the free tier. For Peanut Gallery Plus ($8/mo) we store a license key, your signup email, and a weekly hours counter — nothing else. Payment data lives at Stripe, never here.</p>
+    <p><strong>United States only.</strong> Peanut Gallery Plus and the Demo allowance backed by our hosted keys are offered only to users in the United States. The Extension is globally available under MIT; if you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-FOR-INTERNATIONAL-USERS.md" target="_blank" rel="noopener">fork-and-self-host guide</a>.</p>
+    <p><strong>Short answer.</strong> Audio is streamed through a transcription provider and discarded. Your live transcript sits in server memory during the session and is not persisted. If you use your own API keys they travel per-request as headers and are never written to disk. The only long-term data we store for a paying user is: email, license key, Stripe subscription ID, and a weekly usage counter measured in milliseconds. No ads, no data sale, no third-party analytics inside the Extension.</p>
+    <p><strong>Recording-consent laws are your responsibility.</strong> The Extension can be pointed at any browser tab you grant it. Many U.S. states require all-party consent to record private conversations.</p>
   </div>
 
-  <p>Peanut Gallery is a Chrome extension that listens to the audio of the tab you&rsquo;re currently on, transcribes it in real-time, and streams AI persona reactions back to a native Chrome side panel. This policy describes what happens to the data involved on both the free/BYOK path and the paid Plus path.</p>
+  <p>Peanut Gallery is a Chrome extension, a hosted backend at <code>api.peanutgallery.live</code>, a marketing site at <code>www.peanutgallery.live</code>, and an optional $8/month subscription called Peanut Gallery Plus. This policy describes what data the Service handles, what we store, and for how long. It reads alongside the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/legal/TERMS-OF-SERVICE.md" target="_blank" rel="noopener">Terms of Service</a>.</p>
 
-  <h2>What the extension collects</h2>
-  <p>The extension only captures audio when you explicitly click <strong>Start Listening</strong> from the side panel. Specifically:</p>
+  <h2>The three operating modes</h2>
+  <p>Before the details, here&rsquo;s the mode you&rsquo;re in. You pick at runtime in the Extension&rsquo;s Backend &amp; keys drawer:</p>
   <ul>
-    <li><strong>Tab audio</strong>, via the standard <code>chrome.tabCapture</code> API &mdash; the same API used by Otter.ai, Fireflies, and other transcription tools. Capture stops the moment you click <strong>Stop</strong> or close the tab. No audio is recorded to disk.</li>
-    <li><strong>API keys you type into the side panel</strong> (Deepgram, Anthropic, xAI, optionally Brave Search). These are stored locally via <code>chrome.storage.local</code> so you don&rsquo;t have to retype them every session. They are sent to the server you configure via request headers so it can call those providers on your behalf. They are never uploaded to anyone else.</li>
-    <li><strong>Your Peanut Gallery Plus license key</strong> (if you have one). Stored the same way &mdash; <code>chrome.storage.local</code>, one per device, sent to the hosted backend as an <code>X-Subscription-Key</code> header to authorize the session and decrement the weekly-hours counter. Nothing else.</li>
-    <li><strong>The URL and title of the tab you&rsquo;re capturing from</strong>, passed to the server for display purposes only.</li>
+    <li><strong>Demo Mode</strong> &mdash; 15 minutes of free transcription on our API keys, one-time per install. Gated by a per-installation UUID (<code>installId</code>) generated locally.</li>
+    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you supply your own API keys. We forward them per-request to the providers and never store them server-side.</li>
+    <li><strong>Peanut Gallery Plus</strong> &mdash; $8/month subscription, 16 hours a week on our keys. Requires an email (for license-key delivery) and produces a license key of the form <code>pg-xxxx-xxxx-xxxx</code>.</li>
   </ul>
 
-  <h2>What the server does with it</h2>
-  <p>You can point the extension at two kinds of servers: the default hosted backend at <code>peanutgallery.live</code>, or a server you run yourself (the self-host path in the <a href="/manual/">Operator&rsquo;s Manual</a>). In both cases, the server:</p>
+  <h2>What the Extension keeps on your device</h2>
+  <p>The Extension writes to <code>chrome.storage.local</code>, which Chrome persists on your disk. Nothing there leaves your browser unless you trigger it:</p>
   <ul>
-    <li>Forwards audio to <strong>Deepgram</strong> for real-time transcription.</li>
-    <li>Sends short transcript windows to <strong>Anthropic (Claude)</strong> and <strong>xAI Grok</strong> to generate persona reactions, and to your chosen search engine (<strong>Brave Search</strong> or <strong>xAI Live Search</strong>) for live fact-checks.</li>
-    <li>Streams results back to your browser via Server-Sent Events (SSE).</li>
-    <li><strong>Discards the session entirely</strong> when you click Stop or the tab closes. Transcripts and responses are held in memory during the session and are not written to disk, not logged, and not persisted.</li>
+    <li>Your chosen backend URL, pasted API keys (if any), persona pack, theme, response-rate dial, sensitivity level, and per-persona mute list.</li>
+    <li>Your per-install UUID (<code>installId</code>) &mdash; used to meter the Demo trial.</li>
+    <li>Your Plus license key and backend-mode preferences, if you subscribed.</li>
+    <li>Up to 50 prior sessions&rsquo; metadata, sampled transcript tails (capped at 4,000 characters per session), and persona reactions &mdash; groundwork for the v2.0 &ldquo;Past sessions&rdquo; feature. LRU-evicted at 50.</li>
+    <li>Per-session upvotes / downvotes / pinned entry, plus UI state.</li>
   </ul>
 
-  <h2>The hosted backend at peanutgallery.live</h2>
-  <p>When you use the default server, your API keys (BYOK) or license key (Plus) travel to the hosted backend inside the request headers for that single SSE stream, are forwarded to the relevant providers (Deepgram / Anthropic / xAI / Brave) for that session, and <strong>are discarded at session end</strong>. API keys are never logged, never persisted. You can audit the exact handling in the transcribe route on GitHub: <a href="https://github.com/Sethmr/peanut.gallery/blob/main/app/api/transcribe/route.ts" target="_blank" rel="noopener">app/api/transcribe/route.ts</a>.</p>
-
-  <h2>Peanut Gallery Plus &mdash; subscription data</h2>
-  <p>If you subscribe to Peanut Gallery Plus, the hosted backend maintains a minimal record of your subscription so the license key can be validated and the weekly usage cap enforced:</p>
+  <h2>What the backend receives and keeps</h2>
+  <p>The hosted backend at <code>api.peanutgallery.live</code> is a stateless API behind a session ID. When you stream a session it handles:</p>
   <ul>
-    <li><strong>License key</strong> &mdash; a randomly-generated <code>pg-xxxx-xxxx-xxxx</code> code that identifies your subscription. Stored server-side alongside the fields below.</li>
-    <li><strong>Your signup email</strong> &mdash; used to deliver the license key and the Stripe Customer Portal link on cancel/recovery. Not used for marketing and not shared with anyone.</li>
-    <li><strong>Your Stripe subscription ID</strong> &mdash; an opaque identifier Stripe gives us so we can tie webhook events back to the correct subscription.</li>
-    <li><strong>A weekly usage counter</strong> &mdash; total minutes of transcription consumed in the current 7-day window. Resets at the window end. This is the only engagement signal we keep; it exists to enforce the 16 h/week cap.</li>
-  </ul>
-  <p>No transcripts, audio, persona responses, or tab URLs are stored against the subscription record. Session activity is forgotten at the end of every session &mdash; same as the free/BYOK flow.</p>
-
-  <h2>Payments &mdash; processed by Stripe</h2>
-  <p>Payments for Peanut Gallery Plus are processed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a>. Your card details go to Stripe directly and never touch our servers. We receive an opaque subscription ID, the email you used at checkout, and webhook events about subscription lifecycle (created / updated / cancelled / payment failed). The full list of what Stripe stores on your behalf is in their <a href="https://stripe.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
-
-  <h2>Emails &mdash; delivered by Resend</h2>
-  <p>Transactional emails (the license key on signup, the Stripe Customer Portal link on cancel, key recovery on lost-key requests) are sent through <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a>. Resend holds the send logs (recipient address, send timestamp, delivery status) under their terms; we do not cc ourselves, forward, or bulk-export those emails. We never send marketing email.</p>
-
-  <h2>Third-party services</h2>
-  <p>When Peanut Gallery calls a third-party AI provider on your behalf, data handling is governed by that provider&rsquo;s terms:</p>
-  <ul>
-    <li><a href="https://deepgram.com/privacy" target="_blank" rel="noopener">Deepgram</a> &mdash; speech-to-text.</li>
-    <li><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic (Claude)</a> &mdash; persona responses.</li>
-    <li><a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener">xAI</a> &mdash; Grok persona responses and optional Live Search fact-checks.</li>
-    <li><a href="https://brave.com/privacy/" target="_blank" rel="noopener">Brave Search</a> &mdash; live fact-checking queries.</li>
-    <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> &mdash; payments for Peanut Gallery Plus (no card data on our servers).</li>
-    <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a> &mdash; transactional email for subscription lifecycle messages.</li>
+    <li><strong>Audio</strong> &mdash; received as PCM, forwarded to the transcription provider, discarded. Nothing written to disk.</li>
+    <li><strong>Live transcript</strong> &mdash; held in memory during the session, routed to the Director and personas, discarded on session end.</li>
+    <li><strong>Your API keys (My-Keys Mode)</strong> &mdash; forwarded per-request to the providers, redacted from every log line, never persisted.</li>
+    <li><strong>Your install ID (Demo Mode)</strong> &mdash; kept in memory to meter the 15-minute trial. Resets when the backend process redeploys in the current phase; moves to database in a future phase.</li>
+    <li><strong>Your email, license key, and Stripe subscription ID (Plus Mode only)</strong> &mdash; persisted so we can validate your key, recover it if you lose it, and manage billing. Retained for the life of your subscription plus 12 months, then deleted.</li>
+    <li><strong>Your weekly usage counter (Plus Mode only)</strong> &mdash; milliseconds of hosted transcription per rolling 7-day window. Retained for 30 days for cap enforcement.</li>
+    <li><strong>Operational logs</strong> &mdash; request IDs, session IDs, persona IDs, response times, error events. 30-day retention. Redacted of keys; never include complete transcripts or audio.</li>
   </ul>
 
-  <h2>Analytics</h2>
-  <p>The landing page at peanutgallery.live uses Google Analytics to measure aggregate page visits. No personally identifying information is collected beyond the standard request metadata (IP, user agent, referrer) that Google Analytics receives. <strong>The Chrome extension itself does not include any analytics.</strong></p>
+  <h2>Feedback on persona reactions</h2>
+  <p>When you click the menu on a persona reaction and choose upvote, downvote, pin, or quote-card, we log that action to <code>/api/feedback</code>. Each log entry contains the action, the persona, the pack, the reaction text, the transcript tail (~500 characters) that informed the reaction, your install ID, and a timestamp. We retain these for <strong>90 days</strong>.</p>
+  <p>We use them to improve the personas&rsquo; prompts, the Director&rsquo;s routing, and the session-recall highlight picker. Feedback is keyed to the pseudonymous install ID only &mdash; we don&rsquo;t tie votes to your email or license key.</p>
+  <p><strong>Opting out:</strong> today, either self-host the backend with <code>DISABLE_FEEDBACK_LOGGING=true</code> or don&rsquo;t interact with the feed menu. A user-facing opt-out toggle in the Extension is on the roadmap and should ship before the first public paid launch.</p>
 
-  <h2>What Peanut Gallery doesn&rsquo;t do</h2>
+  <h2>Third-party providers</h2>
+  <p>When the Service calls a third party on your behalf, that provider&rsquo;s terms and privacy practices apply. Current subprocessors:</p>
   <ul>
-    <li>We don&rsquo;t have user accounts, passwords, or OAuth for daily use. BYOK has nothing to sign up for. Plus uses a license key emailed to you once; there&rsquo;s no login surface.</li>
-    <li>We don&rsquo;t log or store your audio, transcripts, or API keys.</li>
-    <li>We don&rsquo;t sell data. There&rsquo;s nothing to sell.</li>
-    <li>We don&rsquo;t run background capture. The extension only listens while you&rsquo;re actively in a session you started.</li>
-    <li>We don&rsquo;t track you across sessions for analytics. The only per-subscription counter is the weekly-hours meter, which exists solely to enforce the 16 h/week cap and is not used for anything else.</li>
-    <li>We don&rsquo;t send marketing email. Transactional only &mdash; license key delivery, cancel/portal link, lost-key recovery.</li>
+    <li><a href="https://deepgram.com/privacy" target="_blank" rel="noopener">Deepgram</a> &mdash; speech-to-text streaming.</li>
+    <li><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic (Claude)</a> &mdash; Producer and Joker persona inference.</li>
+    <li><a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener">xAI (Grok)</a> &mdash; Troll and Sound FX persona inference, optional live search.</li>
+    <li><a href="https://brave.com/privacy/" target="_blank" rel="noopener">Brave Search</a> &mdash; fact-check search queries.</li>
+    <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> &mdash; payment processing (Plus only). Stripe collects card details directly; we never see them.</li>
+    <li><a href="https://railway.com/legal/privacy" target="_blank" rel="noopener">Railway</a> &mdash; backend hosting.</li>
+    <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a> &mdash; Next.js application hosting where used.</li>
+    <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Pages</a> &mdash; marketing-site hosting.</li>
+    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Analytics</a> &mdash; aggregate page-view metrics on the marketing site only (not in the Extension).</li>
   </ul>
+
+  <h2>Marketing-site analytics</h2>
+  <p>The marketing site at <code>www.peanutgallery.live</code> loads Google Analytics (property <code>G-3R9CK4LRGF</code>) to measure aggregate page views. GA receives your IP address, user agent, referring URL, and page-view events, and sets cookies or equivalent local-storage identifiers. We use the data only in aggregate. We do not enable Google Signals, remarketing, or any advertising features. <strong>The Extension itself does not load any analytics library.</strong></p>
+
+  <h2>Retention summary</h2>
+  <table>
+    <thead>
+      <tr><th>Data</th><th>Retention</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Audio bytes</td><td>In-memory, during session only</td></tr>
+      <tr><td>Live transcript</td><td>In-memory, during session only</td></tr>
+      <tr><td>Voted / pinned / quote-carded snippets</td><td>90 days</td></tr>
+      <tr><td>API keys (BYOK)</td><td>Never stored</td></tr>
+      <tr><td>Install ID</td><td>Backend process lifetime (Phase 1)</td></tr>
+      <tr><td>Email + license key (Plus)</td><td>Subscription + 12 months</td></tr>
+      <tr><td>Weekly usage counter (Plus)</td><td>30 days</td></tr>
+      <tr><td>Operational logs</td><td>30 days</td></tr>
+      <tr><td>Payment records</td><td>Per Stripe&rsquo;s policy</td></tr>
+      <tr><td>Marketing-site analytics</td><td>Per Google Analytics retention</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Your rights</h2>
+  <p>Wherever you live, you have the right to know what we hold, correct it, delete it, port it, object to certain processing, and complain to a data-protection authority. Under U.S. state privacy laws (CCPA/CPRA, Virginia, Colorado, Connecticut, and equivalents) you also have the right to opt out of &ldquo;sale&rdquo; and &ldquo;sharing&rdquo; of personal information. We do not sell or share personal information in the senses those laws define.</p>
+  <p>To exercise any of these rights, email <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a>. We may ask you to verify your identity before we act (for example, by confirming the email tied to your Stripe subscription). We respond within the timeframes required by law &mdash; typically 45 days under U.S. state privacy laws and one month under GDPR.</p>
+
+  <h2>International data transfers</h2>
+  <p>The hosted backend is in the United States. If you use the Service from outside the U.S., your audio, transcript, and (for Plus) email and license key pass through U.S.-based infrastructure. Where applicable, we rely on the European Commission&rsquo;s Standard Contractual Clauses, the U.K. International Data Transfer Addendum, and (where participating) the EU&ndash;U.S. Data Privacy Framework. If that&rsquo;s not acceptable for your situation, use My-Keys Mode or self-host the backend in a region of your choice.</p>
+
+  <h2>Children</h2>
+  <p>Peanut Gallery is not directed at children under 13 (16 in some EU member states). We do not knowingly collect personal information from children under those ages. If you&rsquo;re a parent and believe a child under the relevant age has subscribed or otherwise given us data, email <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a> and we&rsquo;ll refund, delete, and revoke.</p>
+
+  <h2>Security</h2>
+  <p>HTTPS for all backend traffic, keys redacted from logs, Stripe handles all payment data, structured per-request timeouts on every upstream call, narrow content-script scope (<code>peanutgallery.live</code> subdomains only). Responsible disclosure via <a href="https://github.com/Sethmr/peanut.gallery/blob/main/.github/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a> or <a href="mailto:security@peanutgallery.live">security@peanutgallery.live</a>.</p>
+
+  <h2>Recording consent</h2>
+  <p>The Extension can be pointed at any browser tab you grant access to. Recording-consent laws are jurisdiction-specific. U.S. states including California, Florida, Illinois, Maryland, Massachusetts, Montana, New Hampshire, Nevada, Pennsylvania, and Washington require all-party consent for private conversations. The EU, UK, and many other jurisdictions impose equivalent or stricter rules. You are solely responsible for obtaining any consent required before directing the Extension at audio &mdash; this applies to live calls, conferences, voicemail, ambient room audio, and private streams. See <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/legal/TERMS-OF-SERVICE.md#51-audio-capture-and-recording-consent-laws" target="_blank" rel="noopener">Terms of Service &sect;5.1</a>.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>Material changes affecting Plus subscribers get at least 30 days&rsquo; email notice and a pro-rata refund window. Non-material changes (clarifications, typos, provider substitutions that don&rsquo;t alter data handling) are effective on the updated &ldquo;Last updated&rdquo; date above.</p>
 
   <h2>Contact</h2>
-  <p>Billing, subscription, lost-key, or privacy questions: <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a>. For code-level issues, open an issue on <a href="https://github.com/Sethmr/peanut.gallery/issues" target="_blank" rel="noopener">GitHub</a>. Founder contact: <a href="mailto:seth@manugames.com">seth@manugames.com</a>.</p>
+  <ul>
+    <li>Privacy questions and data-subject requests: <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a></li>
+    <li>Legal, billing, DMCA: <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a></li>
+    <li>Security reports: <a href="mailto:security@peanutgallery.live">security@peanutgallery.live</a></li>
+  </ul>
 
   <div class="colo">
-    <span>Peanut Gallery &middot; MIT licensed &middot; <a href="/">Front page</a> &middot; <a href="/pricing/">Pricing</a> &middot; <a href="/manual/">Manual</a> &middot; <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">Github</a></span>
+    <span>Peanut Gallery &middot; MIT licensed &middot; <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">github.com/Sethmr/peanut.gallery</a></span>
     <span>Pg. C1</span>
   </div>
 </main>
