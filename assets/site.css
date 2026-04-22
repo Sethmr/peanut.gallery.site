@@ -1,0 +1,317 @@
+/* ─────────────────────────────────────────────────────────────────
+   Peanut Gallery — shared marketing-page stylesheet (broadsheet)
+   Used by /packs/*, /plus/*, /install. Mirrors the palette + typography
+   from /pricing and /manual but without their full per-page CSS.
+   ───────────────────────────────────────────────────────────────── */
+
+:root{
+  --paper:    #f1ead8;
+  --paper-2:  #e9e0c5;
+  --paper-3:  #dfd4b3;
+  --ink:      #111111;
+  --ink-2:    #2a2824;
+  --ink-3:    #5a564c;
+  --rule:     #111;
+  --stamp:    #c8261d;
+  --stamp-d:  #8f1811;
+  --gold:     #a8821e;
+  --yellow:   #f6d74b;
+
+  --slab:     'Anton', 'Oswald', sans-serif;
+  --slab-2:   'Oswald', sans-serif;
+  --serif:    'Source Serif 4', Georgia, serif;
+  --type:     'Special Elite', 'JetBrains Mono', monospace;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--serif); -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
+  background-image:
+    radial-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+  mix-blend-mode: multiply;
+  opacity:.6;
+}
+
+a{color:var(--ink); text-underline-offset:3px}
+
+.page{max-width:1080px; margin:0 auto; padding: 32px 56px 80px; position:relative}
+
+/* ============== COVER ============== */
+.cover{
+  border:4px double var(--rule);
+  padding: 28px 36px 32px;
+  background: var(--paper);
+  position:relative; overflow:hidden;
+}
+.cover .rails{
+  display:flex; justify-content:space-between; align-items:flex-start; gap:16px;
+  font-family:var(--slab-2); font-size:11px; letter-spacing:.25em;
+  text-transform:uppercase; color:var(--ink-3);
+  padding-bottom:12px; border-bottom: 1px solid var(--rule); margin-bottom: 18px;
+}
+.cover .rails a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink)}
+.cover .rails a:hover{background:var(--yellow)}
+.cover .crumb{font-family:var(--type)}
+.cover .kicker{
+  font-family:var(--slab-2); font-size:13px; letter-spacing:.3em; color:var(--stamp);
+  text-transform:uppercase; margin-bottom:6px;
+}
+.cover h1{
+  font-family:var(--slab); font-weight:400; font-size: clamp(56px, 9vw, 128px); line-height:.86;
+  margin: 0 0 12px; text-transform:uppercase; letter-spacing:-.01em;
+}
+.cover .lede{
+  font-family:var(--serif); font-size:20px; line-height:1.45; color:var(--ink-2);
+  max-width: 720px; font-style:italic;
+  border-left: 3px solid var(--ink); padding-left: 14px;
+}
+.cover .stamp{
+  position:absolute; top:22px; right:22px;
+  width:110px; height:110px; border:3px solid var(--stamp); border-radius:50%;
+  display:grid; place-items:center; transform:rotate(-8deg);
+  color:var(--stamp); font-family:var(--slab); text-transform:uppercase;
+  text-align:center; line-height:.95;
+  background:var(--paper); pointer-events:none;
+}
+.cover .stamp::before{
+  content:""; position:absolute; inset:5px; border:1.5px solid var(--stamp); border-radius:50%;
+}
+.cover .stamp .big{font-size:18px; line-height:.9; letter-spacing:-.01em}
+.cover .stamp .sm{font-family:var(--type); font-size:8px; margin-top:3px; letter-spacing:.15em}
+
+/* ============== SECTION HEADS ============== */
+.section-head{
+  display:flex; align-items:baseline; justify-content:space-between;
+  margin: 64px 0 16px;
+  border-bottom:2px solid var(--rule); padding-bottom:6px;
+}
+.section-head h2{
+  font-family:var(--slab); font-weight:400; font-size: 64px; line-height:.9; margin:0;
+  text-transform:uppercase; letter-spacing:-.005em;
+}
+.section-head .page-no{font-family:var(--type); color:var(--ink-3); font-size:12px; letter-spacing:.2em; text-transform:uppercase}
+.sub-kicker{
+  font-family:var(--slab-2); font-size:12px; letter-spacing:.25em; color:var(--stamp);
+  text-transform:uppercase; margin-top: 10px; display:flex; align-items:center; gap:10px;
+}
+.sub-kicker::before{content:""; width:20px; height:2px; background:var(--stamp)}
+
+/* ============== PROSE ============== */
+.prose{font-family:var(--serif); font-size:16px; line-height:1.6; color:var(--ink-2); max-width: 720px}
+.prose p{margin: 0 0 14px}
+.prose b{color:var(--ink); font-weight:700}
+.prose .hilite{background:var(--yellow); padding:0 3px; color:var(--ink)}
+.prose code{font-family:var(--mono); font-size:.88em; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+.prose ul, .prose ol{padding-left: 22px; margin: 0 0 14px}
+.prose li{margin-bottom: 6px}
+
+/* ============== BUTTONS ============== */
+.btn{
+  font-family:var(--slab-2); font-size:12px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  padding:12px 20px; border:2px solid var(--ink); background:var(--ink); color:var(--paper);
+  cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+}
+.btn:hover{background:var(--stamp); border-color:var(--stamp); color:var(--paper)}
+.btn.alt{background:transparent; color:var(--ink)}
+.btn.alt:hover{background:var(--yellow); color:var(--ink); border-color:var(--ink)}
+.btnrow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 8px}
+
+/* ============== CTA BAND ============== */
+.cta-bar{
+  margin-top: 48px;
+  display:flex; gap:14px; align-items:center; justify-content:space-between;
+  background:var(--ink); color:var(--paper);
+  padding: 24px 28px; border: 2px solid var(--ink);
+}
+.cta-bar .lhs{
+  font-family:var(--slab); text-transform:uppercase; font-size:32px; line-height:1.05; letter-spacing:-.005em;
+}
+.cta-bar .lhs small{
+  display:block; font-family:var(--type); font-size:11px; color:var(--paper-3);
+  letter-spacing:.2em; margin-top:8px; text-transform:uppercase;
+}
+.cta-bar .btns{display:flex; gap:10px; flex-wrap:wrap}
+.cta-bar .btn{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+.cta-bar .btn:hover{background:var(--yellow); border-color:var(--yellow); color:var(--ink)}
+.cta-bar .btn.alt{background:transparent; color:var(--paper); border-color:var(--paper)}
+.cta-bar .btn.alt:hover{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+
+/* ============== CALLOUT ============== */
+.callout{
+  border: 2px solid var(--ink);
+  padding: 18px 20px; margin: 22px 0;
+  background: var(--paper-2);
+  display:grid; grid-template-columns: 108px 1fr; gap: 20px; align-items:start;
+}
+.callout .tag{
+  font-family:var(--slab); font-size:26px; line-height:.95; text-transform:uppercase;
+  letter-spacing:-.01em; color:var(--stamp);
+}
+.callout .tag small{display:block; font-family:var(--slab-2); font-size:10px; font-weight:600; color:var(--ink-3); letter-spacing:.2em; margin-top:4px}
+.callout .bd{font-family:var(--serif); font-size:15px; line-height:1.55; color:var(--ink); margin:0}
+.callout.tip{background: #d7e9c8}
+.callout.tip .tag{color:#345a1f}
+.callout.warn{background: #f6e7a8}
+.callout.warn .tag{color:#7a5a10}
+
+/* ============== STEPS (3-up) ============== */
+.steps{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border: 2px solid var(--rule); margin: 18px 0 26px; background:var(--paper);
+}
+.step{
+  padding: 20px 22px; border-right:1px solid var(--ink); position:relative;
+}
+.step:last-child{border-right:0}
+.step .no{
+  font-family:var(--slab); font-size: 72px; line-height:.85; color:var(--stamp); margin-bottom: 6px; letter-spacing:-.02em;
+}
+.step h4{
+  font-family:var(--slab); font-weight:400; font-size:22px; line-height:1; margin: 0 0 10px;
+  text-transform:uppercase; letter-spacing:-.005em;
+}
+.step p{font-family:var(--serif); font-size:14px; line-height:1.5; margin:0 0 8px; color:var(--ink-2)}
+.step p:last-child{margin-bottom:0}
+.step a{color:var(--ink); text-underline-offset:2px}
+.step .kbd, .step code{
+  display:inline-block; font-family:var(--mono); font-size:12px; background:var(--paper-2); border:1px solid var(--ink);
+  padding:1px 6px; margin: 0 2px;
+}
+
+/* ============== PERSONA CARDS (4-up) ============== */
+.personas{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: 14px 0 22px;
+}
+.persona{
+  border:2px solid var(--ink); padding: 16px 18px; background: var(--paper);
+  display:flex; flex-direction:column; gap:6px;
+}
+.persona .slot{
+  font-family:var(--slab-2); font-size:10px; font-weight:700; letter-spacing:.25em;
+  text-transform:uppercase; color:var(--paper); background:var(--ink);
+  padding: 3px 8px; align-self:flex-start;
+}
+.persona .slot.hl{background:var(--stamp); color:var(--paper)}
+.persona .nm{
+  font-family:var(--slab); font-size:30px; line-height:1; text-transform:uppercase;
+  letter-spacing:-.005em; margin-top: 4px;
+}
+.persona .ref{
+  font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.04em;
+  margin-bottom: 4px;
+}
+.persona .role{
+  font-family:var(--serif); font-size:13.5px; line-height:1.45; color:var(--ink-2);
+  font-style:italic;
+}
+.persona .mdl{
+  font-family:var(--slab-2); font-size:10px; font-weight:600; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:auto; padding-top: 8px;
+  border-top: 1px dotted var(--ink-3);
+}
+
+/* ============== Q&A ============== */
+.qa{
+  border: 2px solid var(--ink);
+  font-family:var(--serif); margin-top: 10px;
+}
+.qa .row{padding: 14px 18px; border-bottom: 1px solid var(--ink-3)}
+.qa .row:last-child{border-bottom:0}
+.qa .q{
+  font-family:var(--slab); font-size:22px; line-height:1.05; margin: 0 0 8px;
+  text-transform:uppercase; letter-spacing:-.005em; color:var(--ink);
+}
+.qa .a{font-family:var(--serif); font-size:14.5px; line-height:1.55; color:var(--ink-2); margin:0}
+.qa .a a{color:var(--ink); text-underline-offset:2px}
+.qa .a code{font-family:var(--mono); font-size:12.5px; background:var(--paper-3); padding:1px 5px; border:1px solid var(--ink-3)}
+
+/* ============== SAMPLE FIRES (transcript-style) ============== */
+.fires{
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+  margin: 14px 0 22px;
+  font-family: var(--serif);
+}
+.fire{
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--ink-3);
+  display:grid; grid-template-columns: 70px 64px 1fr; gap: 14px; align-items:start;
+}
+.fire:last-child{border-bottom:0}
+.fire .ts{
+  font-family:var(--mono); font-size:11px; color:var(--ink-3); letter-spacing:.05em;
+  padding-top: 3px;
+}
+.fire .who{
+  font-family:var(--slab-2); font-size:11px; font-weight:700; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--paper); background:var(--ink);
+  padding: 3px 6px; align-self:start; text-align:center;
+}
+.fire .who.troll{background:var(--stamp)}
+.fire .body{font-family:var(--serif); font-size:15px; line-height:1.5; color:var(--ink)}
+
+/* ============== COLOPHON ============== */
+.colophon{
+  margin-top: 80px; padding-top: 22px; border-top: 6px solid var(--rule);
+}
+.colophon .top{
+  display:flex; justify-content:space-between; align-items:baseline; gap:24px;
+  border-bottom: 2px solid var(--rule); padding-bottom: 16px; margin-bottom: 18px;
+}
+.colophon .top .lg{font-family:var(--slab); font-size:48px; line-height:.9; text-transform:uppercase; letter-spacing:-.01em}
+.colophon .top .tag{font-family:var(--serif); font-style:italic; font-size:14px; color:var(--ink-2); max-width:380px; text-align:right}
+.colophon .bot{
+  display:flex; justify-content:space-between; align-items:center;
+  font-family:var(--type); font-size:11px; color:var(--ink-3); letter-spacing:.08em; text-transform:uppercase;
+}
+.colophon .bot a{color:var(--ink); text-decoration:none; border-bottom:1px dotted var(--ink); margin:0 8px}
+.colophon .bot a:hover{background:var(--yellow)}
+
+/* ============== RESPONSIVE ============== */
+@media (max-width: 960px){
+  .page{padding: 28px 28px 60px}
+  .cover h1{font-size: 64px; line-height:.9}
+  .section-head h2{font-size:44px}
+  .steps{grid-template-columns: 1fr}
+  .step{border-right:0; border-bottom:1px solid var(--ink)}
+  .step:last-child{border-bottom:0}
+  .personas{grid-template-columns: repeat(2, 1fr)}
+  .callout{grid-template-columns:1fr; gap:10px}
+  .cta-bar{flex-direction:column; align-items:flex-start}
+  .cta-bar .lhs{font-size:24px}
+  .fire{grid-template-columns: 60px 56px 1fr; gap:10px}
+}
+
+@media (max-width: 640px){
+  .page{padding: 16px 18px 48px}
+  .cover{padding: 20px 18px 22px; border-width:3px}
+  .cover .rails{flex-direction:column; align-items:flex-start; gap:6px; font-size:10px; letter-spacing:.2em; padding-bottom:8px; margin-bottom:12px}
+  .cover .stamp{
+    position:static; width:auto; height:auto; border-radius:0; border:2px solid var(--stamp);
+    transform:none; padding:6px 10px; margin: 0 0 12px; display:inline-flex; align-items:center; gap:10px;
+  }
+  .cover .stamp::before{display:none}
+  .cover .stamp .big{font-size:14px; letter-spacing:.08em}
+  .cover .stamp .sm{margin-top:0}
+  .cover h1{font-size: 48px; line-height:.9; letter-spacing:-.01em}
+  .cover .lede{font-size:15px; line-height:1.5; padding-left:10px; border-left-width:2px}
+  .section-head h2{font-size: 36px}
+  .section-head{margin-top: 40px}
+  .personas{grid-template-columns: 1fr}
+  .colophon{padding:16px 0 0}
+  .colophon .top{flex-direction:column; align-items:flex-start; gap:8px}
+  .colophon .top .lg{font-size:34px}
+  .colophon .top .tag{text-align:left; font-size:13px; max-width:none}
+  .colophon .bot{flex-direction:column; align-items:flex-start; gap:8px}
+  .fire{grid-template-columns: 1fr; gap: 6px}
+  .fire .ts, .fire .who{display:inline-block; margin-right: 8px}
+}
