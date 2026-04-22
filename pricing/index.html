@@ -662,6 +662,7 @@
         <tr><td class="label">Data</td><td>We store <b>your license key, the email you gave Stripe, and a weekly-hours counter</b>. No transcripts. No audio. No persona outputs. No analytics inside the extension. The hours counter is the only engagement signal and it exists to enforce the cap.</td></tr>
         <tr><td class="label">Payment data</td><td>Stripe holds it, we never touch it. We can't see your card. We can see an email and a subscription status.</td></tr>
         <tr><td class="label">Taxes</td><td>Where applicable, collected automatically via Stripe Tax. Shown at checkout before you pay.</td></tr>
+        <tr><td class="label">International</td><td>Plus billing is <b>US-only at launch</b>. The extension itself works worldwide on BYOK — any country, any browser locale, no geo-gate. International Plus support is on the v2.x roadmap.</td></tr>
         <tr><td class="label">Price changes</td><td>The goal is down, not up. If our costs change enough to require a price change, existing subscribers get <b>60 days notice by email</b> before the new rate applies to their subscription.</td></tr>
         <tr><td class="label">Switching to BYOK</td><td>Plus and BYOK live side-by-side in the drawer. When Plus is active, you'll see a second toggle: <b>Use with: [Subscription · My keys]</b>. Flipping to <b>My keys</b> runs the current session on your own keys and costs zero hours on your Plus cap. Useful when you want to experiment without burning the weekly bucket.</td></tr>
       </tbody>
@@ -744,7 +745,7 @@
     <div class="callout">
       <div class="tag">ECONOMICS<small>TRANSPARENT</small></div>
       <div class="bd">
-        At today's API rates, 16 hours of reactions per week costs us <b>~$5.40/month</b> at the backend to run. $8 − Stripe fees − infra overhead leaves a thin operating margin — enough to keep the lights on, not enough to optimize for. If upstream rates drop (cheaper models, cached fact-checks, batched Director calls), the delta goes to lowering your price, not our margin. That's the commitment, in writing, at Pg. A5.
+        At today's API rates, 16 hours of reactions per week costs us <b>~$5.40/month</b> at the backend to run; casual usage (4–8 h/week) lands around <b>$4.80–$9.60/month</b>. $8 sits roughly at break-even with a thin margin for infra — enough to keep the lights on, not enough to optimize for. If upstream rates drop (cheaper models, cached fact-checks, batched Director calls), the delta goes to lowering your price, not our margin. Full math in the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SUBSCRIPTION-ARCHITECTURE.md#economics" target="_blank" rel="noopener" style="color:var(--ink); text-underline-offset:2px">subscription architecture doc</a>. That's the commitment, in writing, at Pg. A5.
       </div>
     </div>
   </section>
@@ -827,7 +828,6 @@
       <div>
         <a href="/">Front page</a>
         <a href="/install/">Install</a>
-        <a href="/plus/">Plus</a>
         <a href="/packs/howard/">Howard</a>
         <a href="/packs/twist/">TWiST</a>
         <a href="/manual/">Manual</a>
