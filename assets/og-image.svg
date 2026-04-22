@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid meet" width="100%" height="100%" style="display:block">
+  <defs>
+    <pattern id="dot" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+      <circle cx="0.6" cy="0.6" r="0.6" fill="#000" opacity="0.06"/>
+    </pattern>
+  </defs>
+
+  <!-- Paper stock -->
+  <rect width="1200" height="630" fill="#f1ead8"/>
+  <!-- Newsprint texture -->
+  <rect width="1200" height="630" fill="url(#dot)"/>
+
+  <!-- Outer ink rule -->
+  <rect x="20" y="20" width="1160" height="590" fill="none" stroke="#111111" stroke-width="4"/>
+  <rect x="32" y="32" width="1136" height="566" fill="none" stroke="#111111" stroke-width="1"/>
+
+  <!-- Masthead kicker -->
+  <line x1="60" y1="78" x2="1140" y2="78" stroke="#111111" stroke-width="1"/>
+  <text x="60" y="68" font-family="'Rockwell','Courier New',monospace"
+        font-size="14" font-weight="700" fill="#111111" letter-spacing="3">
+    EST. MMXXVI &#183; THE CHROME EXTENSION &#183; VOL. I &#183; NO. 4
+  </text>
+  <!-- Date stamp on the right of kicker -->
+  <text x="1140" y="68" text-anchor="end" font-family="'Rockwell','Courier New',monospace"
+        font-size="14" font-weight="700" fill="#c8261d" letter-spacing="3">
+    PEANUTGALLERY.LIVE
+  </text>
+
+  <!-- Banner: PEANUT GALLERY -->
+  <text x="600" y="180" font-family="'Bodoni 72','Didot','Georgia',serif"
+        font-size="84" font-weight="700" fill="#111111"
+        text-anchor="middle" letter-spacing="2">PEANUT GALLERY</text>
+
+  <!-- Sub-deck -->
+  <line x1="60" y1="208" x2="1140" y2="208" stroke="#111111" stroke-width="1"/>
+  <text x="600" y="232" font-family="'Rockwell','Courier New',monospace"
+        font-size="14" font-weight="700" fill="#c8261d"
+        text-anchor="middle" letter-spacing="6">A LIVE COMMENTARY DAILY</text>
+  <line x1="60" y1="248" x2="1140" y2="248" stroke="#111111" stroke-width="1"/>
+
+  <!-- Hero headline -->
+  <text x="600" y="312" font-family="'Bodoni 72','Didot','Georgia',serif"
+        font-size="42" font-weight="700" fill="#111111"
+        text-anchor="middle" letter-spacing="-0.5">AI Writers&#8217; Room for YouTube</text>
+  <text x="600" y="350" font-family="'Source Serif 4','Georgia',serif"
+        font-size="20" font-style="italic" fill="#2a2824"
+        text-anchor="middle">Four critics. One tab. Filed live, by deadline.</text>
+
+  <!-- Persona deck — four peanut-stamped columns -->
+  <g font-family="'Rockwell','Courier New',monospace" font-weight="700" fill="#111111">
+    <g transform="translate(140,400)">
+      <rect x="0" y="0" width="220" height="130" fill="none" stroke="#111111" stroke-width="2"/>
+      <rect x="0" y="0" width="220" height="26" fill="#111111"/>
+      <text x="110" y="18" font-size="11" fill="#f1ead8" text-anchor="middle" letter-spacing="3">SLOT 01 &#183; FACT</text>
+      <text x="110" y="62" font-family="'Bodoni 72','Didot','Georgia',serif" font-size="22" text-anchor="middle">Fact-Checker</text>
+      <text x="110" y="92" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">CLAUDE HAIKU</text>
+      <text x="110" y="112" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">+ BRAVE SEARCH</text>
+    </g>
+    <g transform="translate(380,400)">
+      <rect x="0" y="0" width="220" height="130" fill="none" stroke="#111111" stroke-width="2"/>
+      <rect x="0" y="0" width="220" height="26" fill="#c8261d"/>
+      <text x="110" y="18" font-size="11" fill="#f1ead8" text-anchor="middle" letter-spacing="3">SLOT 02 &#183; DUNK</text>
+      <text x="110" y="62" font-family="'Bodoni 72','Didot','Georgia',serif" font-size="22" text-anchor="middle">The Troll</text>
+      <text x="110" y="92" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">XAI GROK</text>
+      <text x="110" y="112" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">4.1 FAST</text>
+    </g>
+    <g transform="translate(620,400)">
+      <rect x="0" y="0" width="220" height="130" fill="none" stroke="#111111" stroke-width="2"/>
+      <rect x="0" y="0" width="220" height="26" fill="#111111"/>
+      <text x="110" y="18" font-size="11" fill="#f1ead8" text-anchor="middle" letter-spacing="3">SLOT 03 &#183; CUE</text>
+      <text x="110" y="62" font-family="'Bodoni 72','Didot','Georgia',serif" font-size="22" text-anchor="middle">Sound Guy</text>
+      <text x="110" y="92" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">XAI GROK</text>
+      <text x="110" y="112" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">FX CUES</text>
+    </g>
+    <g transform="translate(860,400)">
+      <rect x="0" y="0" width="220" height="130" fill="none" stroke="#111111" stroke-width="2"/>
+      <rect x="0" y="0" width="220" height="26" fill="#c8261d"/>
+      <text x="110" y="18" font-size="11" fill="#f1ead8" text-anchor="middle" letter-spacing="3">SLOT 04 &#183; BIT</text>
+      <text x="110" y="62" font-family="'Bodoni 72','Didot','Georgia',serif" font-size="22" text-anchor="middle">Comedy Writer</text>
+      <text x="110" y="92" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">CLAUDE HAIKU</text>
+      <text x="110" y="112" font-size="10" fill="#5a564c" text-anchor="middle" letter-spacing="2">PUNCH-UP</text>
+    </g>
+  </g>
+
+  <!-- Foot rule + tagline -->
+  <line x1="60" y1="560" x2="1140" y2="560" stroke="#111111" stroke-width="1"/>
+  <text x="60" y="585" font-family="'Rockwell','Courier New',monospace"
+        font-size="13" font-weight="700" fill="#111111" letter-spacing="3">
+    OPEN SOURCE &#183; MIT &#183; BYOK FREE FOREVER &#183; PLUS $8/MO &#183; 16 H/WEEK
+  </text>
+  <!-- Stamp postmark right -->
+  <g transform="translate(1100,580)">
+    <circle r="22" fill="none" stroke="#c8261d" stroke-width="2"/>
+    <circle r="18" fill="none" stroke="#c8261d" stroke-width="1"/>
+    <text y="6" font-family="'Rockwell','Courier New',monospace"
+          font-size="14" font-weight="700" fill="#c8261d"
+          text-anchor="middle" letter-spacing="1">PG</text>
+  </g>
+</svg>

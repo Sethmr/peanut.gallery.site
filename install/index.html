@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Install Peanut Gallery · Add the Chrome extension in 30 seconds</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<meta name="description" content="Install Peanut Gallery — the AI writers' room for any YouTube tab — in under a minute. One click in the Chrome Web Store, pin the peanut, press Start. Free, MIT, BYOK or $8/mo Plus." />
+<meta name="keywords" content="install peanut gallery, peanut gallery chrome extension install, AI YouTube extension install, chrome side panel extension install, AI writers room install" />
+<meta name="author" content="Seth Rininger" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<link rel="canonical" href="https://www.peanutgallery.live/install/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Peanut Gallery" />
+<meta property="og:url" content="https://www.peanutgallery.live/install/" />
+<meta property="og:title" content="Install Peanut Gallery · Chrome extension" />
+<meta property="og:description" content="Install in 30 seconds. One click in the Chrome Web Store, pin the peanut, press Start." />
+<meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@SethRininger" />
+<meta name="twitter:title" content="Install Peanut Gallery" />
+<meta name="twitter:description" content="One click in the Chrome Web Store, pin the peanut, press Start." />
+<meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  /* Hero install button */
+  .install-hero{
+    border: 4px double var(--rule);
+    padding: 36px 40px 40px;
+    background: var(--paper);
+    margin-top: 18px;
+    text-align: center;
+  }
+  .install-hero h2{
+    font-family: var(--slab); font-weight: 400; font-size: clamp(40px, 6vw, 72px);
+    line-height: .9; margin: 0 0 14px;
+    text-transform: uppercase; letter-spacing: -.005em;
+  }
+  .install-hero .lede{
+    font-family: var(--serif); font-size: 18px; line-height: 1.5; color: var(--ink-2);
+    max-width: 560px; margin: 0 auto 26px; font-style: italic;
+  }
+  .big-btn{
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--stamp); color: var(--paper);
+    border: 3px solid var(--ink); padding: 18px 32px;
+    font-family: var(--slab); font-size: 32px; font-weight: 400;
+    text-transform: uppercase; letter-spacing: -.005em;
+    text-decoration: none; box-shadow: 4px 4px 0 var(--ink);
+    transition: transform .08s ease;
+  }
+  .big-btn:hover{
+    background: var(--ink); color: var(--paper);
+    transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink-3);
+  }
+  .big-btn .arrow{font-family: var(--serif); font-size: 28px; line-height: 1}
+  .install-hero .meta{
+    font-family: var(--type); font-size: 12px; color: var(--ink-3);
+    letter-spacing: .15em; text-transform: uppercase; margin-top: 18px;
+  }
+  .install-hero .meta b{color: var(--ink); font-weight: 700}
+
+  .req-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 2px solid var(--rule); margin: 18px 0 26px; background: var(--paper);
+  }
+  .req{padding: 18px 22px; border-right: 1px solid var(--ink)}
+  .req:last-child{border-right: 0}
+  .req b{
+    font-family:var(--slab-2); font-size:11px; letter-spacing:.25em; color:var(--stamp);
+    text-transform:uppercase; display:block; margin-bottom: 6px;
+  }
+  .req .v{font-family:var(--slab); font-size:24px; line-height:1; text-transform:uppercase; letter-spacing:-.005em; margin-bottom: 6px}
+  .req .d{font-family:var(--serif); font-size:13.5px; line-height:1.45; color:var(--ink-2); margin: 0}
+  @media (max-width: 960px){
+    .req-grid{grid-template-columns: 1fr}
+    .req{border-right: 0; border-bottom: 1px solid var(--ink)}
+    .req:last-child{border-bottom: 0}
+  }
+
+  /* Mode picker — three columns */
+  .modes{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 2px solid var(--rule); margin: 18px 0 26px; background:var(--paper);
+  }
+  .mode{padding: 22px 24px; border-right:1px solid var(--ink); display:flex; flex-direction:column}
+  .mode:last-child{border-right:0}
+  .mode + .mode{background:var(--paper-2)}
+  .mode h3{
+    font-family:var(--slab); font-weight:400; font-size:32px; line-height:.95; margin: 0 0 8px;
+    text-transform:uppercase; letter-spacing:-.005em;
+  }
+  .mode .blurb{font-family:var(--serif); font-size:14px; line-height:1.5; color:var(--ink-2); margin: 0 0 12px}
+  .mode .price{
+    font-family:var(--slab); font-size:18px; color:var(--stamp); letter-spacing:-.005em;
+    margin-bottom: 10px; text-transform: uppercase;
+  }
+  .mode .btn{align-self: flex-start; margin-top: auto; padding: 8px 14px; font-size: 11px}
+  @media (max-width: 960px){
+    .modes{grid-template-columns: 1fr}
+    .mode{border-right: 0; border-bottom: 1px solid var(--ink)}
+    .mode:last-child{border-bottom: 0}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <section class="cover">
+    <div class="rails">
+      <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The install desk</div>
+      <div>Pg. A2 · MMXXVI · One-click install</div>
+    </div>
+
+    <div class="stamp"><div><div class="big">30<br>Seconds</div><div class="sm">● ONE CLICK · NO ACCOUNT</div></div></div>
+
+    <div class="kicker">— The install desk · Pg. A2 · Chrome Web Store —</div>
+    <h1>Install.</h1>
+    <div class="lede">
+      One click in the Chrome Web Store. Pin the peanut to your toolbar. Press Start on any YouTube tab. The booth is live within 30 seconds — no account, no signup, no hosted backend wrangling on day one.
+    </div>
+  </section>
+
+  <div class="install-hero">
+    <h2>Add to Chrome.</h2>
+    <p class="lede">Single tap. The Chrome Web Store handles the rest. You'll see the peanut land in your toolbar.</p>
+
+    <a class="big-btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Add to Chrome <span class="arrow">→</span></a>
+
+    <div class="meta">
+      <b>Free</b> &nbsp;·&nbsp; <b>MIT-licensed</b> &nbsp;·&nbsp; <b>Open source</b> &nbsp;·&nbsp; Chrome 116+ &nbsp;·&nbsp; Side Panel API
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <h2>What you need.</h2>
+      <div class="page-no">§ 01 · Requirements</div>
+    </div>
+    <div class="req-grid">
+      <div class="req">
+        <b>Browser</b>
+        <div class="v">Chrome 116+</div>
+        <p class="d">For the Side Panel API. Edge 116+ also works (same engine). Firefox + Safari are on the v2.x roadmap.</p>
+      </div>
+      <div class="req">
+        <b>Account</b>
+        <div class="v">None</div>
+        <p class="d">No login, no email collection, no analytics in the extension. Demo runs immediately on first install.</p>
+      </div>
+      <div class="req">
+        <b>Cost</b>
+        <div class="v">Free</div>
+        <p class="d">15 min hosted demo, then BYOK (~$1.15/2hr at API cost) or $8/mo Plus. Pick after you've tried it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Three steps from install to first reaction.</h2>
+      <div class="page-no">§ 02 · Setup</div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="no">1</div>
+        <h4>Add to Chrome</h4>
+        <p>Click <b>Add to Chrome</b> in the Web Store. Chrome will show a permission summary — accept it. The peanut lands in your <span class="kbd">⋮</span> extensions menu.</p>
+        <p>Click the puzzle-piece icon at the right of the address bar, find Peanut Gallery, and click the pin to keep the peanut visible in your toolbar.</p>
+      </div>
+      <div class="step">
+        <div class="no">2</div>
+        <h4>Open the side panel</h4>
+        <p>Open any YouTube tab — a podcast, an interview, anything with audio. Click the peanut in your toolbar. Chrome opens the side panel on the right.</p>
+        <p>First-time only: a four-step guided tour walks through the Critics dial, persona pack switcher, and the Backend &amp; keys drawer.</p>
+      </div>
+      <div class="step">
+        <div class="no">3</div>
+        <h4>Press Start</h4>
+        <p>Hit the red <span class="kbd">Start Listening</span> button at the top of the panel. Tab audio is captured silently — no screen-share picker, no playback interference.</p>
+        <p>The four-persona booth fires within 30 seconds. Pin / upvote / quote-card any reaction you love.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Pick how you want to power it.</h2>
+      <div class="page-no">§ 03 · Three modes</div>
+    </div>
+    <div class="sub-kicker">After your 15-minute demo runs out</div>
+
+    <div class="modes">
+      <div class="mode">
+        <h3>Demo</h3>
+        <div class="price">15 min · one-off</div>
+        <p class="blurb">A single 15-minute window on our hosted backend. No card, no signup. Lifetime per install. The on-ramp.</p>
+        <a class="btn alt" href="/pricing/">How the demo works</a>
+      </div>
+      <div class="mode">
+        <h3>My keys</h3>
+        <div class="price">Free · forever</div>
+        <p class="blurb">Sign up at Deepgram + Anthropic + xAI (90 sec each, free tiers). Paste keys into the side panel. Free forever, ~$1.15 per 2-hour podcast.</p>
+        <a class="btn alt" href="/pricing/#byok">BYOK guide</a>
+      </div>
+      <div class="mode">
+        <h3>Plus</h3>
+        <div class="price">$8 / mo · 16 h / wk</div>
+        <p class="blurb">Hosted backend, no API keys to juggle. License key emailed after Stripe checkout. Cancel from the side panel. Accessibility tier — not a profit center.</p>
+        <a class="btn" href="/plus/">About Plus</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="callout tip">
+    <div class="tag">Self-host<small>· always free</small></div>
+    <p class="bd">Prefer to run the backend yourself? The whole thing is MIT-licensed Next.js. The <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host install guide</a> walks through Docker / Railway / your-own-VPS in about 15 minutes. The extension lets you point at any backend URL.</p>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <h2>Install FAQ.</h2>
+      <div class="page-no">§ 04 · Q &amp; A</div>
+    </div>
+    <div class="qa">
+      <div class="row">
+        <h3 class="q">Will Peanut Gallery slow down my browser?</h3>
+        <p class="a">Not noticeably. The extension is event-driven — it only does work when a session is running. When idle, it's a sleeping service worker that wakes on toolbar click. No background polling, no telemetry, no analytics inside the extension.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">Does YouTube detect or block this?</h3>
+        <p class="a">No. The extension uses <code>chrome.tabCapture</code> — the same API Otter and Fireflies use to silently capture meeting audio. There's no screen-share picker, no DOM scraping, no playback interference. YouTube has no way to detect it.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">Can I use it on the Brave / Arc / Edge browser?</h3>
+        <p class="a">Edge 116+ runs the same engine and works fine — install from the Chrome Web Store and it'll prompt to add. Brave + Arc are Chromium-based and usually work; the Side Panel API needs to be present, which is true on recent versions of both. Officially we test on Chrome.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">What permissions does it ask for?</h3>
+        <p class="a">Three: Side Panel (to live in the side panel), Tab Capture (to listen to the active tab's audio), and Storage (to persist your settings + license key locally in <code>chrome.storage.local</code>). No host permissions until you point at a custom backend.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">How do I uninstall?</h3>
+        <p class="a">Right-click the peanut in your toolbar → <b>Remove from Chrome</b>. All local storage is cleared on uninstall. If you had a Plus subscription, cancelling the Chrome extension does NOT cancel the Stripe subscription — open the side panel before uninstalling and use <b>Plus → Manage</b>, or email <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a>.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">Why isn't it on the Edge or Firefox add-on store?</h3>
+        <p class="a">Edge mirrors the Chrome Web Store — the same install link works. Firefox port is on the v2.x roadmap once the Side Panel API gap closes (Firefox uses a different sidebar mechanism that needs a separate code path).</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-bar">
+    <div class="lhs">One click. 30 seconds.<small>Free demo · BYOK · or $8/mo Plus</small></div>
+    <div class="btns">
+      <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Add to Chrome</a>
+      <a class="btn alt" href="/manual/">Operator's manual</a>
+    </div>
+  </div>
+
+  <footer class="colophon">
+    <div class="top">
+      <div class="lg">Peanut Gallery</div>
+      <div class="tag">A live AI writers' room for any YouTube tab. Set in newsprint. Open source, MIT.</div>
+    </div>
+    <div class="bot">
+      <div>© 2026 Seth Rininger</div>
+      <div>
+        <a href="/">Front page</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/plus/">Plus</a>
+        <a href="/manual/">Manual</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
