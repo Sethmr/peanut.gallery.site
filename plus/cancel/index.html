@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Cancel Peanut Gallery Plus · Email yourself a cancellation link</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<meta name="description" content="Cancel your Peanut Gallery Plus subscription. Enter the email on your account and we'll send a magic link to Stripe's hosted cancellation page." />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<link rel="canonical" href="https://www.peanutgallery.live/plus/cancel/" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Peanut Gallery" />
+<meta property="og:url" content="https://www.peanutgallery.live/plus/cancel/" />
+<meta property="og:title" content="Cancel Peanut Gallery Plus" />
+<meta property="og:description" content="Enter the email on your account; we'll send a magic link to cancel via Stripe's hosted portal." />
+<meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:creator" content="@SethRininger" />
+<meta name="twitter:title" content="Cancel Peanut Gallery Plus" />
+<meta name="twitter:description" content="Enter your email; magic link arrives; cancel on Stripe's hosted page." />
+<meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
+
+<link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Special+Elite&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+
+<!-- JSON-LD: BreadcrumbList + WebPage -->
+<script type="application/ld+json">
+[{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Peanut Gallery","item":"https://www.peanutgallery.live/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://www.peanutgallery.live/pricing/"},{"@type":"ListItem","position":3,"name":"Cancel Plus","item":"https://www.peanutgallery.live/plus/cancel/"}]},{"@context":"https://schema.org","@type":"WebPage","url":"https://www.peanutgallery.live/plus/cancel/","name":"Cancel Peanut Gallery Plus","description":"Cancel your Peanut Gallery Plus subscription. Email-driven; cancellation itself happens on Stripe's hosted customer portal.","inLanguage":"en-US","isPartOf":{"@type":"WebSite","name":"Peanut Gallery","url":"https://www.peanutgallery.live/"}}]
+</script>
+
+<style>
+  .cancel-card{border:4px double var(--rule); padding:36px 40px; background:var(--paper); margin-top:18px}
+  .cancel-card .kicker{font-family:var(--type); font-size:12px; letter-spacing:.25em; color:var(--stamp); text-transform:uppercase; margin-bottom:8px}
+  .cancel-card h1{font-family:var(--slab); font-weight:400; font-size:clamp(36px,5vw,56px); line-height:.95; margin:0 0 14px; text-transform:uppercase; letter-spacing:-.005em}
+  .cancel-card p{font-family:var(--serif); font-size:16px; line-height:1.55; color:var(--ink-2); margin:0 0 14px; max-width:640px}
+  .cancel-form{display:flex; gap:12px; flex-wrap:wrap; align-items:stretch; margin:20px 0 10px; max-width:640px}
+  .cancel-form input[type=email]{flex:1 1 260px; min-width:0; border:2px solid var(--ink); padding:14px 16px; font-family:var(--serif); font-size:16px; background:var(--paper); color:var(--ink); box-shadow:3px 3px 0 var(--ink-3)}
+  .cancel-form input[type=email]:focus{outline:none; background:#fff; border-color:var(--stamp)}
+  .cancel-form button{border:2px solid var(--ink); background:var(--stamp); color:var(--paper); padding:14px 22px; font-family:var(--slab); font-size:18px; text-transform:uppercase; letter-spacing:-.005em; cursor:pointer; box-shadow:3px 3px 0 var(--ink)}
+  .cancel-form button:hover{background:var(--ink); transform:translate(-1px,-1px); box-shadow:4px 4px 0 var(--ink-3)}
+  .cancel-form button[disabled]{opacity:.5; cursor:default; transform:none; box-shadow:3px 3px 0 var(--ink-3)}
+  .cancel-status{font-family:var(--serif); font-size:15px; line-height:1.55; padding:14px 16px; margin:18px 0 0; border-left:4px solid var(--ink-3); max-width:640px}
+  .cancel-status.ok{border-color:#2e7d32; background:rgba(46,125,50,.08)}
+  .cancel-status.err{border-color:var(--stamp); background:rgba(200,38,29,.08)}
+  .cancel-status[hidden]{display:none}
+  .cancel-detail{border-top:1px dashed var(--ink-3); margin-top:28px; padding-top:22px}
+  .cancel-detail h3{font-family:var(--slab); font-weight:400; font-size:24px; line-height:1; margin:0 0 10px; text-transform:uppercase; letter-spacing:-.005em}
+  .cancel-detail ol{font-family:var(--serif); font-size:15px; line-height:1.6; color:var(--ink-2); margin:0 0 10px; padding-left:22px}
+  .cancel-detail li{margin-bottom:6px}
+  .cancel-detail .fine{font-family:var(--type); font-size:11px; letter-spacing:.15em; color:var(--ink-3); text-transform:uppercase; margin-top:10px}
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="cover" style="padding-bottom:0">
+    <div class="rails">
+      <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; <a href="/pricing/">Pricing</a> &nbsp;·&nbsp; Cancel Plus</div>
+    </div>
+  </section>
+  <main class="sheet">
+    <div class="cancel-card">
+      <div class="kicker">Peanut Gallery Plus · cancellation</div>
+      <h1>Cancel your<br>subscription</h1>
+      <p>Enter the email address on your Plus account. We'll send a one-tap link to Stripe's hosted customer portal where you can cancel.</p>
+      <p style="font-size:14px; color:var(--ink-3)">No account dashboard, no password — just email. Your license key stays active through the end of the billing period you've already paid for.</p>
+
+      <form id="cancelForm" class="cancel-form" novalidate>
+        <input id="email" type="email" name="email" autocomplete="email" required placeholder="you@example.com" aria-label="Email address on your Plus account" />
+        <button id="submitBtn" type="submit">Send cancellation link</button>
+      </form>
+      <div id="status" class="cancel-status" hidden role="status" aria-live="polite"></div>
+
+      <div class="cancel-detail">
+        <h3>What happens next</h3>
+        <ol>
+          <li>If the email matches an active subscription, Stripe emails you a magic link in under a minute.</li>
+          <li>Click the link — it opens the Stripe-hosted customer portal.</li>
+          <li>Hit "Cancel subscription" on that page. Stripe confirms; our backend processes the webhook; your Plus access ends at the close of the current billing period.</li>
+          <li>If the email doesn't match an active subscription, you'll still get a success confirmation here (we don't leak which emails are on file) — but no email will arrive.</li>
+        </ol>
+        <p class="fine">Stuck? Email <a href="mailto:support@peanutgallery.live" style="color:var(--ink)">support@peanutgallery.live</a> with the card's last four digits and we'll cancel manually.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var API_BASE = 'https://api.peanutgallery.live';
+  var form = document.getElementById('cancelForm');
+  var emailInput = document.getElementById('email');
+  var btn = document.getElementById('submitBtn');
+  var status = document.getElementById('status');
+
+  function show(kind, msg){
+    status.hidden = false;
+    status.className = 'cancel-status ' + kind;
+    status.textContent = msg;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email = (emailInput.value || '').trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      show('err', 'Enter a valid email address.');
+      emailInput.focus();
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    status.hidden = true;
+    fetch(API_BASE + '/api/subscription/manage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, action: 'cancel' })
+    }).then(function(r){
+      return r.json().then(function(j){ return { status: r.status, body: j }; });
+    }).then(function(res){
+      if (res.status === 200 && res.body && res.body.ok) {
+        show('ok', res.body.message || 'If an active subscription matches this email, a cancellation link is on its way. Check your inbox.');
+        btn.textContent = 'Sent';
+      } else if (res.status === 503) {
+        show('err', 'Subscriptions are currently disabled on this backend. Email support@peanutgallery.live.');
+        btn.disabled = false;
+        btn.textContent = 'Send cancellation link';
+      } else {
+        show('err', (res.body && res.body.error) || 'Request failed. Try again in a minute, or email support@peanutgallery.live.');
+        btn.disabled = false;
+        btn.textContent = 'Send cancellation link';
+      }
+    }).catch(function(){
+      show('err', "Couldn't reach the server. Check your connection, or email support@peanutgallery.live.");
+      btn.disabled = false;
+      btn.textContent = 'Send cancellation link';
+    });
+  });
+})();
+</script>
+</body>
+</html>
