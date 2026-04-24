@@ -114,6 +114,28 @@
     .mode{border-right: 0; border-bottom: 1px solid var(--ink)}
     .mode:last-child{border-bottom: 0}
   }
+
+  /* Prose + bullets for the "what happens on your first run" explainer.
+     Broadsheet body serif matches the rest of the page register. */
+  .prose{
+    font-family: var(--serif); font-size: 15.5px; line-height: 1.6;
+    color: var(--ink-2);
+    max-width: 680px; margin: 6px 0 0;
+  }
+  .prose p{ margin: 0 0 12px }
+  .prose b, .prose strong{ color: var(--ink) }
+  .bullets{
+    list-style: none; padding: 0; margin: 6px 0 14px;
+    border-left: 3px solid var(--ink);
+  }
+  .bullets li{
+    padding: 6px 0 6px 14px;
+    font-family: var(--serif); font-size: 15px; line-height: 1.5;
+    color: var(--ink-2);
+    border-bottom: 1px dashed var(--rule);
+  }
+  .bullets li:last-child{ border-bottom: 0 }
+  .bullets li b{ color: var(--ink) }
 </style>
 
 <!-- JSON-LD: BreadcrumbList + HowTo -->
@@ -127,152 +149,163 @@
   <section class="cover">
     <div class="rails">
       <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The install desk</div>
-      <div>Pg. A2 · MMXXVI · One-click install</div>
+      <div>Pg. A2 · MMXXVI · How to install</div>
     </div>
 
-    <div class="stamp"><div><div class="big">30<br>Seconds</div><div class="sm">● ONE CLICK · NO ACCOUNT</div></div></div>
+    <div class="stamp"><div><div class="big">30<br>Seconds</div><div class="sm">● NO ACCOUNT · NO CARD</div></div></div>
 
-    <div class="kicker">— The install desk · Pg. A2 · Chrome Web Store —</div>
-    <h1>Install.</h1>
+    <div class="kicker">— The install desk · Pg. A2 · For everyone —</div>
+    <h1>How to install.</h1>
     <div class="lede">
-      One click in the Chrome Web Store. Pin the peanut to your toolbar. Press Start on any YouTube tab. The booth is live within 30 seconds — no account, no signup, no hosted backend wrangling on day one.
+      If you can install an app from a store, you can install Peanut Gallery. One tap in the Chrome Web Store, one pin to your toolbar, one click on any YouTube tab. You&rsquo;re listening inside a minute. No account, no credit card, no developer skills.
     </div>
   </section>
 
   <div class="install-hero">
     <h2>Add to Chrome.</h2>
-    <p class="lede">Single tap. The Chrome Web Store handles the rest. You'll see the peanut land in your toolbar.</p>
+    <p class="lede">One tap. The Chrome Web Store does the rest. When it&rsquo;s done, you&rsquo;ll see a little peanut icon near the top-right of your Chrome window.</p>
 
     <a class="big-btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Add to Chrome <span class="arrow">→</span></a>
 
     <div class="meta">
-      <b>Free</b> &nbsp;·&nbsp; <b>MIT-licensed</b> &nbsp;·&nbsp; <b>Open source</b> &nbsp;·&nbsp; Chrome 116+ &nbsp;·&nbsp; Side Panel API
+      <b>Free to try</b> &nbsp;·&nbsp; <b>No signup</b> &nbsp;·&nbsp; <b>Open source</b> &nbsp;·&nbsp; Works in Chrome, Edge, Brave, Arc
     </div>
   </div>
 
   <section>
     <div class="section-head">
       <h2>What you need.</h2>
-      <div class="page-no">§ 01 · Requirements</div>
+      <div class="page-no">&sect; 01 &middot; Before you start</div>
     </div>
     <div class="req-grid">
       <div class="req">
-        <b>Browser</b>
-        <div class="v">Chrome 116+</div>
-        <p class="d">For the Side Panel API. Edge 116+ also works (same engine). Firefox + Safari are on the v2.x roadmap.</p>
+        <b>A browser</b>
+        <div class="v">Chrome</div>
+        <p class="d">Chrome is the simplest path. Edge, Brave, and Arc all work too &mdash; they&rsquo;re built on the same engine as Chrome. Firefox and Safari are on the way.</p>
       </div>
       <div class="req">
-        <b>Account</b>
+        <b>An account</b>
         <div class="v">None</div>
-        <p class="d">No login, no email collection, no analytics in the extension. Demo runs immediately on first install.</p>
+        <p class="d">You don&rsquo;t sign up. You don&rsquo;t enter an email. You don&rsquo;t pick a password. Install and press Start &mdash; that&rsquo;s the whole setup.</p>
       </div>
       <div class="req">
-        <b>Cost</b>
-        <div class="v">Free</div>
-        <p class="d">15 min hosted demo, then BYOK (~$1.15/2hr at API cost) or $8/mo Plus. Pick after you've tried it.</p>
+        <b>A credit card</b>
+        <div class="v">No</div>
+        <p class="d">Everyone gets 15 free minutes of listening on our servers, no card needed. After that you can keep going for free with your own keys, or subscribe if you&rsquo;d rather not juggle them.</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="section-head">
-      <h2>Three steps from install to first reaction.</h2>
-      <div class="page-no">§ 02 · Setup</div>
+      <h2>Three steps from zero to listening.</h2>
+      <div class="page-no">&sect; 02 &middot; The install</div>
     </div>
     <div class="steps">
       <div class="step">
         <div class="no">1</div>
-        <h4>Add to Chrome</h4>
-        <p>Click <b>Add to Chrome</b> in the Web Store. Chrome will show a permission summary — accept it. The peanut lands in your <span class="kbd">⋮</span> extensions menu.</p>
-        <p>Click the puzzle-piece icon at the right of the address bar, find Peanut Gallery, and click the pin to keep the peanut visible in your toolbar.</p>
+        <h4>Click the big red &ldquo;Add to Chrome&rdquo; button</h4>
+        <p>It opens the Chrome Web Store page for Peanut Gallery. You&rsquo;ll see another <b>Add to Chrome</b> button there &mdash; click that one too. Chrome shows a little window asking you to confirm. Click <b>Add extension</b>.</p>
+        <p>A few seconds later, you&rsquo;ll see a message: <em>&ldquo;Peanut Gallery has been added to Chrome.&rdquo;</em> You&rsquo;re installed.</p>
       </div>
       <div class="step">
         <div class="no">2</div>
-        <h4>Open the side panel</h4>
-        <p>Open any YouTube tab — a podcast, an interview, anything with audio. Click the peanut in your toolbar. Chrome opens the side panel on the right.</p>
-        <p>First-time only: a four-step guided tour walks through the Critics dial, persona pack switcher, and the Backend &amp; keys drawer.</p>
+        <h4>Pin the peanut to your toolbar so it&rsquo;s easy to find</h4>
+        <p>Look near the top-right of Chrome, just left of your profile picture. You&rsquo;ll see a <b>small puzzle-piece icon</b>. Click it. A short list of your extensions pops open.</p>
+        <p>Find <b>Peanut Gallery</b> in that list. Next to it, click the little <b>pin icon</b>. The pin turns blue, and the peanut hops out into your toolbar so it&rsquo;s always one click away.</p>
       </div>
       <div class="step">
         <div class="no">3</div>
-        <h4>Press Start</h4>
-        <p>Hit the red <span class="kbd">Start Listening</span> button at the top of the panel. Tab audio is captured silently — no screen-share picker, no playback interference.</p>
-        <p>The four-persona booth fires within 30 seconds. Pin / upvote / quote-card any reaction you love.</p>
+        <h4>Open any YouTube video and click the peanut</h4>
+        <p>Go to YouTube. Open any video with audio &mdash; a podcast, an interview, a talk. Click the <b>peanut icon</b> in your toolbar. A tall panel slides out on the right side of your browser.</p>
+        <p>In that panel, click the big red <b>&#9654; Start Listening</b> button. Within a few seconds, four AI critics start reacting to the video &mdash; the panel fills with their short, in-character takes in real time. You&rsquo;re live.</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="section-head">
-      <h2>Pick how you want to power it.</h2>
-      <div class="page-no">§ 03 · Three modes</div>
+      <h2>What happens on your first run.</h2>
+      <div class="page-no">&sect; 03 &middot; The tour</div>
     </div>
-    <div class="sub-kicker">After your 15-minute demo runs out</div>
+    <div class="prose">
+      <p>The first time you open the side panel, a short <b>guided tour</b> pops up. Six little cards walk you through the settings drawer &mdash; which pack of critics you&rsquo;re using, how often they chime in, how to mute anyone who&rsquo;s wearing you out &mdash; plus a quick note on tapping a reaction to save or share it.</p>
+      <p>The <b>last card asks you to pick</b> how you want to use Peanut Gallery going forward. Three buttons:</p>
+      <ul class="bullets">
+        <li><b>Try now</b> &mdash; uses your free 15 minutes on our servers. No signup, no card. Good for deciding whether you like the thing.</li>
+        <li><b>Get my own keys</b> &mdash; runs you through three quick provider signups, one at a time. Free forever once you&rsquo;ve got the keys.</li>
+        <li><b>Peanut Gallery Plus</b> &mdash; coming soon. $8 a month, we handle the keys for you.</li>
+      </ul>
+      <p>You don&rsquo;t have to pick right away. Skip the tour any time with the <em>Skip</em> button in the top-right of each card, or re-run it later from <b>Settings &rarr; Appearance &rarr; Replay settings tour</b>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>After the free minutes run out.</h2>
+      <div class="page-no">&sect; 04 &middot; Keep going</div>
+    </div>
+    <div class="sub-kicker">Pick whichever feels like less work to you</div>
 
     <div class="modes">
       <div class="mode">
-        <h3>Demo</h3>
-        <div class="price">15 min · one-off</div>
-        <p class="blurb">A single 15-minute window on our hosted backend. No card, no signup. Lifetime per install. The on-ramp.</p>
-        <a class="btn alt" href="/pricing/">How the demo works</a>
+        <h3>Get my own keys</h3>
+        <div class="price">Free forever</div>
+        <p class="blurb">The in-panel wizard opens <b>three websites</b> for you (Deepgram, Anthropic, xAI), one at a time. You create a free account on each, copy a string of letters and numbers they give you, and paste it into the box the wizard shows. About ten minutes total. After that, each provider bills <em>you</em> directly &mdash; roughly <b>$1 per hour of listening</b>, and all three include free signup credit that covers casual use for a long time.</p>
+        <a class="btn alt" href="/pricing/#byok">More on bring-your-own-keys</a>
       </div>
       <div class="mode">
-        <h3>My keys</h3>
-        <div class="price">Free · forever</div>
-        <p class="blurb">Sign up at Deepgram + Anthropic + xAI (90 sec each, free tiers). Paste keys into the side panel. Free forever, ~$1 per hour.</p>
-        <a class="btn alt" href="/pricing/#byok">BYOK guide</a>
-      </div>
-      <div class="mode">
-        <h3>Plus</h3>
-        <div class="price">$8 / mo · 16 h / wk</div>
-        <p class="blurb">Hosted backend, no API keys to juggle. License key emailed after Stripe checkout. Cancel from the side panel. Accessibility tier — not a profit center.</p>
-        <a class="btn" href="/pricing/#plus">About Plus</a>
+        <h3>Peanut Gallery Plus</h3>
+        <div class="price">$8 / mo &middot; coming soon</div>
+        <p class="blurb">We manage the provider accounts for you. No websites to visit, no keys to paste. $8 a month buys <b>16 hours</b> of listening a week. We email you a license key, you paste it into the side panel once, and you&rsquo;re done. Cancel any time from the same panel. Plus is in the works; the plan above is the clean way to run Peanut Gallery today.</p>
+        <a class="btn" href="/pricing/#plus">How Plus will work</a>
       </div>
     </div>
   </section>
 
   <div class="callout tip">
-    <div class="tag">Self-host<small>· always free</small></div>
-    <p class="bd">Prefer to run the backend yourself? The whole thing is MIT-licensed Next.js. The <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host install guide</a> walks through Docker / Railway / your-own-VPS in about 15 minutes. The extension lets you point at any backend URL.</p>
+    <div class="tag">For developers<small>&middot; self-host</small></div>
+    <p class="bd">If you know what Docker is and want to run the whole backend yourself, the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host install guide</a> has you covered. Skip this if you&rsquo;re not a developer &mdash; you do not need to self-host to use Peanut Gallery.</p>
   </div>
 
   <section>
     <div class="section-head">
-      <h2>Install FAQ.</h2>
-      <div class="page-no">§ 04 · Q &amp; A</div>
+      <h2>Common questions.</h2>
+      <div class="page-no">&sect; 05 &middot; FAQ</div>
     </div>
     <div class="qa">
       <div class="row">
-        <h3 class="q">Will Peanut Gallery slow down my browser?</h3>
-        <p class="a">Not noticeably. The extension is event-driven — it only does work when a session is running. When idle, it's a sleeping service worker that wakes on toolbar click. No background polling, no telemetry, no analytics inside the extension.</p>
+        <h3 class="q">What&rsquo;s an API key? Do I need one?</h3>
+        <p class="a">An API key is a private string of letters and numbers a service gives you when you sign up &mdash; think of it as a password the extension uses to talk to that service on your behalf. You only need keys if you pick &ldquo;Get my own keys.&rdquo; The in-panel wizard shows you exactly where to click on each provider&rsquo;s website, and gives you a paste box for each key. You won&rsquo;t be asked to write any code.</p>
       </div>
       <div class="row">
-        <h3 class="q">Does YouTube detect or block this?</h3>
-        <p class="a">No. The extension uses <code>chrome.tabCapture</code> — the same API Otter and Fireflies use to silently capture meeting audio. There's no screen-share picker, no DOM scraping, no playback interference. YouTube has no way to detect it.</p>
+        <h3 class="q">Where does my audio go? Does YouTube know I&rsquo;m using this?</h3>
+        <p class="a">Your audio is sent to the AI providers so they can transcribe it and generate the reactions. We don&rsquo;t save or record it &mdash; it&rsquo;s streamed in real time, turned into text, and discarded. YouTube can&rsquo;t detect the extension (we use Chrome&rsquo;s built-in tab-audio feature, the same kind of thing meeting tools use), and the extension does nothing when no session is running. See the <a href="/privacy/">privacy page</a> for the full breakdown.</p>
       </div>
       <div class="row">
-        <h3 class="q">Can I use it on the Brave / Arc / Edge browser?</h3>
-        <p class="a">Edge 116+ runs the same engine and works fine — install from the Chrome Web Store and it'll prompt to add. Brave + Arc are Chromium-based and usually work; the Side Panel API needs to be present, which is true on recent versions of both. Officially we test on Chrome.</p>
+        <h3 class="q">I use Edge / Brave / Arc instead of Chrome. Does it work?</h3>
+        <p class="a">Yes. Those browsers are built on the same engine as Chrome, so the Chrome Web Store link above works the same way. On Edge you&rsquo;ll see a prompt asking &ldquo;Allow extensions from other stores?&rdquo; &mdash; click allow. Firefox and Safari are on the roadmap; they work a bit differently under the hood and need a separate version.</p>
       </div>
       <div class="row">
-        <h3 class="q">What permissions does it ask for?</h3>
-        <p class="a">Three: Side Panel (to live in the side panel), Tab Capture (to listen to the active tab's audio), and Storage (to persist your settings + license key locally in <code>chrome.storage.local</code>). No host permissions until you point at a custom backend.</p>
+        <h3 class="q">What if the reactions stop or something looks wrong?</h3>
+        <p class="a">Two fixes cover almost everything: (1) close the side panel and open it again, or (2) refresh the YouTube tab. If a specific video isn&rsquo;t being transcribed, it&rsquo;s usually an ad playing &mdash; let it finish. For anything else, there&rsquo;s a <b>Feedback &amp; bugs</b> section inside the side panel settings with a one-click email link.</p>
       </div>
       <div class="row">
-        <h3 class="q">How do I uninstall?</h3>
-        <p class="a">Right-click the peanut in your toolbar → <b>Remove from Chrome</b>. All local storage is cleared on uninstall. If you had a Plus subscription, cancelling the Chrome extension does NOT cancel the Stripe subscription — open the side panel before uninstalling and use <b>Plus → Manage</b>, or email <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a>.</p>
+        <h3 class="q">How do I uninstall if I don&rsquo;t like it?</h3>
+        <p class="a">Right-click the peanut in your toolbar and pick <b>Remove from Chrome</b>. That&rsquo;s it. All your settings are wiped off your computer. If you happen to be on Plus, cancel that <em>first</em> from the side panel (Settings &rarr; Backend &amp; keys &rarr; Plus &rarr; Manage) &mdash; removing the extension alone doesn&rsquo;t stop the monthly charge. Or email <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a> and we&rsquo;ll handle it.</p>
       </div>
       <div class="row">
-        <h3 class="q">Why isn't it on the Edge or Firefox add-on store?</h3>
-        <p class="a">Edge mirrors the Chrome Web Store — the same install link works. Firefox port is on the v2.x roadmap once the Side Panel API gap closes (Firefox uses a different sidebar mechanism that needs a separate code path).</p>
+        <h3 class="q">Will it slow my computer down?</h3>
+        <p class="a">No. When no session is running, the extension does nothing &mdash; Chrome puts it to sleep until you click the peanut. When you are listening, the transcription and reactions run on remote servers, not on your computer.</p>
       </div>
     </div>
   </section>
 
   <div class="cta-bar">
-    <div class="lhs">One click. 30 seconds.<small>Free demo · BYOK · or $8/mo Plus</small></div>
+    <div class="lhs">One click. 30 seconds. No signup.<small>Free to try &middot; then bring your own keys or subscribe</small></div>
     <div class="btns">
       <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Add to Chrome</a>
-      <a class="btn alt" href="/manual/">Operator's manual</a>
+      <a class="btn alt" href="/pricing/">See pricing</a>
     </div>
   </div>
 
