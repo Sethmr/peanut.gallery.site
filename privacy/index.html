@@ -88,45 +88,54 @@
   <div class="crumb"><a href="/">← Peanut Gallery</a> &nbsp;·&nbsp; Privacy policy</div>
 
   <h1>Privacy Policy</h1>
-  <div class="updated"><span>— Draft pending legal review —</span><span>Last updated · April 21, 2026</span></div>
+  <div class="updated"><span>v2.0 &middot; Peanut Gallery</span><span>Last updated · April 24, 2026</span></div>
 
   <div class="callout">
-    <p><strong>United States only.</strong> Peanut Gallery Plus and the Demo allowance backed by our hosted keys are offered only to users in the United States. The Extension is globally available under MIT; if you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>.</p>
-    <p><strong>Short answer.</strong> Audio is streamed through a transcription provider and discarded. Your live transcript sits in server memory during the session and is not persisted. If you use your own API keys they travel per-request as headers and are never written to disk. The only long-term data we store for a paying user is: email, license key, Stripe subscription ID, and a weekly usage counter measured in milliseconds. No ads, no data sale, no third-party analytics inside the Extension.</p>
+    <p><strong>United States only for hosted tiers.</strong> The Demo allowance backed by our hosted keys is offered only to users in the United States. The Extension is globally available under the MIT license; if you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>. A paid hosted tier (&ldquo;Peanut Gallery Plus&rdquo;) is planned for a future release and is not currently available.</p>
+    <p><strong>Short answer.</strong> Audio is streamed through a transcription provider and discarded &mdash; never written to disk, never used to train AI models. Your live transcript sits in server memory during the session and is not persisted. If you use your own API keys they travel per-request as headers and are never stored server-side. We don&rsquo;t sell data. The Extension loads no analytics library. The marketing site loads Google Analytics for aggregate page-view measurement only (no Signals, no remarketing, no advertising features).</p>
     <p><strong>Recording-consent laws are your responsibility.</strong> The Extension can be pointed at any browser tab you grant it. Many U.S. states require all-party consent to record private conversations.</p>
   </div>
 
-  <p>Peanut Gallery is a Chrome extension, a hosted backend at <code>api.peanutgallery.live</code>, a marketing site at <code>www.peanutgallery.live</code>, and an optional $8/month subscription called Peanut Gallery Plus. This policy describes what data the Service handles, what we store, and for how long. It reads alongside the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/legal/TERMS-OF-SERVICE.md" target="_blank" rel="noopener">Terms of Service</a>.</p>
+  <p>Peanut Gallery is a Chrome extension, a hosted backend at <code>api.peanutgallery.live</code>, and a marketing site at <code>www.peanutgallery.live</code>. This policy describes what data the Service handles, what we store, and for how long. It reads alongside the <a href="/terms/">Terms of Service</a>. The Service is provided by <strong>Manu Games LLC</strong>, a North Carolina limited liability company.</p>
 
-  <h2>The three operating modes</h2>
-  <p>Before the details, here&rsquo;s the mode you&rsquo;re in. You pick at runtime in the Extension&rsquo;s Backend &amp; keys drawer:</p>
+  <h2>How you can use the Service today</h2>
+  <p>You pick at runtime in the Extension&rsquo;s Backend &amp; keys drawer:</p>
   <ul>
     <li><strong>Demo Mode</strong> &mdash; 15 minutes of free transcription on our API keys, one-time per install. Gated by a per-installation UUID (<code>installId</code>) generated locally.</li>
-    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you supply your own API keys. We forward them per-request to the providers and never store them server-side.</li>
-    <li><strong>Peanut Gallery Plus</strong> &mdash; $8/month subscription, 16 hours a week on our keys. Requires an email (for license-key delivery) and produces a license key of the form <code>pg-xxxx-xxxx-xxxx</code>.</li>
+    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you supply your own API keys. We forward them per-request to the providers and never store them server-side. In this mode, Manu Games is not a processor on the AI-inference path: you are in direct privity with the provider whose key you supplied, under that provider&rsquo;s own terms and privacy policy.</li>
+    <li><strong>Self-host</strong> &mdash; deploy the MIT-licensed backend yourself. We don&rsquo;t see any data in this mode; this policy doesn&rsquo;t apply to your self-hosted instance.</li>
   </ul>
+  <p><strong>Peanut Gallery Plus (planned future tier):</strong> not currently offered. Code paths in the repository that reference a Plus subscription, a license key of the form <code>pg-xxxx-xxxx-xxxx</code>, or Stripe checkout are dormant and gated off in production. If and when we launch that tier, this policy will be updated to describe the subscription-specific data flows with at least 30 days&rsquo; advance notice to any then-active subscribers.</p>
 
   <h2>What the Extension keeps on your device</h2>
   <p>The Extension writes to <code>chrome.storage.local</code>, which Chrome persists on your disk. Nothing there leaves your browser unless you trigger it:</p>
   <ul>
     <li>Your chosen backend URL, pasted API keys (if any), persona pack, theme, response-rate dial, sensitivity level, and per-persona mute list.</li>
     <li>Your per-install UUID (<code>installId</code>) &mdash; used to meter the Demo trial.</li>
-    <li>Your Plus license key and backend-mode preferences, if you subscribed.</li>
-    <li>Up to 50 prior sessions&rsquo; metadata, sampled transcript tails (capped at 4,000 characters per session), and persona reactions &mdash; groundwork for the v2.0 &ldquo;Past sessions&rdquo; feature. LRU-evicted at 50.</li>
+    <li>Up to 50 prior sessions&rsquo; metadata, sampled transcript tails (capped at 4,000 characters per session), and persona reactions &mdash; groundwork for a future &ldquo;Past sessions&rdquo; feature. LRU-evicted at 50.</li>
     <li>Per-session upvotes / downvotes / pinned entry, plus UI state.</li>
   </ul>
 
   <h2>What the backend receives and keeps</h2>
   <p>The hosted backend at <code>api.peanutgallery.live</code> is a stateless API behind a session ID. When you stream a session it handles:</p>
   <ul>
-    <li><strong>Audio</strong> &mdash; received as PCM, forwarded to the transcription provider, discarded. Nothing written to disk.</li>
+    <li><strong>Audio</strong> &mdash; received as PCM, forwarded to the transcription provider with the <code>mip_opt_out=true</code> flag set, and discarded. Nothing is written to disk. The opt-out flag tells Deepgram not to retain or use your audio to train AI models.</li>
     <li><strong>Live transcript</strong> &mdash; held in memory during the session, routed to the Director and personas, discarded on session end.</li>
     <li><strong>Your API keys (My-Keys Mode)</strong> &mdash; forwarded per-request to the providers, redacted from every log line, never persisted.</li>
-    <li><strong>Your install ID (Demo Mode)</strong> &mdash; kept in memory to meter the 15-minute trial. Resets when the backend process redeploys in the current phase; moves to database in a future phase.</li>
-    <li><strong>Your email, license key, and Stripe subscription ID (Plus Mode only)</strong> &mdash; persisted so we can validate your key, recover it if you lose it, and manage billing. Retained for the life of your subscription plus 12 months, then deleted.</li>
-    <li><strong>Your weekly usage counter (Plus Mode only)</strong> &mdash; milliseconds of hosted transcription per rolling 7-day window. Retained for 30 days for cap enforcement.</li>
+    <li><strong>Your install ID (Demo Mode)</strong> &mdash; kept in memory to meter the 15-minute trial.</li>
     <li><strong>Operational logs</strong> &mdash; request IDs, session IDs, persona IDs, response times, error events. 30-day retention. Redacted of keys; never include complete transcripts or audio.</li>
   </ul>
+  <p>If and when the planned Peanut Gallery Plus tier launches, additional fields (subscriber email, license key, Stripe subscription ID, weekly usage counter) will be persisted with retention windows documented here at that time.</p>
+
+  <h2 id="ai-training">AI training on your content</h2>
+  <p>We do not train AI models on your audio, transcripts, or content, and we configure each provider to minimize retention to the extent each provider offers that control:</p>
+  <ul>
+    <li><strong>Deepgram</strong> &mdash; <code>mip_opt_out=true</code> is sent on every transcription request. Under Deepgram&rsquo;s Model Improvement Partnership Program documentation, this limits retention to the duration necessary to process the request and excludes the content from model training.</li>
+    <li><strong>Anthropic</strong> &mdash; API traffic is non-training by default per Anthropic&rsquo;s commercial posture. We do not opt in to any training-partnership program.</li>
+    <li><strong>xAI</strong> &mdash; Enterprise ToS §3.3 provides that xAI shall not use User Content for training and auto-deletes within 30 days absent a legal hold or safety flag.</li>
+    <li><strong>Brave Search</strong> &mdash; when enabled, search queries are submitted for grounding only; we do not cache results beyond transient operational storage, consistent with Brave&rsquo;s Search API Terms §3(b)(i).</li>
+  </ul>
+  <p>These configurations protect content flowing through the Service. They do not control what you do with persona output after it leaves the Service, or what providers do under their own terms with your account in BYOK mode.</p>
 
   <h2>Feedback on persona reactions</h2>
   <p>When you click the menu on a persona reaction and choose upvote, downvote, pin, or quote-card, we log that action to <code>/api/feedback</code>. Each log entry contains the action, the persona, the pack, the reaction text, the transcript tail (~500 characters) that informed the reaction, your install ID, and a timestamp. We retain these for <strong>90 days</strong>.</p>
@@ -157,18 +166,16 @@
       <tr><th>Data</th><th>Retention</th></tr>
     </thead>
     <tbody>
-      <tr><td>Audio bytes</td><td>In-memory, during session only</td></tr>
+      <tr><td>Audio bytes</td><td>In-memory, during session only &mdash; <code>mip_opt_out=true</code> sent to Deepgram on every request</td></tr>
       <tr><td>Live transcript</td><td>In-memory, during session only</td></tr>
       <tr><td>Voted / pinned / quote-carded snippets</td><td>90 days</td></tr>
       <tr><td>API keys (BYOK)</td><td>Never stored</td></tr>
-      <tr><td>Install ID</td><td>Backend process lifetime (Phase 1)</td></tr>
-      <tr><td>Email + license key (Plus)</td><td>Subscription + 12 months</td></tr>
-      <tr><td>Weekly usage counter (Plus)</td><td>30 days</td></tr>
+      <tr><td>Install ID</td><td>Backend process lifetime</td></tr>
       <tr><td>Operational logs</td><td>30 days</td></tr>
-      <tr><td>Payment records</td><td>Per Stripe&rsquo;s policy</td></tr>
-      <tr><td>Marketing-site analytics</td><td>Per Google Analytics retention</td></tr>
+      <tr><td>Marketing-site analytics (Google Analytics)</td><td>Per Google Analytics retention</td></tr>
     </tbody>
   </table>
+  <p class="callout" style="margin-top:10px"><em>If and when Peanut Gallery Plus launches, additional rows (email, license key, Stripe subscription ID, weekly usage counter, payment records) will be added with retention windows.</em></p>
 
   <h2>Your rights</h2>
   <p>Wherever you live, you have the right to know what we hold, correct it, delete it, port it, object to certain processing, and complain to a data-protection authority. Under U.S. state privacy laws (CCPA/CPRA, Virginia, Colorado, Connecticut, and equivalents) you also have the right to opt out of &ldquo;sale&rdquo; and &ldquo;sharing&rdquo; of personal information. We do not sell or share personal information in the senses those laws define.</p>

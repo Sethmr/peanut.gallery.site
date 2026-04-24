@@ -85,56 +85,90 @@
   <div class="crumb"><a href="/">← Peanut Gallery</a> &nbsp;·&nbsp; Terms of service</div>
 
   <h1>Terms of Service</h1>
-  <div class="updated"><span>— Draft pending legal review —</span><span>Last updated · April 21, 2026</span></div>
+  <div class="updated"><span>v2.0 &middot; Peanut Gallery</span><span>Last updated · April 24, 2026</span></div>
 
   <div class="callout">
-    <p><strong>United States only.</strong> Peanut Gallery Plus and the Demo allowance backed by our hosted keys are offered only to users in the United States. The Extension itself is globally available under the MIT license. If you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>.</p>
-    <p>If you only read three sections, read <strong>Acceptable Use</strong>, <strong>AI Output Disclaimer</strong>, and <strong>Limitation of Liability</strong>. Those sections change what you can use the Service for and what you can recover from us if something goes wrong.</p>
+    <p><strong>United States only for paid and hosted tiers.</strong> The Demo allowance backed by our hosted keys is offered only to users in the United States. A paid hosted subscription (&ldquo;Peanut Gallery Plus&rdquo;) is planned for a future release and is not currently available. The Extension itself is globally available under the MIT license. If you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>.</p>
+    <p>If you only read three sections, read <strong>Acceptable Use</strong>, <strong>AI Output and Persona Framing</strong>, and <strong>Limitation of Liability</strong>. Those sections change what you can use the Service for and what you can recover from us if something goes wrong.</p>
   </div>
 
-  <p>These Terms of Service (&ldquo;<strong>Terms</strong>&rdquo;) govern your use of the Peanut Gallery Chrome extension, the hosted backend at <code>api.peanutgallery.live</code>, the marketing site at <code>www.peanutgallery.live</code>, and the optional Peanut Gallery Plus subscription (together, the &ldquo;<strong>Service</strong>&rdquo;). They read alongside our <a href="https://www.peanutgallery.live/privacy/" target="_blank" rel="noopener">Privacy Policy</a>, which is incorporated by reference. The Service is provided by Seth Rininger, a sole proprietor in North Carolina, U.S.A. (&ldquo;<strong>we</strong>&rdquo;, &ldquo;<strong>us</strong>&rdquo;).</p>
+  <p>These Terms of Service (&ldquo;<strong>Terms</strong>&rdquo;) govern your use of the Peanut Gallery Chrome extension, the hosted backend at <code>api.peanutgallery.live</code>, the marketing site at <code>www.peanutgallery.live</code>, and any future paid hosted tier (together, the &ldquo;<strong>Service</strong>&rdquo;). They read alongside our <a href="https://www.peanutgallery.live/privacy/" target="_blank" rel="noopener">Privacy Policy</a>, which is incorporated by reference. The Service is provided by <strong>Manu Games LLC</strong>, a North Carolina limited liability company (&ldquo;<strong>we</strong>&rdquo;, &ldquo;<strong>us</strong>&rdquo;, &ldquo;<strong>Manu Games</strong>&rdquo;).</p>
 
-  <h2>Three ways to use the Service</h2>
+  <h2>How you can use the Service today</h2>
   <ul>
-    <li><strong>Demo</strong> &mdash; free 15-minute one-off trial on our shared API keys. U.S. users only.</li>
-    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you provide your own API keys to the providers. No Peanut Gallery charges. Globally available.</li>
-    <li><strong>Peanut Gallery Plus</strong> &mdash; $8/month subscription through Stripe, 16 hours/week of hosted transcription. U.S. billing addresses only.</li>
+    <li><strong>Demo</strong> &mdash; free 15-minute one-off trial on our shared API keys. U.S. users only. One-off per install.</li>
+    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you provide your own API keys to the providers we support (Deepgram, Anthropic, xAI, and optionally Brave Search). Free forever. Globally available.</li>
+    <li><strong>Self-host</strong> &mdash; the backend is MIT-licensed open source. Deploy it yourself with your own keys. Covered by the MIT license, not by these Terms as a Service agreement.</li>
   </ul>
 
+  <h2>About a future paid hosted tier</h2>
+  <p>We are not currently offering a paid hosted subscription. Code and documentation in the repository describing &ldquo;Peanut Gallery Plus&rdquo; refer to a planned future tier that may launch in a later release. If and when we launch that tier, additional subscription-specific terms (pricing, auto-renewal disclosure, cancellation mechanics, usage caps, refund policy) will be published here with at least 30 days&rsquo; advance notice. Until that launch, no subscription charges exist, no subscription license keys are being issued for purchase, and any Stripe-checkout code paths are gated off in production. Do not rely on the existence of subscription-related code as an offer to sell.</p>
+
   <h2>Acceptance and eligibility</h2>
-  <p>You accept these Terms by installing or running the Extension, by calling the hosted backend, or by creating a Plus subscription. You must be at least 13 to use the Extension and at least 18 (or the age of majority in your jurisdiction, if higher) to subscribe to Plus. You must not be on any U.S., U.K., E.U., or U.N. sanctions list, and you must not use the Service in a sanctioned jurisdiction.</p>
+  <p>You accept these Terms by installing or running the Extension or by calling our hosted backend. You must be at least 13 to use the Extension. You must not be on any U.S., U.K., E.U., or U.N. sanctions list, and you must not use the Service in a sanctioned jurisdiction. See the <strong>Export and sanctions</strong> section below.</p>
 
   <h2 id="acceptable-use">Acceptable use &mdash; recording-consent laws are your responsibility</h2>
-  <p>The Extension can capture audio from any browser tab you authorize. Several U.S. states &mdash; including <strong>California, Florida, Illinois, Maryland, Massachusetts, Montana, New Hampshire, Nevada, Pennsylvania, and Washington</strong> &mdash; require all-party consent to record private conversations. You are solely responsible for obtaining any consent required before directing the Extension at audio (live calls, conferences, voicemail, ambient room audio, private streams).</p>
+  <p>The Extension can capture audio from any browser tab you authorize. Several U.S. states &mdash; including <strong>California, Florida, Illinois, Maryland, Massachusetts, Montana, New Hampshire, Nevada, Pennsylvania, and Washington</strong> &mdash; require all-party consent to record private conversations. Many jurisdictions outside the U.S. (the EU, UK, Canada, and others) impose equivalent or stricter rules. You are solely responsible for obtaining any consent required before directing the Extension at audio (live calls, conferences, voicemail, ambient room audio, private streams).</p>
   <p>You further agree not to use the Service to:</p>
   <ul>
     <li>Capture, transcribe, or process any audio you are not legally entitled to process.</li>
     <li>Direct the Extension at audio of any identifiable child under 13, harass or surveil any person, or produce content sexualizing or harming any minor.</li>
     <li>Violate any rights-holder&rsquo;s copyright, circumvent DRM, or redistribute persona output as if it were a real statement by a person whose voice was captured.</li>
-    <li>Abuse the Demo allowance through scripted trial-resetting, bypass Stripe webhooks, or redistribute / resell a Plus license key.</li>
+    <li>Generate content that violates the right of publicity, constitutes defamation or false light, creates a deceptive digital replica of an identifiable person, or falsely attributes statements to a real person.</li>
+    <li>Abuse the Demo allowance through scripted trial-resetting, sharing install identifiers, or circumventing the per-install 15-minute ceiling.</li>
+    <li>Violate the usage policy of any provider whose API is consumed through the Service (see <strong>Provider usage policies</strong> below).</li>
   </ul>
 
-  <h2>Peanut Gallery Plus</h2>
-  <p>Plus is $8.00 USD per month (plus applicable sales tax), billed through Stripe on an auto-renewing monthly cycle. Plus includes 16 hours of hosted transcription per rolling 7-day period. Sessions in progress when you cross the cap continue to their natural end; new sessions cannot start until the oldest used time rolls off.</p>
-  <p><strong>Pro-rata refund on request, no questions asked</strong>, for the current billing period &mdash; email <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a>. Cancel anytime through the Stripe customer portal (linked from the Extension&rsquo;s Manage button). After cancellation, your subscription remains active through the end of the billing period; we do not pro-rate cancellations except for the refund above or for a material adverse change we introduce.</p>
-  <p>By creating a Plus subscription you represent that your billing address is in the United States. We may refund and terminate any subscription whose billing address is outside the U.S.</p>
-
-  <h2>AI output disclaimer</h2>
-  <p><strong>All persona output is AI-generated and may be inaccurate, misleading, fabricated, biased, offensive, or wrong.</strong> The Service uses third-party large-language-model providers and a third-party search provider and may misattribute statements, produce confident-sounding &ldquo;fact-checks&rdquo; that are not factual, repeat errors in the transcript or search results, or fail in ways unique to streaming AI. You are responsible for verifying persona output before relying on it for any purpose, and for any consequences of redistributing it. Label redistributed output as AI-generated commentary, not as a quote from any real person.</p>
+  <h2 id="ai-output">AI output and persona framing</h2>
+  <p><strong>All persona output is AI-generated text and may be inaccurate, misleading, fabricated, biased, offensive, or wrong.</strong> The Service uses third-party large-language-model providers (Anthropic, xAI) and a third-party search provider (Brave, or xAI Live Search when enabled), and may misattribute statements, produce confident-sounding &ldquo;fact-checks&rdquo; that are not factual, repeat errors in the transcript or search results, or fail in ways unique to streaming AI. You are responsible for verifying persona output before relying on it for any purpose, and for any consequences of redistributing it. Label redistributed output as AI-generated commentary, not as a quote from any real person.</p>
+  <p><strong>Personas are text-only parodies inspired by public figures, not voice clones or image likenesses.</strong> The Service generates short written reactions in the styled voice of a persona. It does <em>not</em> synthesize audio in the likeness of any real person&rsquo;s voice, generate images of any real person, sample a real person&rsquo;s recorded voice, use any real person&rsquo;s photograph or likeness, or hold itself out as an authorized or endorsed work of any named individual. The persona prompts carry a standing instruction that the model identify itself as an AI fan parody if directly asked whether it is the named individual. This framing is load-bearing for the parody / satire / First Amendment posture.</p>
+  <p>If you are a public figure (or representative of one) whose name appears in a persona and you want it removed, email <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a>. We respond promptly and in good faith.</p>
 
   <h2>What the Service is not</h2>
   <ul>
     <li>Not legal, medical, financial, tax, or professional advice of any kind.</li>
     <li>Not a verified news source. Persona fact-checks may be wrong.</li>
     <li>Not a recording or archiving service. We do not save audio files.</li>
-    <li>Not a traditional account-backed service. There is no account page; your license key and install ID are the entire stored state of our relationship.</li>
-    <li>Not ad-supported.</li>
+    <li>Not a traditional account-backed service. There is no account page for BYOK or Demo users; your per-install identifier is the only state we keep to meter Demo usage.</li>
+    <li>Not ad-supported. No tracking or advertising cookies.</li>
+    <li>Not a voice-cloning or face-cloning tool. Personas output text only; no synthetic audio, image, or video of any real person is produced.</li>
   </ul>
 
   <h2>Intellectual property</h2>
-  <p>The Extension&rsquo;s source code is licensed under the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>. The Peanut Gallery name and mascot artwork are reserved.</p>
-  <p>The persona packs are <strong>inspired by</strong>, but not licensed from, public figures &mdash; currently the Howard Stern Show on-air crew and the <em>This Week in Startups</em> hosts. We make no claim of ownership over those individuals&rsquo; names, voices, likenesses, or personalities. The persona system prompts are original text authored by us. If you are a public figure (or representative of one) whose name appears and you want it removed, email <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a>. We respond promptly and in good faith.</p>
+  <p>The Extension&rsquo;s source code is licensed under the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>. The <strong>Peanut Gallery</strong> name and mascot artwork are trademarks of Manu Games LLC and are not granted under the MIT license. The persona system prompts, the fact-check-layer methodology, and related documentation are copyrighted original works of Manu Games LLC, published in the repository under the same MIT license as the code unless marked otherwise.</p>
+  <p>The persona packs are <strong>inspired by</strong>, but not licensed from, public figures &mdash; currently the Howard Stern Show on-air crew and the <em>This Week in Startups</em> hosts. We make no claim of ownership over those individuals&rsquo; names, voices, likenesses, or personalities, and we have not been authorized or endorsed by any of them. See the <strong>AI output and persona framing</strong> section above for the parody posture.</p>
   <p>Feedback you submit (in-Extension upvotes, downvotes, pins, quote-cards; bug reports; support emails; pull requests) is licensed to us non-exclusively, worldwide, royalty-free, to incorporate into the Service. You retain ownership of your feedback.</p>
+
+  <h2 id="provider-usage-policies">Provider usage policies</h2>
+  <p>When you use the Service, network calls are made to the following third-party providers, each governed by that provider&rsquo;s own terms and acceptable-use policy. You agree to be bound by those policies when your use of the Service causes a call to that provider, regardless of whether you are in My-Keys Mode or Demo mode. In My-Keys Mode you are the direct customer of each provider; in Demo mode Manu Games&rsquo; keys are used within the 15-minute one-off trial ceiling.</p>
+  <ul>
+    <li><strong>Anthropic (Claude models):</strong> <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">Commercial Terms</a> and <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener">Usage Policy</a>. The Usage Policy&rsquo;s disclosure requirement for AI-interactive agents is incorporated into this Service via the AI-interaction notice we display at session start.</li>
+    <li><strong>xAI (Grok models):</strong> <a href="https://x.ai/legal/terms-of-service-enterprise" target="_blank" rel="noopener">Enterprise Terms of Service</a> and <a href="https://x.ai/legal/acceptable-use-policy" target="_blank" rel="noopener">Acceptable Use Policy</a>. xAI&rsquo;s AUP specifically prohibits generating content that violates another person&rsquo;s right of publicity, defames them, or infringes intellectual property; those prohibitions flow down to you.</li>
+    <li><strong>Deepgram (transcription):</strong> <a href="https://deepgram.com/terms" target="_blank" rel="noopener">Deepgram Terms</a>. We transmit <code>mip_opt_out=true</code> on every transcription request to opt out of Deepgram&rsquo;s Model Improvement Partnership Program on your behalf; your audio is not used to train Deepgram&rsquo;s models via this Service.</li>
+    <li><strong>Brave Search (fact-check grounding, when enabled):</strong> <a href="https://api-dashboard.search.brave.com/terms-of-service" target="_blank" rel="noopener">Search API Terms</a>. We consume results server-side and emit only derived AI commentary; raw Search Results are not redistributed to you.</li>
+  </ul>
+  <p>We may change providers, add providers, or remove providers with updated disclosure on this page and in the Privacy Policy.</p>
+
+  <h2 id="ai-training">AI training on your content</h2>
+  <p>We do not train AI models on your audio, transcripts, or content, and we have configured each provider to minimize retention and prohibit training on our usage to the extent each provider offers that control:</p>
+  <ul>
+    <li><strong>Anthropic:</strong> API traffic is non-training by default per Anthropic&rsquo;s commercial posture.</li>
+    <li><strong>xAI:</strong> Enterprise ToS §3.3 provides that xAI shall not use User Content for training and auto-deletes within 30 days absent a legal hold or safety flag.</li>
+    <li><strong>Deepgram:</strong> we transmit <code>mip_opt_out=true</code> on every request, which per Deepgram&rsquo;s Model Improvement Partnership Program documentation limits retention to the duration necessary to process the request.</li>
+    <li><strong>Brave:</strong> we do not submit your content to Brave&rsquo;s Search API beyond transient operational storage; we do not cache Search Results.</li>
+  </ul>
+  <p>These configurations protect content flowing through the Service. They do not control what you do with persona output after it leaves the Service.</p>
+
+  <h2 id="export-sanctions">Export and sanctions</h2>
+  <p>The open-source Extension is published under the MIT License as publicly-available information under 15 C.F.R. § 734.7. You may not download, use, export, re-export, or transfer the Service or any hosted tier to, or for the benefit of, (a) any person or entity identified on the U.S. Treasury Department&rsquo;s Office of Foreign Assets Control (OFAC) Specially Designated Nationals List or any other U.S. denied-parties list; (b) the governments of Cuba, Iran, North Korea, Russia, Belarus, or Syria; or (c) the Crimea region of Ukraine or the so-called DNR/LNR separatist areas of Ukraine, except as authorized by U.S. law or an OFAC license. You represent that you are not located in, under the control of, or a national or resident of any such country or on any such list. Any future paid hosted tier will be offered to U.S. residents only; access from outside the United States is not authorized.</p>
+
+  <h2 id="dmca">DMCA safe harbor</h2>
+  <p>Manu Games LLC respects the intellectual property rights of others. If you believe that content made available through the Service infringes a copyright you own or control, please send a notice containing the information required by 17 U.S.C. § 512(c)(3) to our designated agent:</p>
+  <ul>
+    <li>Email: <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a> (subject line <code>[DMCA]</code>)</li>
+    <li>Mail: Manu Games LLC, Attn: DMCA Agent, North Carolina, U.S.A. (specific address available on request to the email above)</li>
+  </ul>
+  <p>A valid notice must include: (1) a physical or electronic signature of the copyright owner or authorized agent; (2) identification of the copyrighted work claimed infringed; (3) identification of the material claimed infringing with enough detail for us to locate it; (4) your contact information; (5) a good-faith statement that the use is not authorized by the copyright owner, its agent, or the law; and (6) a statement under penalty of perjury that the notice is accurate and that you are authorized to act. Knowingly materially misrepresenting that material is infringing may subject you to liability under § 512(f). We will forward valid notices and respond promptly. If your content is removed and you believe it was in error, you may submit a counter-notice containing the information required by 17 U.S.C. § 512(g)(3) to the same address.</p>
 
   <h2>Warranty disclaimer</h2>
   <p>THE SERVICE IS PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE&rdquo;, WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND TO THE FULLEST EXTENT PERMITTED BY LAW. We disclaim all warranties, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Service will be uninterrupted, timely, secure, error-free, or that persona output will be accurate.</p>
@@ -149,7 +183,7 @@
   <p>These Terms are governed by the laws of the State of North Carolina, U.S.A., without regard to conflict-of-laws principles. Any dispute must be brought exclusively in the state or federal courts sitting in <strong>Macon County, North Carolina</strong>, and you and we consent to personal jurisdiction and venue in those courts. Before filing any action, you and we agree to attempt informal resolution for 60 days by emailing <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a>. Small-claims court is preserved. To the fullest extent permitted by law, you and we waive any right to trial by jury.</p>
 
   <h2>Changes to these Terms</h2>
-  <p>For material changes affecting Plus subscribers (price, cap, billing cadence, refund mechanics, data handling), we will email active subscribers at least 30 days before the change takes effect and allow cancellation with a pro-rata refund. Non-material changes are effective on the updated &ldquo;Last updated&rdquo; date.</p>
+  <p>Non-material changes are effective on the updated &ldquo;Last updated&rdquo; date. If a paid hosted tier launches, material changes affecting paid subscribers (price, cap, billing cadence, refund mechanics, data handling) will be emailed to active subscribers at least 30 days before the change takes effect and allow cancellation with a pro-rata refund.</p>
 
   <h2>Contact</h2>
   <ul>
