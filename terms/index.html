@@ -97,7 +97,7 @@
   <h2>How you can use the Service today</h2>
   <ul>
     <li><strong>Demo</strong> &mdash; free 15-minute one-off trial on our shared API keys. U.S. users only. One-off per install.</li>
-    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you provide your own API keys to the providers we support (Deepgram, Anthropic, xAI, and optionally Brave Search). Free forever. Globally available.</li>
+    <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you provide your own API keys to the providers we support (Deepgram, Anthropic, xAI). Free forever. Globally available.</li>
     <li><strong>Self-host</strong> &mdash; the backend is MIT-licensed open source. Deploy it yourself with your own keys. Covered by the MIT license, not by these Terms as a Service agreement.</li>
   </ul>
 
@@ -120,7 +120,7 @@
   </ul>
 
   <h2 id="ai-output">AI output and persona framing</h2>
-  <p><strong>All persona output is AI-generated text and may be inaccurate, misleading, fabricated, biased, offensive, or wrong.</strong> The Service uses third-party large-language-model providers (Anthropic, xAI) and a third-party search provider (Brave, or xAI Live Search when enabled), and may misattribute statements, produce confident-sounding &ldquo;fact-checks&rdquo; that are not factual, repeat errors in the transcript or search results, or fail in ways unique to streaming AI. You are responsible for verifying persona output before relying on it for any purpose, and for any consequences of redistributing it. Label redistributed output as AI-generated commentary, not as a quote from any real person.</p>
+  <p><strong>All persona output is AI-generated text and may be inaccurate, misleading, fabricated, biased, offensive, or wrong.</strong> The Service uses third-party large-language-model providers (Anthropic, xAI) and xAI&rsquo;s Grok Live Search for fact-check grounding, and may misattribute statements, produce confident-sounding &ldquo;fact-checks&rdquo; that are not factual, repeat errors in the transcript or search results, or fail in ways unique to streaming AI. You are responsible for verifying persona output before relying on it for any purpose, and for any consequences of redistributing it. Label redistributed output as AI-generated commentary, not as a quote from any real person.</p>
   <p><strong>Personas are text-only parodies inspired by public figures, not voice clones or image likenesses.</strong> The Service generates short written reactions in the styled voice of a persona. It does <em>not</em> synthesize audio in the likeness of any real person&rsquo;s voice, generate images of any real person, sample a real person&rsquo;s recorded voice, use any real person&rsquo;s photograph or likeness, or hold itself out as an authorized or endorsed work of any named individual. The persona prompts carry a standing instruction that the model identify itself as an AI fan parody if directly asked whether it is the named individual. This framing is load-bearing for the parody / satire / First Amendment posture.</p>
   <p>If you are a public figure (or representative of one) whose name appears in a persona and you want it removed, email <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a>. We respond promptly and in good faith.</p>
 
@@ -145,8 +145,8 @@
     <li><strong>Anthropic (Claude models):</strong> <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">Commercial Terms</a> and <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noopener">Usage Policy</a>. The Usage Policy&rsquo;s disclosure requirement for AI-interactive agents is incorporated into this Service via the AI-interaction notice we display at session start.</li>
     <li><strong>xAI (Grok models):</strong> <a href="https://x.ai/legal/terms-of-service-enterprise" target="_blank" rel="noopener">Enterprise Terms of Service</a> and <a href="https://x.ai/legal/acceptable-use-policy" target="_blank" rel="noopener">Acceptable Use Policy</a>. xAI&rsquo;s AUP specifically prohibits generating content that violates another person&rsquo;s right of publicity, defames them, or infringes intellectual property; those prohibitions flow down to you.</li>
     <li><strong>Deepgram (transcription):</strong> <a href="https://deepgram.com/terms" target="_blank" rel="noopener">Deepgram Terms</a>. We transmit <code>mip_opt_out=true</code> on every transcription request to opt out of Deepgram&rsquo;s Model Improvement Partnership Program on your behalf; your audio is not used to train Deepgram&rsquo;s models via this Service.</li>
-    <li><strong>Brave Search (fact-check grounding, when enabled):</strong> <a href="https://api-dashboard.search.brave.com/terms-of-service" target="_blank" rel="noopener">Search API Terms</a>. We consume results server-side and emit only derived AI commentary; raw Search Results are not redistributed to you.</li>
   </ul>
+  <p>Fact-check grounding is handled through xAI Grok Live Search, governed by the xAI Enterprise Terms and AUP linked above; no separate search provider is used.</p>
   <p>We may change providers, add providers, or remove providers with updated disclosure on this page and in the Privacy Policy.</p>
 
   <h2 id="ai-training">AI training on your content</h2>
@@ -155,7 +155,6 @@
     <li><strong>Anthropic:</strong> API traffic is non-training by default per Anthropic&rsquo;s commercial posture.</li>
     <li><strong>xAI:</strong> Enterprise ToS §3.3 provides that xAI shall not use User Content for training and auto-deletes within 30 days absent a legal hold or safety flag.</li>
     <li><strong>Deepgram:</strong> we transmit <code>mip_opt_out=true</code> on every request, which per Deepgram&rsquo;s Model Improvement Partnership Program documentation limits retention to the duration necessary to process the request.</li>
-    <li><strong>Brave:</strong> we do not submit your content to Brave&rsquo;s Search API beyond transient operational storage; we do not cache Search Results.</li>
   </ul>
   <p>These configurations protect content flowing through the Service. They do not control what you do with persona output after it leaves the Service.</p>
 

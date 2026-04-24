@@ -132,8 +132,7 @@
   <ul>
     <li><strong>Deepgram</strong> &mdash; <code>mip_opt_out=true</code> is sent on every transcription request. Under Deepgram&rsquo;s Model Improvement Partnership Program documentation, this limits retention to the duration necessary to process the request and excludes the content from model training.</li>
     <li><strong>Anthropic</strong> &mdash; API traffic is non-training by default per Anthropic&rsquo;s commercial posture. We do not opt in to any training-partnership program.</li>
-    <li><strong>xAI</strong> &mdash; Enterprise ToS §3.3 provides that xAI shall not use User Content for training and auto-deletes within 30 days absent a legal hold or safety flag.</li>
-    <li><strong>Brave Search</strong> &mdash; when enabled, search queries are submitted for grounding only; we do not cache results beyond transient operational storage, consistent with Brave&rsquo;s Search API Terms §3(b)(i).</li>
+    <li><strong>xAI</strong> &mdash; Enterprise ToS §3.3 provides that xAI shall not use User Content for training and auto-deletes within 30 days absent a legal hold or safety flag. This covers both the persona-generation calls AND the fact-check search queries, which run through Grok Live Search.</li>
   </ul>
   <p>These configurations protect content flowing through the Service. They do not control what you do with persona output after it leaves the Service, or what providers do under their own terms with your account in BYOK mode.</p>
 
@@ -147,8 +146,7 @@
   <ul>
     <li><a href="https://deepgram.com/privacy" target="_blank" rel="noopener">Deepgram</a> &mdash; speech-to-text streaming.</li>
     <li><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic (Claude)</a> &mdash; Producer and Joker persona inference.</li>
-    <li><a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener">xAI (Grok)</a> &mdash; Troll and Sound FX persona inference, optional live search.</li>
-    <li><a href="https://brave.com/privacy/" target="_blank" rel="noopener">Brave Search</a> &mdash; fact-check search queries.</li>
+    <li><a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener">xAI (Grok)</a> &mdash; Troll and Sound FX persona inference, and fact-check search queries via Grok Live Search.</li>
     <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> &mdash; payment processing (Plus only). Stripe collects card details directly; we never see them.</li>
     <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a> &mdash; transactional email (Plus only): welcome email with your license key, recovery email if you lose the key, cancellation confirmation. Email addresses are processed by Resend for delivery only; not used for marketing.</li>
     <li><a href="https://railway.com/legal/privacy" target="_blank" rel="noopener">Railway</a> &mdash; backend hosting.</li>

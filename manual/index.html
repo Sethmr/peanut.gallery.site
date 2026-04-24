@@ -683,7 +683,7 @@
     <div class="fan">
       <div class="src"><div class="t">Transcript<br>partial</div><div class="s">~60 chars · every ~600ms</div></div>
       <div class="outs">
-        <div class="out"><div><div class="nm">Baba Booey</div><div class="mdl">Haiku + Brave</div></div><div class="lat">~280ms</div></div>
+        <div class="out"><div><div class="nm">Baba Booey</div><div class="mdl">Haiku + Grok Search</div></div><div class="lat">~280ms</div></div>
         <div class="out"><div><div class="nm">The Troll</div><div class="mdl">Grok 4.1 Fast</div></div><div class="lat">~150ms</div></div>
         <div class="out"><div><div class="nm">F. Norris</div><div class="mdl">Grok 4.1 Fast</div></div><div class="lat">~140ms</div></div>
         <div class="out"><div><div class="nm">J. Martling</div><div class="mdl">Claude Haiku</div></div><div class="lat">~220ms</div></div>
@@ -712,7 +712,7 @@
         <div class="no">02</div>
         <div>
           <h4>Provide your keys</h4>
-          <p>Copy <code>.env.example</code> to <code>.env</code> and drop in the four keys you collected in <a href="#keys">§ 03</a>. Brave is optional; if you omit it, the fact-checker falls back to model-only claims and flags itself as unverified.</p>
+          <p>Copy <code>.env.example</code> to <code>.env</code> and drop in the three keys you collected in <a href="#keys">§ 03</a>. xAI covers both the persona slots and the fact-check grounding via Grok Live Search — one key, two jobs.</p>
         </div>
       </div>
     </div>
@@ -728,11 +728,8 @@
 <span class="cm"># Required — fact-check + comedy (Haiku)</span>
 <span class="k">ANTHROPIC_API_KEY</span>=<span class="s">"sk-ant-xxxxxxxxxxxxxxxxxxxxxxxx"</span>
 
-<span class="cm"># Required — troll + sound FX (Grok 4.1 Fast)</span>
+<span class="cm"># Required — troll + sound FX (Grok 4.1 Fast) AND fact-check grounding (Grok Live Search)</span>
 <span class="k">XAI_API_KEY</span>=<span class="s">"xai-xxxxxxxxxxxxxxxxxxxxxxxx"</span>
-
-<span class="cm"># Optional — receipts for the fact-checker</span>
-<span class="k">BRAVE_SEARCH_API_KEY</span>=<span class="s">"BSA-xxxxxxxxxxxxxxxxxxxxxxxx"</span>
 
 <span class="cm"># Server</span>
 <span class="k">PORT</span>=<span class="n">8787</span>
@@ -753,8 +750,7 @@
 <span class="cm">› peanut-gallery/server  listening on :8787</span>
 <span class="cm">› deepgram   ready  (nova-3)</span>
 <span class="cm">› anthropic  ready  (claude-haiku-4-5)</span>
-<span class="cm">› xai        ready  (grok-4-fast)</span>
-<span class="cm">› brave      ready  (search-v1)</span>
+<span class="cm">› xai        ready  (grok-4-fast · live-search)</span>
 <span class="cm">› wire room is open. go heckle something.</span></pre>
 
     <div class="steps long">
@@ -810,22 +806,14 @@
         <div class="no">03</div>
         <div>
           <div class="nm">xAI</div>
-          <div class="rl">console.x.ai · <b>Grok 4.1 Fast</b> · troll + sound FX</div>
+          <div class="rl">console.x.ai · <b>Grok 4.1 Fast + Live Search</b> · troll, sound FX, fact-check receipts</div>
         </div>
         <div class="cost">Required</div>
-      </div>
-      <div class="key-card">
-        <div class="no">04</div>
-        <div>
-          <div class="nm">Brave Search</div>
-          <div class="rl">api.search.brave.com · <b>Search API</b> · fact-check receipts</div>
-        </div>
-        <div class="cost">Optional</div>
       </div>
     </div>
 
     <div class="prose">
-      <p>Each vendor's signup is roughly the same ritual: create an account, verify email, create an API key, copy it into your <code>.env</code>. Free tiers on all four are enough to get through <b>a few hours of testing</b> — which is enough to decide whether you want to wire in a real card.</p>
+      <p>Each vendor's signup is roughly the same ritual: create an account, verify email, create an API key, copy it into your <code>.env</code>. Free tiers on all three are enough to get through <b>a few hours of testing</b> — which is enough to decide whether you want to wire in a real card.</p>
       <p>If you swap models — say, you prefer Claude Sonnet for the comedy writer or Grok Mini for the troll — the model string lives in each pack file, not the server. See <a href="#packs">§ 04</a>. The server doesn't care which model you pick as long as the vendor is configured.</p>
     </div>
   </section>
@@ -1059,7 +1047,7 @@
       <div class="row">
         <div class="sym">05</div>
         <div class="q">Fact-checker posts claims without citations.</div>
-        <div class="a"><code>BRAVE_SEARCH_API_KEY</code> is missing or invalid. Fact-checker falls back to model-only claims when search fails; it flags itself with a small <code>NO RX</code> badge when it does. Add the key or accept the fallback.</div>
+        <div class="a"><code>XAI_API_KEY</code> is missing or invalid (Grok Live Search piggybacks on it). Fact-checker falls back to model-only claims when search fails; it flags itself with a small <code>NO RX</code> badge when it does. Add the key or accept the fallback.</div>
       </div>
     </div>
 
