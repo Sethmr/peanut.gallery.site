@@ -34,14 +34,8 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512.png" />
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R9CK4LRGF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3R9CK4LRGF');
-</script>
+<!-- Cloudflare Web Analytics — cookieless, no consent banner needed -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "REPLACE_ME"}'></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +86,7 @@
 
   <div class="callout">
     <p><strong>United States only for hosted tiers.</strong> The Demo allowance backed by our hosted keys is offered only to users in the United States. The Extension is globally available under the MIT license; if you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>. A paid hosted tier (&ldquo;Peanut Gallery Plus&rdquo;) is planned for a future release and is not currently available.</p>
-    <p><strong>Short answer.</strong> Audio is streamed through a transcription provider and discarded &mdash; never written to disk, never used to train AI models. Your live transcript sits in server memory during the session and is not persisted. If you use your own API keys they travel per-request as headers and are never stored server-side. We don&rsquo;t sell data. The Extension loads no analytics library. The marketing site loads Google Analytics for aggregate page-view measurement only (no Signals, no remarketing, no advertising features).</p>
+    <p><strong>Short answer.</strong> Audio is streamed through a transcription provider and discarded &mdash; never written to disk, never used to train AI models. Your live transcript sits in server memory during the session and is not persisted. If you use your own API keys they travel per-request as headers and are never stored server-side. We don&rsquo;t sell data. The Extension loads no analytics library. The marketing site uses Cloudflare Web Analytics (cookieless, no cross-site tracking, no individual identifiers) for aggregate page views and Core Web Vitals.</p>
     <p><strong>Recording-consent laws are your responsibility.</strong> The Extension can be pointed at any browser tab you grant it. Many U.S. states require all-party consent to record private conversations.</p>
   </div>
 
@@ -152,11 +146,11 @@
     <li><a href="https://railway.com/legal/privacy" target="_blank" rel="noopener">Railway</a> &mdash; backend hosting.</li>
     <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a> &mdash; Next.js application hosting where used.</li>
     <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Pages</a> &mdash; marketing-site hosting.</li>
-    <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Analytics</a> &mdash; aggregate page-view metrics on the marketing site only (not in the Extension).</li>
+    <li><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Web Analytics</a> &mdash; cookieless, privacy-respecting page-view metrics on the marketing site only (not in the Extension). No cookies, no cross-site tracking, no individual identifiers.</li>
   </ul>
 
   <h2>Marketing-site analytics</h2>
-  <p>The marketing site at <code>www.peanutgallery.live</code> loads Google Analytics (property <code>G-3R9CK4LRGF</code>) to measure aggregate page views. GA receives your IP address, user agent, referring URL, and page-view events, and sets cookies or equivalent local-storage identifiers. We use the data only in aggregate. We do not enable Google Signals, remarketing, or any advertising features. <strong>The Extension itself does not load any analytics library.</strong></p>
+  <p>The marketing site at <code>www.peanutgallery.live</code> loads <a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener">Cloudflare Web Analytics</a> to measure aggregate page views and Core Web Vitals. It is cookieless and does not use any client-side persistent identifier; it does not track users across sites. Cloudflare receives your IP address, user agent, referring URL, and page-view events, and uses them only to compute aggregate metrics. We do not run any other analytics or advertising libraries on the marketing site. <strong>The Extension itself does not load any analytics library.</strong></p>
 
   <h2>Retention summary</h2>
   <table>
@@ -170,7 +164,7 @@
       <tr><td>API keys (BYOK)</td><td>Never stored</td></tr>
       <tr><td>Install ID</td><td>Backend process lifetime</td></tr>
       <tr><td>Operational logs</td><td>30 days</td></tr>
-      <tr><td>Marketing-site analytics (Google Analytics)</td><td>Per Google Analytics retention</td></tr>
+      <tr><td>Marketing-site analytics (Cloudflare Web Analytics)</td><td>Aggregated metrics; no per-visitor identifier stored</td></tr>
     </tbody>
   </table>
   <p class="callout" style="margin-top:10px"><em>If and when Peanut Gallery Plus launches, additional rows (email, license key, Stripe subscription ID, weekly usage counter, payment records) will be added with retention windows.</em></p>

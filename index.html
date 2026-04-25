@@ -40,45 +40,8 @@
 <!-- Google site verification (copied from Next.js metadata) -->
 <meta name="google-site-verification" content="tPDn6BgEArjAwga6-gCNYdRt55OjqtLKERkr66-WpZc" />
 
-<!-- Google Analytics — gated by cookie banner; loads only after user Accepts -->
-<script>
-(function(){
-  try {
-    var stored = localStorage.getItem('pg-analytics-consent');
-    if (stored === 'granted') { loadAnalytics(); }
-  } catch(e) {}
-  function loadAnalytics(){
-    if (window.__pgAnalyticsLoaded) return;
-    window.__pgAnalyticsLoaded = true;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-3R9CK4LRGF';
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function(){ dataLayer.push(arguments); };
-    gtag('js', new Date());
-    gtag('config', 'G-3R9CK4LRGF', { anonymize_ip: true });
-  }
-  window.__pgLoadAnalytics = loadAnalytics;
-})();
-</script>
-
-<!-- Cookie banner styles -->
-<style>
-  .pg-cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:#141414;color:#e5e5e5;border:1px solid #ff5a1f;border-radius:4px;padding:14px 16px;font-family:'Inter','Source Serif 4',Georgia,sans-serif;font-size:13px;line-height:1.5;z-index:9999;display:none;box-shadow:0 8px 24px rgba(0,0,0,.4)}
-  .pg-cookie-banner.visible{display:block}
-  .pg-cookie-banner p{margin:0 0 10px 0}
-  .pg-cookie-banner a{color:#ff5a1f;text-decoration:underline}
-  .pg-cookie-banner .pg-cookie-buttons{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
-  .pg-cookie-banner button{font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:8px 14px;border-radius:3px;cursor:pointer;border:1px solid transparent}
-  .pg-cookie-banner .pg-cookie-decline{background:transparent;color:#e5e5e5;border-color:#3a3a3a}
-  .pg-cookie-banner .pg-cookie-decline:hover{border-color:#e5e5e5}
-  .pg-cookie-banner .pg-cookie-accept{background:#ff5a1f;color:#0a0a0a}
-  .pg-cookie-banner .pg-cookie-accept:hover{background:#ff7a40}
-  @media (prefers-color-scheme: light){
-    /* keep dark — marketing site is dark-first */
-  }
-</style>
+<!-- Cloudflare Web Analytics — cookieless, no consent banner needed -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "REPLACE_ME"}'></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1482,34 +1445,6 @@
 <!-- JSON-LD: Organization + Person + VideoObjects -->
 <script type="application/ld+json">
 [{"@context":"https://schema.org","@type":"Organization","@id":"https://peanutgallery.live/#organization","name":"Peanut Gallery","alternateName":"Peanut Gallery — AI writers' room for YouTube","url":"https://www.peanutgallery.live/","logo":{"@type":"ImageObject","url":"https://www.peanutgallery.live/assets/icon-512.png","width":512,"height":512},"description":"Peanut Gallery is a free, open-source Chrome extension that adds a live AI writers' room to any YouTube video — four personas react in real time from Chrome's native side panel.","founder":{"@type":"Person","@id":"https://peanutgallery.live/#seth"},"foundingDate":"2026-04","sameAs":["https://github.com/Sethmr/peanut.gallery","https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh"]},{"@context":"https://schema.org","@type":"Person","@id":"https://peanutgallery.live/#seth","name":"Seth Rininger","givenName":"Seth","familyName":"Rininger","url":"https://sethrininger.dev","jobTitle":"Creator of Peanut Gallery","description":"Full-stack engineer; creator of Peanut Gallery, the open-source Chrome extension that adds four live AI personas to any YouTube video. Built to win Jason Calacanis's $5k This Week in Startups bounty.","sameAs":["https://github.com/Sethmr","https://x.com/SethRininger","https://sethrininger.dev"],"worksFor":{"@type":"Organization","@id":"https://peanutgallery.live/#organization"},"knowsAbout":["Chrome Extensions","Next.js","AI agents","Real-time transcription","YouTube developer platform"]},{"@context":"https://schema.org","@type":"VideoObject","name":"Peanut Gallery v1.5 walkthrough — Smart Director v2, narrated by the builder","description":"Seth walks through Peanut Gallery v1.5's Smart Director v2 — how the LLM-assisted router picks a persona, the 400ms race against the rule-based fallback, and what changed since v1.4. Recorded with voice-over by the builder.","thumbnailUrl":"https://i.ytimg.com/vi/WPyknI7-N5U/maxresdefault.jpg","uploadDate":"2026-04-18T00:00:00Z","contentUrl":"https://www.youtube.com/watch?v=WPyknI7-N5U","embedUrl":"https://www.youtube.com/embed/WPyknI7-N5U","publisher":{"@type":"Person","name":"Seth Rininger","url":"https://sethrininger.dev"}},{"@context":"https://schema.org","@type":"VideoObject","name":"Peanut Gallery — product demo","description":"Two-minute walkthrough of the Peanut Gallery Chrome extension reacting to a YouTube video in real time from the side panel.","thumbnailUrl":"https://i.ytimg.com/vi/UcpUBcp8TRc/maxresdefault.jpg","uploadDate":"2026-04-17T00:00:00Z","contentUrl":"https://www.youtube.com/watch?v=UcpUBcp8TRc","embedUrl":"https://www.youtube.com/embed/UcpUBcp8TRc","publisher":{"@type":"Person","name":"Seth Rininger","url":"https://sethrininger.dev"}},{"@context":"https://schema.org","@type":"VideoObject","name":"Jason Calacanis & Lon Harris — $5k bounty announcement","description":"The This Week in Startups challenge that inspired Peanut Gallery: build a live AI sidebar with four personas that reacts to YouTube in real time.","thumbnailUrl":"https://i.ytimg.com/vi/xHdwcCfuy4Y/maxresdefault.jpg","uploadDate":"2026-04-15T00:00:00Z","contentUrl":"https://www.youtube.com/watch?v=xHdwcCfuy4Y","embedUrl":"https://www.youtube.com/embed/xHdwcCfuy4Y","publisher":{"@type":"Organization","name":"This Week in Startups","url":"https://thisweekinstartups.com"}}]
-</script>
-
-<!-- Cookie consent banner — shown on first visit when no consent is stored -->
-<div id="pgCookieBanner" class="pg-cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
-  <p><strong>We use cookies for analytics.</strong> The only third-party cookie on this site comes from Google Analytics, which we use to see which pages land. No ads, no cross-site tracking. <a href="/privacy/">Read the Privacy Policy</a>.</p>
-  <div class="pg-cookie-buttons">
-    <button type="button" class="pg-cookie-decline" id="pgCookieDecline">Decline</button>
-    <button type="button" class="pg-cookie-accept" id="pgCookieAccept">Accept</button>
-  </div>
-</div>
-<script>
-(function(){
-  var banner = document.getElementById('pgCookieBanner');
-  if (!banner) return;
-  var stored;
-  try { stored = localStorage.getItem('pg-analytics-consent'); } catch(e) { stored = null; }
-  if (stored === 'granted' || stored === 'denied') return;
-  banner.classList.add('visible');
-  function hide(choice){
-    try { localStorage.setItem('pg-analytics-consent', choice); } catch(e) {}
-    banner.classList.remove('visible');
-    if (choice === 'granted' && typeof window.__pgLoadAnalytics === 'function') {
-      window.__pgLoadAnalytics();
-    }
-  }
-  document.getElementById('pgCookieAccept').addEventListener('click', function(){ hide('granted'); });
-  document.getElementById('pgCookieDecline').addEventListener('click', function(){ hide('denied'); });
-})();
 </script>
 
 </body>
