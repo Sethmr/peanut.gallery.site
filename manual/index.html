@@ -561,7 +561,7 @@
       <div>
         <b>Self-host time</b>
         <div class="v">~15 min</div>
-        <div>Node 20, four API keys, one <code>.env</code>.</div>
+        <div>Node 20, three API keys, one <code>.env</code>.</div>
       </div>
       <div>
         <b>Pack schema</b>
@@ -658,13 +658,13 @@
       <div class="ch-no">02</div>
       <div>
         <h2 class="ch-title">Self-host<br>the backend</h2>
-        <div class="sub">Fifteen minutes, one Node process, four keys, a <code>.env</code> file. Your machine is now the wire room.</div>
+        <div class="sub">Fifteen minutes, one Node process, three keys, a <code>.env</code> file. Your machine is now the wire room.</div>
       </div>
       <div class="pg">Pg. 3 · Pressroom</div>
     </div>
 
     <div class="prose">
-      <p>The backend is a small Node service that brokers between the extension and the four upstream APIs. It exists so your API keys never ship to the browser — and so you can swap models or add caching without touching extension code.</p>
+      <p>The backend is a small Node service that brokers between the extension and the three upstream APIs. It exists so your API keys never ship to the browser — and so you can swap models or add caching without touching extension code.</p>
     </div>
 
     <h3 style="font-family:var(--slab); font-weight:400; font-size:26px; margin:22px 0 8px; text-transform:uppercase; letter-spacing:-.005em">How it's wired</h3>
@@ -694,7 +694,7 @@
         <div class="no">01</div>
         <div>
           <h4>Clone &amp; install</h4>
-          <p>You need Node 20+ and git. The server has no database and no state — just a process and four outbound connections.</p>
+          <p>You need Node 20+ and git. The server has no database and no state — just a process and three outbound connections.</p>
         </div>
       </div>
     </div>
@@ -716,7 +716,7 @@
 
 <pre class="shell"><span class="p">$</span> cp .env.example .env
 <span class="p">$</span> nano .env
-<span class="cm"># paste four keys, save, exit</span></pre>
+<span class="cm"># paste three keys, save, exit</span></pre>
 
 <div class="code-block">
 <div class="c-head"><span>.env</span><span class="tag">DO NOT COMMIT</span></div><span class="cm"># Required — transcription</span>
