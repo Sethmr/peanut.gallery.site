@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <title>Peanut Gallery — AI writers' room for YouTube (Chrome extension)</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#f1ead8" />
 
 <!-- SEO -->
 <meta name="description" content="AI writers' room for YouTube. Four critics — fact-checker, troll, sound guy, comedy writer — react live in Chrome's side panel. Open source, MIT, free BYOK." />
@@ -40,8 +41,11 @@
 <!-- Google site verification (copied from Next.js metadata) -->
 <meta name="google-site-verification" content="tPDn6BgEArjAwga6-gCNYdRt55OjqtLKERkr66-WpZc" />
 
-<!-- Cloudflare Web Analytics — cookieless, no consent banner needed -->
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "REPLACE_ME"}'></script>
+<!-- Cloudflare Web Analytics: enable via the Cloudflare dashboard (Pages →
+     Web Analytics → Enable) so CF auto-injects the beacon with the correct
+     token. Earlier versions of this file shipped a manual <script> with the
+     literal placeholder "REPLACE_ME", which threw a JSON-parse error on
+     every pageview and never reported anything. Removed 2026-04-30. -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,6 +77,19 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+
+  /* Skip-to-content link — visually hidden until keyboard focus, then
+     pinned top-left. Standard a11y pattern. */
+  .skip-link{
+    position:absolute; top:-100px; left:8px;
+    background:var(--ink); color:var(--paper);
+    padding:10px 14px; z-index:9999;
+    font-family:var(--slab-2); font-size:13px;
+    text-transform:uppercase; letter-spacing:.08em;
+    text-decoration:none; border:2px solid var(--paper);
+    box-shadow:0 4px 12px rgba(0,0,0,.25);
+  }
+  .skip-link:focus{ top:8px; outline:none }
 
   /* paper texture overlay */
   body::before{
@@ -823,6 +840,9 @@
 </style>
 </head>
 <body>
+<!-- Skip-to-content for keyboard / screen-reader users. Visible on focus
+     only; sits above everything else when triggered. -->
+<a class="skip-link" href="#cover">Skip to main content</a>
 <div class="page">
 
   <!-- MASTHEAD -->
@@ -1341,8 +1361,8 @@
           <a href="/packs/howard/">C1 · Howard pack</a>
           <a href="/packs/twist/">C2 · TWiST pack</a>
           <a href="#letters">A6 · Letters</a>
-          <a href="manual/">↦ Operator's Manual</a>
-          <a href="panel/">↦ Side panel proof</a>
+          <a href="/manual/">↦ Operator's Manual</a>
+          <a href="/panel/">↦ Side panel proof</a>
           <a href="/privacy/">↦ Privacy</a>
           <a href="/terms/">↦ Terms</a>
         </div>
@@ -1352,10 +1372,10 @@
         <div class="links">
           <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">Github repository</a>
           <a href="https://github.com/Sethmr/peanut.gallery/blob/main/extension/manifest.json" target="_blank" rel="noopener">Manifest v3 declaration</a>
-          <a href="/privacy">Privacy statement</a>
+          <a href="/privacy/">Privacy statement</a>
           <a href="https://github.com/Sethmr/peanut.gallery/blob/main/LICENSE" target="_blank" rel="noopener">MIT license</a>
           <a href="https://github.com/Sethmr/peanut.gallery/tree/main/lib/packs" target="_blank" rel="noopener">Pack library (.json)</a>
-          <a href="manual/">Self-host guide</a>
+          <a href="/manual/">Self-host guide</a>
         </div>
       </div>
     </div>
