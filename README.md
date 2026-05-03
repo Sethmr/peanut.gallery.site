@@ -14,7 +14,7 @@ The Chrome extension and backend live in the separate monorepo: **[Sethmr/peanut
 ├── install/index.html          # 30-second Chrome Web Store walkthrough
 ├── pricing/index.html          # BYOK · Plus · Self-host — full pricing page
 ├── packs/
-│   ├── howard/index.html       # Howard pack landing
+│   ├── morning-crew/index.html       # Morning Crew pack landing
 │   └── twist/index.html        # TWiST pack landing
 ├── plus/                       # Stripe Checkout callback URLs only (noindex)
 │   ├── welcome/index.html      # success_url — "check your email"
@@ -31,7 +31,7 @@ The Chrome extension and backend live in the separate monorepo: **[Sethmr/peanut
 └── assets/                     # favicons, OG image, shared site.css
 ```
 
-Clean URLs (`/`, `/install`, `/pricing`, `/packs/howard`, `/packs/twist`, `/manual`, `/panel`, `/privacy`, `/terms`) come from GitHub Pages serving `index.html` on any directory request. No Jekyll config needed.
+Clean URLs (`/`, `/install`, `/pricing`, `/packs/morning-crew`, `/packs/twist`, `/manual`, `/panel`, `/privacy`, `/terms`) come from GitHub Pages serving `index.html` on any directory request. No Jekyll config needed.
 
 The `/plus/` directory exists solely for Stripe Checkout's `success_url` (`/plus/welcome/`) and `cancel_url` (`/plus/cancelled/`). Both pages are `noindex,nofollow` and reached only from a Stripe redirect — not linked from nav. The canonical marketing surface for the subscription is `/pricing/#plus`.
 
@@ -50,7 +50,7 @@ The HTML pages are standalone — all CSS is inline, fonts load from Google Font
 
 When pasting new HTML from Claude Design, replace the whole file. Then:
 
-1. Re-verify cross-page links point to `/install`, `/pricing`, `/pricing/#plus`, `/packs/howard`, `/packs/twist`, `/manual`, `/panel`, `/privacy`, `/terms` (no `.html` suffix, no legacy space-name filenames, no standalone `/plus/` marketing links — that URL is reserved for Stripe callbacks only).
+1. Re-verify cross-page links point to `/install`, `/pricing`, `/pricing/#plus`, `/packs/morning-crew`, `/packs/twist`, `/manual`, `/panel`, `/privacy`, `/terms` (no `.html` suffix, no legacy space-name filenames, no standalone `/plus/` marketing links — that URL is reserved for Stripe callbacks only).
 2. Re-verify outbound links still point to the [Chrome Web Store listing](https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh) and [the main repo](https://github.com/Sethmr/peanut.gallery).
 3. Re-verify the `<head>` still carries the SEO block (canonical, OG, Twitter, favicons, GA4) — see `index.html` for the full pattern. The `/pricing/` page additionally carries Product + FAQ + BreadcrumbList JSON-LD.
 
