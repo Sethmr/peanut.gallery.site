@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Install Peanut Gallery · Add the Chrome extension in 30 seconds</title>
+<title>Self-host Peanut Gallery · Open-source archive walkthrough</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#f1ead8" />
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "70ea2da3499c4ec5b4f05ff0cd181a09"}'></script>
 
-<meta name="description" content="Install Peanut Gallery — the AI writers' room for any YouTube tab — in under a minute. One click in the Chrome Web Store, pin the peanut, press Start." />
-<meta name="keywords" content="install peanut gallery, peanut gallery chrome extension install, AI YouTube extension install, chrome side panel extension install, AI writers room install" />
+<meta name="description" content="Self-host Peanut Gallery — the open-source AI writers' room for YouTube. Clone the repo, run the backend with your own keys, load the extension unpacked. The Chrome Web Store listing was retired on 2026-05-02." />
+<meta name="keywords" content="self-host peanut gallery, open source AI YouTube extension, chrome side panel self-host, AI writers room self-host, MIT licensed AI extension" />
 <meta name="author" content="Seth Rininger" />
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
 <link rel="canonical" href="https://www.peanutgallery.live/install/" />
@@ -16,17 +16,17 @@
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Peanut Gallery" />
 <meta property="og:url" content="https://www.peanutgallery.live/install/" />
-<meta property="og:title" content="Install Peanut Gallery · Chrome extension" />
-<meta property="og:description" content="Install in 30 seconds. One click in the Chrome Web Store, pin the peanut, press Start." />
+<meta property="og:title" content="Self-host Peanut Gallery · Open-source archive" />
+<meta property="og:description" content="Open-source archive of Peanut Gallery. Clone the repo, run the backend with your own keys, load the extension unpacked. MIT-licensed; you carry the legal exposure for sessions you operate." />
 <meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Peanut Gallery — Install page on a broadsheet-themed masthead, walking through the Chrome Web Store install in 30 seconds" />
+<meta property="og:image:alt" content="Peanut Gallery — Self-host walkthrough on a broadsheet-themed masthead, documenting the open-source archive setup path" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@SethRininger" />
-<meta name="twitter:title" content="Install Peanut Gallery" />
-<meta name="twitter:description" content="One click in the Chrome Web Store, pin the peanut, press Start." />
+<meta name="twitter:title" content="Self-host Peanut Gallery" />
+<meta name="twitter:description" content="Open-source archive. Clone the repo, run the backend, load the extension unpacked. MIT, self-host at your own legal risk." />
 <meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 
 <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
@@ -143,7 +143,7 @@
 
 <!-- JSON-LD: BreadcrumbList + HowTo -->
 <script type="application/ld+json">
-[{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Peanut Gallery","item":"https://www.peanutgallery.live/"},{"@type":"ListItem","position":2,"name":"Install","item":"https://www.peanutgallery.live/install/"}]},{"@context":"https://schema.org","@type":"HowTo","name":"Install Peanut Gallery in 30 seconds","description":"Install the Peanut Gallery Chrome extension and start the AI writers' room on any YouTube tab.","totalTime":"PT30S","tool":[{"@type":"HowToTool","name":"Google Chrome 116 or newer"}],"step":[{"@type":"HowToStep","position":1,"name":"Open the Chrome Web Store listing","text":"Visit the Peanut Gallery page in the Chrome Web Store and click 'Add to Chrome'.","url":"https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh"},{"@type":"HowToStep","position":2,"name":"Pin the peanut","text":"Click the Chrome puzzle-piece icon in your toolbar and pin Peanut Gallery so the peanut icon stays visible."},{"@type":"HowToStep","position":3,"name":"Open any YouTube tab and press Start","text":"Navigate to a YouTube video, click the peanut icon to open the side panel, and press Start Listening. The four AI personas react as the video plays."}]}]
+[{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Peanut Gallery","item":"https://www.peanutgallery.live/"},{"@type":"ListItem","position":2,"name":"Self-host","item":"https://www.peanutgallery.live/install/"}]},{"@context":"https://schema.org","@type":"HowTo","name":"Self-host Peanut Gallery","description":"Clone the open-source archive, run the backend with your own API keys, and load the extension unpacked. The Chrome Web Store listing was retired on 2026-05-02.","totalTime":"PT15M","tool":[{"@type":"HowToTool","name":"Node.js 20 or newer"},{"@type":"HowToTool","name":"Google Chrome 116 or newer"},{"@type":"HowToTool","name":"Deepgram, Anthropic, and xAI API keys"}],"step":[{"@type":"HowToStep","position":1,"name":"Clone the repository","text":"git clone https://github.com/Sethmr/peanut.gallery and follow the manual at /manual/.","url":"https://github.com/Sethmr/peanut.gallery"},{"@type":"HowToStep","position":2,"name":"Run the backend with your own keys","text":"Paste your Deepgram, Anthropic, and xAI keys into .env and run the Next.js backend locally. The operator's manual covers the full setup.","url":"https://www.peanutgallery.live/manual/"},{"@type":"HowToStep","position":3,"name":"Load the extension unpacked","text":"In Chrome, open chrome://extensions, enable Developer mode, click Load unpacked, and point it at the extension/ directory in the cloned repo."}]}]
 </script>
 </head>
 <body>
@@ -151,27 +151,27 @@
 
   <section class="cover">
     <div class="rails">
-      <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The install desk</div>
-      <div>Pg. A2 · MMXXVI · How to install</div>
+      <div class="crumb"><a href="/">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The self-host desk</div>
+      <div>Pg. A2 · MMXXVI · Self-host walkthrough</div>
     </div>
 
-    <div class="stamp"><div><div class="big">30<br>Seconds</div><div class="sm">● NO ACCOUNT · NO CARD</div></div></div>
+    <div class="stamp"><div><div class="big">Self<br>Host</div><div class="sm">● MIT · BYOK</div></div></div>
 
-    <div class="kicker">— The install desk · Pg. A2 · For everyone —</div>
-    <h1>How to install.</h1>
+    <div class="kicker">— The self-host desk · Pg. A2 · For developers —</div>
+    <h1>Self-host.</h1>
     <div class="lede">
-      If you can install an app from a store, you can install Peanut Gallery. One tap in the Chrome Web Store, one pin to your toolbar, one click on any YouTube tab. You&rsquo;re listening inside a minute. No account, no credit card, no developer skills.
+      Peanut Gallery was unpublished from the Chrome Web Store on 2026-05-02. The source remains MIT-licensed on GitHub for those who want to read, fork, or run their own copy. Three steps: clone the repo, run the backend with your own API keys, load the extension unpacked. About fifteen minutes if you have Node and Chrome already installed.
     </div>
   </section>
 
   <div class="install-hero">
-    <h2>Add to Chrome.</h2>
-    <p class="lede">One tap. The Chrome Web Store does the rest. When it&rsquo;s done, you&rsquo;ll see a little peanut icon near the top-right of your Chrome window.</p>
+    <h2>Source on GitHub.</h2>
+    <p class="lede">The whole stack — extension, backend, persona kernels, Director, fact-check pipeline — is in one repo. Clone it, follow the operator&rsquo;s manual, run it on your own machine.</p>
 
-    <a class="big-btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Add to Chrome <span class="arrow">→</span></a>
+    <a class="big-btn" href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">View source on GitHub <span class="arrow">→</span></a>
 
     <div class="meta">
-      <b>Free to try</b> &nbsp;·&nbsp; <b>No signup</b> &nbsp;·&nbsp; <b>Open source</b> &nbsp;·&nbsp; Works in Chrome, Edge, Brave, Arc
+      <b>MIT licensed</b> &nbsp;·&nbsp; <b>Bring your own API keys</b> &nbsp;·&nbsp; <b>Self-host at your own legal risk</b>
     </div>
   </div>
 
@@ -182,133 +182,111 @@
     </div>
     <div class="req-grid">
       <div class="req">
+        <b>A runtime</b>
+        <div class="v">Node 20+</div>
+        <p class="d">The backend is a Next.js app. Node 20 or newer covers it. <code>nvm use 20</code> if you have Node Version Manager.</p>
+      </div>
+      <div class="req">
         <b>A browser</b>
-        <div class="v">Chrome</div>
-        <p class="d">Chrome is the simplest path. Edge, Brave, and Arc all work too &mdash; they&rsquo;re built on the same engine as Chrome. Firefox and Safari are on the way.</p>
+        <div class="v">Chrome 116+</div>
+        <p class="d">Chrome is the simplest path. Edge, Brave, and Arc all work too &mdash; they&rsquo;re built on the same engine. The extension uses the Side Panel API, which needs Chrome 116 or newer.</p>
       </div>
       <div class="req">
-        <b>An account</b>
-        <div class="v">None</div>
-        <p class="d">You don&rsquo;t sign up. You don&rsquo;t enter an email. You don&rsquo;t pick a password. Install and press Start &mdash; that&rsquo;s the whole setup.</p>
-      </div>
-      <div class="req">
-        <b>A credit card</b>
-        <div class="v">No</div>
-        <p class="d">Everyone gets 15 free minutes of listening on our servers, no card needed. After that you can keep going for free with your own keys, or wait for the upcoming Plus tier if you&rsquo;d rather not juggle them.</p>
+        <b>API keys</b>
+        <div class="v">3 vendors</div>
+        <p class="d">Deepgram (transcription), Anthropic (Claude Haiku for fact-checker + comedy), xAI (Grok for heckler + sound guy + Live Search). All three ship free tiers. Roughly $1/hour at full tilt.</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="section-head">
-      <h2>Three steps from zero to listening.</h2>
-      <div class="page-no">&sect; 02 &middot; The install</div>
+      <h2>Three steps to a running self-host.</h2>
+      <div class="page-no">&sect; 02 &middot; The walkthrough</div>
     </div>
     <div class="steps">
       <div class="step">
         <div class="no">1</div>
-        <h4>Click the big red &ldquo;Add to Chrome&rdquo; button</h4>
-        <p>It opens the Chrome Web Store page for Peanut Gallery. You&rsquo;ll see another <b>Add to Chrome</b> button there &mdash; click that one too. Chrome shows a little window asking you to confirm. Click <b>Add extension</b>.</p>
-        <p>A few seconds later, you&rsquo;ll see a message: <em>&ldquo;Peanut Gallery has been added to Chrome.&rdquo;</em> You&rsquo;re installed.</p>
+        <h4>Clone the repository</h4>
+        <p><code>git clone https://github.com/Sethmr/peanut.gallery.git</code> &mdash; the whole stack lands in a single repo (extension, Next.js backend, persona kernels, Director, claim-detector, fact-check pipeline).</p>
+        <p>The <a href="/manual/">operator&rsquo;s manual</a> is the canonical setup walkthrough. The README and the docs/ directory cover everything else.</p>
       </div>
       <div class="step">
         <div class="no">2</div>
-        <h4>Pin the peanut to your toolbar so it&rsquo;s easy to find</h4>
-        <p>Look near the top-right of Chrome, just left of your profile picture. You&rsquo;ll see a <b>small puzzle-piece icon</b>. Click it. A short list of your extensions pops open.</p>
-        <p>Find <b>Peanut Gallery</b> in that list. Next to it, click the little <b>pin icon</b>. The pin turns blue, and the peanut hops out into your toolbar so it&rsquo;s always one click away.</p>
+        <h4>Run the backend with your own keys</h4>
+        <p>Copy <code>.env.example</code> to <code>.env</code>, paste your Deepgram, Anthropic, and xAI keys. <code>npm install &amp;&amp; npm run dev</code> from the repo root spins up the Next.js backend on <code>localhost:3000</code>.</p>
+        <p>You are now running the AI compute on your own hardware with your own provider accounts. Manu Games LLC is not in the loop for sessions you operate.</p>
       </div>
       <div class="step">
         <div class="no">3</div>
-        <h4>Open any YouTube video and click the peanut</h4>
-        <p>Go to YouTube. Open any video with audio &mdash; a podcast, an interview, a talk. Click the <b>peanut icon</b> in your toolbar. A tall panel slides out on the right side of your browser.</p>
-        <p>In that panel, click the big red <b>&#9654; Start Listening</b> button. Within a few seconds, four AI critics start reacting to the video &mdash; the panel fills with their short, in-character takes in real time. You&rsquo;re live.</p>
+        <h4>Load the extension unpacked in Chrome</h4>
+        <p>Go to <code>chrome://extensions</code>, flip on <b>Developer mode</b> (top-right), click <b>Load unpacked</b>, and point Chrome at the <code>extension/</code> directory in the cloned repo.</p>
+        <p>Open the side panel on any YouTube tab and press <b>Start Listening</b>. The four AI critics react in real time, talking to the backend you just spun up.</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="section-head">
-      <h2>What happens on your first run.</h2>
-      <div class="page-no">&sect; 03 &middot; The tour</div>
+      <h2>What you take on as the operator.</h2>
+      <div class="page-no">&sect; 03 &middot; Self-host responsibilities</div>
     </div>
     <div class="prose">
-      <p>The first time you open the side panel, a short <b>guided tour</b> pops up. Six little cards walk you through the settings drawer &mdash; which pack of critics you&rsquo;re using, how often they chime in, how to mute anyone who&rsquo;s wearing you out &mdash; plus a quick note on tapping a reaction to save or share it.</p>
-      <p>The <b>last card asks you to pick</b> how you want to use Peanut Gallery going forward. Three buttons:</p>
+      <p>Self-hosting is not just a technical exercise &mdash; it shifts the legal posture. When you run the backend on your own machine and use your own API keys, <b>you</b> are the entity producing the speech the personas generate. Manu Games LLC is no longer the speaker, and is no longer the publisher under any defamation analysis. That responsibility transfers to you.</p>
+      <p>Concretely, as a self-host operator, you carry exposure for:</p>
       <ul class="bullets">
-        <li><b>Try now</b> &mdash; uses your free 15 minutes on our servers. No signup, no card. Good for deciding whether you like the thing.</li>
-        <li><b>Get my own keys</b> &mdash; runs you through three quick provider signups, one at a time. Free forever once you&rsquo;ve got the keys.</li>
-        <li><b>Peanut Gallery Plus</b> &mdash; coming soon. $8 a month, we handle the keys for you.</li>
+        <li><b>Defamation</b> &mdash; AI persona outputs are first-party statements. If a persona makes a false factual claim about an identifiable real person, you (not Manu Games) are the speaker. NC negligence applies to private-figure plaintiffs; public figures need <em>Sullivan</em> actual malice.</li>
+        <li><b>Provider ToS</b> &mdash; you flow down Anthropic, xAI, and Deepgram acceptable-use policies. Their AUPs apply to your sessions, not Manu Games&rsquo;.</li>
+        <li><b>Right of publicity</b> &mdash; if you fork the personas to target a specific real person, CA &sect; 3344 / NY &sect; 51 / TN ELVIS Act may apply. The shipped Morning Crew kernels are archetypal and don&rsquo;t target specific individuals; if you change that, it&rsquo;s on you.</li>
+        <li><b>Output you publish</b> &mdash; if you screenshot, share, or quote-card a persona reaction, you&rsquo;re republishing that speech under your name.</li>
       </ul>
-      <p>You don&rsquo;t have to pick right away. Skip the tour any time with the <em>Skip</em> button in the top-right of each card, or re-run it later from <b>Settings &rarr; Appearance &rarr; Replay settings tour</b>.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="section-head">
-      <h2>After the free minutes run out.</h2>
-      <div class="page-no">&sect; 04 &middot; Keep going</div>
-    </div>
-    <div class="sub-kicker">Pick whichever feels like less work to you</div>
-
-    <div class="modes">
-      <div class="mode">
-        <h3>Get my own keys</h3>
-        <div class="price">Free forever</div>
-        <p class="blurb">The in-panel wizard opens <b>three websites</b> for you (Deepgram, Anthropic, xAI), one at a time. You create a free account on each, copy a string of letters and numbers they give you, and paste it into the box the wizard shows. About ten minutes total. After that, each provider bills <em>you</em> directly &mdash; roughly <b>$1 per hour of listening</b>, and all three include free signup credit that covers casual use for a long time.</p>
-        <a class="btn alt" href="/pricing/#byok">More on bring-your-own-keys</a>
-      </div>
-      <div class="mode">
-        <h3>Peanut Gallery Plus</h3>
-        <div class="price">$8 / mo &middot; coming soon</div>
-        <p class="blurb">When Plus launches, we&rsquo;ll manage the provider accounts for you. No websites to visit, no keys to paste. $8 a month will buy <b>16 hours</b> of listening a week. We&rsquo;ll email you a license key, you&rsquo;ll paste it into the side panel once, and you&rsquo;re done. Cancel any time from the same panel. Plus is still in the works; the plan above is the clean way to run Peanut Gallery today.</p>
-        <a class="btn" href="/pricing/#plus">How Plus will work</a>
-      </div>
+      <p>Read the <a href="/terms/">terms</a> and <a href="/privacy/">privacy</a> pages and the <a href="/manual/">operator&rsquo;s manual</a> before you stand up a hosted instance for anyone besides yourself.</p>
     </div>
   </section>
 
   <div class="callout tip">
-    <div class="tag">For developers<small>&middot; self-host</small></div>
-    <p class="bd">If you know what Docker is and want to run the whole backend yourself, the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host install guide</a> has you covered. Skip this if you&rsquo;re not a developer &mdash; you do not need to self-host to use Peanut Gallery.</p>
+    <div class="tag">Manual<small>&middot; canonical reference</small></div>
+    <p class="bd">The <a href="/manual/">operator&rsquo;s manual</a> documents the full self-host workflow &mdash; sourcing API keys, writing your own persona pack, running the backend, daily operation, and troubleshooting. Source-of-truth for everything below the &ldquo;clone the repo&rdquo; line above.</p>
   </div>
 
   <section>
     <div class="section-head">
       <h2>Common questions.</h2>
-      <div class="page-no">&sect; 05 &middot; FAQ</div>
+      <div class="page-no">&sect; 04 &middot; FAQ</div>
     </div>
     <div class="qa">
       <div class="row">
-        <h3 class="q">What&rsquo;s an API key? Do I need one?</h3>
-        <p class="a">An API key is a private string of letters and numbers a service gives you when you sign up &mdash; think of it as a password the extension uses to talk to that service on your behalf. You only need keys if you pick &ldquo;Get my own keys.&rdquo; The in-panel wizard shows you exactly where to click on each provider&rsquo;s website, and gives you a paste box for each key. You won&rsquo;t be asked to write any code.</p>
+        <h3 class="q">Why was the Chrome Web Store listing pulled?</h3>
+        <p class="a">Manu Games LLC is preparing a different product (a games launch) and made the call to retire the AI-persona extension as a commercial product before that launch. The legal exposure of operating live AI personas about real people in shipped video tabs &mdash; defamation, right-of-publicity &mdash; doesn&rsquo;t fit the LLC&rsquo;s posture going forward. The source remains MIT-licensed for anyone who wants to run their own copy.</p>
       </div>
       <div class="row">
-        <h3 class="q">Where does my audio go? Does YouTube know I&rsquo;m using this?</h3>
-        <p class="a">Your audio is sent to the AI providers so they can transcribe it and generate the reactions. We don&rsquo;t save or record it &mdash; it&rsquo;s streamed in real time, turned into text, and discarded. YouTube can&rsquo;t detect the extension (we use Chrome&rsquo;s built-in tab-audio feature, the same kind of thing meeting tools use), and the extension does nothing when no session is running. See the <a href="/privacy/">privacy page</a> for the full breakdown.</p>
+        <h3 class="q">Is there a hosted backend I can connect to?</h3>
+        <p class="a">No public, advertised one. The original Plus tier (a flat-rate $8/mo hosted backend) was planned but never shipped. If you want the AI to run, you self-host the backend on your own machine with your own API keys.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">What&rsquo;s an API key? Do I need one?</h3>
+        <p class="a">An API key is a private string of letters and numbers a service gives you when you sign up &mdash; think of it as a password your self-hosted backend uses to talk to that service on your behalf. You need three: Deepgram (transcription), Anthropic (the fact-checker and joke writer voices), and xAI (the heckler and sound-guy voices, plus Live Search for fact-check receipts). All three ship free tiers that cover casual use.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">Where does the audio go? Does YouTube know?</h3>
+        <p class="a">Your tab&rsquo;s audio is sent from your machine to the AI providers (Deepgram, Anthropic, xAI) under <em>your</em> account, not via Manu Games. Audio is streamed in real time, transcribed, and discarded &mdash; nothing is recorded. YouTube can&rsquo;t detect the extension (it uses Chrome&rsquo;s built-in tab-audio feature, the same kind of thing meeting tools use). The extension does nothing when no session is running.</p>
+      </div>
+      <div class="row">
+        <h3 class="q">Can I fork it and ship my own version?</h3>
+        <p class="a">Yes &mdash; MIT license. Two notes: (1) the &ldquo;Peanut Gallery&rdquo; name is a Manu Games trademark, so rename your fork; (2) once you ship, you&rsquo;re the operator and the publisher, with everything that implies. The <a href="/install/">walkthrough above</a> spells it out.</p>
       </div>
       <div class="row">
         <h3 class="q">I use Edge / Brave / Arc instead of Chrome. Does it work?</h3>
-        <p class="a">Yes. Those browsers are built on the same engine as Chrome, so the Chrome Web Store link above works the same way. On Edge you&rsquo;ll see a prompt asking &ldquo;Allow extensions from other stores?&rdquo; &mdash; click allow. Firefox and Safari are on the roadmap; they work a bit differently under the hood and need a separate version.</p>
-      </div>
-      <div class="row">
-        <h3 class="q">What if the reactions stop or something looks wrong?</h3>
-        <p class="a">Two fixes cover almost everything: (1) close the side panel and open it again, or (2) refresh the YouTube tab. If a specific video isn&rsquo;t being transcribed, it&rsquo;s usually an ad playing &mdash; let it finish. For anything else, there&rsquo;s a <b>Feedback &amp; bugs</b> section inside the side panel settings with a one-click email link.</p>
-      </div>
-      <div class="row">
-        <h3 class="q">How do I uninstall if I don&rsquo;t like it?</h3>
-        <p class="a">Right-click the peanut in your toolbar and pick <b>Remove from Chrome</b>. That&rsquo;s it. All your settings are wiped off your computer. If you happen to be on Plus, cancel that <em>first</em> from the side panel (Settings &rarr; Backend &amp; keys &rarr; Plus &rarr; Manage) &mdash; removing the extension alone doesn&rsquo;t stop the monthly charge. Or email <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a> and we&rsquo;ll handle it.</p>
-      </div>
-      <div class="row">
-        <h3 class="q">Will it slow my computer down?</h3>
-        <p class="a">No. When no session is running, the extension does nothing &mdash; Chrome puts it to sleep until you click the peanut. When you are listening, the transcription and reactions run on remote servers, not on your computer.</p>
+        <p class="a">Yes. Those browsers are built on the same engine as Chrome and support unpacked-extension loading via the same <code>chrome://extensions</code> path. Firefox and Safari are not supported &mdash; the extension uses Chrome-specific APIs (<code>chrome.tabCapture</code>, the Side Panel API).</p>
       </div>
     </div>
   </section>
 
   <div class="cta-bar">
-    <div class="lhs">One click. 30 seconds. No signup.<small>Free to try &middot; then bring your own keys (Plus coming soon)</small></div>
+    <div class="lhs">Open-source archive · MIT.<small>Source on GitHub &middot; self-host with your own keys &middot; you&rsquo;re the operator</small></div>
     <div class="btns">
-      <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">Add to Chrome</a>
-      <a class="btn alt" href="/pricing/">See pricing</a>
+      <a class="btn" href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">View source on GitHub</a>
+      <a class="btn alt" href="/manual/">Operator&rsquo;s manual</a>
     </div>
   </div>
 

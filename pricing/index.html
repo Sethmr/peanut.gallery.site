@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Pricing · Free BYOK or $8/mo Plus · Peanut Gallery</title>
+<title>Self-host pricing · Open-source archive · Peanut Gallery</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#f1ead8" />
 
 <!-- SEO -->
-<meta name="description" content="Peanut Gallery is open source and free with your own API keys. The Plus tier — $8/month for 16 hours/week of hosted reactions — is in the works. Accessibility, not profit." />
+<meta name="description" content="Self-host operating costs for Peanut Gallery — the open-source archive. ~$1/hour at full tilt across Deepgram, Anthropic, and xAI. The Plus subscription tier was planned but never shipped." />
 <meta name="author" content="Seth Rininger" />
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
 <link rel="canonical" href="https://www.peanutgallery.live/pricing/" />
@@ -17,17 +17,17 @@
 <meta property="og:site_name" content="Peanut Gallery" />
 <meta property="og:url" content="https://www.peanutgallery.live/pricing/" />
 <meta property="og:title" content="Pricing · Peanut Gallery" />
-<meta property="og:description" content="Free with your own keys. A $8/month, 16-hour-a-week hosted Plus tier is coming for those who'd rather we handled it." />
+<meta property="og:description" content="Open-source archive of Peanut Gallery. Self-host operating costs (~$1/hour with your own keys). The planned $8/mo Plus subscription never shipped." />
 <meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Peanut Gallery — Pricing page on a broadsheet-themed masthead, listing the free BYOK tier and the $8/month Plus tier" />
+<meta property="og:image:alt" content="Peanut Gallery — Pricing page (open-source archive) on a broadsheet-themed masthead, documenting self-host operating costs and the retired Plus tier" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@SethRininger" />
 <meta name="twitter:title" content="Pricing · Peanut Gallery" />
-<meta name="twitter:description" content="Free with your own keys. A $8/month, 16 h/wk hosted Plus tier is coming." />
+<meta name="twitter:description" content="Open-source archive. Self-host operating costs (~$1/hour); the planned $8/mo Plus tier never shipped." />
 <meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 
 <!-- Favicons -->
@@ -437,34 +437,34 @@
   <section class="cover">
     <div class="rails">
       <div class="crumb">
-        <a href="../">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The subscription desk
+        <a href="../">← Peanut Gallery Weekly</a> &nbsp;·&nbsp; The self-host desk
       </div>
       <div>Pg. A5 · MMXXVI · MIT license</div>
     </div>
 
     <div class="stamp"><div><div class="big">Open<br>Source</div><div class="sm">● MIT LICENSE</div></div></div>
 
-    <div class="kicker">— Subscription desk · Pg. A5 · Circulation —</div>
+    <div class="kicker">— Self-host desk · Pg. A5 · Operating cost —</div>
     <h1>Pricing.</h1>
     <div class="lede">
-      Peanut Gallery is <b>free and open source</b>. Bring your own keys and run it forever at API cost. Or pay $8/month so we handle the keys for you — an accessibility tier, not a profit center.
+      Peanut Gallery is <b>open source, MIT, and unpublished</b> from the Chrome Web Store as of 2026-05-02. Run it yourself with your own API keys at roughly <b>$1 per hour</b> in provider costs. There is nothing to buy from Manu Games — the $8/mo Plus subscription that was once planned never shipped.
     </div>
 
     <div class="spec">
       <div>
         <b>Bring your keys</b>
-        <div class="v">Free</div>
-        <div>You pay providers at their rates. ~$1 per hour.</div>
+        <div class="v">Self-host</div>
+        <div>You pay providers at their rates. ~$1 per hour at full tilt.</div>
       </div>
       <div>
         <b>Peanut Gallery Plus</b>
-        <div class="v">$8 / mo</div>
-        <div>16 hours of hosted reactions, every week. Cancel anytime. <b>Coming soon.</b></div>
+        <div class="v">Retired</div>
+        <div>The planned $8/mo flat-rate hosted backend never shipped. Documented below for posterity.</div>
       </div>
       <div>
-        <b>Free trial</b>
-        <div class="v">15 min</div>
-        <div>One-off, lifetime per install. No card, no signup.</div>
+        <b>Source</b>
+        <div class="v">MIT</div>
+        <div>One repo, full stack — extension, backend, persona kernels, Director.</div>
       </div>
       <div>
         <b>Self-host</b>
@@ -484,16 +484,15 @@
     <div class="sub-kicker">The simplest guide possible</div>
 
     <div class="prose">
-      <p>This is the path we built first, and the path that stays free forever. The extension is MIT-licensed — you run it, you own it, we don't gate a single feature behind a paywall. <b>Three providers, three steps, done.</b></p>
+      <p>Self-hosting is now the only path to run Peanut Gallery. The source is MIT-licensed — you clone it, you run it, you own it, you carry the operator responsibilities for any session you produce. <b>Three providers, three steps, done.</b></p>
     </div>
 
     <!-- 3 steps, dead simple -->
     <div class="steps">
       <div class="step">
         <div class="no">1</div>
-        <h4>Install from the Chrome Web Store</h4>
-        <p>One click: <a href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener"><b>Add to Chrome</b></a>. Pin the peanut in your toolbar.</p>
-        <p>Open any video tab, click the peanut, side panel opens. That's the whole install.</p>
+        <h4>Clone the source</h4>
+        <p><code>git clone <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">https://github.com/Sethmr/peanut.gallery</a></code> — full stack in one repo. The <a href="/install/">self-host walkthrough</a> covers loading the extension unpacked into Chrome.</p>
       </div>
       <div class="step">
         <div class="no">2</div>
@@ -551,19 +550,19 @@
     </div>
   </section>
 
-  <!-- ============== SECTION 2 · PLUS ============== -->
+  <!-- ============== SECTION 2 · PLUS (RETIRED — never shipped) ============== -->
   <section id="plus">
     <div class="section-head">
-      <h2>Peanut Gallery Plus.</h2>
-      <div class="page-no">§ 02 · The accessibility tier</div>
+      <h2>Peanut Gallery Plus <small style="font-family:var(--type); font-size:14px; letter-spacing:.15em; color:var(--stamp); text-transform:uppercase">— retired</small></h2>
+      <div class="page-no">§ 02 · Never shipped</div>
     </div>
 
-    <div class="sub-kicker">Why this exists</div>
+    <div class="sub-kicker">Documented for posterity</div>
 
     <div class="prose">
-      <p><b>Plus is not a profit center.</b> The entire reason it exists: a lot of people who'd enjoy Peanut Gallery can't paste three API keys into a settings drawer. Some don't know what an API key is. Some have the skill but can't justify the time. The extension is useless to them if the only way in is a technical onboarding.</p>
-      <p>So Plus is a <span class="hilite">flat-rate lane</span> for people who just want the product. You pay $8/month, we handle everything upstream — the keys, the quotas, the rate limits. You get a plain-text code to paste into the drawer once, and it runs.</p>
-      <p>The goal, in priority order: (1) non-techs can try it for free; (2) non-techs who like it can keep using it for a flat price; (3) techs keep BYOK unchanged forever; (4) we don't lose money on Plus at scale. <b>We've committed to driving the price down over time</b>, not up. If our backend gets cheaper to run, you pay less — we don't raise the cap, we lower the price.</p>
+      <p><b>Plus did not ship.</b> The plan was a flat-rate $8/month hosted backend — pay us, paste one license key, get 16 hours/week of transcription and persona reactions, no API keys to juggle. The pricing was set at break-even with a thin infra margin (full economics in the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SUBSCRIPTION-ARCHITECTURE.md#economics" target="_blank" rel="noopener">subscription architecture doc</a>). It was designed as an accessibility tier for non-technical users, not as a profit center.</p>
+      <p>It never went live. Manu Games LLC unpublished the Chrome Web Store listing on 2026-05-02 before the subscription opened. There is nothing to buy here. <b>The architecture, weekly-cap math, license-key flow, and Stripe integration are all documented below for anyone who wants to fork the source and build their own hosted tier — at their own legal concern.</b></p>
+      <p>If you are forking and standing up your own hosted backend: you own the operator side completely. You handle Stripe / billing / refunds / sales tax / ToS / DMCA / abuse policy / acceptable-use enforcement / provider AUP flow-down / defamation exposure for sessions you produce. The economics below were calculated against Manu Games' contracts and free-tier credits; your numbers will differ.</p>
     </div>
 
     <!-- Plan tiles -->
@@ -580,16 +579,16 @@
           <li class="no">Does not renew — when the 15 min are up, pick BYOK or Plus</li>
         </ul>
         <div class="btnrow">
-          <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">▶ Install &amp; try</a>
+          <a class="btn" href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">▶ Install &amp; try</a>
         </div>
       </div>
 
       <div class="plan">
-        <div class="chip">RECOMMENDED</div>
-        <div class="tkt-head"><span>Peanut Gallery Plus</span><span>Coming soon · flat monthly rate</span></div>
+        <div class="chip">RETIRED</div>
+        <div class="tkt-head"><span>Peanut Gallery Plus</span><span>Never shipped · documented design</span></div>
         <h3>Plus.</h3>
         <div class="price">$8 / month<small>16 hours of reactions, every week · cancel anytime</small></div>
-        <p class="l">One price. A weekly bucket of 16 hours. You pay us, we pay the providers. Pure access — no feature gates, no upsells, no ads, no data mining.</p>
+        <p class="l">The plan was: one price, a weekly bucket of 16 hours, you pay us, we pay the providers. Pure access — no feature gates, no upsells, no ads, no data mining. Designed but not launched.</p>
         <ul>
           <li>16 hours/week of hosted transcription + persona fires</li>
           <li>Bucket resets every 7 days — unused hours don't bank, they refresh</li>
@@ -598,15 +597,15 @@
           <li>Cancel anytime in two clicks — service ends at the billing-period end</li>
         </ul>
         <div class="btnrow">
-          <span class="btn" aria-disabled="true" style="opacity:.7; cursor:default">▶ Plus is coming soon — install the extension to be ready</span>
+          <span class="btn" aria-disabled="true" style="opacity:.7; cursor:default">▶ Plus did not ship — fork the source if you want to run your own</span>
         </div>
       </div>
     </div>
 
-    <div class="sub-kicker">How it will work, end to end</div>
+    <div class="sub-kicker">How it would have worked, end to end</div>
 
     <div class="prose">
-      <p>No account system. No password. No OAuth. Plus uses a <b>license key</b> over email — the same pattern as a coupon code — because that's the lightest-weight way to identify a subscription without introducing a whole login surface.</p>
+      <p>The Plus design is preserved below in past tense as an architectural reference for forks. No account system. No password. No OAuth. Plus uses a <b>license key</b> over email — the same pattern as a coupon code — because that's the lightest-weight way to identify a subscription without introducing a whole login surface.</p>
     </div>
 
     <div class="steps">
@@ -800,11 +799,11 @@
   <!-- CTA BAND -->
   <div class="cta-bar">
     <div class="lhs">
-      Still free if you bring the keys.
-      <small>Install takes ~90 seconds · Chrome 116+</small>
+      Open-source archive · MIT.
+      <small>Self-host with your own keys · you're the operator</small>
     </div>
     <div class="btns">
-      <a class="btn" href="https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh" target="_blank" rel="noopener">▶ Add to Chrome</a>
+      <a class="btn" href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">▶ View source</a>
       <a class="btn alt" href="/manual/">Operator's manual →</a>
     </div>
   </div>
@@ -839,7 +838,7 @@
 
 <!-- JSON-LD: Product (the Plus subscription) -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"Peanut Gallery Plus","description":"A monthly subscription to Peanut Gallery's hosted backend. 16 hours of hosted transcription and AI persona reactions per week, no API keys required. Accessibility tier — not a profit center.","brand":{"@type":"Brand","name":"Peanut Gallery"},"image":"https://www.peanutgallery.live/assets/og-image.png","offers":{"@type":"Offer","price":"8.00","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"8.00","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitCode":"MON"}},"availability":"https://schema.org/PreOrder","url":"https://www.peanutgallery.live/pricing/","hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted","merchantReturnLink":"https://www.peanutgallery.live/terms/"},"shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":0,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":0,"unitCode":"DAY"}}}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"1","bestRating":"5","worstRating":"1"},"review":{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Seth Rininger"},"datePublished":"2026-04-23","reviewBody":"I didn't know I needed four AI characters arguing about a YouTube video in real time until I had it. Now regular YouTube feels quiet. The broadsheet UI is a nice touch — reactions look like newspaper headlines. Free with your own keys, which is the right call."}}
+{"@context":"https://schema.org","@type":"Product","name":"Peanut Gallery Plus","description":"Retired (never shipped). The plan was a $8/month subscription to a Manu Games-hosted backend with 16 h/wk of transcription + persona reactions, no API keys required. The Chrome Web Store listing was unpublished on 2026-05-02 before the subscription opened. Architecture preserved for forks.","brand":{"@type":"Brand","name":"Peanut Gallery"},"image":"https://www.peanutgallery.live/assets/og-image.png","offers":{"@type":"Offer","price":"8.00","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"8.00","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitCode":"MON"}},"availability":"https://schema.org/Discontinued","url":"https://www.peanutgallery.live/pricing/","hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted","merchantReturnLink":"https://www.peanutgallery.live/terms/"},"shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":0,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":0,"unitCode":"DAY"}}}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"1","bestRating":"5","worstRating":"1"},"review":{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Seth Rininger"},"datePublished":"2026-04-23","reviewBody":"I didn't know I needed four AI characters arguing about a YouTube video in real time until I had it. Now regular YouTube feels quiet. The broadsheet UI is a nice touch — reactions look like newspaper headlines. Free with your own keys, which is the right call."}}
 </script>
 
 <!-- JSON-LD: FAQPage -->

@@ -51,7 +51,7 @@ The HTML pages are standalone — all CSS is inline, fonts load from Google Font
 When pasting new HTML from Claude Design, replace the whole file. Then:
 
 1. Re-verify cross-page links point to `/install`, `/pricing`, `/pricing/#plus`, `/packs/morning-crew`, `/packs/twist`, `/manual`, `/panel`, `/privacy`, `/terms` (no `.html` suffix, no legacy space-name filenames, no standalone `/plus/` marketing links — that URL is reserved for Stripe callbacks only).
-2. Re-verify outbound links still point to the [Chrome Web Store listing](https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh) and [the main repo](https://github.com/Sethmr/peanut.gallery).
+2. Re-verify outbound links still point to the [Chrome Web Store listing](https://github.com/Sethmr/peanut.gallery) and [the main repo](https://github.com/Sethmr/peanut.gallery).
 3. Re-verify the `<head>` still carries the SEO block (canonical, OG, Twitter, favicons, GA4) — see `index.html` for the full pattern. The `/pricing/` page additionally carries Product + FAQ + BreadcrumbList JSON-LD.
 
 ## Wired external links
@@ -60,7 +60,7 @@ All live in the landing page footer "Wire services" column, plus reused througho
 
 | Link | Target |
 |---|---|
-| Add to Chrome / Copy URL | `https://chromewebstore.google.com/detail/peanut-gallery/jjlpinlhfiheegiddmddkgfialcknagh` |
+| Add to Chrome / Copy URL | `https://github.com/Sethmr/peanut.gallery` |
 | Github repository | `https://github.com/Sethmr/peanut.gallery` |
 | Manifest v3 declaration | `https://github.com/Sethmr/peanut.gallery/blob/main/extension/manifest.json` |
 | MIT license | `https://github.com/Sethmr/peanut.gallery/blob/main/LICENSE` |
