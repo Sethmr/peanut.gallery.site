@@ -7,7 +7,7 @@
 <meta name="theme-color" content="#f1ead8" />
 
 <!-- SEO -->
-<meta name="description" content="Self-host operating costs for Peanut Gallery — the open-source archive. ~$1/hour at full tilt across Deepgram, Anthropic, and xAI. The Plus subscription tier was planned but never shipped." />
+<meta name="description" content="Self-host operating costs for Peanut Gallery, the open-source AI writers' room for YouTube — ~$1/hour at full tilt with your own provider keys." />
 <meta name="author" content="Seth Rininger" />
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
 <link rel="canonical" href="https://www.peanutgallery.live/pricing/" />
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Peanut Gallery" />
 <meta property="og:url" content="https://www.peanutgallery.live/pricing/" />
 <meta property="og:title" content="Pricing · Peanut Gallery" />
-<meta property="og:description" content="Open-source archive of Peanut Gallery. Self-host operating costs (~$1/hour with your own keys). The planned $8/mo Plus subscription never shipped." />
+<meta property="og:description" content="Self-host operating costs for Peanut Gallery, the open-source AI writers' room for YouTube — ~$1/hour at full tilt with your own provider keys." />
 <meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@SethRininger" />
 <meta name="twitter:title" content="Pricing · Peanut Gallery" />
-<meta name="twitter:description" content="Open-source archive. Self-host operating costs (~$1/hour); the planned $8/mo Plus tier never shipped." />
+<meta name="twitter:description" content="Self-host the open-source Peanut Gallery for ~$1/hour with your own Deepgram, Anthropic, and xAI keys." />
 <meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 
 <!-- Favicons -->
@@ -65,6 +65,7 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--serif); -webkit-font-smoothing:antialiased}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
   body::before{
     content:""; position:fixed; inset:0; pointer-events:none; z-index:100;
     background-image:
@@ -445,7 +446,7 @@
     <div class="stamp"><div><div class="big">Open<br>Source</div><div class="sm">● MIT LICENSE</div></div></div>
 
     <div class="kicker">— Self-host desk · Pg. A5 · Operating cost —</div>
-    <h1>Pricing.</h1>
+    <h1>Pricing<span class="sr-only"> · self-host operating costs for Peanut Gallery</span>.</h1>
     <div class="lede">
       Peanut Gallery is <b>open source, MIT, and unpublished</b> from the Chrome Web Store as of 2026-05-02. Run it yourself with your own API keys at roughly <b>$1 per hour</b> in provider costs. There is nothing to buy from Manu Games — the $8/mo Plus subscription that was once planned never shipped.
     </div>

@@ -315,3 +315,12 @@ a{color:var(--ink); text-underline-offset:3px}
   .fire{grid-template-columns: 1fr; gap: 6px}
   .fire .ts, .fire .who{display:inline-block; margin-right: 8px}
 }
+
+
+/* Visually-hidden utility — for screen-reader / SEO H1 extensions
+   that should remain off-canvas visually but readable by crawlers
+   and assistive tech. Standard a11y pattern. */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
