@@ -459,8 +459,8 @@
       </div>
       <div>
         <b>Peanut Gallery Plus</b>
-        <div class="v">Retired</div>
-        <div>The planned $8/mo flat-rate hosted backend never shipped. Documented below for posterity.</div>
+        <div class="v">Never shipped</div>
+        <div>A flat-rate hosted backend was once planned. It never launched and is not offered or planned.</div>
       </div>
       <div>
         <b>Source</b>
@@ -558,12 +558,11 @@
       <div class="page-no">§ 02 · Never shipped</div>
     </div>
 
-    <div class="sub-kicker">Documented for posterity</div>
+    <div class="sub-kicker">What was planned</div>
 
     <div class="prose">
-      <p><b>Plus did not ship.</b> The plan was a flat-rate $8/month hosted backend — pay us, paste one license key, get 16 hours/week of transcription and persona reactions, no API keys to juggle. The pricing was set at break-even with a thin infra margin (full economics in the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SUBSCRIPTION-ARCHITECTURE.md#economics" target="_blank" rel="noopener">subscription architecture doc</a>). It was designed as an accessibility tier for non-technical users, not as a profit center.</p>
-      <p>It never went live. Manu Games LLC unpublished the Chrome Web Store listing on 2026-05-02 before the subscription opened. There is nothing to buy here. <b>The architecture, weekly-cap math, license-key flow, and Stripe integration are all documented below for anyone who wants to fork the source and build their own hosted tier — at their own legal concern.</b></p>
-      <p>If you are forking and standing up your own hosted backend: you own the operator side completely. You handle Stripe / billing / refunds / sales tax / ToS / DMCA / abuse policy / acceptable-use enforcement / provider AUP flow-down / defamation exposure for sessions you produce. The economics below were calculated against Manu Games' contracts and free-tier credits; your numbers will differ.</p>
+      <p><b>Plus never shipped.</b> A flat-rate hosted backend (pay once, skip the API keys) was designed as an accessibility tier for non-technical users. It never launched — Manu Games LLC unpublished the Chrome Web Store listing on 2026-05-02 before any subscription opened — and it is <b>not offered or planned</b>. There is nothing to buy here; the payment and subscription code has been removed from the source.</p>
+      <p>The only way to run Peanut Gallery is the free path above: your own keys (BYOK) or self-host. If you fork the open-source repo and stand up your own hosted tier, you own the entire operator side — billing, taxes, ToS, abuse handling, provider-policy flow-down, and legal exposure for the sessions you produce.</p>
     </div>
 
     <!-- Plan tiles -->
@@ -577,165 +576,15 @@
           <li>Full fact-checker + comedy writer + troll + FX</li>
           <li>Swap Morning Crew / TWiST persona packs</li>
           <li>Native Chrome side panel experience</li>
-          <li class="no">Does not renew — when the 15 min are up, pick BYOK or Plus</li>
+          <li class="no">Does not renew — when the 15 min are up, switch to BYOK or self-host</li>
         </ul>
         <div class="btnrow">
           <a class="btn" href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">▶ Install &amp; try</a>
         </div>
       </div>
 
-      <div class="plan">
-        <div class="chip">RETIRED</div>
-        <div class="tkt-head"><span>Peanut Gallery Plus</span><span>Never shipped · documented design</span></div>
-        <h3>Plus.</h3>
-        <div class="price">$8 / month<small>16 hours of reactions, every week · cancel anytime</small></div>
-        <p class="l">The plan was: one price, a weekly bucket of 16 hours, you pay us, we pay the providers. Pure access — no feature gates, no upsells, no ads, no data mining. Designed but not launched.</p>
-        <ul>
-          <li>16 hours/week of hosted transcription + persona fires</li>
-          <li>Bucket resets every 7 days — unused hours don't bank, they refresh</li>
-          <li>Everything in the extension, unlocked — all four critics, both packs</li>
-          <li>License key over email — no account, no password, no OAuth dance</li>
-          <li>Cancel anytime in two clicks — service ends at the billing-period end</li>
-        </ul>
-        <div class="btnrow">
-          <span class="btn" aria-disabled="true" style="opacity:.7; cursor:default">▶ Plus did not ship — fork the source if you want to run your own</span>
-        </div>
-      </div>
     </div>
 
-    <div class="sub-kicker">How it would have worked, end to end</div>
-
-    <div class="prose">
-      <p>The Plus design is preserved below in past tense as an architectural reference for forks. No account system. No password. No OAuth. Plus uses a <b>license key</b> over email — the same pattern as a coupon code — because that's the lightest-weight way to identify a subscription without introducing a whole login surface.</p>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="no">1</div>
-        <h4>Subscribe from the side panel</h4>
-        <p>Open the settings gear → pick <span class="kbd">Plus</span> on the backend toggle → click <b>Subscribe</b>. You'll be asked for one thing: your email.</p>
-      </div>
-      <div class="step">
-        <div class="no">2</div>
-        <h4>Pay on Stripe</h4>
-        <p>A Stripe Checkout page opens. $8/month. No trial add-on, no upsell. We never see your card; <a href="https://stripe.com/payments" target="_blank" rel="noopener">Stripe handles it</a>.</p>
-      </div>
-      <div class="step">
-        <div class="no">3</div>
-        <h4>Key arrives, paste, go</h4>
-        <p>An email with your license key (<code>pg-xxxx-xxxx-xxxx</code>) lands in under a minute. Paste it into the drawer once. The extension remembers it on that device forever.</p>
-      </div>
-    </div>
-
-    <!-- The details table -->
-    <div class="sub-kicker">Every detail, in a single table</div>
-
-    <table class="spec-table">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Detail</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td class="label">Price</td><td><b>$8.00 USD / month</b>, auto-renewing monthly until you cancel.</td></tr>
-        <tr><td class="label">Included</td><td>16 hours of hosted transcription + AI reactions per 7-day rolling week. Both persona packs. All four critics. Every existing feature of the extension. No feature gates versus BYOK — gates would be user-hostile.</td></tr>
-        <tr><td class="label">Weekly cap</td><td>Hard limit. When you hit 16 h in a 7-day window, Plus calls return a friendly 402 — the panel surfaces "you've hit this week's cap" and suggests pasting your own keys to keep going. The window rolls forward; you don't lose anything.</td></tr>
-        <tr><td class="label">Rollover</td><td>Hours do <b>not</b> bank. Unused hours at week-end refresh to 16. The cap is designed to cover "watches roughly an hour a day plus some podcasts" — not to reward hoarding.</td></tr>
-        <tr><td class="label">Identity</td><td>A license key like <code>pg-xxxx-xxxx-xxxx</code> emailed to the address you gave at checkout. No username, no password. Paste once per device.</td></tr>
-        <tr><td class="label">Multi-device</td><td>Paste the same key on as many of your own devices as you want — laptop, desktop, partner's browser. One person, any number of machines. Abuse (sharing with strangers) is handled by the usage cap, not by device enforcement.</td></tr>
-        <tr><td class="label">Losing your key</td><td>Click <b>Manage → Email me my key</b> in the drawer. Enter your signup email. Active subscription → key gets re-emailed. No subscription on that email → we tell you. Zero support-ticket friction.</td></tr>
-        <tr><td class="label">Cancellation</td><td>Click <b>Manage → Cancel</b> → confirm in the Stripe Customer Portal (we email a one-time signed link). Service continues to the end of the current billing period, then stops. <b>No pro-rata refunds for partial months</b>, but see below.</td></tr>
-        <tr><td class="label">Refunds</td><td>Something went wrong, you forgot to cancel, you hated it? Email <a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a>. We default to yes on refund requests made in good faith within 30 days. This is not a business we're trying to lock people into.</td></tr>
-        <tr><td class="label">Data</td><td>We store <b>your license key, the email you gave Stripe, and a weekly-hours counter</b>. No transcripts. No audio. No persona outputs. No analytics inside the extension. The hours counter is the only engagement signal and it exists to enforce the cap.</td></tr>
-        <tr><td class="label">Payment data</td><td>Stripe holds it, we never touch it. We can't see your card. We can see an email and a subscription status.</td></tr>
-        <tr><td class="label">Taxes</td><td>Where applicable, collected automatically via Stripe Tax. Shown at checkout before you pay.</td></tr>
-        <tr><td class="label">International</td><td>Plus billing is <b>US-only at launch</b>. The extension itself works worldwide on BYOK — any country, any browser locale, no geo-gate. International Plus support is on the v2.x roadmap.</td></tr>
-        <tr><td class="label">Price changes</td><td>The goal is down, not up. If our costs change enough to require a price change, existing subscribers get <b>60 days notice by email</b> before the new rate applies to their subscription.</td></tr>
-        <tr><td class="label">Switching to BYOK</td><td>Plus and BYOK live side-by-side in the drawer. When Plus is active, you'll see a second toggle: <b>Use with: [Subscription · My keys]</b>. Flipping to <b>My keys</b> runs the current session on your own keys and costs zero hours on your Plus cap. Useful when you want to experiment without burning the weekly bucket.</td></tr>
-      </tbody>
-    </table>
-
-    <!-- Comparison -->
-    <div class="sub-kicker">Free trial · BYOK · Plus · Self-host</div>
-
-    <table class="compare">
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th>Free trial</th>
-          <th class="hl">Plus — $8/mo</th>
-          <th>BYOK</th>
-          <th>Self-host</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="label">Cost</td>
-          <td class="y">$0<span class="hint">Lifetime one-off</span></td>
-          <td class="y">$8<span class="hint">per month</span></td>
-          <td class="y">$0<span class="hint">+ provider usage</span></td>
-          <td class="y">$0<span class="hint">+ hosting + providers</span></td>
-        </tr>
-        <tr>
-          <td class="label">Hours</td>
-          <td class="n">15 minutes total</td>
-          <td class="y">16 h / week</td>
-          <td class="n">Provider rate-limits</td>
-          <td class="n">Your machine's limits</td>
-        </tr>
-        <tr>
-          <td class="label">Technical setup</td>
-          <td class="n">None</td>
-          <td class="n">Paste one code</td>
-          <td class="n">4 signups, paste keys</td>
-          <td class="n">Node, <code>.env</code>, deploy</td>
-        </tr>
-        <tr>
-          <td class="label">Personas &amp; packs</td>
-          <td class="y">All<span class="hint">morning radio + TWiST</span></td>
-          <td class="y">All</td>
-          <td class="y">All</td>
-          <td class="y">All</td>
-        </tr>
-        <tr>
-          <td class="label">Side panel UX</td>
-          <td class="y">Full</td>
-          <td class="y">Full</td>
-          <td class="y">Full</td>
-          <td class="y">Full</td>
-        </tr>
-        <tr>
-          <td class="label">Your audio</td>
-          <td class="n">In-session only</td>
-          <td class="n">In-session only</td>
-          <td class="n">In-session only</td>
-          <td class="n">Your server, your rules</td>
-        </tr>
-        <tr>
-          <td class="label">Provider bills</td>
-          <td class="n">We pay</td>
-          <td class="n">We pay</td>
-          <td class="n">You pay directly</td>
-          <td class="n">You pay directly</td>
-        </tr>
-        <tr>
-          <td class="label">Best for</td>
-          <td class="n">Curious first-timer</td>
-          <td class="n">Non-techs who use it daily</td>
-          <td class="n">Techs + heavy users</td>
-          <td class="n">Privacy purists</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- Economics callout — transparency -->
-    <div class="callout">
-      <div class="tag">ECONOMICS<small>TRANSPARENT</small></div>
-      <div class="bd">
-        At today's API rates, 16 hours of reactions per week costs us <b>~$5.40/month</b> at the backend to run; casual usage (4–8 h/week) lands around <b>$4.80–$9.60/month</b>. $8 sits roughly at break-even with a thin margin for infra — enough to keep the lights on, not enough to optimize for. If upstream rates drop (cheaper models, cached fact-checks, batched Director calls), the delta goes to lowering your price, not our margin. Full math in the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SUBSCRIPTION-ARCHITECTURE.md#economics" target="_blank" rel="noopener" style="color:var(--ink); text-underline-offset:2px">subscription architecture doc</a>. That's the commitment, in writing, at Pg. A5.
-      </div>
-    </div>
   </section>
 
   <!-- ============== FAQ ============== -->
@@ -747,52 +596,28 @@
 
     <div class="qa">
       <div class="row">
-        <div class="q">Is any feature Plus-only?</div>
-        <div class="a">No. Plus does not unlock anything. It's a way to pay for compute without juggling keys. Everything in the extension is free and MIT-licensed — <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">fork the repo</a>, it's all there.</div>
-      </div>
-      <div class="row">
-        <div class="q">What happens if I cancel mid-month?</div>
-        <div class="a">Your subscription runs to the end of the current billing period, then stops. You keep using Plus for the days you paid for. The license key stops validating at period end; you can swap the drawer back to <span class="kbd">My keys</span> or <span class="kbd">Demo</span> with zero data loss.</div>
-      </div>
-      <div class="row">
-        <div class="q">Can I upgrade from BYOK to Plus later? Or the other way around?</div>
-        <div class="a">Yes, seamlessly. The settings drawer has three modes — <b>Demo</b>, <b>My keys</b>, and <b>Plus</b> — and you switch between them with a single click. Your saved keys and your Plus subscription coexist. You can even run a session on Plus and swap mid-session to your own keys if you want to preserve the weekly cap for later.</div>
-      </div>
-      <div class="row">
-        <div class="q">What if I share my key with a friend?</div>
-        <div class="a">The cap is per-subscription, not per-device — so if two of you share a key, you share the 16 hours. No device enforcement, no DRM, no "authorized devices" list. This is the honor system, priced so splitting it with a roommate isn't worth the friction.</div>
+        <div class="q">Is it really free?</div>
+        <div class="a">Yes. Peanut Gallery is free and MIT-licensed — <a href="https://github.com/Sethmr/peanut.gallery" target="_blank" rel="noopener">fork the repo</a>, it's all there. Run it on your own provider keys (BYOK) or self-host. There is no paid tier and no payment processing.</div>
       </div>
       <div class="row">
         <div class="q">Is my audio stored anywhere?</div>
         <div class="a">No. Audio is streamed to Deepgram live, transcripts fan out to Anthropic + xAI live, everything is held in memory for the duration of the session and discarded when you click Stop. No logs, no recordings, no analytics inside the extension. The <a href="/privacy/">privacy policy</a> covers the full picture.</div>
       </div>
       <div class="row">
-        <div class="q">Why 16 hours and not unlimited?</div>
-        <div class="a">Because uncapped means we eventually lose money on a single power user and have to raise the price on everyone. 16 h/week ≈ 2 h/day every day of the week — well above the median YouTube habit — with headroom for a couple long podcasts on a weekend. When upstream API costs drop, the cap goes up or the price goes down.</div>
-      </div>
-      <div class="row">
-        <div class="q">What models power Plus?</div>
-        <div class="a">Same as BYOK: <b>Deepgram Nova-3</b> for real-time transcription, <b>Claude Haiku</b> for the fact-checker + comedy writer, <b>xAI Grok 4.1 Fast</b> for the troll + sound-effects guy. No model downgrades for subscribers.</div>
-      </div>
-      <div class="row">
-        <div class="q">What about business use / teams?</div>
-        <div class="a">There's no team plan today. One person, one subscription, any number of their own devices. If a team license makes sense later, it'll be announced — and it'll honor the "never raise the individual price" commitment regardless.</div>
+        <div class="q">What models does it use?</div>
+        <div class="a"><b>Deepgram Nova-3</b> for real-time transcription, <b>Claude Haiku</b> for the fact-checker + comedy writer, <b>xAI Grok 4.1 Fast</b> for the troll + sound-effects guy.</div>
       </div>
       <div class="row">
         <div class="q">Is this AI-generated content safe to show at work?</div>
-        <div class="a">Sometimes. The Troll is designed to dunk and The Bit comic is designed to joke — edit the personas (the extension supports sideloading your own pack) if you want a more SFW room. Self-host the backend, write a pack of four Jason Calacanis clones, swap in at runtime. The <a href="/manual/#packs">Operator's Manual</a> covers this.</div>
+        <div class="a">Sometimes. The Troll is designed to dunk and the comedy writer is designed to joke — edit the personas (the extension supports sideloading your own pack) if you want a more SFW room. The <a href="/manual/#packs">Operator's Manual</a> covers writing your own pack.</div>
       </div>
       <div class="row">
         <div class="q">Are these the real people?</div>
-        <div class="a">No. The packs are <em>inspired by</em> public figures from <em>The Morning Crew</em> and <em>This Week in Startups</em> — unofficial, unauthorized fan commentary. We have no license, no endorsement, no affiliation. The AI is prompted to clarify it's a fan parody if a user asks whether it's the real person. Full legal framing in the <a href="/terms/">Terms of Service</a>. If you are one of these public figures (or represent one) and want your name removed, email <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a> — we respond promptly and in good faith.</div>
-      </div>
-      <div class="row">
-        <div class="q">What if Plus shuts down?</div>
-        <div class="a">BYOK is unaffected — the extension works forever because you own the provider accounts. If we ever retired the hosted backend, we'd email every Plus subscriber, refund unused time, and leave the extension fully functional on BYOK and self-host. Open source is the insurance policy.</div>
+        <div class="a">No. The personas are generic archetypes — an unofficial, unauthorized fan parody and homage to talk- and podcast-style formats (including <em>The Morning Crew</em> and <em>This Week in Startups</em>). No license, no endorsement, no affiliation; the AI is prompted to clarify it's a fan parody if asked whether it's a real person, and it ships no verbatim copyrighted material. Full legal framing in the <a href="/terms/">Terms of Service</a>. To request a name be removed from our marketing, email <a href="mailto:legal@peanutgallery.live">legal@peanutgallery.live</a>.</div>
       </div>
       <div class="row">
         <div class="q">How do I contact a human?</div>
-        <div class="a"><a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a> for billing, refunds, lost keys, bug reports. For code-level issues, <a href="https://github.com/Sethmr/peanut.gallery/issues" target="_blank" rel="noopener">open a GitHub issue</a>.</div>
+        <div class="a"><a href="mailto:support@peanutgallery.live">support@peanutgallery.live</a> for bug reports, or <a href="https://github.com/Sethmr/peanut.gallery/issues" target="_blank" rel="noopener">open a GitHub issue</a>.</div>
       </div>
     </div>
   </section>
@@ -813,7 +638,7 @@
   <footer class="colophon">
     <div class="top">
       <div class="lg">— 30 —</div>
-      <div class="tag">If the price ever changes, you'll hear about it here first. Pg. A5 is the canonical ledger.</div>
+      <div class="tag">Peanut Gallery is free and open source. Pg. A5 is the canonical ledger.</div>
     </div>
     <div class="bot">
       <div>© MMXXVI · Peanut Gallery Weekly · Printed in Chromium · MIT License</div>
@@ -837,21 +662,14 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.peanutgallery.live/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://www.peanutgallery.live/pricing/"}]}
 </script>
 
-<!-- JSON-LD: Product (the Plus subscription) -->
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"Peanut Gallery Plus","description":"Retired (never shipped). The plan was a $8/month subscription to a Manu Games-hosted backend with 16 h/wk of transcription + persona reactions, no API keys required. The Chrome Web Store listing was unpublished on 2026-05-02 before the subscription opened. Architecture preserved for forks.","brand":{"@type":"Brand","name":"Peanut Gallery"},"image":"https://www.peanutgallery.live/assets/og-image.png","offers":{"@type":"Offer","price":"8.00","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","price":"8.00","priceCurrency":"USD","referenceQuantity":{"@type":"QuantitativeValue","value":1,"unitCode":"MON"}},"availability":"https://schema.org/Discontinued","url":"https://www.peanutgallery.live/pricing/","hasMerchantReturnPolicy":{"@type":"MerchantReturnPolicy","applicableCountry":"US","returnPolicyCategory":"https://schema.org/MerchantReturnNotPermitted","merchantReturnLink":"https://www.peanutgallery.live/terms/"},"shippingDetails":{"@type":"OfferShippingDetails","shippingRate":{"@type":"MonetaryAmount","value":"0","currency":"USD"},"shippingDestination":{"@type":"DefinedRegion","addressCountry":"US"},"deliveryTime":{"@type":"ShippingDeliveryTime","handlingTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":0,"unitCode":"DAY"},"transitTime":{"@type":"QuantitativeValue","minValue":0,"maxValue":0,"unitCode":"DAY"}}}},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"1","bestRating":"5","worstRating":"1"},"review":{"@type":"Review","reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"author":{"@type":"Person","name":"Seth Rininger"},"datePublished":"2026-04-23","reviewBody":"I didn't know I needed four AI characters arguing about a YouTube video in real time until I had it. Now regular YouTube feels quiet. The broadsheet UI is a nice touch — reactions look like newspaper headlines. Free with your own keys, which is the right call."}}
-</script>
 
 <!-- JSON-LD: FAQPage -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-  {"@type":"Question","name":"Is any feature Plus-only?","acceptedAnswer":{"@type":"Answer","text":"No. Plus does not unlock anything. It is a way to pay for compute without juggling keys. Every feature of the extension is free and MIT-licensed."}},
-  {"@type":"Question","name":"What happens if I cancel mid-month?","acceptedAnswer":{"@type":"Answer","text":"Your subscription runs to the end of the current billing period, then stops. You keep using Plus for the days you paid for."}},
-  {"@type":"Question","name":"Can I switch between BYOK and Plus later?","acceptedAnswer":{"@type":"Answer","text":"Yes. The settings drawer has three modes — Demo, My keys, and Plus — and you switch between them with a single click. Your keys and subscription coexist."}},
+  {"@type":"Question","name":"Is it really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. Peanut Gallery is free and MIT-licensed. Run it on your own provider keys (BYOK) or self-host. There is no paid tier and no payment processing."}},
   {"@type":"Question","name":"Is my audio stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Audio is streamed live to Deepgram, transcripts fan out to Anthropic and xAI live, and everything is held in memory for the duration of the session and discarded when you stop. No logs, no recordings."}},
-  {"@type":"Question","name":"Why 16 hours per week and not unlimited?","acceptedAnswer":{"@type":"Answer","text":"Uncapped means we eventually lose money on a single power user and have to raise the price on everyone. 16 hours per week is well above the median viewing habit with headroom for long podcasts on weekends."}},
-  {"@type":"Question","name":"What models power Peanut Gallery Plus?","acceptedAnswer":{"@type":"Answer","text":"Deepgram Nova-3 for real-time transcription, Claude Haiku for the fact-checker and comedy writer, and xAI Grok 4.1 Fast for the troll and sound-effects guy. Same models as BYOK — no downgrades for subscribers."}},
-  {"@type":"Question","name":"Are these the real people?","acceptedAnswer":{"@type":"Answer","text":"No. The packs are inspired by public figures from The Morning Crew and This Week in Startups — unofficial, unauthorized fan commentary. We have no license, no endorsement, no affiliation. The AI is prompted to clarify it's a fan parody if a user asks whether it's the real person. If you are one of these public figures (or represent one) and want your name removed, email legal@peanutgallery.live — we respond promptly and in good faith."}}
+  {"@type":"Question","name":"What models does it use?","acceptedAnswer":{"@type":"Answer","text":"Deepgram Nova-3 for real-time transcription, Claude Haiku for the fact-checker and comedy writer, and xAI Grok 4.1 Fast for the troll and sound-effects guy."}},
+  {"@type":"Question","name":"Are these the real people?","acceptedAnswer":{"@type":"Answer","text":"No. The personas are generic archetypes — an unofficial, unauthorized fan parody and homage to talk- and podcast-style formats including The Morning Crew and This Week in Startups. No license, no endorsement, no affiliation. The AI is prompted to clarify it's a fan parody if asked whether it's a real person, and it ships no verbatim copyrighted material. To request a name be removed from our marketing, email legal@peanutgallery.live."}}
 ]}
 </script>
 

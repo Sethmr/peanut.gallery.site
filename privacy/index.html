@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Peanut Gallery" />
 <meta property="og:url" content="https://www.peanutgallery.live/privacy/" />
 <meta property="og:title" content="Privacy Policy · Peanut Gallery" />
-<meta property="og:description" content="Audio streamed and discarded. Keys never written to disk. Minimal subscription state. No ads, no data sale, no analytics in the extension." />
+<meta property="og:description" content="Audio streamed and discarded. Keys never written to disk. No accounts, no payments. No ads, no data sale, no analytics in the extension." />
 <meta property="og:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@SethRininger" />
 <meta name="twitter:title" content="Privacy Policy · Peanut Gallery" />
-<meta name="twitter:description" content="Audio streamed and discarded. Keys never written to disk. Minimal subscription state. No ads, no data sale, no analytics in the extension." />
+<meta name="twitter:description" content="Audio streamed and discarded. Keys never written to disk. No accounts, no payments. No ads, no data sale, no analytics in the extension." />
 <meta name="twitter:image" content="https://www.peanutgallery.live/assets/og-image.png" />
 
 <!-- Favicons -->
@@ -83,10 +83,10 @@
   <div class="crumb"><a href="/">← Peanut Gallery</a> &nbsp;·&nbsp; Privacy policy</div>
 
   <h1>Privacy Policy</h1>
-  <div class="updated"><span>v2.0 &middot; Peanut Gallery</span><span>Last updated · April 24, 2026</span></div>
+  <div class="updated"><span>v2.0 &middot; Peanut Gallery</span><span>Last updated · June 3, 2026</span></div>
 
   <div class="callout">
-    <p><strong>United States only for hosted tiers.</strong> The Demo allowance backed by our hosted keys is offered only to users in the United States. The Extension is globally available under the MIT license; if you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>. A paid hosted tier (&ldquo;Peanut Gallery Plus&rdquo;) is planned for a future release and is not currently available.</p>
+    <p><strong>United States only for the hosted demo.</strong> The Demo allowance backed by our hosted keys is offered only to users in the United States. The Extension is globally available under the MIT license; if you&rsquo;re outside the U.S., use My-Keys Mode or self-host &mdash; see the <a href="https://github.com/Sethmr/peanut.gallery/blob/main/docs/SELF-HOST-INSTALL.md" target="_blank" rel="noopener">self-host guide</a>. Peanut Gallery is free; there is no paid tier and no payment processing.</p>
     <p><strong>Short answer.</strong> Audio is streamed through a transcription provider and discarded &mdash; never written to disk, never used to train AI models. Your live transcript sits in server memory during the session and is not persisted. If you use your own API keys they travel per-request as headers and are never stored server-side. We don&rsquo;t sell data. The Extension loads no analytics library. The marketing site uses Cloudflare Web Analytics (cookieless, no cross-site tracking, no individual identifiers) for aggregate page views and Core Web Vitals.</p>
     <p><strong>Recording-consent laws are your responsibility.</strong> The Extension can be pointed at any browser tab you grant it. Many U.S. states require all-party consent to record private conversations.</p>
   </div>
@@ -100,7 +100,7 @@
     <li><strong>My-Keys Mode</strong> (BYOK) &mdash; you supply your own API keys. We forward them per-request to the providers and never store them server-side. In this mode, Manu Games is not a processor on the AI-inference path: you are in direct privity with the provider whose key you supplied, under that provider&rsquo;s own terms and privacy policy.</li>
     <li><strong>Self-host</strong> &mdash; deploy the MIT-licensed backend yourself. We don&rsquo;t see any data in this mode; this policy doesn&rsquo;t apply to your self-hosted instance.</li>
   </ul>
-  <p><strong>Peanut Gallery Plus (planned future tier):</strong> not currently offered. Code paths in the repository that reference a Plus subscription, a license key of the form <code>pg-xxxx-xxxx-xxxx</code>, or Stripe checkout are dormant and gated off in production. If and when we launch that tier, this policy will be updated to describe the subscription-specific data flows with at least 30 days&rsquo; advance notice to any then-active subscribers.</p>
+  <p><strong>No paid tier.</strong> Peanut Gallery is free. There is no subscription, no payment processing, and no billing code in the product. Earlier versions of the repository contained scaffolding for a planned &ldquo;Peanut Gallery Plus&rdquo; tier; it has been removed and is not offered or planned. We collect no email address and no account.</p>
 
   <h2>What the Extension keeps on your device</h2>
   <p>The Extension writes to <code>chrome.storage.local</code>, which Chrome persists on your disk. Nothing there leaves your browser unless you trigger it:</p>
@@ -120,7 +120,7 @@
     <li><strong>Your install ID (Demo Mode)</strong> &mdash; kept in memory to meter the 15-minute trial.</li>
     <li><strong>Operational logs</strong> &mdash; request IDs, session IDs, persona IDs, response times, error events. 30-day retention. Redacted of keys; never include complete transcripts or audio.</li>
   </ul>
-  <p>If and when the planned Peanut Gallery Plus tier launches, additional fields (subscriber email, license key, Stripe subscription ID, weekly usage counter) will be persisted with retention windows documented here at that time.</p>
+  <p>We persist no account, email address, or payment information &mdash; there is nothing to buy and no sign-up.</p>
 
   <h2 id="ai-training">AI training on your content</h2>
   <p>We do not train AI models on your audio, transcripts, or content, and we configure each provider to minimize retention to the extent each provider offers that control:</p>
@@ -142,8 +142,6 @@
     <li><a href="https://deepgram.com/privacy" target="_blank" rel="noopener">Deepgram</a> &mdash; speech-to-text streaming.</li>
     <li><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic (Claude)</a> &mdash; Producer and Joker persona inference.</li>
     <li><a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener">xAI (Grok)</a> &mdash; Troll and Sound FX persona inference, and fact-check search queries via Grok Live Search.</li>
-    <li><a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe</a> &mdash; payment processing (Plus only). Stripe collects card details directly; we never see them.</li>
-    <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Resend</a> &mdash; transactional email (Plus only): welcome email with your license key, recovery email if you lose the key, cancellation confirmation. Email addresses are processed by Resend for delivery only; not used for marketing.</li>
     <li><a href="https://railway.com/legal/privacy" target="_blank" rel="noopener">Railway</a> &mdash; backend hosting.</li>
     <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Vercel</a> &mdash; Next.js application hosting where used.</li>
     <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Pages</a> &mdash; marketing-site hosting.</li>
@@ -168,26 +166,25 @@
       <tr><td>Marketing-site analytics (Cloudflare Web Analytics)</td><td>Aggregated metrics; no per-visitor identifier stored</td></tr>
     </tbody>
   </table>
-  <p class="callout" style="margin-top:10px"><em>If and when Peanut Gallery Plus launches, additional rows (email, license key, Stripe subscription ID, weekly usage counter, payment records) will be added with retention windows.</em></p>
 
   <h2>Your rights</h2>
   <p>Wherever you live, you have the right to know what we hold, correct it, delete it, port it, object to certain processing, and complain to a data-protection authority. Under U.S. state privacy laws (CCPA/CPRA, Virginia, Colorado, Connecticut, and equivalents) you also have the right to opt out of &ldquo;sale&rdquo; and &ldquo;sharing&rdquo; of personal information. We do not sell or share personal information in the senses those laws define.</p>
-  <p>To exercise any of these rights, email <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a>. We may ask you to verify your identity before we act (for example, by confirming the email tied to your Stripe subscription). We respond within the timeframes required by law &mdash; typically 45 days under U.S. state privacy laws and one month under GDPR.</p>
+  <p>To exercise any of these rights, email <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a>. Because we collect no email or account, the only data tied to you is pseudonymous (your install / session IDs and any feedback snippets). We respond within the timeframes required by law &mdash; typically 45 days under U.S. state privacy laws and one month under GDPR.</p>
 
   <h2>International data transfers</h2>
-  <p>The hosted backend is in the United States. If you use the Service from outside the U.S., your audio, transcript, and (for Plus) email and license key pass through U.S.-based infrastructure. Where applicable, we rely on the European Commission&rsquo;s Standard Contractual Clauses, the U.K. International Data Transfer Addendum, and (where participating) the EU&ndash;U.S. Data Privacy Framework. If that&rsquo;s not acceptable for your situation, use My-Keys Mode or self-host the backend in a region of your choice.</p>
+  <p>The hosted backend is in the United States. If you use the Service from outside the U.S., your audio and transcript pass transiently through U.S.-based infrastructure and are not retained. Where applicable, we rely on the European Commission&rsquo;s Standard Contractual Clauses, the U.K. International Data Transfer Addendum, and (where participating) the EU&ndash;U.S. Data Privacy Framework. If that&rsquo;s not acceptable for your situation, use My-Keys Mode or self-host the backend in a region of your choice.</p>
 
   <h2>Children</h2>
-  <p>Peanut Gallery is not directed at children under 13 (16 in some EU member states). We do not knowingly collect personal information from children under those ages. If you&rsquo;re a parent and believe a child under the relevant age has subscribed or otherwise given us data, email <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a> and we&rsquo;ll refund, delete, and revoke.</p>
+  <p>Peanut Gallery is not directed at children under 13 (16 in some EU member states). We do not knowingly collect personal information from children under those ages. If you&rsquo;re a parent with a concern, email <a href="mailto:privacy@peanutgallery.live">privacy@peanutgallery.live</a> and we&rsquo;ll help.</p>
 
   <h2>Security</h2>
-  <p>HTTPS for all backend traffic, keys redacted from logs, Stripe handles all payment data, structured per-request timeouts on every upstream call, narrow content-script scope (<code>peanutgallery.live</code> subdomains only). Responsible disclosure via <a href="https://github.com/Sethmr/peanut.gallery/blob/main/.github/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a> or <a href="mailto:security@peanutgallery.live">security@peanutgallery.live</a>.</p>
+  <p>HTTPS for all backend traffic, keys redacted from logs, structured per-request timeouts on every upstream call, narrow content-script scope (<code>peanutgallery.live</code> subdomains only). Responsible disclosure via <a href="https://github.com/Sethmr/peanut.gallery/blob/main/.github/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a> or <a href="mailto:security@peanutgallery.live">security@peanutgallery.live</a>.</p>
 
   <h2>Recording consent</h2>
   <p>The Extension can be pointed at any browser tab you grant access to. Recording-consent laws are jurisdiction-specific. U.S. states including California, Florida, Illinois, Maryland, Massachusetts, Montana, New Hampshire, Nevada, Pennsylvania, and Washington require all-party consent for private conversations. The EU, UK, and many other jurisdictions impose equivalent or stricter rules. You are solely responsible for obtaining any consent required before directing the Extension at audio &mdash; this applies to live calls, conferences, voicemail, ambient room audio, and private streams. See the <a href="/terms/#acceptable-use">Acceptable Use section</a> in the Terms of Service.</p>
 
   <h2>Changes to this policy</h2>
-  <p>Material changes affecting Plus subscribers get at least 30 days&rsquo; email notice and a pro-rata refund window. Non-material changes (clarifications, typos, provider substitutions that don&rsquo;t alter data handling) are effective on the updated &ldquo;Last updated&rdquo; date above.</p>
+  <p>Changes are effective on the updated &ldquo;Last updated&rdquo; date above. If we ever introduce a material new data flow (for example, accounts or a paid tier &mdash; not currently offered or planned), we&rsquo;ll describe it here before it takes effect.</p>
 
   <h2>Contact</h2>
   <ul>
